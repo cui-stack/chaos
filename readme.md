@@ -1,5 +1,4 @@
 ![](https://img.shields.io/badge/language-java-orange.svg)
-[版本图片](https://www.npmjs.com/package/chaos-back)
 # [chaos全栈架构](https://github.com/cui-stack/chaos/)
 |  服务          | 使用技术                |   进度  |    备注                   |
 |----------------|------------------------|---------|---------------------------|
