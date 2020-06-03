@@ -1,0 +1,12 @@
+server:
+  port: 8864
+spring:
+  application:
+    name: service-feign
+  cloud:
+    consul:
+      host: localhost
+      port: 8500
+feign:
+  hystrix:
+    enabled: true

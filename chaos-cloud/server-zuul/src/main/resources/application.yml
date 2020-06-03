@@ -1,0 +1,17 @@
+server:
+  port: 8880
+spring:
+  application:
+    name: service-zuul
+  cloud:
+    consul:
+      host: localhost
+      port: 8500
+zuul:
+  routes:
+    api-a:
+      path: /api-demo/**
+      serviceId: server-demo
+    api-b:
+      path: /api-demo1/**
+      serviceId: server-demo1

@@ -1,0 +1,134 @@
+app:
+  wxmini:
+    appid: 88888888
+    secret: 88888888
+  tencent:
+    sms:
+      appid: 88888888
+      appkey: 88888888
+      smsSign:
+  baidu:
+    lbsyun:
+      ak: 88888888
+      sk: 88888888
+  amap:
+    key: 88888888
+server:
+  port: 8086
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+logging:
+  level:
+    root: INFO
+    com:
+      favorites: DEBUG
+    org:
+      hibernate: ERROR
+      springframework:
+        web: INFO
+spring:
+  application:
+    name: boot-service
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    druid:
+      connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
+      filters: stat,wall
+      initial-size: 5
+      maxActive: 20
+      maxPoolPreparedStatementPerConnectionSize: -1
+      maxWait: 60000
+      min-idle: 5
+      minEvictableIdleTimeMillis: 300000
+      poolPreparedStatements: true
+      stat-view-servlet:
+        allow: 127.0.0.1
+        deny: ''
+        enabled: true
+        login-password: admin
+        login-username: admin
+        reset-enable: false
+        url-pattern: /druid/*
+      testOnBorrow: true
+      testOnReturn: false
+      testWhileIdle: true
+      timeBetweenEvictionRunsMillis: 60000
+      validationQuery: SELECT 1 FROM DUAL
+      web-stat-filter:
+        enabled: true
+        exclusions: '*.js,*.gif,*.jpg,*.bmp,*.png,*.css,*.ico,/druid/*'
+        url-pattern: /*
+    type: com.alibaba.druid.pool.DruidDataSource
+  boot:
+    admin:
+      client:
+        url: 'http://firepongo.tech:8000'
+        instance:
+          prefer-ip: true
+  security:
+    user:
+      name: admin #客户端用户名
+      password: firepongo # 客户端密码
+      roles: ACTUATOR_ADMIN #拥有角色，用于允许自身访问
+  dubbo:
+    application:
+      name: chaos-service
+    server: true
+    protocol:
+      name: dubbo
+      port: 28086
+    consumer:
+      check: false
+    reference:
+      loadbalance: random #随机机制
+  redis:
+    jedis:
+      pool:
+        max-active: 200
+        maxIdle: 10
+        minIdle: 1
+    port: 6379
+    timeout: 2000
+management:
+  health:
+    mongo:
+      enabled: false
+    rabbit:
+      enabled: false
+  endpoint:
+    health:
+      show-details: always
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+xxl:
+  job:
+    accessToken: ''
+    admin:
+      addresses: http://center.okyakid.com:19999/xxl-job-admin
+    executor:
+      appname: xxl-job-executor-sample
+      ip: ''
+      logpath: /data/applogs/xxl-job/jobhandler
+      logretentiondays: 30
+      port: 9992
+zipkin:
+  compressionEnabled: true
+  connectTimeout: 6000
+  flushInterval: 1
+  readTimeout: 6000
+  serviceName: boot-service
+  url: http://center.okyakid.com:9411
+socketio:
+  allowCustomRequests: true
+  bossCount: 1
+  host: 0.0.0.0
+  maxFramePayloadLength: 1048576
+  maxHttpContentLength: 1048576
+  pingInterval: 25000
+  pingTimeout: 6000000
+  port: 9099
+  upgradeTimeout: 1000000
+  workCount: 100

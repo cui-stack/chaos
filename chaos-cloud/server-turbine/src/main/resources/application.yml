@@ -1,0 +1,18 @@
+server:
+  port: 52640
+
+spring:
+  application:
+    name: service-turbine
+  cloud:
+    consul:
+      host: localhost
+      port: 8500
+
+turbine:
+  app-config: service-web
+  aggregator:
+    cluster-config: default
+  cluster-name-expression: new String("default")
+  #更改turbine连接的默认uri ,默认为actuator/hystrix.stream
+  instanceUrlSuffix: hystrix.stream
