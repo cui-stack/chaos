@@ -38,7 +38,7 @@ public class DruidConfiguration {
         //servletRegistrationBean.addInitParameter("deny","192.168.0.19");
         //设置控制台管理用户
         servletRegistrationBean.addInitParameter("loginUsername","druid");
-        servletRegistrationBean.addInitParameter("loginPassword","Sike2018Okya2020!");
+        servletRegistrationBean.addInitParameter("loginPassword","admin123!");
         //是否可以重置数据
         servletRegistrationBean.addInitParameter("resetEnable","false");
         return servletRegistrationBean;

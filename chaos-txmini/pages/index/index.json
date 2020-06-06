@@ -1,0 +1,16 @@
+{
+  "navigationBarBackgroundColor": "#fff",
+  "navigationBarTextStyle": "black",
+  "navigationBarTitleText": "首页",
+  "navigationStyle": "default",
+  "backgroundColor": "#ffffff",
+  "backgroundTextStyle": "dark",
+  "backgroundColorTop": "#ffffff",
+  "backgroundColorBottom": "#ffffff",
+  "enablePullDownRefresh": true,
+  "disableScroll": false,
+  "usingComponents": {
+    "Tabbar": "/components/Tabbar/Tabbar",
+    "mp-searchbar": "weui-miniprogram/searchbar/searchbar"
+  }
+}

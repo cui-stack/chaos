@@ -8,5 +8,6 @@ import lombok.Data;
  * @date 2020/2/26 15:57
  */
 @Data
-public class DATA extends DTO {
+public class OrderByDATA extends DTO {
+    private String orderBy = Table.ID;
 }

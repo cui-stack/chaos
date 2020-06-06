@@ -9,7 +9,6 @@ import lombok.Data;
 @Data
 @ApiModel(value = "基础结果对象", description = "")
 public class Result extends DTO {
-    private String mark;
     /**
      * 响应编码
      */

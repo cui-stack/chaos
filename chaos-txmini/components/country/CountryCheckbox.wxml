@@ -1,0 +1,11 @@
+<view class="checkbox">
+    <checkbox-group bindchange="checkboxChange">
+        <label class="weui-cell weui-check__label" wx:for="{{items}}"
+               wx:key="{{item.value}}">
+            <view class="weui-cell__hd">
+                <checkbox value="{{item.value}}" checked="{{item.checked}}"/>
+            </view>
+            <view class="weui-cell__bd">{{item.name}}</view>
+        </label>
+    </checkbox-group>
+</view>

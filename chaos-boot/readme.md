@@ -1,6 +1,4 @@
-[![Build Status](https://travis-ci.org/zhoutaoo/SpringCloud.svg?branch=master)](https://travis-ci.org/zhoutaoo/SpringCloud)
-[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
-[![codecov](https://codecov.io/gh/zhoutaoo/SpringCloud/branch/master/graph/badge.svg)](https://codecov.io/gh/zhoutaoo/SpringCloud)
+![](https://img.shields.io/badge/language-java-orange.svg)
 # [chaos-boot](https://github.com/cui-stack/chaos/)
 ##框架集成
 |  服务     | 使用技术                 |   进度        |    备注   |
@@ -12,12 +10,11 @@
 |  数据缓存 | redis                   |   ✅          |           |
 |  Api管理  | swagger2                |   ✅          |           |
 |  配置中心 | nacos                   |   🏗          |           |
-|  消息总线 | Rabbitmq                |   ✅          |           |
-|  授权认证 | Spring Security         |   🏗          |Jwt+redis  |
+|  消息总线 | rabbitmq                |   ✅          |           |
+|  授权认证 | Spring Security         |   ✅          |Jwt+redis  |
 |  任务调度 | xxl-Job                 |   ✅          |           |
 |  对象存储 | OSS                     |   🏗          |           |
-|  灰度分流 | OpenResty + lua         |   🏗          |           |
-|  动态网关 | SpringCloud Gateway     |   🏗          |  流量控制  |
+|  灰度分流 | nginx                   |   🏗          |           |
 |  服务容错 | SpringCloud Sentinel    |   🏗          |           |
 |  分库分表 | shading-jdbc            |   🏗          |           |
 ##监控告警
@@ -46,16 +43,13 @@
 ```
 2. 代码生成
 ```
-chaos-boot-demo run CodeGenerator
+chaos-code run CodeGenerator
+输入 firepongo 
+输入 fo_user,fo_product
 ```
+3. 展示
+![avatar](http://baidu.com/pic/doge.png)
 
-
-
-
-consul:(替换eureka)需单独安装,服务网格（微服务间的 TCP/IP，负责服务之间的网络调用、限流、熔断和监控）解决方案
-kong?(kong=OpenResty+Nginx+Lua):API网关
-hateoas:对基于HATEOAS的RESTful服务的支持 ?
-elk
 
 
 
