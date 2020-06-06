@@ -17,15 +17,11 @@
 |  灰度分流 | nginx                       |   ✅          |           |
 |  服务容错 | SpringCloud Sentinel        |   🏗          |           |
 |  分库分表 | shading-jdbc                |   🏗          |           |
-
-## 监控告警
-|  服务     | 使用技术                 |   进度        |    备注   |
-|----------|-------------------------|-----------------|---------------|
-|  基础框架 | actuator            |   ✅          |                     |
-|  服务监控 | springboot-admin    |   ✅          |                     |
-|  监控告警 | prometheus          |   🏗          |                     |
-|  数据可视 | grafana             |   🏗          |                     |
-|  链路追踪 | zipkin              |   ✅          |                     |
+|  基础框架 | actuator                    |   ✅          |                     |
+|  服务监控 | springboot-admin            |   ✅          |                     |
+|  监控告警 | prometheus                  |   🏗          |                     |
+|  数据可视 | grafana                     |   🏗          |                     |
+|  链路追踪 | zipkin                      |   ✅          |                     |
 
 ## 使用
 1. pom.xml引入
