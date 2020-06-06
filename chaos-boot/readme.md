@@ -1,22 +1,22 @@
 ![](https://img.shields.io/badge/language-java-orange.svg)
 # [chaos-boot](https://github.com/cui-stack/chaos/)
 ##框架集成
-|  服务     | 使用技术                 |   进度        |    备注   |
-|----------|-------------------------|---------------|-----------|
-|  基础框架 | springboot              |   ✅          |           |
-|  服务调用 | dubbo                   |   ✅          |           |
-|  注册中心 | zookeeper               |   ✅          |           |
-|  数据映射 | mybatisplus             |   ✅          |           |
-|  数据缓存 | redis                   |   ✅          |           |
-|  Api管理  | swagger2                |   ✅          |           |
-|  配置中心 | nacos                   |   🏗          |           |
-|  消息总线 | rabbitmq                |   ✅          |           |
-|  授权认证 | Spring Security         |   ✅          |Jwt+redis  |
-|  任务调度 | xxl-Job                 |   ✅          |           |
-|  对象存储 | OSS                     |   🏗          |           |
-|  灰度分流 | nginx                   |   🏗          |           |
-|  服务容错 | SpringCloud Sentinel    |   🏗          |           |
-|  分库分表 | shading-jdbc            |   🏗          |           |
+|  服务     | 使用技术                    |   进度        |    备注   |
+|----------|------------------------------|--------------|-----------|
+|  基础框架 | springboot                  |   ✅          |           |
+|  服务调用 | dubbo                       |   ✅          |           |
+|  注册中心 | zookeeper                   |   ✅          |           |
+|  数据映射 | mybatisplus                 |   ✅          |           |
+|  数据缓存 | redis                       |   ✅          |           |
+|  Api管理  | swagger2                    |   ✅          |           |
+|  配置中心 | nacos                       |   🏗          |           |
+|  消息总线 | rabbitmq                    |   ✅          |           |
+|  授权认证 | SpringSecurity/Jwt+redis    |   ✅          |           |
+|  任务调度 | xxl-Job                     |   ✅          |           |
+|  对象存储 | OSS                         |   🏗          |           |
+|  灰度分流 | nginx                       |   ✅          |           |
+|  服务容错 | SpringCloud Sentinel        |   🏗          |           |
+|  分库分表 | shading-jdbc                |   🏗          |           |
 
 ##监控告警
 |  服务     | 使用技术                 |   进度        |    备注   |
