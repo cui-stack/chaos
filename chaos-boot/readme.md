@@ -48,7 +48,17 @@ chaos-code run CodeGenerator
 输入 fo_user,fo_product
 ```
 3. 展示
-![avatar](http://baidu.com/pic/doge.png)
+![研发中台](https://gitee.com/c-stack/chaos/blob/master/chaos-boot/chaos-capture/1.jpg)
+![框架代码](https://gitee.com/c-stack/chaos/blob/master/chaos-boot/chaos-capture/2.jpg)
+![构建仓库](https://gitee.com/c-stack/chaos/blob/master/chaos-boot/chaos-capture/3.jpg)
+![镜像仓库](https://gitee.com/c-stack/chaos/blob/master/chaos-boot/chaos-capture/5.jpg)
+![环境管理](https://gitee.com/c-stack/chaos/blob/master/chaos-boot/chaos-capture/6.jpg)
+![服务管理](https://gitee.com/c-stack/chaos/blob/master/chaos-boot/chaos-capture/8.jpg)
+![任务管理](https://gitee.com/c-stack/chaos/blob/master/chaos-boot/chaos-capture/9.jpg)
+![混沌后台](https://gitee.com/c-stack/chaos/blob/master/chaos-boot/chaos-capture/10.jpg)
+![消息中台](https://gitee.com/c-stack/chaos/blob/master/chaos-boot/chaos-capture/11.jpg)
+![服务治理](https://gitee.com/c-stack/chaos/blob/master/chaos-boot/chaos-capture/12.jpg)
+![接口管理](https://gitee.com/c-stack/chaos/blob/master/chaos-boot/chaos-capture/13.jpg)
 
 
 
