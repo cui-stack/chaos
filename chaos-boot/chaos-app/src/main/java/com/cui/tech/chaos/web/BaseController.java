@@ -9,6 +9,7 @@ import com.cui.tech.chaos.lite.service.WxminiLoginKeyService;
 import com.cui.tech.chaos.model.login.JwtData;
 import com.cui.tech.chaos.model.login.ManageLoginUser;
 import com.cui.tech.chaos.model.login.WxMiniLoginUser;
+import com.cui.tech.chaos.model.result.MarkPageResult;
 import com.cui.tech.chaos.model.result.PageResult;
 import com.cui.tech.chaos.model.page.PageList;
 import com.cui.tech.chaos.model.result.DataResult;
@@ -147,8 +148,8 @@ public abstract class BaseController<T> {
         return listResult;
     }
 
-    public PageResult<T> getResult(PageList<T> pageList, String mark) {
-        PageResult<T> listResult = new PageResult<T>();
+    public MarkPageResult<T> getResult(PageList<T> pageList, String mark) {
+        MarkPageResult<T> listResult = new MarkPageResult<T>();
         listResult.setPage(pageList);
         listResult.setMark(mark);
         return listResult;

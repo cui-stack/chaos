@@ -1,4 +1,3 @@
-
 function success(txt) {
     wx.showToast({
         title: txt
@@ -8,7 +7,7 @@ function success(txt) {
 function fail(txt) {
     wx.showToast({
         icon: 'none',
-        image: '/img/21.png',
+        image: '/images/fail.png',
         title: txt
     })
 }
@@ -20,9 +19,16 @@ function info(txt) {
     })
 }
 
+function loading() {
+    wx.showLoading({
+        title: '加载中'
+    })
+}
+
 
 module.exports = {
-    info: info,
-    success:success,
-    fail:fail
+    info,
+    success,
+    fail,
+    loading
 }

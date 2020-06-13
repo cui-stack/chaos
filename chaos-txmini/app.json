@@ -1,19 +1,12 @@
 {
   "pages": [
-    "pages/index/index",
-    "pages/logs/logs"
+    "pages/index/index"
   ],
   "window": {
-    "navigationBarBackgroundColor": "#000000",
-    "navigationBarTextStyle": "white",
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#f8f8f8",
     "navigationBarTitleText": "混沌",
-    "navigationStyle": "default",
-    "backgroundColor": "#ffffff",
-    "backgroundTextStyle": "dark",
-    "backgroundColorTop": "#ffffff",
-    "backgroundColorBottom": "#ffffff",
-    "enablePullDownRefresh": false,
-    "pageOrientation": "portrait"
+    "navigationBarTextStyle": "black"
   },
   "debug": false,
   "functionalPages": false,
@@ -27,11 +20,8 @@
     "mp-dialog": "weui-miniprogram/dialog/dialog"
   },
   "permission": {
-    "pages": [
-      "pages/index/index"
-    ],
     "scope.userLocation": {
-      "desc": "获取位置"
+      "desc": "获取您的位置用于XXX"
     }
   },
   "sitemapLocation": "sitemap.json",
@@ -42,6 +32,5 @@
   "networkTimeout": {
     "request": 10000,
     "downloadFile": 10000
-  },
-  "navigateToMiniProgramAppIdList": []
+  }
 }

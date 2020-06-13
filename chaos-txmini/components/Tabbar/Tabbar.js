@@ -1,22 +1,30 @@
+let Data = require('./../../utils/data')
+let page = require('./../../utils/page')
+let check = require('./../../utils/check')
 Component({
     properties: {},
     data: {
         list: [{
-            "text": "对话",
-            "iconPath": "/images/woman_student.png",
-            "selectedIconPath": "/images/man_student.png",
-            dot: true
+            "text": "按城市看",
+            "iconPath": "/images/city1.png",
+            "selectedIconPath": "/images/city2.png",
+            "url": "citylist"
         },
             {
-                "text": "设置",
-                "iconPath": "/images/woman_student.png",
-                "selectedIconPath": "/images/man_student.png",
+                "text": "我的预约",
+                "iconPath": "/images/xiadan.png",
+                "selectedIconPath": "/images/xiadan.png",
+                "url": "booklist",
                 badge: 'New'
             }]
     },
     methods: {
         tabChange(e) {
-            console.log('tab change', e)
+            Data.doThing(() => {
+                return check.isLogin()
+            }, () => {
+                page.to(e.detail.item.url)
+            })
         }
     }
 })

@@ -1,8 +1,8 @@
 <template>
-  <div style="padding:10px 23px ;">
+  <el-container>
     <i class="el-icon-s-home"></i>
     <el-link :href="this.indexLink" type="info">首页</el-link>
-  </div>
+  </el-container>
 </template>
 
 <script>
@@ -20,5 +20,11 @@
     }
 </script>
 <style scoped>
+  .el-container {
+    padding: 20px;
+  }
 
+  .el-link {
+    margin-left: 10px;
+  }
 </style>

@@ -1,40 +1,22 @@
-var fetch = require('./fetch.js')
+let location = require('./location')
+let Data = require('./data')
 
-function doLogin() {
-    var logs = wx.getStorageSync('logs') || []
-    logs.unshift(Date.now())
-    wx.setStorageSync('logs', logs)
+function login() {
     wx.login({
         success: res => {
-            fetch.post('wxmini/login', {
+            Data.search('wxmini/login', {
                 code: res.code,
-                referrer: wx.getStorageSync('referrer')
-            }, function (data) {
-                wx.setStorageSync('wid', data.data.mu)
-                wx.setStorageSync('uid', data.data.id)
-                wx.setStorageSync('sessionKey', data.data.token)
-                wx.setStorageSync('phone', data.data.phone)
-                wx.setStorageSync('nick', data.data.username)
-                wx.getLocation({
-                    type: 'gcj02',
-                    success: function (res) {
-                        wx.setStorageSync('addIp', res.longitude + ';' + res.latitude)
-                        fetch.post('api/iya_user/update', {
-                            data: {
-                                lat: res.latitude,
-                                lng: res.longitude
-                            },
-                            mu: wx.getStorageSync('wid')
-                        }, function (data) {
-                            console.log(data)
-                        })
-                    },
-                })
+                referrer: wx.getStorageSync('referrer'),
+                source: wx.getStorageSync('source')
+            }, (res) => {
+                wx.setStorageSync('mu', res.mu)
+                wx.setStorageSync('token', res.token)
+                location.loc()
             })
         }
     })
 }
 
 module.exports = {
-    login: doLogin
+    login
 }

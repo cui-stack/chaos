@@ -1,26 +1,26 @@
-var fetch = require('../../utils/fetch.js')
+let Data = require('./../../utils/data')
+let store = require('./../../utils/store')
+let page = require('./../../utils/page')
 Page({
     data: {
-        background: ['demo-text-1', 'demo-text-2', 'demo-text-3'],
-        keyword: ''
+        list: []
     },
-    loginSuccess: function (e) {
-        console.log(e.detail.code) // wx.login 的 code
-        console.log(e.detail.userInfo) // wx.getUserInfo 的 userInfo
+    goWeb: function (e) {
+        let list = this.data.list
+        page.to('web', 'mu=' + list[e.currentTarget.dataset.id]['mu'])
     },
-    search: function (value) {
-        return new Promise((resolve, reject) => {
-            setTimeout(() => {
-                resolve([{text: '搜索结果', value: 1}, {text: '搜索结果2', value: 2}])
-            }, 200)
+    goDocterlist: function () {
+        Data.doCheck(() => {
+            page.to('docterlist')
         })
     },
-    selectResult: function (e) {
-        console.log('select result', e.detail)
-    },
     onLoad: function (e) {
-        this.setData({
-            search: this.search.bind(this)
+        wx.setStorageSync('referrer', e.referrer)
+        wx.setStorageSync('source', e.source)
+        Data.list('wxmini/tbl-iya-info/infolist', {}, (res) => {
+            this.setData({
+                list: res.list
+            })
         })
     },
     onPullDownRefresh: function (e) {
@@ -28,6 +28,10 @@ Page({
     onReachBottom: function (e) {
     },
     onShareAppMessage: function (e) {
+        return {
+            title: "矮芽-医生资质查询",
+            path: "pages/index/index?referrer=" + store.mu() + "&source=首页"
+        }
     },
     onAddToFavorites: function (e) {
     },

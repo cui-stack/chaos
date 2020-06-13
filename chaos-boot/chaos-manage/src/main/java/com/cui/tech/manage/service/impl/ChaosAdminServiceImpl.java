@@ -88,6 +88,7 @@ public class ChaosAdminServiceImpl extends ServiceImpl<ChaosAdminMapper, ChaosAd
         QueryWrapper query = new QueryWrapper();
         query.eq(!StringUtils.isEmpty(pageData.getData().getPlatformMu()), "platform_mu", pageData.getData().getPlatformMu());
         query.eq(!StringUtils.isEmpty(pageData.getData().getName()), "name", pageData.getData().getName());
+        query.eq(!StringUtils.isEmpty(pageData.getData().getUsername()), "username", pageData.getData().getUsername());
         query.orderByDesc(Table.ID);
         return new PageList(page(new Page(pageData.getPageNum(), pageData.getPageSize()), query));
     }

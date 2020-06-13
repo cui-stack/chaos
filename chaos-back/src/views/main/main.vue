@@ -1,17 +1,21 @@
 <template>
-  <el-container>
-    <el-header class="main-header">
+  <el-container class="page">
+    <el-header style="height: 80px;">
       <Head></Head>
     </el-header>
-    <el-container style="display: flex;">
-      <el-aside style="width: 201px">
-        <SideMenu></SideMenu>
+    <el-container class="page_body">
+      <el-aside :width="{asideWidth} + 'px'">
+        <SideMenu @sideMenuChange="sideMenuChange"></SideMenu>
       </el-aside>
-      <el-main style="flex: 1;padding: 0px;">
+      <el-main>
         <CenterHead></CenterHead>
-        <router-view/>
+        <keep-alive>
+          <router-view v-if="$route.meta.keepAlive"></router-view>
+        </keep-alive>
+        <router-view v-if="!$route.meta.keepAlive"></router-view>
       </el-main>
     </el-container>
+    <el-backtop></el-backtop>
   </el-container>
 </template>
 
@@ -22,14 +26,22 @@
     import store from '@/vuex/store'
 
     export default {
+        name: 'Main',
         store,
         components: {Head, SideMenu, CenterHead},
         data() {
-            return {}
+            return {
+                asideWidth: 300
+            }
         },
         mounted() {
             if (!this.$store.getters.getUserinfo.username) {
                 this.$router.push('/')
+            }
+        },
+        methods: {
+            sideMenuChange(isCollapse) {
+                this.asideWidth = isCollapse ? 80 : 300
             }
         }
     }
@@ -37,13 +49,19 @@
 
 
 <style scoped>
-  body {
-    margin: 0px;
+  * {
+    margin: 0;
+    padding: 0;
+    border: 0;
   }
 
-  .main-header {
-    padding: 0px;
+  .page {
+
   }
+
+  .page_body {
+  }
+
 
 </style>
 

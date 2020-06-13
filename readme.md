@@ -10,7 +10,7 @@
 |  chaos-cloud   | springcloud            |   ✅    |  服务端架构                |
 |  chaos-back    | vue+vuex+axios         |   ✅    |  后台架构                  |
 |  chaos-ios     |                        |   🏗    |  IOS                      |
-|  chaos-android | mvvmhabit              |   🏗    |  安卓端架构                |
+|  chaos-android | mvvmhabit+androidx     |   🏗    |  安卓端架构                |
 |  chaos-txmini  | wx                     |   🏗    |  微信小程序                |
 
 

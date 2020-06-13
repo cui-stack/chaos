@@ -1,0 +1,25 @@
+.page {
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
+    background-color: #fd6b6c;
+    border-top: 1px #eee solid;
+    padding: 15px 0px;
+    display: flex;
+    color: white;
+}
+
+.page_city {
+    flex: 1;
+}
+
+.page_order {
+    flex: 1;
+}
+
+.page_city_text {
+
+}
+
+.page_order_text {
+}

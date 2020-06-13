@@ -1,43 +1,35 @@
-var isLocal = false
-var isPro = true
-var host = isPro ? "https://firepongo.tech/api" : "https://dev.firepongo.tech/iya-api";
-var localHost = "http://127.0.0.1:28083"
-//优先本地
-var finalHost = isLocal ? localHost : host
+let show = require('./show')
 
-function getData(param, data, cb) {
+let isLocal = true
+let isPro = false
+var host = isPro ? "https://iya101.com/iya-api" : "https://dev.iya101.com/iya-api";
+let localHost = "http://127.0.0.1:28083"
+let finalHost = isLocal ? localHost : host
+
+function post(param, data, cb) {
     wx.request({
         url: finalHost + "/" + param,
         data: data,
         method: 'post',
         header: {
-            "token": wx.getStorageSync('sessionKey')
+            "token": wx.getStorageSync('token')
         },
         success: function (res) {
             if (res.data.code == "200") {
                 return typeof cb == "function" && cb(res.data)
             } else if (res.data.code == "401") {
-                //login.login()
             } else {
-                wx.showToast({
-                    icon: 'none',
-                    image: '/img/21.png',
-                    title: res.data.msg,
-                })
+                show.fail(res.data.msg)
             }
         },
         fail: function (res) {
             if (res && res.data && res.data.msg) {
-                wx.showToast({
-                    icon: 'none',
-                    image: '/img/21.png',
-                    title: res.data.msg,
-                })
+                show.fail(res.data.msg)
             }
         }
     })
 }
 
 module.exports = {
-    post: getData
+    post
 }

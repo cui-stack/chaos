@@ -1,0 +1,52 @@
+.page {
+    text-align: center;
+    font-size: 14px;
+    color: #808080;
+}
+
+.page_head {
+    margin: 20px;
+}
+
+.page_logo {
+    width: 60px;
+    height: 60px;
+}
+
+.page_body {
+    margin: 0 auto;
+    width: 90%;
+}
+
+.page_search {
+    display: flex;
+    justify-content: space-between;
+    border: 1px #eee solid;
+    border-radius: 20px;
+    padding: 10px 20px;
+    text-align: left;
+    background-color: #f8f8f8;
+}
+
+.page_icon {
+    width: 20px;
+    height: 20px;
+}
+
+.page_list {
+    margin-top: 10px;
+    border: 0.5px #e0e0e0 solid;
+    border-radius: 5px;
+    border-collapse: collapse;
+}
+
+.page_list_item {
+    text-align: left;
+    padding: 13px 10px;
+    border-bottom: 0.5px #e0e0e0 solid;
+    margin: 0px auto;
+    width: 85%;
+}
+
+.page_list_item_hover {
+}

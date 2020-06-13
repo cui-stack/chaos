@@ -125,7 +125,7 @@ public class ChaosAdminMnController extends BaseController {
         if (!flag) {
             return getResult("密码错误,更新失败!");
         }
-        mnLoginService.doLogout(data.getMu(), getToken(request));
+        mnLoginService.doLogout(getToken(request));
         return getResult(true);
 
     }

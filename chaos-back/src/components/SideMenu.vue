@@ -1,21 +1,20 @@
 <template>
   <el-container>
-    <el-header style="padding: 0px;height: 40px">
-      <el-radio-group v-model="isCollapse" style="margin-bottom: 20px;"
-                      @change="doChange">
+    <el-header style="height: 40px">
+      <el-radio-group v-model="isCollapse" @change="doChange">
         <el-radio-button :label="false">展开</el-radio-button>
         <el-radio-button :label="true" v-if="isShow">收起</el-radio-button>
       </el-radio-group>
     </el-header>
-    <el-main style="padding: 0px">
+    <el-main>
       <el-menu
+        router
         :default-active="$route.path"
-        class="side-menu"
+        :collapse="isCollapse"
         @open="handleOpen"
         @close="handleClose"
         @select="handleSelect"
-        :collapse="isCollapse"
-        router
+        class="side-menu"
         background-color="#fff"
         text-color="#545c64"
         active-text-color="#438eb9">
@@ -62,7 +61,6 @@
             handleClose(key, keyPath) {
             },
             handleSelect(key, keyPath) {
-                //console.log(key, keyPath);
             },
             doChange() {
                 if (this.isCollapse) {
@@ -79,8 +77,16 @@
     }
 </script>
 <style scoped>
+  .el-header {
+    padding: 0;
+  }
+
+  .el-main {
+    padding: 0;
+  }
   .side-menu:not(.el-menu--collapse) {
     width: 200px;
     min-height: 400px;
   }
+
 </style>

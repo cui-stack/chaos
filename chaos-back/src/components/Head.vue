@@ -1,12 +1,10 @@
 <template>
-  <el-container
-    style="margin: 0px auto;display:flex;width:100%;background-color:#438eb9;height: 60px ">
-    <el-container style="flex: 6;">
-      <img style="height: 25px;width: 25px;margin:auto 0px auto 20px;"
-           src="@/assets/images/logo-head.png"/>
-      <span style="font-size:20px;color: white;margin:auto 0px ">矮芽管理系统</span>
+  <el-container class="page">
+    <el-container class="page_left">
+      <img src="@/assets/images/logo-head.png"/>
+      <span>矮芽管理系统</span>
     </el-container>
-    <el-container style="flex: 1;margin: auto 0px ;">
+    <el-container class="page_right">
       <el-dropdown>
        <span class="el-dropdown-link">
            <div>{{$store.state.roleinfo.info}}</div>
@@ -19,8 +17,6 @@
       </el-dropdown>
     </el-container>
   </el-container>
-
-
 </template>
 
 <script>
@@ -32,7 +28,6 @@
         methods: {
             logout() {
                 fetch.post('/manage/logout', {}).then((res) => {
-                    //clearVuexAlong()
                     store.dispatch('logout', {})
                     setTimeout(function () {
                         window.location.href = '/iya/'
@@ -43,13 +38,40 @@
     }
 </script>
 <style scoped>
+  .page {
+    display: flex;
+    width: 100%;
+    background-color: #438eb9;
+    height: 80px;
+  }
+
+  .page_left {
+    flex: 1;
+  }
+
+  .page_right {
+    flex: 1;
+    margin: auto 20px;
+    display: inline-block;
+    text-align: right;
+  }
+
+  img {
+    height: 25px;
+    width: 25px;
+    margin: auto 20px;
+  }
+
+  span {
+    font-size: 20px;
+    color: white;
+    margin: auto 0px;
+  }
+
   .el-dropdown-link {
     cursor: pointer;
     color: white;
     font-size: 16px;
   }
 
-  .el-icon-arrow-down {
-    font-size: 12px;
-  }
 </style>

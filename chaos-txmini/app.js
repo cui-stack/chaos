@@ -1,5 +1,8 @@
+let login = require('/utils/login')
+let page = require('/utils/page')
 App({
     onLaunch(options) {
+        login.login()
     },
     onShow(options) {
     },
@@ -8,9 +11,7 @@ App({
     onError(msg) {
     },
     onPageNotFound() {
-        wx.redirectTo({
-            url: 'pages/index/index'
-        })
+        page.to('index')
     },
     onUnhandledRejection() {
     },
