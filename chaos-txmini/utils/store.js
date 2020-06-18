@@ -6,7 +6,11 @@ function loc() {
     return wx.getStorageSync('location')
 }
 
+function phone() {
+    return wx.getStorageSync('phone')
+}
 module.exports = {
     mu,
-    loc
+    loc,
+    phone
 }

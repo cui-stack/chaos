@@ -4,7 +4,7 @@ let Data = require('./data')
 function login() {
     wx.login({
         success: res => {
-            Data.search('wxmini/login', {
+            Data.submit('wxmini/login', {
                 code: res.code,
                 referrer: wx.getStorageSync('referrer'),
                 source: wx.getStorageSync('source')

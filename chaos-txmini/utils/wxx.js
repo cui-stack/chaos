@@ -4,6 +4,20 @@ function barTitle(title) {
     })
 }
 
+function message(callback) {
+    wx.requestSubscribeMessage({
+        tmplIds: [tp],
+        success(res) {
+        },
+        fail(res) {
+        },
+        complete() {
+            callback()
+        }
+    })
+}
+
 module.exports = {
-    barTitle
+    barTitle,
+    message
 }

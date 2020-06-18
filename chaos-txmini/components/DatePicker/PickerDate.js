@@ -18,14 +18,14 @@ function time() {
     let vday = hour < end_time ? day : (monthday != day ? day + 1 : 1)
     let vhour = (hour >= end_time || hour < start_time) ? start_time : hour + 1
 
-    for (var i = vmonth; i < vmonth + max_mon_length; i++) {
-        var ii = i % 12
+    for (let i = vmonth; i < vmonth + max_mon_length; i++) {
+        let ii = i % 12
         monthsArr.push(ii == 0 ? 12 : ii)
     }
-    for (var i = vday; i <= monthday; i++) {
+    for (let i = vday; i <= monthday; i++) {
         dayArr.push(i)
     }
-    for (var i = vhour; i <= end_time; i++) {
+    for (let i = vhour; i <= end_time; i++) {
         hoursArr.push(i)
     }
 

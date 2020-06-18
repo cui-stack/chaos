@@ -2,63 +2,99 @@ let fetch = require('./fetch')
 let show = require('./show')
 let check = require('./check')
 
-function list(uri, data = {}, callback) {
-    fetch.post(uri, data, (res) => {
-        if (callback && res) {
-            callback(res.page)
-        }
+function add(table, d = {}, callback) {
+    fetch.post('api/' + table + '/add', d, function (res) {
+        doCb(callback, res)
     })
 }
 
-function page(uri, d = {}, pageNum = 1, pageSize = 15, callback) {
+function remove(table, mu, callback) {
+    fetch.post('api/' + table + '/remove', {mu: mu}, function (res) {
+        doCb(callback, res)
+    })
+}
+
+function update(table, mu, d = {}, callback) {
+    fetch.post('api/' + table + '/update', {
+        mu: mu,
+        data: d
+    }, function (res) {
+        doCb(callback, res)
+    })
+}
+
+function one(table, mu, callback) {
+    fetch.post('api/' + table + '/one', {mu: mu}, function (res) {
+        doCb(callback, res)
+    })
+}
+
+function list(table, data = {}, callback) {
+    fetch.post('api/' + table + '/list', data, (res) => {
+        doCb(callback, res)
+    })
+}
+
+function page(table, d = {}, pageNum = 1, pageSize = 15, callback) {
     const data = {
         pageNum: pageNum,
         pageSize: pageSize,
         data: d
     }
-    fetch.post(uri, data, (res) => {
-        callback(res)
+    fetch.post('api/' + table + '/page', data, (res) => {
+        callback(res.page, res.mark)
     })
 }
 
-function one(uri, mu, callback) {
-    fetch.post(uri, {mu: mu}, function (res) {
-        if (callback && res) {
-            callback(res.data)
-        }
-    })
-}
-
-function update(uri, mu, d = {}, callback) {
-    fetch.post(uri, {
-        mu: mu,
+function search(uri, d = {}, pageNum = 1, pageSize = 15, callback) {
+    const data = {
+        pageNum: pageNum,
+        pageSize: pageSize,
         data: d
-    }, function (res) {
-        if (callback && res) {
-            callback(res.data)
-        }
-    })
-}
-
-function search(uri, data = {}, callback) {
+    }
     show.loading()
     fetch.post(uri, data, function (res) {
         wx.hideLoading()
-        if (callback && res) {
-            callback(res.data)
-        }
+        callback(res.page, res.mark)
     })
 }
 
-function chain(a = []) {
-    a.shift()(a)
+function query(uri, data = {}, callback) {
+    fetch.post(uri, data, function (res) {
+        doCb(callback, res)
+    })
 }
 
-function contact(a, b) {
-    doThing(a).then(b)
+function submit(uri, data = {}, callback) {
+    show.loading()
+    fetch.post(uri, data, function (res) {
+        wx.hideLoading()
+        doCb(callback, res)
+    })
 }
 
-function doThing(thing, success, fail) {
+function validate(thing) {
+    finish(() => {
+        return check.isLogin()
+    }, () => {
+        thing()
+    })
+}
+
+function doCb(cb, res) {
+    if (cb) {
+        cb(res.data)
+    } else {
+        show.info("操作成功")
+    }
+}
+
+function chain(a, b) {
+    finish(a).then(b)
+}
+
+
+function finish(thing, success, fail) {
     return new Promise(
         (resolve, reject) => {
             const result = thing()
@@ -90,25 +126,21 @@ function throttle(fn, data = {}, delay = 500, context = null) {
     }, delay);
 }
 
-function doCheck(thing) {
-    doThing(() => {
-        return check.isLogin()
-    }, () => {
-        thing()
-    })
-}
 
 module.exports = {
-    search,
-    page,
-    list,
-    one,
-    //add,
+    add,
+    remove,
     update,
-    //remove,
+    one,
+    list,
+    page,
+
+    search,
+    submit,
+    query,
+    validate,
+
     chain,
-    contact,
-    doThing,
-    doCheck,
+    finish,
     throttle
 }

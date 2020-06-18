@@ -1,0 +1,23 @@
+.page {
+    position: relative;
+    text-align: center;
+    font-size: 13px;
+    color: #576B95;
+}
+
+.page_bt {
+    width: 100%;
+    position: absolute;
+    top: 0px;
+    height: 40px;
+    z-index: 11;
+    opacity: 0;
+}
+
+.page_text {
+    width: 100%;
+    position: absolute;
+    z-index: 10;
+    top: 0px;
+    height: 40px;
+}
