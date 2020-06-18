@@ -13,19 +13,19 @@ import java.util.function.Function;
  */
 @Component
 public class ConvertService {
-    public DTO convert(MuModel mm, Function<MuModel, DTO> f) {
+    public DTO convertToDTO(MuModel mm, Function<MuModel, DTO> f) {
         return f.apply(mm);
     }
 
-    public MuModel convert(DTO t, Function<DTO, MuModel> f) {
+    public MuModel convertToMuModel(DTO t, Function<DTO, MuModel> f) {
         return f.apply(t);
     }
 
-    public void convert(DTO t, Consumer<DTO> c) {
+    public void changeFromDTO(DTO t, Consumer<DTO> c) {
         c.accept(t);
     }
 
-    public void convert(MuModel mm, Consumer<DTO> c) {
+    public void changeFromMuModel(MuModel mm, Consumer<DTO> c) {
         c.accept(mm);
     }
 }

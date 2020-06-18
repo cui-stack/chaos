@@ -3,6 +3,7 @@ package com.cui.tech.chaos.lite.service;
 import com.cui.tech.chaos.model.page.PageList;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
 import java.util.function.Consumer;
 import java.util.function.Function;
 
@@ -12,22 +13,22 @@ import java.util.function.Function;
  */
 @Component
 public class DataFilterService<T> {
-    public void filter(Function<String, Boolean> f, String rolename, PageList page, Consumer c) {
+    public void filter(Function<String, Boolean> f, String rolename, List list, Consumer c) {
         if (f.apply(rolename)) {
-            page.getList().stream().
+            list.stream().
                     forEach(entity -> c.accept(entity));
         }
     }
 
-    public void filter(Function<T, Boolean> f, T o, PageList page, Consumer c) {
+    public void filter(Function<T, Boolean> f, T o, List list, Consumer c) {
         if (f.apply(o)) {
-            page.getList().stream().
+            list.stream().
                     forEach(entity -> c.accept(entity));
         }
     }
 
-    public void filter(PageList page, Consumer c) {
-        page.getList().stream().
+    public void filter(List list, Consumer c) {
+        list.stream().
                 forEach(entity -> c.accept(entity));
     }
 }
