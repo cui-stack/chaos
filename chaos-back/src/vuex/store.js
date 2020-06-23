@@ -22,6 +22,28 @@ const state = {
   }
 }
 
+const actions = {
+  // 触发mutations中相应的方法-一般小写
+  setUserinfo({commit}, data) {
+    commit('SetUserinfo', data)
+  },
+  refreshToken({commit}, data) {
+    commit('RefreshToken', data)
+  },
+  setRoleinfo({commit}, data) {
+    commit('SetRoleinfo', data)
+  },
+  setMenus({commit}, data) {
+    commit('SetMenus', data)
+  },
+  setLastPost({commit}, data) {
+    commit('SetLastPost', data)
+  },
+  logout({commit}, data) {
+    commit('Logout', data)
+  }
+}
+
 const mutations = {
   SetUserinfo(state, data) {
     state.backuserinfo.token = data.token;
@@ -53,7 +75,6 @@ const mutations = {
   }
 }
 
-// 3、getters：提供外部获取state
 const getters = {
   getUserinfo: function (state) {
     return state.backuserinfo;
@@ -69,30 +90,6 @@ const getters = {
   }
 }
 
-// 4、actions：创建驱动方法改变mutations
-const actions = {
-  // 触发mutations中相应的方法-一般小写
-  setUserinfo({commit}, data) {
-    commit('SetUserinfo', data)
-  },
-  refreshToken({commit}, data) {
-    commit('RefreshToken', data)
-  },
-  setRoleinfo({commit}, data) {
-    commit('SetRoleinfo', data)
-  },
-  setMenus({commit}, data) {
-    commit('SetMenus', data)
-  },
-  setLastPost({commit}, data) {
-    commit('SetLastPost', data)
-  },
-  logout({commit}, data) {
-    commit('Logout', data)
-  }
-}
-
-// 5、全部注入Store中
 const store = new Vuex.Store({
   state,
   mutations,
@@ -101,5 +98,4 @@ const store = new Vuex.Store({
   plugins: [VueXAlong()]
 });
 
-// 6、输出store
 export default store;
