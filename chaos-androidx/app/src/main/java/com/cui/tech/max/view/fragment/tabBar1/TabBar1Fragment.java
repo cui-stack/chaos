@@ -10,8 +10,8 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.cui.tech.max.BR;
 import com.cui.tech.max.R;
-import com.cui.tech.max.fragment.FormFragment;
-import com.cui.tech.max.fragment.HeadFragment;
+import com.cui.tech.max.view.fragment.FormFragment;
+import com.cui.tech.max.view.fragment.HeadFragment;
 
 import me.goldze.mvvmhabit.base.BaseFragment;
 

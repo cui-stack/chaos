@@ -5,8 +5,6 @@ import android.app.Application;
 import androidx.annotation.NonNull;
 import androidx.databinding.ObservableField;
 
-import com.cui.tech.max.entity.DemoEntity;
-
 import me.goldze.mvvmhabit.base.BaseViewModel;
 
 /**

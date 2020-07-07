@@ -2,7 +2,7 @@ package com.cui.tech.max.app;
 
 import com.cui.tech.max.BuildConfig;
 import com.cui.tech.max.R;
-import com.cui.tech.max.view.login.LoginActivity;
+import com.cui.tech.max.view.activity.LoginActivity;
 import com.squareup.leakcanary.LeakCanary;
 
 import me.goldze.mvvmhabit.base.BaseApplication;

@@ -7,8 +7,6 @@ import android.view.View;
 import androidx.annotation.NonNull;
 import androidx.databinding.ObservableBoolean;
 
-import com.cui.tech.max.entity.FormEntity;
-import com.cui.tech.max.entity.SpinnerItemData;
 import com.google.gson.Gson;
 
 import java.util.ArrayList;

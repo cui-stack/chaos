@@ -9,8 +9,7 @@ import androidx.databinding.ObservableField;
 
 
 import com.cui.tech.max.R;
-import com.cui.tech.max.entity.DemoEntity;
-import com.cui.tech.max.fragment.DetailFragment;
+import com.cui.tech.max.view.fragment.DetailFragment;
 
 import me.goldze.mvvmhabit.base.ItemViewModel;
 import me.goldze.mvvmhabit.binding.command.BindingAction;

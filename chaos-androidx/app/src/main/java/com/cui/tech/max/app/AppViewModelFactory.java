@@ -8,9 +8,9 @@ import androidx.annotation.VisibleForTesting;
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.cui.tech.max.repository.DemoRepository;
-import com.cui.tech.max.view.login.LoginViewModel;
-import com.cui.tech.max.view.main.MainViewModel;
+import com.cui.tech.max.model.repository.Repository;
+import com.cui.tech.max.vm.LoginViewModel;
+import com.cui.tech.max.vm.MainViewModel;
 import com.cui.tech.max.vm.NetWorkViewModel;
 
 /**
@@ -20,7 +20,7 @@ public class AppViewModelFactory extends ViewModelProvider.NewInstanceFactory {
     @SuppressLint("StaticFieldLeak")
     private static volatile AppViewModelFactory INSTANCE;
     private final Application mApplication;
-    private final DemoRepository mRepository;
+    private final Repository mRepository;
 
     public static AppViewModelFactory getInstance(Application application) {
         if (INSTANCE == null) {
@@ -38,7 +38,7 @@ public class AppViewModelFactory extends ViewModelProvider.NewInstanceFactory {
         INSTANCE = null;
     }
 
-    private AppViewModelFactory(Application application, DemoRepository repository) {
+    private AppViewModelFactory(Application application, Repository repository) {
         this.mApplication = application;
         this.mRepository = repository;
     }

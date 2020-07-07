@@ -9,11 +9,9 @@ import com.cui.tech.chaos.lite.service.WxminiLoginKeyService;
 import com.cui.tech.chaos.model.login.JwtData;
 import com.cui.tech.chaos.model.login.ManageLoginUser;
 import com.cui.tech.chaos.model.login.WxMiniLoginUser;
-import com.cui.tech.chaos.model.result.MarkPageResult;
-import com.cui.tech.chaos.model.result.PageResult;
+import com.cui.tech.chaos.model.result.*;
 import com.cui.tech.chaos.model.page.PageList;
-import com.cui.tech.chaos.model.result.DataResult;
-import com.cui.tech.chaos.model.result.ResultEnum;
+import com.google.common.collect.Lists;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
 import org.springframework.validation.BindingResult;
@@ -153,6 +151,13 @@ public abstract class BaseController<T> {
         listResult.setPage(pageList);
         listResult.setMark(mark);
         return listResult;
+    }
+
+    public MarkPagesResult<T> getResult(PageList<T> pl1, PageList<T> pl2, String mark) {
+        MarkPagesResult<T> mpr = new MarkPagesResult<T>();
+        mpr.setPages(Lists.newArrayList(pl1, pl2));
+        mpr.setMark(mark);
+        return mpr;
     }
 
     public DataResult<T> getResult(T data) {

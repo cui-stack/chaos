@@ -1,12 +1,12 @@
 package com.cui.tech.max.app;
 
 
-import com.cui.tech.max.repository.DemoRepository;
-import com.cui.tech.max.repository.source.HttpDataSource;
-import com.cui.tech.max.repository.source.LocalDataSource;
-import com.cui.tech.max.repository.source.http.HttpDataSourceImpl;
-import com.cui.tech.max.repository.source.http.service.DemoApiService;
-import com.cui.tech.max.repository.source.local.LocalDataSourceImpl;
+import com.cui.tech.max.model.repository.Repository;
+import com.cui.tech.max.model.repository.source.HttpDataSource;
+import com.cui.tech.max.model.repository.source.LocalDataSource;
+import com.cui.tech.max.model.repository.source.http.HttpDataSourceImpl;
+import com.cui.tech.max.model.repository.source.http.service.ApiService;
+import com.cui.tech.max.model.repository.source.local.LocalDataSourceImpl;
 import com.cui.tech.max.utils.RetrofitClient;
 
 /**
@@ -14,14 +14,14 @@ import com.cui.tech.max.utils.RetrofitClient;
  * Created by goldze on 2019/3/26.
  */
 public class Injection {
-    public static DemoRepository provideDemoRepository() {
+    public static Repository provideDemoRepository() {
         //网络API服务
-        DemoApiService apiService = RetrofitClient.getInstance().create(DemoApiService.class);
+        ApiService apiService = RetrofitClient.getInstance().create(ApiService.class);
         //网络数据源
         HttpDataSource httpDataSource = HttpDataSourceImpl.getInstance(apiService);
         //本地数据源
         LocalDataSource localDataSource = LocalDataSourceImpl.getInstance();
         //两条分支组成一个数据仓库
-        return DemoRepository.getInstance(httpDataSource, localDataSource);
+        return Repository.getInstance(httpDataSource, localDataSource);
     }
 }

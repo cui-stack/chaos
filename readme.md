@@ -8,9 +8,9 @@
 |----------------|------------------------|---------|---------------|----|
 |  chaos-boot    | springboot+dubbo       |   ✅    |  服务端架构   |[readme](https://gitee.com/c-stack/chaos/blob/master/chaos-boot/readme.md)|
 |  chaos-cloud   | springcloud            |   ✅    |  服务端架构    |     |
-|  chaos-back    | vue+vuex+axios         |   ✅    |  后台架构      |     |
+|  chaos-vue  | vue+vuex+axios         |   ✅    |  后台架构      |     |
 |  chaos-ios     |                        |   🏗    |  IOS          |     |
-|  chaos-android | mvvmhabit+androidx     |   🏗    |  安卓端架构    |     |
+| chaos-androidx | mvvmhabit+androidx     |   🏗    |  安卓端架构    |     |
 |  chaos-txmini  | wx                     |   🏗    |  微信小程序    |     |
 |  chaos-game    | cocos creator          |   🏗    |  游戏架构      |     |
 

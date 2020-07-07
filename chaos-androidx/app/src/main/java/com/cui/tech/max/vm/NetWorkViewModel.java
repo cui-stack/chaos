@@ -8,8 +8,7 @@ import androidx.databinding.ObservableList;
 
 import com.cui.tech.max.BR;
 import com.cui.tech.max.R;
-import com.cui.tech.max.repository.DemoRepository;
-import com.cui.tech.max.entity.DemoEntity;
+import com.cui.tech.max.model.repository.Repository;
 
 import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Action;
@@ -28,7 +27,7 @@ import me.tatarka.bindingcollectionadapter2.ItemBinding;
  * Created by goldze on 2017/7/17.
  */
 
-public class NetWorkViewModel extends BaseViewModel<DemoRepository> {
+public class NetWorkViewModel extends BaseViewModel<Repository> {
     public SingleLiveEvent<NetWorkItemViewModel> deleteItemLiveData = new SingleLiveEvent<>();
     //封装一个界面发生改变的观察者
     public UIChangeObservable uc = new UIChangeObservable();
@@ -40,7 +39,7 @@ public class NetWorkViewModel extends BaseViewModel<DemoRepository> {
         public SingleLiveEvent finishLoadmore = new SingleLiveEvent<>();
     }
 
-    public NetWorkViewModel(@NonNull Application application, DemoRepository repository) {
+    public NetWorkViewModel(@NonNull Application application, Repository repository) {
         super(application, repository);
     }
 
