@@ -8,7 +8,7 @@ import lombok.Data;
  * @date 2020/2/26 15:56
  */
 @Data
-public class UpdateData<T extends DATA> extends MU {
+public class UpdateData<T> extends MU {
     private T data;
 
     public UpdateData() {

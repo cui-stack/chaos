@@ -46,13 +46,6 @@ public class ${entity}MnController extends ${superControllerClass} {
         return getResult(i${entity}Service.insertModel(data));
     }
 
-    @PostMapping("/one")
-    @ManageLoginToken
-    @ApiOperation(value = "", notes = "", httpMethod = "POST")
-    public DataResult<${entity}> one( @RequestBody MU data) throws Exception {
-        return getResult(i${entity}Service.selectByMU(data));
-    }
-
     @PostMapping("/update")
     @ManageLoginToken
     @ApiOperation(value = "", notes = "", httpMethod = "POST")
@@ -61,17 +54,24 @@ public class ${entity}MnController extends ${superControllerClass} {
         return getResult(i${entity}Service.updateModelByMU(data));
     }
 
+    @PostMapping("/one")
+    @ManageLoginToken
+    @ApiOperation(value = "", notes = "", httpMethod = "POST")
+    public DataResult<${entity}Data> one( @RequestBody MU data) throws Exception {
+        return getResult(i${entity}Service.selectByMU(data));
+    }
+
     @PostMapping("/list")
     @ManageLoginToken
     @ApiOperation(value = "列表", notes = "", httpMethod = "POST")
-    public DataResult<List<${entity}>> list( @RequestBody ${entity}Data data) throws Exception {
+    public DataResult<List<${entity}Data>> list( @RequestBody ${entity}Data data) throws Exception {
         return getResult(i${entity}Service.selectByData(data));
     }
 
     @PostMapping("/page")
     @ManageLoginToken
     @ApiOperation(value = "", notes = "", httpMethod = "POST")
-    public PageResult<${entity}> page( @RequestBody PageQueryDto<${entity}Data> data) throws Exception {
+    public PageResult<${entity}Data> page( @RequestBody PageQueryDto<${entity}Data> data) throws Exception {
         return getResult(i${entity}Service.selectByPage(data));
     }
 

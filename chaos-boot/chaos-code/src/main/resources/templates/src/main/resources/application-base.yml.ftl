@@ -1,12 +1,3 @@
-app:
-  wxmini:
-    appid: 88888888
-    secret: 88888888
-  tencent:
-    sms:
-      appid: 88888888
-      appkey: 88888888
-      smsSign:
 server:
   port: 8089
 logging:

@@ -3,7 +3,8 @@ package ${cfg.p}.api.data;
 import com.cui.tech.chaos.model.db.DATA;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import lombok.Data;
+import lombok.*;
+import lombok.experimental.Accessors;
 import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
 
@@ -14,6 +15,8 @@ import java.time.LocalDateTime;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Accessors(chain = true)
+//@RequiredArgsConstructor(staticName = "of")
 @ApiModel(value="${entity}Data", description="${table.comment!}")
 public class ${entity}Data extends DATA{
 

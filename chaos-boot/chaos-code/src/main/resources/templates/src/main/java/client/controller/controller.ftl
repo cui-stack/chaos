@@ -8,6 +8,7 @@ import com.cui.tech.chaos.model.db.UpdateData;
 import com.cui.tech.chaos.model.page.PageQueryDto;
 import com.cui.tech.chaos.model.result.DataResult;
 import com.cui.tech.chaos.model.result.PageResult;
+import com.cui.tech.chaos.annotation.WxminiLoginToken;
 import com.cui.tech.chaos.web.BaseController;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -36,35 +37,25 @@ public class ${table.controllerName} extends ${superControllerClass} {
     @Autowired
     private I${entity}Service i${entity}Service;
 
-    @PostMapping("/add")
-    @ApiOperation(value = "", notes = "", httpMethod = "POST")
-    public DataResult<MU> add(@RequestBody @Validated ${entity}Data data, BindingResult bindingResult) throws Exception {
-        return getResult(bindingResult, i${entity}Service.insertModel(data));
-    }
-
     @PostMapping("/one")
-    @ApiOperation(value = "", notes = "", httpMethod = "POST")
-    public DataResult<${entity}> one(
+    @WxminiLoginToken
+    @ApiOperation(value = "单条", notes = "", httpMethod = "POST")
+    public DataResult<${entity}Data> one(
         @RequestBody MU data) throws Exception {
     return getResult(i${entity}Service.selectByMU(data));
     }
 
-    @PostMapping("/update")
-    @ApiOperation(value = "", notes = "", httpMethod = "POST")
-    public DataResult<Boolean> update(
-            @ApiParam(value = "") @RequestBody @Validated UpdateData<${entity}Data> data, BindingResult bindingResult) throws Exception {
-         return getResult(bindingResult, i${entity}Service.updateModelByMU(data));
-    }
-
     @PostMapping("/list")
+    @WxminiLoginToken
     @ApiOperation(value = "列表", notes = "", httpMethod = "POST")
-    public DataResult<List<${entity}>> list( @RequestBody ${entity}Data data) throws Exception {
+    public DataResult<List<${entity}Data>> list( @RequestBody ${entity}Data data) throws Exception {
          return getResult(i${entity}Service.selectByData(data));
     }
 
     @PostMapping("/page")
-    @ApiOperation(value = "", notes = "", httpMethod = "POST")
-    public PageResult<${entity}> page( @RequestBody PageQueryDto<${entity}Data> data) throws Exception {
+    @WxminiLoginToken
+    @ApiOperation(value = "分页", notes = "", httpMethod = "POST")
+    public PageResult<${entity}Data> page( @RequestBody PageQueryDto<${entity}Data> data) throws Exception {
         return getResult(i${entity}Service.selectByPage(data));
     }
 

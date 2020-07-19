@@ -23,9 +23,9 @@ public interface ${table.serviceName} extends IService<${entity}> {
 
     boolean updateModelByMU(UpdateData<${entity}Data> data);
 
-    ${entity} selectByMU(MU data);
+    ${entity}Data selectByMU(MU data);
 
-    List<${entity}> selectByData(${entity}Data data);
+    List<${entity}Data> selectByData(${entity}Data data);
 
-    PageList<${entity}> selectByPage(PageQueryDto<${entity}Data> pageData);
+    PageList<${entity}Data> selectByPage(PageQueryDto<${entity}Data> pageData);
 }

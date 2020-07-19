@@ -3,15 +3,14 @@ package com.cui.tech.manage.api.data;
 import com.cui.tech.chaos.model.db.DATA;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.time.LocalDateTime;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@RequiredArgsConstructor(staticName = "of")
 @ApiModel(value = "ChaosAdminData", description = "")
 public class ChaosAdminData extends DATA {
 
@@ -35,6 +34,7 @@ public class ChaosAdminData extends DATA {
 
     private Integer loginTimes;
 
+    @NonNull
     private String ip;
 
     /**
@@ -49,7 +49,4 @@ public class ChaosAdminData extends DATA {
 
     private String oldPassword;
 
-    public ChaosAdminData(String ip) {
-        this.ip = ip;
-    }
 }

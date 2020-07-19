@@ -11,7 +11,7 @@
     </parent>
 
     <groupId>com.cui.tech</groupId>
-    <artifactId>chaos-server</artifactId>
+    <artifactId>chaos-service</artifactId>
     <version>0.0.2-SNAPSHOT</version>
     <packaging>jar</packaging>
 
