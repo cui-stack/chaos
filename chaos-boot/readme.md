@@ -9,19 +9,19 @@
 |  数据映射 | mybatisplus                 |   ✅          |           |
 |  数据缓存 | redis                       |   ✅          |           |
 |  Api管理  | swagger2                    |   ✅          |           |
-|  配置中心 | nacos                       |   🏗          |           |
 |  消息总线 | rabbitmq                    |   ✅          |           |
 |  授权认证 | SpringSecurity/Jwt+redis    |   ✅          |           |
 |  任务调度 | xxl-Job                     |   ✅          |           |
-|  对象存储 | OSS                         |   🏗          |           |
 |  灰度分流 | nginx                       |   ✅          |           |
-|  服务容错 | SpringCloud Sentinel        |   🏗          |           |
-|  分库分表 | shading-jdbc                |   🏗          |           |
 |  基础框架 | actuator                    |   ✅          |           |
 |  服务监控 | springboot-admin            |   ✅          |           |
+|  链路追踪 | zipkin                      |   ✅          |           |
+
+|  配置中心 | nacos                       |   🏗          |           |
+|  服务容错 | SpringCloud Sentinel        |   🏗          |           |
+|  分库分表 | shading-jdbc                |   🏗          |           |
 |  监控告警 | prometheus                  |   🏗          |           |
 |  数据可视 | grafana                     |   🏗          |           |
-|  链路追踪 | zipkin                      |   ✅          |           |
 
 ## 使用
 
