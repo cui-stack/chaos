@@ -39,7 +39,7 @@ public class LoginViewModel extends BaseViewModel<Repository> {
         super(application, repository);
         //从本地取得数据绑定到View层
         userName.set(model.getUserName());
-        password.set(model.getPassword());
+        //password.set(model.getPassword());
     }
 
     public class UIChangeObservable {
@@ -94,7 +94,7 @@ public class LoginViewModel extends BaseViewModel<Repository> {
             return;
         }
         //RaJava模拟登录
-        addSubscribe(model.login("","")
+        addSubscribe(model.login("")
                 .compose(RxUtils.schedulersTransformer()) //线程调度
                 .doOnSubscribe(new Consumer<Disposable>() {
                     @Override

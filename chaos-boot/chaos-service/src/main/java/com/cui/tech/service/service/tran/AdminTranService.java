@@ -1,11 +1,11 @@
-package com.cui.tech.code.service.tran;
+package com.cui.tech.service.service.tran;
 
-import com.cui.tech.code.api.data.ChaosAdminData;
-import com.cui.tech.code.api.data.ChaosAdminRoleData;
-import com.cui.tech.code.api.service.IChaosAdminRoleService;
-import com.cui.tech.code.api.service.IChaosAdminService;
 import com.cui.tech.chaos.model.db.MU;
 import com.cui.tech.chaos.model.db.UpdateData;
+import com.cui.tech.manage.api.data.ChaosAdminData;
+import com.cui.tech.manage.api.data.ChaosAdminRoleData;
+import com.cui.tech.manage.api.service.IChaosAdminRoleService;
+import com.cui.tech.manage.api.service.IChaosAdminService;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.beans.factory.annotation.Autowired;

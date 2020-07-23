@@ -107,7 +107,7 @@ xxl:
   job:
     accessToken: ''
     admin:
-      addresses: http://center.okyakid.com:19999/xxl-job-admin
+      addresses: http://firepongo.tech:19999/xxl-job-admin
     executor:
       appname: xxl-job-executor-sample
       ip: ''
@@ -119,8 +119,8 @@ zipkin:
   connectTimeout: 6000
   flushInterval: 1
   readTimeout: 6000
-  serviceName: boot-service
-  url: http://center.okyakid.com:9411
+  serviceName: chaos-service
+  url: http://firepongo.tech:9411
 socketio:
   allowCustomRequests: true
   bossCount: 1

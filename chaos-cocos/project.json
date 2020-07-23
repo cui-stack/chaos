@@ -1,7 +1,7 @@
 {
   "engine": "cocos2d-html5",
   "packages": "packages",
-  "version": "2.3.4",
+  "version": "2.4.0",
   "name": "chaos-game",
   "uuid": "41f54454-5237-4d37-9687-7cddeaae49f2",
   "id": "c003729b-c4a6-42a4-a125-ed8623a3a5b8",

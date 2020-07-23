@@ -1,18 +1,18 @@
 spring:
   datasource:
-    url: jdbc:mysql://center.okyakid.com:3306/chaos?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
+    url: jdbc:mysql://firepongo.tech:3306/chaos?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
     username: root
     password: firepongo
   redis:
     database: 0
-    host: center.okyakid.com
+    host: firepongo.tech
     password: firepongo
   dubbo:
     registry:
-      address: zookeeper://center.okyakid.com:2181
+      address: zookeeper://firepongo.tech:2181
     consumer:
       check: false
   rabbitmq:
-    addresses: center.okyakid.com
+    addresses: firepongo.tech
     username: admin
     password: firepongo

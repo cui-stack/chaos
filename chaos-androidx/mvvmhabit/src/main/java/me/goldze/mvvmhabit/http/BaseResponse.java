@@ -5,35 +5,36 @@ package me.goldze.mvvmhabit.http;
  * 该类仅供参考，实际业务返回的固定字段, 根据需求来定义，
  */
 public class BaseResponse<T> {
-    private int code;
-    private String message;
-    private T result;
+    private String code;
+    private String msg;
+    private T data;
 
-    public int getCode() {
+    public String getCode() {
         return code;
     }
 
-    public void setCode(int code) {
+    public void setCode(String code) {
         this.code = code;
     }
 
-    public T getResult() {
-        return result;
+    public T getData() {
+        return data;
     }
 
-    public void setResult(T result) {
-        this.result = result;
+    public void setData(T data) {
+        this.data = data;
+    }
+
+    public String getMsg() {
+        return msg;
+    }
+
+    public void setMsg(String msg) {
+        this.msg = msg;
     }
 
     public boolean isOk() {
-        return code == 0;
+        return code.equals("200");
     }
 
-    public String getMessage() {
-        return message;
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
-    }
 }

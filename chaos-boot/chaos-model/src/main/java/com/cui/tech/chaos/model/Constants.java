@@ -6,12 +6,16 @@ public interface Constants {
 
     String MANAGE = "manage";
     String WXMINI = "wxmini";
+    String APP="app";
 
     String MANAGE_USER = MANAGE + "_user";
     String WXMINI_USER = WXMINI + "_user";
+    String APP_USER = WXMINI + "_user";
 
     String MANAGE_END = MANAGE + "_" + END;
     String WXMINI_END = WXMINI + "_" + END;
+    String APP_END = APP + "_" + END;
+
     String IOS_END = "ios_end";
     String ANDROID_END = "android_end";
     String H5_END = "h5_end";

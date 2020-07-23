@@ -4,7 +4,7 @@ package com.cui.tech.max.model.repository;
 import androidx.annotation.NonNull;
 import androidx.annotation.VisibleForTesting;
 
-import com.cui.tech.max.model.entity.LoginEntity;
+import com.cui.tech.max.model.entity.LoginUser;
 import com.cui.tech.max.model.repository.source.HttpDataSource;
 import com.cui.tech.max.model.repository.source.LocalDataSource;
 
@@ -50,14 +50,13 @@ public class Repository extends BaseModel implements HttpDataSource, LocalDataSo
         mLocalDataSource.saveUserName(userName);
     }
 
-
     @Override
     public String getUserName() {
         return mLocalDataSource.getUserName();
     }
 
     @Override
-    public Observable<BaseResponse<LoginEntity>> login(String userneme, String password) {
-        return mHttpDataSource.login(userneme, password);
+    public Observable<BaseResponse<LoginUser>> login(String phone) {
+        return mHttpDataSource.login(phone);
     }
 }

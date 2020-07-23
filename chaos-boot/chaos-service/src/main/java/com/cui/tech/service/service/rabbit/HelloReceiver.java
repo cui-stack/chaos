@@ -1,4 +1,4 @@
-package com.cui.tech.code.service.rabbit;
+package com.cui.tech.service.service.rabbit;
 
 import org.springframework.amqp.rabbit.annotation.RabbitHandler;
 import org.springframework.stereotype.Service;

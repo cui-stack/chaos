@@ -1,4 +1,4 @@
-package com.cui.tech.code.service.rabbit;
+package com.cui.tech.service.service.rabbit;
 
 import org.springframework.amqp.core.AmqpTemplate;
 import org.springframework.beans.factory.annotation.Autowired;

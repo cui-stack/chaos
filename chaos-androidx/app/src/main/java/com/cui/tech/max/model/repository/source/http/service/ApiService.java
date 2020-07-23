@@ -1,6 +1,8 @@
 package com.cui.tech.max.model.repository.source.http.service;
 
 
+import com.cui.tech.max.model.entity.LoginUser;
+
 import io.reactivex.Observable;
 import me.goldze.mvvmhabit.http.BaseResponse;
 import retrofit2.http.Field;
@@ -12,5 +14,5 @@ public interface ApiService {
 
     @FormUrlEncoded
     @POST("api/login")
-    Observable<BaseResponse<DemoEntity>> login(@Field("username") String username);
+    Observable<BaseResponse<LoginUser>> login(@Field("phone") String phone);
 }

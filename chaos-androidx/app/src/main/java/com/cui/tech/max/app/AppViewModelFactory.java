@@ -8,6 +8,7 @@ import androidx.annotation.VisibleForTesting;
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.cui.tech.max.model.Injection;
 import com.cui.tech.max.model.repository.Repository;
 import com.cui.tech.max.vm.LoginViewModel;
 import com.cui.tech.max.vm.MainViewModel;

@@ -1,7 +1,7 @@
-package com.cui.tech.code.service.task;
+package com.cui.tech.service.service.task;
 
 import com.alibaba.dubbo.config.annotation.Reference;
-import com.cui.tech.code.api.facade.IOkyaFacade;
+import com.cui.tech.service.api.facade.IFacade;
 import com.xxl.job.core.biz.model.ReturnT;
 import com.xxl.job.core.handler.IJobHandler;
 import com.xxl.job.core.handler.annotation.JobHandler;
@@ -12,12 +12,12 @@ import org.springframework.stereotype.Component;
 @Component
 public class DemoJobHandler extends IJobHandler {
     @Reference
-    private IOkyaFacade iOkyaFacade;
+    private IFacade iFacade;
 
     @Override
     public ReturnT<String> execute(String param) throws Exception {
         XxlJobLogger.log("XXL-JOB, Hello DemoJobHandler.");
-        iOkyaFacade.ii();
+        iFacade.ii();
         return SUCCESS;
     }
 

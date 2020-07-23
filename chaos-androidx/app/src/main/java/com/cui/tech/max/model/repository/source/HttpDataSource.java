@@ -1,7 +1,7 @@
 package com.cui.tech.max.model.repository.source;
 
 
-import com.cui.tech.max.model.entity.LoginEntity;
+import com.cui.tech.max.model.entity.LoginUser;
 
 import io.reactivex.Observable;
 import me.goldze.mvvmhabit.http.BaseResponse;
@@ -10,7 +10,6 @@ import me.goldze.mvvmhabit.http.BaseResponse;
  * Created by goldze on 2019/3/26.
  */
 public interface HttpDataSource {
-    Observable<BaseResponse<LoginEntity>> login(String userneme, String password);
-
+    Observable<BaseResponse<LoginUser>> login(String phone);
 
 }

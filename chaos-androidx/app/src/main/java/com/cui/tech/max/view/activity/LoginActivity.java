@@ -43,8 +43,8 @@ public class LoginActivity extends BaseActivity<ActivityLoginBinding, LoginViewM
     public void initViewObservable() {
         //监听ViewModel中pSwitchObservable的变化, 当ViewModel中执行【uc.pSwitchObservable.set(!uc.pSwitchObservable.get());】时会回调该方法
         viewModel.uc.pSwitchEvent.observe(this, new Observer<Boolean>() {
-            @Override
-            public void onChanged(@Nullable Boolean aBoolean) {
+                @Override
+                public void onChanged(@Nullable Boolean aBoolean) {
                 //pSwitchObservable是boolean类型的观察者,所以可以直接使用它的值改变密码开关的图标
                 if (viewModel.uc.pSwitchEvent.getValue()) {
                     //密码可见

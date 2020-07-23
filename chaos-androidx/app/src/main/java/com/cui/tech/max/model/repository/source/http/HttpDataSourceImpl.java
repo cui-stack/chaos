@@ -1,7 +1,7 @@
 package com.cui.tech.max.model.repository.source.http;
 
 
-import com.cui.tech.max.model.entity.LoginEntity;
+import com.cui.tech.max.model.entity.LoginUser;
 import com.cui.tech.max.model.repository.source.HttpDataSource;
 import com.cui.tech.max.model.repository.source.http.service.ApiService;
 
@@ -35,7 +35,7 @@ public class HttpDataSourceImpl implements HttpDataSource {
     }
 
     @Override
-    public Observable<BaseResponse<LoginEntity>> login(String userneme, String password) {
-        return null;
+    public Observable<BaseResponse<LoginUser>> login(String phone) {
+        return apiService.login(phone);
     }
 }

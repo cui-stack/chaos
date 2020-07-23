@@ -1,11 +1,11 @@
-package com.cui.tech.code.service.ws;
+package com.cui.tech.service.service.ws;
 
 import com.corundumstudio.socketio.SocketIOClient;
 import com.corundumstudio.socketio.SocketIOServer;
-import com.cui.tech.code.api.data.ws.WsMessage;
-import com.cui.tech.code.api.data.ws.WsRoom;
-import com.cui.tech.code.api.data.ws.WsUser;
 import com.cui.tech.chaos.lite.service.SocketIOService;
+import com.cui.tech.service.api.data.ws.WsMessage;
+import com.cui.tech.service.api.data.ws.WsRoom;
+import com.cui.tech.service.api.data.ws.WsUser;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

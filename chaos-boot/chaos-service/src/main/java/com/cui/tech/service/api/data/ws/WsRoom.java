@@ -1,4 +1,4 @@
-package com.cui.tech.code.api.data.ws;
+package com.cui.tech.service.api.data.ws;
 
 import com.corundumstudio.socketio.SocketIOClient;
 import lombok.Data;

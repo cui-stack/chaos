@@ -27,7 +27,11 @@
             <scope>test</scope>
         </dependency>
 
-
+        <dependency>
+            <groupId>com.cui.tech</groupId>
+            <artifactId>chaos-manage</artifactId>
+            <version>0.0.2-SNAPSHOT</version>
+        </dependency>
     </dependencies>
 
 </project>

@@ -1,4 +1,4 @@
-package com.cui.tech.code;
+package com.cui.tech.service;
 
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
@@ -7,7 +7,7 @@ import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
 @MapperScan("com.cui.tech.boot.service.mapper")
-@ComponentScan(basePackages = {"com.cui.tech.chaos.lite","com.cui.tech.boot"})
+@ComponentScan(basePackages = {"com.cui.tech.chaos.lite","com.cui.tech.service"})
 public class BootApplication {
 
 public static void main(String[] args) {

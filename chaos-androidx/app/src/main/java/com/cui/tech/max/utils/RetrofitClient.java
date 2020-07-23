@@ -39,7 +39,7 @@ public class RetrofitClient {
     //缓存时间
     private static final int CACHE_TIMEOUT = 10 * 1024 * 1024;
     //服务端根路径
-    public static String baseUrl = "https://center.iya101.com/";
+    public static String baseUrl = "http://dev.firepongo.tech/";
 
     private static Context mContext = Utils.getContext();
 
