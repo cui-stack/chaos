@@ -11,7 +11,7 @@
 |  chaos-cloud   | springcloud            |   ✅    |  服务端架构    |     |
 |  chaos-vue     | vue+vuex+axios         |   ✅    |  后台架构      |     |
 |  chaos-ios     |                        |   🏗    |  IOS          |     |
-| chaos-androidx | mvvmhabit+androidx     |   🏗    |  安卓端架构    |     |
+| chaos-mvvmhabit | mvvmhabit+androidx     |   🏗    |  安卓端架构    |     |
 |  chaos-txmini  | wx 原生                |   🏗    |  微信小程序    |     |
 |  chaos-cocos   | cocos creator          |   🏗    |  游戏架构      |     |
 |  chaos-think   | thinkpho               |   🏗    |  微信小程序    |     |
