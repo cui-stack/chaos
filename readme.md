@@ -7,7 +7,7 @@
 |  服务          | 使用技术                |   进度  |    备注       |介绍|
 |----------------|------------------------|---------|---------------|----|
 |  chaos-ops     | docker                 |   ✅    |  部署架构      |      |
-|  chaos-boot    | springboot+dubbo       |   ✅    |  服务端架构   |[readme](https://gitee.com/c-stack/chaos/blob/master/chaos-boot/readme.md)|
+|  chaos-boot    | springboot+dubbo       |   ✅    |  服务端架构   |[快速开始](https://gitee.com/c-stack/chaos/blob/master/chaos-boot/readme.md)|
 |  chaos-cloud   | springcloud            |   ✅    |  服务端架构    |     |
 |  chaos-vue     | vue+vuex+axios         |   ✅    |  后台架构      |     |
 |  chaos-ios     |                        |   🏗    |  IOS          |     |

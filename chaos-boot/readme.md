@@ -16,7 +16,6 @@
 |  基础框架 | actuator                    |   ✅          |           |
 |  服务监控 | springboot-admin            |   ✅          |           |
 |  链路追踪 | zipkin                      |   ✅          |           |
-
 |  配置中心 | nacos                       |   🏗          |           |
 |  服务容错 | SpringCloud Sentinel        |   🏗          |           |
 |  分库分表 | shading-jdbc                |   🏗          |           |
@@ -26,7 +25,7 @@
 ## 使用
 
 1. 代码生成
-```
+```shell script
 chaos-code run CodeGenerator
 输入 firepongo 
 输入 fo_user,fo_product
@@ -45,7 +44,7 @@ chaos-code run CodeGenerator
         <artifactId>chaos-spring-boo-starter</artifactId>
     </dependency>
  </dependencies>
-
+ 
 在Application添加
 @MapperScan({"com.cui.tech.iya.service.mapper", "com.cui.tech.manage.service.mapper"})
 @ComponentScan(basePackages = {"com.cui.tech.chaos", "com.cui.tech.firepongo", "com.cui.tech.manage"})
@@ -53,7 +52,7 @@ chaos-code run CodeGenerator
 ```
 
 3. 添加后台登录
-```
+```java
 @Component("mnLoginService")
 public class ManageLoginService extends ManageLoginServiceImpl {
     @Override
