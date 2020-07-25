@@ -5,7 +5,7 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.cui.tech.chaos.lite.helper.PageHelper;
+import com.cui.tech.chaos.helper.PageHelper;
 import com.cui.tech.chaos.model.Menu;
 import com.cui.tech.chaos.model.db.MU;
 import com.cui.tech.chaos.model.db.Table;

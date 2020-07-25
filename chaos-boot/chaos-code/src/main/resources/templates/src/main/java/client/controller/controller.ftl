@@ -9,7 +9,7 @@ import com.cui.tech.chaos.model.page.PageQueryDto;
 import com.cui.tech.chaos.model.result.DataResult;
 import com.cui.tech.chaos.model.result.PageResult;
 import com.cui.tech.chaos.annotation.WxminiLoginToken;
-import com.cui.tech.chaos.web.BaseController;
+import com.cui.tech.chaos.controller.BaseController;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;

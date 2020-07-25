@@ -5,7 +5,7 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.cui.tech.chaos.lite.service.IMnLoginUserService;
+import com.cui.tech.chaos.service.IMnLoginUserService;
 import com.cui.tech.manage.api.data.ChaosAdminData;
 import com.cui.tech.manage.api.entity.ChaosAdmin;
 import com.cui.tech.manage.api.entity.ChaosRole;

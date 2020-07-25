@@ -57,7 +57,6 @@ public class Repository extends BaseModel implements HttpDataSource, LocalDataSo
 
     @Override
     public Observable<BaseResponse<LoginUser>> login(String username, String password) {
-        Observable<BaseResponse<LoginUser>> o= mHttpDataSource.login(username,password);
-        return o;
+        return mHttpDataSource.login(username, password);
     }
 }

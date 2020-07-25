@@ -1,7 +1,5 @@
 package com.cui.tech.manage.manager.controller;
 
-import com.cui.tech.manage.api.data.ChaosAdminData;
-import com.cui.tech.manage.api.entity.ChaosAdmin;
 import com.cui.tech.manage.api.entity.ChaosAdminRole;
 import com.cui.tech.manage.api.data.ChaosAdminRoleData;
 import com.cui.tech.manage.api.service.IChaosAdminRoleService;

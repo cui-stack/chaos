@@ -2,10 +2,7 @@ package com.cui.tech.manage.manager.controller;
 
 import com.cui.tech.manage.api.data.ChaosPermissionData;
 import com.cui.tech.manage.api.entity.ChaosPermission;
-import com.cui.tech.manage.api.entity.ChaosPermission;
-import com.cui.tech.manage.api.data.ChaosPermissionData;
 import com.cui.tech.manage.api.service.IChaosPermissionService;
-import com.cui.tech.chaos.model.Constants;
 import com.cui.tech.chaos.model.Menu;
 import com.cui.tech.chaos.model.db.MU;
 import com.cui.tech.chaos.model.db.UpdateData;

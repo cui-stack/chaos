@@ -44,7 +44,7 @@ public class CodeHelper {
         strategy.setRestControllerStyle(true);
         // 公共父类
 
-        strategy.setSuperControllerClass("com.cui.tech.chaos.web.BaseController");
+        strategy.setSuperControllerClass("com.cui.tech.chaos.controller.BaseController");
         strategy.setInclude(CodeHelper.scanner("表名，多个英文逗号分割").split(","));
         strategy.setControllerMappingHyphenStyle(true);
         //strategy.setTablePrefix(pc.getModuleName() + "_");

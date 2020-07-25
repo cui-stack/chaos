@@ -2,6 +2,7 @@ package com.cui.tech.mh.vm;
 
 import android.app.Application;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 
 import androidx.annotation.NonNull;
@@ -25,6 +26,8 @@ import me.goldze.mvvmhabit.utils.ToastUtils;
  * @date 2020/5/12 15:47
  */
 public class LoginViewModel extends BaseViewModel<Repository> {
+
+    private static final String TAG="LoginViewModel";
     //用户名的绑定
     public ObservableField<String> username = new ObservableField<>("");
     //密码的绑定
@@ -103,6 +106,7 @@ public class LoginViewModel extends BaseViewModel<Repository> {
                 .subscribe(new Consumer<Object>() {
                     @Override
                     public void accept(Object o) throws Exception {
+                        Log.d(TAG, "accept:  "+o.toString());
                         dismissDialog();
                         model.saveUserName(username.get());
                         //startActivity(MainActivity.class);

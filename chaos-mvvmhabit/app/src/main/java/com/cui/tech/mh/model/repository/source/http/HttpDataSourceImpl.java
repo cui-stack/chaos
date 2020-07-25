@@ -1,6 +1,7 @@
 package com.cui.tech.mh.model.repository.source.http;
 
 
+import com.cui.tech.mh.model.dto.LoginDto;
 import com.cui.tech.mh.model.entity.LoginUser;
 import com.cui.tech.mh.model.repository.source.HttpDataSource;
 import com.cui.tech.mh.model.repository.source.http.service.ApiService;
@@ -36,6 +37,6 @@ public class HttpDataSourceImpl implements HttpDataSource {
 
     @Override
     public Observable<BaseResponse<LoginUser>> login(String username, String password) {
-        return apiService.login(username, password);
+        return apiService.login(new LoginDto(username, password));
     }
 }
