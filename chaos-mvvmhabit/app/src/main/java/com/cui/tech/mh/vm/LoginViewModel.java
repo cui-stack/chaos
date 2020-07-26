@@ -10,6 +10,7 @@ import androidx.databinding.ObservableField;
 import androidx.databinding.ObservableInt;
 
 import com.cui.tech.mh.model.repository.Repository;
+import com.cui.tech.mh.view.activity.MainActivity;
 
 import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Consumer;
@@ -109,7 +110,7 @@ public class LoginViewModel extends BaseViewModel<Repository> {
                         Log.d(TAG, "accept:  "+o.toString());
                         dismissDialog();
                         model.saveUserName(username.get());
-                        //startActivity(MainActivity.class);
+                        startActivity(MainActivity.class);
                         finish();
                     }
                 }));

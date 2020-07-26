@@ -12,7 +12,6 @@ import com.cui.tech.mh.model.Injection;
 import com.cui.tech.mh.model.repository.Repository;
 import com.cui.tech.mh.vm.LoginViewModel;
 import com.cui.tech.mh.vm.MainViewModel;
-import com.cui.tech.mh.vm.NetWorkViewModel;
 
 /**
  * Created by goldze on 2019/3/26.
@@ -47,9 +46,7 @@ public class AppViewModelFactory extends ViewModelProvider.NewInstanceFactory {
     @NonNull
     @Override
     public <T extends ViewModel> T create(@NonNull Class<T> modelClass) {
-        if (modelClass.isAssignableFrom(NetWorkViewModel.class)) {
-            return (T) new NetWorkViewModel(mApplication, mRepository);
-        } else if (modelClass.isAssignableFrom(LoginViewModel.class)) {
+        if (modelClass.isAssignableFrom(LoginViewModel.class)) {
             return (T) new LoginViewModel(mApplication, mRepository);
         } else if (modelClass.isAssignableFrom(MainViewModel.class)) {
             return (T) new MainViewModel(mApplication, mRepository);
