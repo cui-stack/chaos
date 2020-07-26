@@ -1,16 +1,14 @@
 {
   "navigationBarBackgroundColor": "#fff",
   "navigationBarTextStyle": "black",
-  "navigationBarTitleText": "矮芽-医生资质查询",
   "navigationStyle": "default",
   "backgroundColor": "#ffffff",
   "backgroundTextStyle": "dark",
   "backgroundColorTop": "#ffffff",
   "backgroundColorBottom": "#ffffff",
-  "enablePullDownRefresh": true,
+  "enablePullDownRefresh": false,
   "disableScroll": false,
   "usingComponents": {
-    "Tab": "/components/Tab/Tab",
     "mp-searchbar": "weui-miniprogram/searchbar/searchbar",
     "mp-icon": "weui-miniprogram/icon/icon"
   }

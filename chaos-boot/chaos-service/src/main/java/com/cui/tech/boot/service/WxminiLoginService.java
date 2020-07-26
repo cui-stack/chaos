@@ -15,7 +15,11 @@ public class WxminiLoginService extends WxminiLoginServiceImpl {
 
     @Override
     public WxMiniLoginUser getUserInfo(WxMiniLoginDto loginDto) {
-        return new WxMiniLoginUser();
+        WxMiniLoginUser user=  new WxMiniLoginUser();
+        user.setUsername("golden");
+        user.setToken("888");
+        user.setPhone("18866668888");
+        return user;
     }
 
     @Override

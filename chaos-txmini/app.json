@@ -1,6 +1,8 @@
 {
   "pages": [
-    "pages/index/index"
+    "pages/index/index",
+    "pages/authorize/authorize",
+    "pages/web/web"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -21,7 +23,7 @@
   },
   "permission": {
     "scope.userLocation": {
-      "desc": "获取您的位置用于XXX"
+      "desc": "获取您的位置用于服务"
     }
   },
   "sitemapLocation": "sitemap.json",

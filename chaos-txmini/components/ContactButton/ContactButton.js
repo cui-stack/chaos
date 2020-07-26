@@ -1,5 +1,9 @@
 Component({
     properties: {
+        slottext: {
+            type: String,
+            value: ''
+        },
         text: {
             type: String,
             value: ''
@@ -7,13 +11,21 @@ Component({
         sessionFrom: {
             type: String,
             value: ''
-        }
+        },
+        textStyle: {
+            type: String,
+            value: ''
+        },
+        slotStyle: {
+            type: String,
+            value: ''
+        },
     },
     data: {},
     methods: {
         handleContact(e) {
-            console.log(e.detail.path)
-            console.log(e.detail.query)
+            // console.log(e.detail.path)
+            //console.log(e.detail.query)
         },
     }
 })

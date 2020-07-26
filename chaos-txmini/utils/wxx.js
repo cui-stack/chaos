@@ -6,7 +6,7 @@ function barTitle(title) {
 
 function message(callback) {
     wx.requestSubscribeMessage({
-        tmplIds: [tp],
+        tmplIds: [''],
         success(res) {
         },
         fail(res) {

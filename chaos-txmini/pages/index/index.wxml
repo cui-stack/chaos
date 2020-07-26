@@ -1,24 +1,15 @@
 <view class="page">
     <view class="page_head">
-        <image class='page_logo'
-               src='/images/logo.png'></image>
+        <image src='/images/pongo72.png'></image>
     </view>
-    <view class='page_body'>
-        <view class='page_search' bindtap='goDocterlist'>医生姓名/自锁讲师/隐适美讲师/RW
-            <image class="page_icon" src='/images/search.png'></image>
-        </view>
-        <view class="page_list">
-            <label>
-                <view wx:for="{{list}}"
-                      wx:key="index"
-                      class='page_list_item'
-                      hover-class='page_list_item_hover'
-                      data-id="{{index}}"
-                      bindtap='goWeb'>
-                    {{item.title}}
-                </view>
-            </label>
+    <view class='page_search' bindtap='goDoctorlist'>
+        <view class="page_search_title">请输入搜索关键字</view>
+        <mp-icon icon="search" size="25" color="#808080"></mp-icon>
+    </view>
+    <view class="page_list">
+        <view wx:for="{{list}}" wx:key="index" class='page_list_item {{list.length!=index+1?"page_list_line":""}}' hover-class='page_list_item_hover' data-id="{{index}}" bindtap='goWeb'>
+            {{item.title}}
         </view>
     </view>
-    <Tab></Tab>
 </view>
+<Tab></Tab>

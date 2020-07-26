@@ -1,23 +1,30 @@
 .page {
     position: relative;
-    text-align: center;
-    font-size: 13px;
-    color: #576B95;
 }
+
 
 .page_bt {
     width: 100%;
     position: absolute;
     top: 0px;
-    height: 40px;
-    z-index: 11;
+    height: 100rpx;
+    z-index: 100;
     opacity: 0;
 }
 
+.page_slot {
+    text-align: center;
+    display: inline-block;
+    font-size: 16px;
+    font-weight: bold;
+}
+
 .page_text {
-    width: 100%;
-    position: absolute;
-    z-index: 10;
-    top: 0px;
-    height: 40px;
+    display: inline-block;
+    text-align: center;
+    font-size: 30rpx;
+    font-family: PingFangSC-Regular, PingFang SC;
+    font-weight: 700;
+    color: rgba(51, 51, 51, 1);
+    line-height: 44rpx;
 }

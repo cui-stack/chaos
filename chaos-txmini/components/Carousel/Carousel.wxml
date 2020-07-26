@@ -1,0 +1,9 @@
+<view class="page">
+    <swiper wx:if="{{list}}" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" style="height:{{height}}px;" bindchange="bindchange">
+        <block wx:for="{{list}}" wx:key="index">
+            <swiper-item>
+                <PreImage bindimgHeight="imageLoad" data-id="{{index}}" default-image='/images/occupation.png' mode="aspectFill" original-image='{{item}}' width="750rpx" height="{{height}}px" />
+            </swiper-item>
+        </block>
+    </swiper>
+</view>

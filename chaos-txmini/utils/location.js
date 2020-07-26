@@ -6,11 +6,6 @@ function loc() {
         type: 'gcj02',
         success: function (res) {
             wx.setStorageSync('location', res.longitude + ';' + res.latitude)
-            Data.update('iya_user', store.mu(), {
-                lat: res.latitude,
-                lng: res.longitude
-            }, () => {
-            })
         },
     })
 }

@@ -1,12 +1,5 @@
 <view class='page'>
-    <button class='page_bt'
-            open-type='contact'
-            session-from="{{sessionFrom}}"
-            send-message-title="联系客服"
-            send-message-path=""
-            send-message-img=""
-            show-message-card="false"
-            bindcontact="handleContact">
-    </button>
-    <view class="page_text">{{text}}</view>
+    <button class='page_bt' open-type='contact' session-from="{{sessionFrom}}" send-message-title="联系客服" bindcontact="handleContact"></button>
+    <view class="page_slot" style="{{slotStyle}}" wx:if="{{slottext}}">{{slottext}}</view>
+    <view class="page_text" style="{{textStyle}}">{{text}}</view>
 </view>

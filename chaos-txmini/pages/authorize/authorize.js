@@ -5,11 +5,12 @@ let show = require('./../../utils/show')
 Page({
     data: {
         step: 1,
+        title: "信息查询",
     },
     showXy() {
         page.to('xy')
     },
-    onLoad: function () {
+    onLoad: function (e) {
         if (wx.getStorageSync('step')) {
             this.step2()
         }
@@ -24,15 +25,15 @@ Page({
                 wxcountry: userInfo.country,
                 wxprov: userInfo.province,
                 wxcity: userInfo.city
-            }, (res) => {
-                wx.setStorageSync('step', 2)
-                this.step2()
-            })
+            }, (res) => {})
         }
+        wx.setStorageSync('step', 2)
+        this.step2()
     },
     step2: function () {
         this.setData({
             step: 2,
+            title: "信息查询"
         })
     },
     bindgetphonenumber: function (e) {
@@ -50,6 +51,6 @@ Page({
             setTimeout(function () {
                 page.back()
             }, 100)
-        })
+        }, false)
     }
 })

@@ -9,7 +9,9 @@ function add(table, d = {}, callback) {
 }
 
 function remove(table, mu, callback) {
-    fetch.post('api/' + table + '/remove', {mu: mu}, function (res) {
+    fetch.post('api/' + table + '/remove', {
+        mu: mu
+    }, function (res) {
         doCb(callback, res)
     })
 }
@@ -24,7 +26,9 @@ function update(table, mu, d = {}, callback) {
 }
 
 function one(table, mu, callback) {
-    fetch.post('api/' + table + '/one', {mu: mu}, function (res) {
+    fetch.post('api/' + table + '/one', {
+        mu: mu
+    }, function (res) {
         doCb(callback, res)
     })
 }
@@ -46,15 +50,31 @@ function page(table, d = {}, pageNum = 1, pageSize = 15, callback) {
     })
 }
 
-function search(uri, d = {}, pageNum = 1, pageSize = 15, callback) {
+function pages(table, d = {}, pageNum = 1, pageSize = 15, callback) {
+    const data = {
+        pageNum: 1,
+        pageSize: 15,
+        data: d
+    }
+    show.loading()
+
+    fetch.post('api/' + table + '/page', data, (res) => {
+        wx.hideLoading()
+        callback(res.pages, res.mark)
+    })
+}
+
+function search(uri, d = {}, pageNum = 1, pageSize = 15, callback, isShow = true) {
     const data = {
         pageNum: pageNum,
         pageSize: pageSize,
         data: d
     }
-    show.loading()
+    if (isShow)
+        show.loading()
     fetch.post(uri, data, function (res) {
-        wx.hideLoading()
+        if (isShow)
+            wx.hideLoading()
         callback(res.page, res.mark)
     })
 }
@@ -65,10 +85,12 @@ function query(uri, data = {}, callback) {
     })
 }
 
-function submit(uri, data = {}, callback) {
-    show.loading()
+function submit(uri, data = {}, callback, isShow = true) {
+    if (isShow)
+        show.loading()
     fetch.post(uri, data, function (res) {
-        wx.hideLoading()
+        if (isShow)
+            wx.hideLoading()
         doCb(callback, res)
     })
 }
@@ -134,6 +156,7 @@ module.exports = {
     one,
     list,
     page,
+    pages,
 
     search,
     submit,

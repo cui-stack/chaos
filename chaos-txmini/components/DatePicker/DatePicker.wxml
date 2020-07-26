@@ -1,17 +1,22 @@
-<view class='page' hidden='{{isHidden}}'>
-    <picker-view indicator-style="height: 50px;"
-                 style="width: 100%; height: 300px;"
-                 bindchange="bindChange"
-                 value="{{timeDetail}}">
-        <picker-view-column>
-            <view wx:for="{{months}}" style="line-height: 50px">{{item}}月</view>
-        </picker-view-column>
-        <picker-view-column>
-            <view wx:for="{{days}}" style="line-height: 50px">{{item}}日</view>
-        </picker-view-column>
-        <picker-view-column>
-            <view wx:for="{{hours}}" style="line-height: 50px">{{item}}时</view>
-        </picker-view-column>
-    </picker-view>
-    <view class='page_bt' bindtap='sureTime'>确定</view>
+<view class="page" hidden='{{isHidden}}'>
+    <view class="page-body">
+        <picker-view indicator-style="height: 50px;" style="width: 100%; height: 300px;" value="{{value}}" bindchange="bindChange">
+            <picker-view-column>
+                <view wx:for="{{months}}" wx:key="{{months}}" style="line-height: 50px; text-align: center;">
+                    {{item}}月
+                </view>
+            </picker-view-column>
+            <picker-view-column>
+                <view wx:for="{{days}}" wx:key="{{days}}" style="line-height: 50px; text-align: center;">
+                    {{item}}日
+                </view>
+            </picker-view-column>
+            <picker-view-column>
+                <view wx:for="{{hours}}" wx:key="{{hours}}" style="line-height: 50px; text-align: center;">
+                    {{item}}时
+                </view>
+            </picker-view-column>
+        </picker-view>
+        <view class='page_bt' bindtap='sureTime'>确定</view>
+    </view>
 </view>
