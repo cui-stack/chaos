@@ -35,7 +35,7 @@ chaos-code run CodeGenerator
  <parent>
          <groupId>com.cui.tech</groupId>
          <artifactId>chaos-paren</artifactId>
-         <version>2.1.0-SNAPSHOT</version>
+         <version>2.2.0-SNAPSHOT</version>
          <relativePath/>
  </parent>
  <dependencies>
