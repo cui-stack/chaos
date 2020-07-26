@@ -8,8 +8,8 @@
 |----------------|------------------------|---------|---------------|----|
 |  chaos-ops     | docker                 |   ✅    |  部署架构      |      |
 |  chaos-boot    | springboot+dubbo       |   ✅    |  服务端架构   |[快速开始](https://gitee.com/c-stack/chaos/blob/master/chaos-boot/readme.md)|
-|  chaos-cloud   | springcloud            |   ✅    |  服务端架构    |     |
-|  chaos-vue     | vue+vuex+axios         |   ✅    |  后台架构      |     |
+|  chaos-cloud   | springcloud            |   ✅    |  服务端架构    |       |
+|  chaos-vue     | vue+vuex+axios         |   ✅    |  后台架构      |[快速开始](https://gitee.com/c-stack/chaos/tree/master/chaos-vue/readme.md)    |
 |  chaos-ios     |                        |   🏗    |  IOS          |     |
 | chaos-mvvmhabit | mvvmhabit+androidx     |   🏗    |  安卓端架构    |     |
 |  chaos-txmini  | wx 原生                |   🏗    |  微信小程序    |     |

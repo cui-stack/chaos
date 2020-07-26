@@ -1,4 +1,4 @@
-#快速开始
+# 快速开始
 ## 框架集成
 |  服务       | 使用技术                   |   进度        |    备注     |
 |-------------|---------------------------|---------------|-------------|
@@ -12,8 +12,8 @@
 | utils       | lodash                     |               | ?           |
 | mock        |                            |               |            |
 
-##开发环境
-###nodejs
+## 开发环境
+### nodejs
 ```
 https://nodejs.org/zh-cn/download/
 node -v
@@ -23,7 +23,7 @@ cnpm -v
 ------ 方案2 切换淘宝registry
 npm config set registry https://registry.npm.taobao.org
 ```
-###vue环境
+### vue环境
 ```
 npm i webpack webpack-cli -D
 webpack -v
@@ -37,13 +37,13 @@ vue create xxx
 
 vue ui
 ```
-###使用
+### 使用
 ```
 npm install
 npm run dev
 ```
 
-###其他
+### 其他
 ```
 npm install jsoneditor
 
