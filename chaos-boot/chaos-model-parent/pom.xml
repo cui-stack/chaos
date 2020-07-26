@@ -6,13 +6,13 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.2.2.RELEASE</version>
+        <version>2.3.2.RELEASE</version>
         <relativePath/>
     </parent>
 
     <groupId>com.cui.tech</groupId>
     <artifactId>chaos-model-parent</artifactId>
-    <version>2.1.0-SNAPSHOT</version>
+    <version>2.2.0-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <properties>
@@ -23,19 +23,28 @@
             <dependency>
                 <groupId>com.cui.tech</groupId>
                 <artifactId>chaos-app</artifactId>
-                <version>2.1.0-SNAPSHOT</version>
+                <version>2.2.0-SNAPSHOT</version>
             </dependency>
             <dependency>
                 <groupId>com.cui.tech</groupId>
                 <artifactId>chaos-model</artifactId>
-                <version>2.1.0-SNAPSHOT</version>
+                <version>2.2.0-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>8.0.18</version>
+            </dependency>
+            <dependency>
+                <groupId>com.cui.tech</groupId>
+                <artifactId>chaos-boot-starter</artifactId>
+                <version>2.2.0-SNAPSHOT</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
 
     <pluginRepositories>
 
-        <!-- 使用里程碑版本和快照版本时需要此配置，使用正式发布版本的时候，此配置可以省略 start -->
         <pluginRepository>
             <id>spring-snapshots</id>
             <name>Spring Snapshots</name>
@@ -101,7 +110,6 @@
             <plugin>
                 <artifactId>maven-dependency-plugin</artifactId>
             </plugin>
-
 
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>

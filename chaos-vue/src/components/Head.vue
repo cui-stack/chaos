@@ -1,8 +1,8 @@
 <template>
   <el-container class="page">
     <el-container class="page_left">
-      <img src="@/assets/images/logo-head.png"/>
-      <span>矮芽管理系统</span>
+      <img src="@/assets/images/pongo64.png"/>
+      <span>管理系统</span>
     </el-container>
     <el-container class="page_right">
       <el-dropdown>
@@ -27,10 +27,10 @@
         store,
         methods: {
             logout() {
-                fetch.post('/manage/logout', {}).then((res) => {
+                fetch.post('/manage/logout', {}).then(() => {
                     store.dispatch('logout', {})
                     setTimeout(function () {
-                        window.location.href = '/iya/'
+                        window.location.href = '/chaos/'
                     }.bind(this), 100)
                 })
             }

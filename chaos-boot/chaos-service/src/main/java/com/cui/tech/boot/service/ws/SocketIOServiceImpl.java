@@ -2,10 +2,10 @@ package com.cui.tech.boot.service.ws;
 
 import com.corundumstudio.socketio.SocketIOClient;
 import com.corundumstudio.socketio.SocketIOServer;
-import com.cui.tech.chaos.lite.service.SocketIOService;
 import com.cui.tech.boot.api.data.ws.WsMessage;
 import com.cui.tech.boot.api.data.ws.WsRoom;
 import com.cui.tech.boot.api.data.ws.WsUser;
+import com.cui.tech.chaos.service.SocketIOService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 

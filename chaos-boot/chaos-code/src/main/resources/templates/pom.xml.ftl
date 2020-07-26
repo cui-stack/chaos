@@ -6,7 +6,7 @@
     <parent>
         <groupId>com.cui.tech</groupId>
         <artifactId>chaos-parent</artifactId>
-        <version>2.1.0-SNAPSHOT</version>
+        <version>2.2.0-SNAPSHOT</version>
         <relativePath/>
     </parent>
 
@@ -18,7 +18,7 @@
     <dependencies>
         <dependency>
             <groupId>com.cui.tech</groupId>
-            <artifactId>chaos-spring-boot-starter</artifactId>
+            <artifactId>chaos-boot-starter</artifactId>
         </dependency>
 
         <dependency>

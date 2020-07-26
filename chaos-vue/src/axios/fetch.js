@@ -2,11 +2,12 @@ import Vue from 'vue'
 import {Message} from 'element-ui';
 import axios from 'axios';
 import store from '@/vuex/store'
+import baseUrl from './../../constans'
 
 Vue.prototype.$axios = axios
 axios.defaults.headers.post['Content-Type'] = 'application/json';
 const httpService = axios.create({
-  baseURL: process.env.BASE_API,
+  baseURL: baseUrl,
   timeout: 3000
 });
 
@@ -44,6 +45,7 @@ httpService.interceptors.response.use(
         });
       } else if (response.data.code == 200) {
         if (response.data.data instanceof Array) {
+          console.log('数组长度: '+response.data.data.length)
         } else if (response.data.data == true) {
           Message({
             type: 'success',

@@ -1,5 +1,6 @@
 package com.cui.tech.manage.manager.controller;
 
+import com.cui.tech.chaos.base.BaseController;
 import com.cui.tech.manage.api.entity.ChaosPlatform;
 import com.cui.tech.manage.api.data.ChaosPlatformData;
 import com.cui.tech.manage.api.service.IChaosPlatformService;
@@ -8,7 +9,6 @@ import com.cui.tech.chaos.model.db.UpdateData;
 import com.cui.tech.chaos.model.page.PageQueryDto;
 import com.cui.tech.chaos.model.result.DataResult;
 import com.cui.tech.chaos.model.result.PageResult;
-import com.cui.tech.chaos.web.BaseController;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;

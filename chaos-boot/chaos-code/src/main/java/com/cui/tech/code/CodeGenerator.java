@@ -11,7 +11,7 @@ import java.util.Map;
 
 public class CodeGenerator {
 
-    public static void main(String[] args) {
+    public static void code(String[] args) {
         // 代码生成器
         AutoGenerator mpg = new AutoGenerator();
 

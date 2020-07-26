@@ -1,15 +1,16 @@
 package com.cui.tech.boot.service;
 
-import com.cui.tech.chaos.lite.service.WxminiLoginServiceImpl;
 import com.cui.tech.chaos.model.login.LoginUser;
 import com.cui.tech.chaos.model.login.WxMiniLoginDto;
 import com.cui.tech.chaos.model.login.WxMiniLoginUser;
+import com.cui.tech.chaos.service.WxminiLoginServiceImpl;
+import org.springframework.stereotype.Component;
 
 /**
  * @author G.G
  * @date 2019/11/14 15:45
  */
-//@Component("wxLoginService")
+@Component("wxLoginService")
 public class WxminiLoginService extends WxminiLoginServiceImpl {
 
     @Override

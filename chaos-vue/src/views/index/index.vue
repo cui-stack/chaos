@@ -7,7 +7,6 @@
 </template>
 
 <script>
-    import fetch from '@/axios/fetch'
 
     export default {
         data() {

@@ -14,7 +14,7 @@ app:
   amap:
     key: 88888888
 server:
-  port: 8086
+  port: 38088
 mybatis-plus:
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl

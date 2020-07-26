@@ -4,7 +4,7 @@ import com.alibaba.dubbo.config.annotation.Service;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.cui.tech.chaos.helper.PageHelper;
+import com.cui.tech.chaos.service.helper.PageHelper;
 import com.cui.tech.manage.api.entity.ChaosAdminRole;
 import com.cui.tech.manage.api.data.ChaosAdminRoleData;
 import com.cui.tech.manage.api.service.IChaosAdminRoleService;

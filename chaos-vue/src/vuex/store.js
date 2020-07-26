@@ -64,7 +64,7 @@ const mutations = {
   SetLastPost(state, data) {
     state.backlastPost = data
   },
-  Logout(state, data) {
+  Logout(state) {
     state.backuserinfo.token = ""
     state.backuserinfo.userid = ""
     state.backuserinfo.username = ""
