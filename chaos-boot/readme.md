@@ -1,5 +1,5 @@
-![](https://img.shields.io/badge/language-java-orange.svg)
-# [chaos-boot](https://github.com/cui-stack/chaos/)
+![](https://img.shields.io/badge/language-java-wheat.svg)
+# chaos-boot 基于springboot+dubbo的服务端架构
 ## 框架集成
 |  服务     | 使用技术                    |   进度        |    备注   |
 |----------|------------------------------|--------------|-----------|
@@ -22,36 +22,51 @@
 |  监控告警 | prometheus                  |   🏗          |           |
 |  数据可视 | grafana                     |   🏗          |           |
 
-## 使用
-
-1. 代码生成
+## 快速开始
+### 1. 建域
+```
+firepongo.tech
+```
+### 2. 环境部署
 ```shell script
-chaos-code run CodeGenerator
-输入 firepongo 
-输入 fo_user,fo_product
+cd ./chaos-ops/chaos-boot/chaos-center
+docker-compose
 ```
-2. 使用chaos架构
+### 3. 创建项目firepongo
+```shell script
+cd chaos-code 
+run CodeGenerator.main()
+input firepongo 
+input fo_user,fo_product
 ```
- <parent>
+### 3.1 pom.xml
+```xml
+<project>
+    <parent>
          <groupId>com.cui.tech</groupId>
-         <artifactId>chaos-paren</artifactId>
+         <artifactId>chaos-parent</artifactId>
          <version>2.2.0-SNAPSHOT</version>
          <relativePath/>
- </parent>
- <dependencies>
-    <dependency>
-        <groupId>com.cui.tech</groupId>
-        <artifactId>chaos-boot-starter</artifactId>
-    </dependency>
- </dependencies>
- 
-在Application添加
+    </parent>
+    <groupId>com.cui.tech</groupId>
+    <artifactId>okya-service</artifactId>
+    <version>0.0.2-SNAPSHOT</version>
+    <packaging>jar</packaging>
+    <dependencies>
+        <dependency>
+            <groupId>com.cui.tech</groupId>
+            <artifactId>chaos-boot-starter</artifactId>
+        </dependency>
+    </dependencies>
+</project>
+```
+### 3.1.Application.java
+```java
 @MapperScan({"com.cui.tech.iya.service.mapper", "com.cui.tech.manage.service.mapper"})
 @ComponentScan(basePackages = {"com.cui.tech.chaos", "com.cui.tech.firepongo", "com.cui.tech.manage"})
-
 ```
-
-3. 添加后台登录
+### 4. 组件
+#### 4.1后台登录
 ```java
 @Component("mnLoginService")
 public class ManageLoginService extends ManageLoginServiceImpl {
@@ -60,10 +75,9 @@ public class ManageLoginService extends ManageLoginServiceImpl {
     @Override
     public void afterLogin(LoginUser loginUser) {}
 }
-
 ```
-4. 添加微信小程序登录
-```
+#### 4.2. 微信小程序登录
+```java
 @Component("wxLoginService")
 public class WxminiLoginService extends WxminiLoginServiceImpl {
     @Override
@@ -74,22 +88,26 @@ public class WxminiLoginService extends WxminiLoginServiceImpl {
     protected WxMiniLoginUser initUser(WxMiniLoginDto loginDto) {}
 }
 ```
-5. 使用混沌后台
+### 5. 使用混沌后台
+#### 5.1 pom.xml
+```xml
+<dependency>
+    <groupId>com.cui.tech</groupId>
+        <artifactId>chaos-manage</artifactId>
+        <version>0.0.2-SNAPSHOT</version>
+</dependency>
 ```
-    <dependency>
-         <groupId>com.cui.tech</groupId>
-         <artifactId>chaos-manage</artifactId>
-         <version>0.0.2-SNAPSHOT</version>
-    </dependency>
-
-    在Application添加
-    @ComponentScan(basePackages = {"com.cui.tech.manage"})
-
-    cd chaos-back 
-    npm run dev
+#### 5.2 Application.java
 ```
-6. 使用研发中台
+@ComponentScan(basePackages = {"com.cui.tech.manage"})
 ```
-    cd chaos-center
-    npm run dev
+#### 5.3 使用chaos-manage-back
+```shell script
+cd chaos-manage-back
+npm run dev
+```
+#### 6. 使用研发中台
+```
+cd chaos-center
+npm run dev
 ```

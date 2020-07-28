@@ -1,56 +1,34 @@
-# 快速开始
+![](https://img.shields.io/badge/language-java-wheat.svg)
+# chaos-vue 基于vue的服务端架构
 ## 框架集成
-|  服务       | 使用技术                   |   进度        |    备注     |
-|-------------|---------------------------|---------------|-------------|
-| 语言        | node.js                    |   ✅          | npm        |
-| 打包        | webpack                    |   ✅          |            |                        |
-| 基础框架    | vue vue-cli                |   ✅          | vue create  |
-| 路由层      | vue-router                 |   ✅          |             |
-| store       | vuex                       |  ✅           |            |
-| 网络请求 | axios |  |  |
-| 基础组件库   | elementui                  |  ✅           |            |
-| utils       | lodash                     |               | ?           |
-| mock        |                            |               |            |
+|  服务     | 使用技术                     |   进度        |    备注   |
+|----------|------------------------------|--------------|-----------|
+| 基础框架 | vue                           |   ✅          | vue create |
+| 基础框架 | vue-cli                       |   ✅          | vue create |
+| 路由层   | vue-router                    |   ✅          |           |
+| store    | vuex                         |                |            |
+| 网络请求  | axios                        |               |             |
+| UI组件   | elementui                     |               |              |
+| utils     | lodash                       |                |       ?       |
+| mock      |                              |                |            |
 
-## 开发环境
-### nodejs
+## 管理界面
 ```
-https://nodejs.org/zh-cn/download/
-node -v
-npm -v
-npm install cnpm -g --registry=https://registry.npm.taobao.org
-cnpm -v
------- 方案2 切换淘宝registry
-npm config set registry https://registry.npm.taobao.org
-```
-### vue环境
-```
-npm i webpack webpack-cli -D
-webpack -v
-
-npm i loadsh --save
-
-npm i @vue/cli -g
-vue -V
-
-vue create xxx
-
 vue ui
 ```
-### 使用
-```
+## 快速开始
+```shell script
 npm install
 npm run dev
 ```
 
-### 其他
-```
 npm install jsoneditor
 
 VuePress
 npm install -g vuepress
 SpreadJS
 
-```
+
+
 
 
