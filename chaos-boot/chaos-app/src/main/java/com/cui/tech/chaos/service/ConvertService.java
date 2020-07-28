@@ -1,6 +1,7 @@
 package com.cui.tech.chaos.service;
 
 import com.cui.tech.chaos.model.DTO;
+import com.cui.tech.chaos.model.db.Model;
 import com.cui.tech.chaos.model.db.MuModel;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Component;
@@ -51,6 +52,11 @@ public class ConvertService<T extends MuModel> {
         return t;
     }
 
+    public DTO convertToDTO(Model mm, DTO t) {
+        BeanUtils.copyProperties(mm, t);
+        return t;
+    }
+
     /**
      * @param t
      * @param c
@@ -82,6 +88,12 @@ public class ConvertService<T extends MuModel> {
         return mm;
     }
 
+    public Model convertToModel(DTO t, Model mm) {
+        BeanUtils.copyProperties(t, mm);
+        return mm;
+    }
+
+
     /**
      * 通过自定义方式转化一个MuModel为DTO
      *
@@ -90,6 +102,10 @@ public class ConvertService<T extends MuModel> {
      * @return
      */
     public DTO convertToDTO(MuModel mm, Function<MuModel, DTO> f) {
+        return f.apply(mm);
+    }
+
+    public DTO convertToDTO(Model mm, Function<Model, DTO> f) {
         return f.apply(mm);
     }
 

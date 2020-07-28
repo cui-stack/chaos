@@ -16,3 +16,9 @@ spring:
     addresses: firepongo.tech
     username: admin
     password: firepongo
+zipkin:
+  serviceName: local-boot-web
+xxl:
+  job:
+    executor:
+      appname: local-boot-executor

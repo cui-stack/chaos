@@ -1,8 +1,7 @@
 <template>
   <div class="hello">
     <img src="@/assets/pongo96.png">
-    <h1>欢 迎 进 入 中 台 系 统</h1>
-    <h2>代码中台</h2>
+    <h1>欢 迎 进 入 研 发 中 台</h1>
     <el-alert style="margin-bottom: 0px; display: inline-block; width: 33%;"
               title="Tips：部分服务打开较慢请耐心等待"
               type="success">
@@ -14,7 +13,7 @@
       </li>
     </ul>
 
-    <h2>研发中台</h2>
+    <br/>
     <el-select class="select-input" v-model="host" placeholder="请选择">
       <el-option
         v-for="item in env"
@@ -29,22 +28,20 @@
         <a :href=host+item.link target="_blank">{{item.title}}</a>
       </li>
     </ul>
-    <ul class="service">
-      <li style=" display: flex;width: 800px" v-for="(item,i) in service"
-          :index="i">
-        <el-input class="service-input" v-model="item.port">
-          <template slot="prepend">{{host}}</template>
-          <template slot="append">{{item.link}}</template>
-        </el-input>
-        <a style="margin: 0 10px;padding:10px 0" :href=host+item.port+item.link
-           target="_blank">{{item.title}}</a>
-      </li>
-    </ul>
-    <h2>管理中台</h2>
-    <a href="http://center.okyakid.com/chaos/#/"
-       target="_blank">混沌后台</a>
-    <a href="http://center.okyakid.com:6688/poli/workspace/report"
-       target="_blank">BI数据</a>
+    <div style="display: inline-block; width: 68%;">
+      <ul class="service">
+        <li style=" display: flex;width: 800px" v-for="(item,i) in service"
+            :index="i">
+          <el-input class="service-input" v-model="item.port">
+            <template slot="prepend">{{host}}</template>
+            <template slot="append">{{item.link}}</template>
+          </el-input>
+          <a style="margin: 0 10px;padding:10px 0"
+             :href=host+item.port+item.link
+             target="_blank">{{item.title}}</a>
+        </li>
+      </ul>
+    </div>
 
   </div>
 </template>
@@ -58,15 +55,19 @@
         name: 'Main',
         data() {
             return {
-                host: 'http://center.okyakid.com',
+                host: 'http://dev.okyakid.com',
                 code: [
+                    {
+                        link: 'https://www.teambition.com/organization/5cd4e61e1995fd00018ff309',
+                        title: '项目管理'
+                    },
+                    {
+                        link: 'https://lanhuapp.com/web/#/item/project/product?pid=cfbf3b75-08b9-4e1e-98a5-fdfe4c148562&docId=dcda57e7-f3c2-466b-b081-2d78d3396a0b&docType=axure&pageId=8d1bc5f5ed57443ab6eec3e8fce7b79d&image_id=dcda57e7-f3c2-466b-b081-2d78d3396a0b&parentId=589537dc-43c0-4e82-a189-0b1b9f43d77d',
+                        title: '需求管理'
+                    },
                     {
                         link: 'https://github.com/cui-stack/chaos',
                         title: '框架代码'
-                    },
-                    {
-                        link: 'http://center.okyakid.com:8080/code-generator/',
-                        title: '代码生成'
                     },
                     {
                         link: 'http://git.okyakid.com/',
@@ -77,16 +78,44 @@
                         title: '构件仓库'
                     },
                     {
+                        link: 'http://47.112.137.131:8081/login?from=%2Fview%2FDEV%2F',
+                        title: '项目构建'
+                    },
+                    {
                         link: 'http://center.okyakid.com:8288/harbor/projects',
                         title: '镜像仓库'
                     },
                     {
-                        link: 'https://center.okyakid.com:9000/',
+                        link: 'http://center.okyakid.com:9000/',
                         title: '环境管理'
                     },
                     {
                         link: 'http://center.okyakid.com:8848/nacos/#',
                         title: '配置中心'
+                    },
+                    {
+                        link: 'http://center.okyakid.com:9411/zipkin/',
+                        title: '链路跟踪'
+                    },
+                    {
+                        link: 'http://center.okyakid.com:8000/login',
+                        title: '服务管理'
+                    },
+                    {
+                        link: 'http://center.okyakid.com:19999/xxl-job-admin/jobgroup',
+                        title: '任务管理'
+                    },
+                    {
+                        link: 'http://center.okyakid.com/chaos/#/',
+                        title: '混沌后台'
+                    },
+                    {
+                        link: 'http://center.okyakid.com:6688/poli/workspace/report',
+                        title: 'BI数据'
+                    },
+                    {
+                        link: 'https://homenew.console.aliyun.com/',
+                        title: '阿里云'
                     }
                 ],
                 env: [
@@ -96,9 +125,14 @@
                         host: 'http://localhost'
                     },
                     {
+                        id: 'center',
+                        title: '中台环境',
+                        host: 'http://center.okyakid.com'
+                    },
+                    {
                         id: 'dev',
                         title: '开发环境',
-                        host: 'http://center.okyakid.com'
+                        host: 'http://dev.okyakid.com'
                     },
                     {
                         id: 'test',
@@ -121,26 +155,19 @@
                         title: '服务治理'
                     },
                     {
-                        link: ':9411/zipkin/',
-                        title: '链路跟踪'
-                    },
-                    {
-                        link: ':8000/',
-                        title: '微服务管理'
-                    },
-                    {
-                        link: ':19999/xxl-job-admin/jobgroup',
-                        title: '任务中台'
+                        link: '/app/users',
+                        title: '管理后台'
                     }
+
                 ],
                 service: [
                     {
-                        port: ':8086',
+                        port: ':38089',
                         link: '/swagger-ui.html#',
                         title: 'API管理'
                     },
                     {
-                        port: ':8086',
+                        port: ':8089',
                         link: '/druid/datasource.html',
                         title: '数据库监控'
                     },
@@ -168,6 +195,7 @@
     color: #2c3e50;
     margin-top: 60px;
   }
+
   h1, h2 {
     font-weight: normal;
   }
@@ -182,12 +210,14 @@
 
   .code {
     display: inline-block;
-    width: 33%;
+    width: 400px;
+    margin: 20px;
   }
 
   .service {
     display: inline-block;
-    width: 55%;
+    width: 550px;
+    margin: 0px;
   }
 
   .select-input {
@@ -204,7 +234,7 @@
 
   li {
     display: inline-block;
-    margin: 1px 10px;
+    margin: 5px 10px;
   }
 
   a {
