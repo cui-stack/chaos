@@ -106,7 +106,7 @@ public class WxminiLoginService extends WxminiLoginServiceImpl {
 cd chaos-manage-back
 npm run dev
 ```
-#### 6. 使用研发中台
+### 6. 使用研发中台
 ```shell script
 cd chaos-center
 npm run dev
