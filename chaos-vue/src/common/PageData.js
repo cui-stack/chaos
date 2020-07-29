@@ -13,10 +13,10 @@ export function tableData(table, d) {
   return r
 }
 
-export function formData(table, d) {
+export function formData(table, form, d) {
   let r = {
     table: table,
-    form: {},
+    form: form,
   }
   for (let i in d) {
     r[i] = d[i];
