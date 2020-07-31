@@ -23,7 +23,7 @@
 # 最佳实践
 |  架构           | 介绍                | 
 |-----------------|----------------------------------|
-|  chaos-ops      |                     |
-|  chaos-boot     |                     |
-|  chaos-vue      |                     |
-|  chaos-txmini   |                     |
+|  chaos-ops      |    运维端                 |
+|  chaos-boot     |    服务端                 |
+|  chaos-vue      |    后台前端               |
+|  chaos-txmini   |    小程序端               |
