@@ -16,7 +16,7 @@ import java.util.stream.Collectors;
  * @date 2020/5/15 18:42
  */
 @Component
-public class ConvertService<T extends MuModel> {
+public class ConvertService<T extends Model> {
     public List<DTO> convertToDTO(List<T> mm, Class c) {
         return mm.stream().map(m -> convertToDTO(m, c)).collect(Collectors.toList());
     }
@@ -28,7 +28,7 @@ public class ConvertService<T extends MuModel> {
      * @throws IllegalAccessException
      * @throws InstantiationException
      */
-    public DTO convertToDTO(MuModel mm, Class c) {
+    public DTO convertToDTO(Model mm, Class c) {
         DTO t = null;
         try {
             t = (DTO) c.newInstance();
@@ -47,11 +47,6 @@ public class ConvertService<T extends MuModel> {
      * @param mm
      * @param t
      */
-    public DTO convertToDTO(MuModel mm, DTO t) {
-        BeanUtils.copyProperties(mm, t);
-        return t;
-    }
-
     public DTO convertToDTO(Model mm, DTO t) {
         BeanUtils.copyProperties(mm, t);
         return t;
