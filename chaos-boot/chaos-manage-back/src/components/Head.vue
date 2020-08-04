@@ -1,14 +1,14 @@
 <template>
   <el-container class="page">
     <el-container class="page_left">
-      <img src="@/assets/images/pongo64.png"/>
+      <img src="./../assets/images/pongo64.png"/>
       <span>管理系统</span>
     </el-container>
     <el-container class="page_right">
       <el-dropdown>
        <span class="el-dropdown-link">
-           <div>{{$store.state.roleinfo.info}}</div>
-                {{$store.state.userinfo.username}}
+           <div>{{$store.state.backroleinfo.info}}</div>
+                {{$store.state.backuserinfo.username}}
           <i class="el-icon-caret-bottom"></i>
         </span>
         <el-dropdown-menu slot="dropdown">
