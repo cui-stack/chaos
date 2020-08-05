@@ -1,10 +1,13 @@
 let baseUrl = "/api";
 switch (process.env.NODE_ENV) {
+    case 'development':
+        baseUrl = "https://dev.firepongo.com/manage-api"
+        break
     case 'test':
-        baseUrl = "http://dev.firepongo.tech/manage-api"
+        baseUrl = "https://test.firepongo.tech/manage-api"
         break
     case 'production':
-        baseUrl = "http://center.okyakid.com/manage-api"
+        baseUrl = "https://firepongo.tech/manage-api"
         break
 }
 
