@@ -51,7 +51,9 @@ public class RedisService {
             LinkedHashMap map = (LinkedHashMap) responseEntity.getBody().getData();
             LinkedHashMap roleMap = (LinkedHashMap) map.get("role");
             ManageLoginUserRole role = new ManageLoginUserRole((String) roleMap.get("name"), (String) roleMap.get("info"), (String) roleMap.get("indexLink"));
-            return new ManageLoginUser((Integer) map.get("id"), (String) map.get("mu"), (String) map.get("username"), (String) map.get("phone"), role);
+            ManageLoginUser user = new ManageLoginUser((Integer) map.get("id"), (String) map.get("mu"), (String) map.get("username"), (String) map.get("phone"), role);
+            user.setToken((String) map.get("token"));
+            return user;
         }
 
     }
