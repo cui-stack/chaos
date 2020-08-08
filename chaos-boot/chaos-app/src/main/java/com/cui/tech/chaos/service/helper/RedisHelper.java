@@ -1,6 +1,6 @@
 package com.cui.tech.chaos.service.helper;
 
-import com.cui.tech.chaos.model.RedisStatus;
+import com.cui.tech.chaos.model.redis.RedisStatus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.BoundListOperations;
 import org.springframework.data.redis.core.RedisTemplate;

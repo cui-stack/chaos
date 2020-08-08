@@ -34,20 +34,20 @@ public abstract class ManageLoginServiceImpl extends BaseLoginServiceImpl {
         user.setLoginTime(new Date());
         String token = jwtHelper.createToken(user.getMu());
         user.setToken(token);
-        redisHelper.set(loginKeyService.key(user.getMu()), user, 7 * 24 * 60 * 60);
+        redisService.set(loginKeyService.key(user.getMu()), user, 7 * 24 * 60 * 60);
         afterLogin(user);
         return user;
     }
 
     @Override
     public String refreshToken(String userMu) {
-        ManageLoginUser user = (ManageLoginUser) redisHelper.get(loginKeyService.key(userMu));
+        ManageLoginUser user = (ManageLoginUser) redisService.get(loginKeyService.key(userMu));
         if (user == null) {
             return null;
         }
         String newToken = jwtHelper.createToken(user.getMu());
         user.setToken(newToken);
-        redisHelper.set(loginKeyService.key(userMu), user);
+        redisService.set(loginKeyService.key(userMu), user,7 * 24 * 60 * 60);
         return newToken;
     }
 

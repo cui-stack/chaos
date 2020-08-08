@@ -17,6 +17,8 @@ import java.util.stream.Collectors;
 public abstract class BaseLoginServiceImpl implements ILoginService {
     @Autowired
     protected RedisHelper redisHelper;
+    @Autowired
+    protected RedisService redisService;
 
     @Override
     public boolean doLogout(String msg) {
@@ -27,7 +29,7 @@ public abstract class BaseLoginServiceImpl implements ILoginService {
     @Override
     public List loginUsers() {
         Set keys = redisHelper.keys(getRedisLoginUser() + "*");
-        ArrayList list = (ArrayList) keys.stream().map(key -> redisHelper.get((String) key)).collect(Collectors.toList());
+        ArrayList list = (ArrayList) keys.stream().map(key -> redisService.get((String) key)).collect(Collectors.toList());
         return list;
     }
 
@@ -36,10 +38,6 @@ public abstract class BaseLoginServiceImpl implements ILoginService {
         if (StringUtils.isEmpty(msg)) {
             return null;
         }
-        LoginUser user = (LoginUser) redisHelper.get(key(msg));
-        if (user == null) {
-            return null;
-        }
-        return user;
+        return(LoginUser) redisService.get(key(msg));
     }
 }

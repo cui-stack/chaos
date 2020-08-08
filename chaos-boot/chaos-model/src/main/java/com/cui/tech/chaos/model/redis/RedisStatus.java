@@ -1,4 +1,4 @@
-package com.cui.tech.chaos.model;
+package com.cui.tech.chaos.model.redis;
 
 
 import java.util.concurrent.TimeUnit;

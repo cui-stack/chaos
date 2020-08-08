@@ -11,7 +11,8 @@ module.exports = {
             }
         }
     },
-    assetsDir: "static",
-    publicPath: './'
 
+    assetsDir: 'static',
+    publicPath: './',
+    productionSourceMap: false
 }

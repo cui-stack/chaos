@@ -2,6 +2,7 @@ package com.cui.tech.chaos.model.login;
 
 import com.cui.tech.chaos.model.role.ManageLoginUserRole;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
 public class ManageLoginUser extends LoginUser {
@@ -19,5 +20,13 @@ public class ManageLoginUser extends LoginUser {
         this.username = username;
         this.phone = phone;
         this.role = new ManageLoginUserRole();
+    }
+
+    public ManageLoginUser(Integer id, String mu, String username, String phone, ManageLoginUserRole role) {
+        this.setId(id);
+        this.setMu(mu);
+        this.username = username;
+        this.phone = phone;
+        this.role = role;
     }
 }
