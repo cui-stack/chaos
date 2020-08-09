@@ -13,6 +13,7 @@ module.exports = {
         }
     },
     assetsDir: "static",
-    publicPath: './'
+    publicPath: './',
+    productionSourceMap: false
 
 }
