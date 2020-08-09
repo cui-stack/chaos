@@ -7,6 +7,7 @@ switch (process.env.NODE_ENV) {
         baseUrl = "https://test.firepongo.tech/chaos"
         break
     case 'production':
+        //baseUrl = "https://firepongo.tech/chaos"
         baseUrl = "http://center.okyakid.com/chaos"
         break
 }
