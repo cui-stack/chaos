@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.cui.tech.manage.service.mapper.ChaosAdminMapper">
+<mapper namespace="com.cui.tech.chaos.manage.service.mapper.ChaosAdminMapper">
     <update id="updateLoginLog">
         UPDATE chaos_admin
         SET login_times = login_times + 1,lastlogin_time=now(),
@@ -9,7 +9,7 @@
         mu = #{mu}
     </update>
 
-    <select id="selectIndexLink" resultType="com.cui.tech.manage.api.entity.ChaosRole">
+    <select id="selectIndexLink" resultType="com.cui.tech.chaos.manage.api.entity.ChaosRole">
         SELECT
 	        ir.index_link,ir.info
         FROM
@@ -20,7 +20,7 @@
 	        ia.mu = #{mu}
     </select>
     <select id="selectAdminRoleByMU"
-            resultType="com.cui.tech.manage.api.data.ChaosAdminData">
+            resultType="com.cui.tech.chaos.manage.api.data.ChaosAdminData">
         SELECT
             ia.username,
             ia. NAME,

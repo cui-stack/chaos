@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.cui.tech.manage.service.mapper.ChaosRolePermissionMapper">
+<mapper namespace="com.cui.tech.chaos.manage.service.mapper.ChaosRolePermissionMapper">
     <select id="selectRolePermissionByData"
-            resultType="com.cui.tech.manage.api.data.ChaosRolePermissionData">
+            resultType="com.cui.tech.chaos.manage.api.data.ChaosRolePermissionData">
     SELECT
 	crp.role_mu,
 	crp.permission_mu,

@@ -11,15 +11,18 @@
     </properties>
 
     <modules>
-        <module>chaos-parent</module>
-        <module>chaos-model-parent</module>
-        <module>chaos-model</module>
-        <module>chaos-app</module>
+        <module>chaos-boot-parent-base</module>
+        <module>chaos-boot-parent</module>
+        <module>chaos-boot-model</module>
+        <module>chaos-boot-app</module>
+        <module>chaos-boot-web</module>
+        <module>chaos-boot-starter</module>
+        <module>chaos-boot-starter-app</module>
+        <module>chaos-boot-starter-web</module>
+        <module>chaos-boot-code</module>
+
         <module>chaos-manage</module>
         <module>chaos-task</module>
-        <module>chaos-service</module>
-        <module>chaos-boot-starter</module>
-        <module>chaos-code</module>
 
     </modules>
 </project>
