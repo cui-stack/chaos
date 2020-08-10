@@ -1,5 +1,6 @@
 package com.cui.tech.chaos.web.exception;
 
+import com.cui.tech.chaos.model.exception.BusinessException;
 import com.cui.tech.chaos.web.service.RequestLogService;
 import com.cui.tech.chaos.model.result.Result;
 import com.cui.tech.chaos.web.util.addr.IpUtil;
