@@ -62,7 +62,7 @@ input fo_user,fo_product
 ```
 ### 3.1.Application.java
 ```java
-@MapperScan({"com.cui.tech.iya.service.mapper", "com.cui.tech.manage.service.mapper"})
+@MapperScan({"com.cui.tech.iya.service.mapper", "com.cui.tech.chaos.manage.service.mapper"})
 @ComponentScan(basePackages = {"com.cui.tech.chaos", "com.cui.tech.firepongo"})
 ```
 ### 4. 组件
