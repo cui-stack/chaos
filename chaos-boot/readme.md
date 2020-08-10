@@ -34,7 +34,7 @@ docker-compose
 ```
 ### 3. 创建项目firepongo
 ```shell script
-cd chaos-code 
+cd chaos-boot-code 
 run CodeGenerator.main()
 input firepongo 
 input fo_user,fo_product
@@ -44,12 +44,12 @@ input fo_user,fo_product
 <project>
     <parent>
          <groupId>com.cui.tech</groupId>
-         <artifactId>chaos-parent</artifactId>
-         <version>2.2.0-SNAPSHOT</version>
+         <artifactId>chaos-boot-parent</artifactId>
+         <version>2.3.0-SNAPSHOT</version>
          <relativePath/>
     </parent>
     <groupId>com.cui.tech</groupId>
-    <artifactId>okya-service</artifactId>
+    <artifactId>firepongo-service</artifactId>
     <version>0.0.2-SNAPSHOT</version>
     <packaging>jar</packaging>
     <dependencies>
@@ -63,7 +63,7 @@ input fo_user,fo_product
 ### 3.1.Application.java
 ```java
 @MapperScan({"com.cui.tech.iya.service.mapper", "com.cui.tech.manage.service.mapper"})
-@ComponentScan(basePackages = {"com.cui.tech.chaos", "com.cui.tech.firepongo", "com.cui.tech.manage"})
+@ComponentScan(basePackages = {"com.cui.tech.chaos", "com.cui.tech.firepongo"})
 ```
 ### 4. 组件
 #### 4.1后台登录
@@ -99,7 +99,7 @@ public class WxminiLoginService extends WxminiLoginServiceImpl {
 ```
 #### 5.2 Application.java
 ```java
-@ComponentScan(basePackages = {"com.cui.tech.manage"})
+@ComponentScan(basePackages = {"com.cui.tech.chaos"})
 ```
 #### 5.3 使用chaos-manage-back
 ```shell script
@@ -108,6 +108,6 @@ npm run dev
 ```
 ### 6. 使用研发中台
 ```shell script
-cd chaos-center
+cd chaos-boot-center
 npm run dev
 ```
