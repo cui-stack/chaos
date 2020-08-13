@@ -66,17 +66,7 @@ input fo_user,fo_product
 @ComponentScan(basePackages = {"com.cui.tech.chaos", "com.cui.tech.firepongo"})
 ```
 ### 4. 组件
-#### 4.1后台登录
-```java
-@Component("mnLoginService")
-public class ManageLoginService extends ManageLoginServiceImpl {
-    @Override
-    public ManageLoginUser getUserInfo(ManageLoginDto loginDto) {}
-    @Override
-    public void afterLogin(LoginUser loginUser) {}
-}
-```
-#### 4.2. 微信小程序登录
+#### 4.1. 微信小程序登录
 ```java
 @Component("wxLoginService")
 public class WxminiLoginService extends WxminiLoginServiceImpl {

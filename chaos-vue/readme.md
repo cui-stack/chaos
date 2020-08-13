@@ -8,9 +8,9 @@
 | 路由层   | vue-router                    |   ✅          |           |
 | store    | vuex                         |                |            |
 | 网络请求  | axios                        |               |             |
-| UI组件   | elementui                     |               |              |
-| utils     | lodash                       |                |       ?       |
-| mock      |                              |                |            |
+| UI组件   | element-ui                    |               |              |
+| utils    | lodash                       |                |       ?       |
+| mock     |                              |                |            |
 
 ## 管理界面
 ```

@@ -35,8 +35,7 @@ public class RedisService {
         } else {
             ResponseEntity<DataResult> responseEntity =
                     restTemplate.postForEntity(host + "/set", new RedisSetDto(key, value, time), DataResult.class);
-            LinkedHashMap map = (LinkedHashMap) responseEntity.getBody().getData();
-            return (Boolean) map.get("data");
+            return (Boolean) responseEntity.getBody().getData();
         }
     }
 

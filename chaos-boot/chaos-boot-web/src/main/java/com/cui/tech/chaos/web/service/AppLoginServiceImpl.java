@@ -1,6 +1,7 @@
 package com.cui.tech.chaos.web.service;
 
 import com.cui.tech.chaos.model.login.*;
+import com.cui.tech.chaos.web.service.helper.JWTHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.Date;
@@ -10,6 +11,9 @@ public abstract class AppLoginServiceImpl extends BaseLoginServiceImpl {
     private AppLoginKeyService loginKeyService;
 
     public abstract AppLoginUser getUserInfo(AppLoginDto loginDto);
+
+    @Autowired
+    private JWTHelper jwtHelper;
 
     /**
      * 登录处理
@@ -22,17 +26,17 @@ public abstract class AppLoginServiceImpl extends BaseLoginServiceImpl {
         AppLoginDto appLoginDto = (AppLoginDto) loginDto;
         AppLoginUser user = getUserInfo(appLoginDto);
         if (user == null) {
-            user = initUser(appLoginDto);
+            return null;
         } else {
             afterLogin(user);
         }
         user.setIp(loginDto.getIp());
         user.setLoginTime(new Date());
-        redisHelper.set(loginKeyService.key(user.getToken()), user, 8 * 60 * 60);
+        String token = jwtHelper.createToken(user.getMu());
+        user.setToken(token);
+        redisHelper.set(loginKeyService.key(user.getToken()), user, 30 * 24 * 60 * 60);
         return user;
     }
-
-    protected abstract AppLoginUser initUser(AppLoginDto loginDto);
 
     @Override
     public String key(String token) {

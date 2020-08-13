@@ -10,7 +10,7 @@ public interface Constants {
 
     String MANAGE_USER = MANAGE + "_user";
     String WXMINI_USER = WXMINI + "_user";
-    String APP_USER = WXMINI + "_user";
+    String APP_USER = APP + "_user";
 
     String MANAGE_END = MANAGE + "_" + END;
     String WXMINI_END = WXMINI + "_" + END;

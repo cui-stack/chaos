@@ -10,7 +10,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.cui.tech</groupId>
-    <artifactId>chaos-boot-admin</artifactId>
+    <artifactId>chaos-admin</artifactId>
     <version>1.0.0-RELEASE</version>
     <name>chaos-admin</name>
 
