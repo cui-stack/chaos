@@ -1,4 +1,4 @@
-package com.cui.tech.mh.model.dto;
+package com.cui.tech.okya.model.api.dto;
 
 /**
  * @author G.G

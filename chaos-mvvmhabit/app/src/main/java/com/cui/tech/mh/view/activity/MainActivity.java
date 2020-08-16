@@ -1,15 +1,15 @@
-package com.cui.tech.mh.view.activity;
+package com.cui.tech.okya.view.activity;
 
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 
-import com.cui.tech.mh.BR;
-import com.cui.tech.mh.R;
-import com.cui.tech.mh.app.AppViewModelFactory;
-import com.cui.tech.mh.databinding.ActivityMainBinding;
-import com.cui.tech.mh.vm.MainViewModel;
+import com.cui.tech.okya.BR;
+import com.cui.tech.okya.R;
+import com.cui.tech.okya.app.AppViewModelFactory;
+import com.cui.tech.okya.databinding.ActivityMainBinding;
+import com.cui.tech.okya.vm.MainViewModel;
 
 import java.util.List;
 

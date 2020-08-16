@@ -1,39 +1,46 @@
-package com.cui.tech.mh.model.repository;
+package com.cui.tech.okya.model.repository;
 
 
 import androidx.annotation.NonNull;
 import androidx.annotation.VisibleForTesting;
 
-import com.cui.tech.mh.model.entity.LoginUser;
-import com.cui.tech.mh.model.repository.source.HttpDataSource;
-import com.cui.tech.mh.model.repository.source.LocalDataSource;
+import me.goldze.mvvmhabit.base.DataResponse;
+import me.goldze.mvvmhabit.base.PageQuery;
+import me.goldze.mvvmhabit.base.PageResponse;
+import com.cui.tech.okya.model.api.dto.data.OkyaUserData;
+import com.cui.tech.okya.model.api.dto.LoginUser;
+import com.cui.tech.okya.model.datasource.LoginHttpDataSource;
+import com.cui.tech.okya.model.datasource.LoginLocalDataSource;
+import com.cui.tech.okya.model.datasource.UserHttpDataSource;
 
 import io.reactivex.Observable;
 import me.goldze.mvvmhabit.base.BaseModel;
-import me.goldze.mvvmhabit.http.BaseResponse;
 
-/**
- * MVVM的Model层，统一模块的数据仓库，包含网络数据和本地数据（一个应用可以有多个Repositor）
- * Created by goldze on 2019/3/26.
- */
-public class Repository extends BaseModel implements HttpDataSource, LocalDataSource {
+public class Repository extends BaseModel implements LoginHttpDataSource, LoginLocalDataSource, UserHttpDataSource {
     private volatile static Repository INSTANCE = null;
-    private final HttpDataSource mHttpDataSource;
 
-    private final LocalDataSource mLocalDataSource;
+    private final LoginHttpDataSource loginHttpDataSource;
 
-    private Repository(@NonNull HttpDataSource httpDataSource,
-                       @NonNull LocalDataSource localDataSource) {
-        this.mHttpDataSource = httpDataSource;
-        this.mLocalDataSource = localDataSource;
+    private final LoginLocalDataSource LoginLocalDataSource;
+
+    private final UserHttpDataSource userHttpDataSource;
+
+    private Repository(@NonNull LoginHttpDataSource loginHttpDataSource,
+                       @NonNull LoginLocalDataSource loginLocalDataSource,
+                       @NonNull UserHttpDataSource userHttpDataSource) {
+        this.loginHttpDataSource = loginHttpDataSource;
+        this.LoginLocalDataSource = loginLocalDataSource;
+        this.userHttpDataSource = userHttpDataSource;
+
     }
 
-    public static Repository getInstance(HttpDataSource httpDataSource,
-                                         LocalDataSource localDataSource) {
+    public static Repository getInstance(LoginHttpDataSource httpDataSource,
+                                         LoginLocalDataSource localDataSource,
+                                         UserHttpDataSource userHttpDataSource) {
         if (INSTANCE == null) {
             synchronized (Repository.class) {
                 if (INSTANCE == null) {
-                    INSTANCE = new Repository(httpDataSource, localDataSource);
+                    INSTANCE = new Repository(httpDataSource, localDataSource,userHttpDataSource);
                 }
             }
         }
@@ -47,16 +54,31 @@ public class Repository extends BaseModel implements HttpDataSource, LocalDataSo
 
     @Override
     public void saveUserName(String userName) {
-        mLocalDataSource.saveUserName(userName);
+        LoginLocalDataSource.saveUserName(userName);
     }
 
     @Override
     public String getUserName() {
-        return mLocalDataSource.getUserName();
+        return LoginLocalDataSource.getUserName();
     }
 
     @Override
-    public Observable<BaseResponse<LoginUser>> login(String username, String password) {
-        return mHttpDataSource.login(username, password);
+    public Observable<DataResponse<LoginUser>> login(String username, String password) {
+        return loginHttpDataSource.login(username, password);
+    }
+
+    @Override
+    public Observable<DataResponse<OkyaUserData>> one(String mu) {
+        return userHttpDataSource.one(mu);
+    }
+
+    @Override
+    public Observable<DataResponse<OkyaUserData>> list(OkyaUserData data) {
+        return userHttpDataSource.list(data);
+    }
+
+    @Override
+    public Observable<PageResponse<OkyaUserData>> page(PageQuery page, OkyaUserData data) {
+        return userHttpDataSource.page(page, data);
     }
 }

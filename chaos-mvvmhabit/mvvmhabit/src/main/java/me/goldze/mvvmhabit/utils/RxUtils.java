@@ -13,8 +13,10 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.annotations.NonNull;
 import io.reactivex.functions.Function;
 import io.reactivex.schedulers.Schedulers;
+import me.goldze.mvvmhabit.base.DataResponse;
 import me.goldze.mvvmhabit.http.BaseResponse;
 import me.goldze.mvvmhabit.http.ExceptionHandle;
+import retrofit2.Response;
 
 /**
  * Created by goldze on 2017/6/19.
@@ -88,9 +90,9 @@ public class RxUtils {
         }
     }
 
-    private static class HandleFuc<T> implements Function<BaseResponse<T>, T> {
+    private static class HandleFuc<T> implements Function<DataResponse<T>, T> {
         @Override
-        public T apply(BaseResponse<T> response) {
+        public T apply(DataResponse<T> response) {
             if (!response.isOk())
                 throw new RuntimeException(!"".equals(response.getCode() + "" + response.getMsg()) ? response.getMsg() : "");
             return response.getData();

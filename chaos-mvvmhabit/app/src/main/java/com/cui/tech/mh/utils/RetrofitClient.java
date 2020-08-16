@@ -1,9 +1,9 @@
-package com.cui.tech.mh.utils;
+package com.cui.tech.okya.utils;
 
 import android.content.Context;
 import android.text.TextUtils;
 
-import com.cui.tech.mh.BuildConfig;
+import com.cui.tech.okya.BuildConfig;
 
 import java.io.File;
 import java.util.Map;
@@ -39,7 +39,7 @@ public class RetrofitClient {
     //缓存时间
     private static final int CACHE_TIMEOUT = 10 * 1024 * 1024;
     //服务端根路径
-    public static String baseUrl = "http://10.0.2.2:38088/";
+    public static String baseUrl = "http://10.0.2.2:58089/";
 
     private static Context mContext = Utils.getContext();
 
@@ -110,7 +110,7 @@ public class RetrofitClient {
     }
 
     /**
-     * create you ApiService
+     * create you LoginApiService
      * Create an implementation of the API endpoints defined by the {@code service} interface.
      */
     public <T> T create(final Class<T> service) {

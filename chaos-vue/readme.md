@@ -1,4 +1,4 @@
-![](https://img.shields.io/badge/language-java-wheat.svg)
+![](https://img.shields.io/badge/language-javascript-wheat.svg)
 # chaos-vue 基于vue的服务端架构
 ## 框架集成
 |  服务     | 使用技术                     |   进度        |    备注   |

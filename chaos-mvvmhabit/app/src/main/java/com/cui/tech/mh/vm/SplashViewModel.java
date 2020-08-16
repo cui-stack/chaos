@@ -10,14 +10,13 @@ import me.goldze.mvvmhabit.base.BaseViewModel;
 
 /**
  * @author G.G
- * @date 2020/5/12 15:47
+ * @date 2020/8/11 23:07
  */
-public class MainViewModel extends BaseViewModel<Repository> {
-    private static final String TAG = "MainViewModel";
+public class SplashViewModel extends BaseViewModel<Repository> {
+    private static final String TAG = "SplashViewModel";
 
-
-    public MainViewModel(@NonNull Application application, Repository loginRepository) {
-        super(application, loginRepository);
+    public SplashViewModel(@NonNull Application application, Repository repository) {
+        super(application, repository);
     }
 
     @Override

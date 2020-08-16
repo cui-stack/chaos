@@ -1,21 +1,17 @@
-package com.cui.tech.mh.model.repository.source.local;
+package com.cui.tech.okya.model.datasource.impl;
 
-import com.cui.tech.mh.model.repository.source.LocalDataSource;
+import com.cui.tech.okya.model.datasource.LoginLocalDataSource;
 
 import me.goldze.mvvmhabit.utils.SPUtils;
 
-/**
- * 本地数据源，可配合Room框架使用
- * Created by goldze on 2019/3/26.
- */
-public class LocalDataSourceImpl implements LocalDataSource {
-    private volatile static LocalDataSourceImpl INSTANCE = null;
+public class LoginLocalDataSourceImpl implements LoginLocalDataSource {
+    private volatile static LoginLocalDataSourceImpl INSTANCE = null;
 
-    public static LocalDataSourceImpl getInstance() {
+    public static LoginLocalDataSourceImpl getInstance() {
         if (INSTANCE == null) {
-            synchronized (LocalDataSourceImpl.class) {
+            synchronized (LoginLocalDataSourceImpl.class) {
                 if (INSTANCE == null) {
-                    INSTANCE = new LocalDataSourceImpl();
+                    INSTANCE = new LoginLocalDataSourceImpl();
                 }
             }
         }
@@ -26,7 +22,7 @@ public class LocalDataSourceImpl implements LocalDataSource {
         INSTANCE = null;
     }
 
-    private LocalDataSourceImpl() {
+    private LoginLocalDataSourceImpl() {
         //数据库Helper构建
     }
 
