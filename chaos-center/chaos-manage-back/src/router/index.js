@@ -20,6 +20,7 @@ import log from '@/views/log/log'
 import onlineAdmin from '@/views/online/admin'
 import onlineUser from '@/views/online/user'
 import link from '@/views/link/link'
+import env from '@/views/env/env'
 
 
 Vue.use(Router)
@@ -113,6 +114,12 @@ export default new Router({
                     name: 'link',
                     meta: {title: "首页链接", keepAlive: true},
                     component: link
+                },
+                {
+                    path: '/env',
+                    name: 'env',
+                    meta: {title: "环境", keepAlive: true},
+                    component: env
                 }
             ]
         }

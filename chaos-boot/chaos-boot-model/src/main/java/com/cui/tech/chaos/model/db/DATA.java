@@ -9,6 +9,5 @@ import lombok.Data;
  */
 @Data
 public class DATA extends DTO {
-    private String mu;
 
 }

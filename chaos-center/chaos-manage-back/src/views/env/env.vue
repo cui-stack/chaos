@@ -2,7 +2,7 @@
     <el-container>
         <el-header>
             <el-container>
-                <el-button type="primary" v-on:click="showAddForm=true">增加链接
+                <el-button type="primary" v-on:click="showAddForm=true">增加环境
                 </el-button>
             </el-container>
         </el-header>
@@ -29,34 +29,6 @@
                         width="160">
                 </el-table-column>
                 <el-table-column
-                        prop="status"
-                        sortable
-                        label="状态"
-                        width="80">
-                    <template slot-scope="scope">
-                        <div style="color: #67c23a" v-if="scope.row.status=='1'">
-                            正常
-                        </div>
-                        <div style="color: #f56c6c" v-if="scope.row.status=='0'">
-                            停用
-                        </div>
-                    </template>
-                </el-table-column>
-                <el-table-column
-                        prop="type"
-                        sortable
-                        label="类型"
-                        width="80">
-                    <template slot-scope="scope">
-                        <div style="color: #67c23a" v-if="scope.row.status=='1'">
-                            外部
-                        </div>
-                        <div style="color: #f56c6c" v-if="scope.row.status=='0'">
-                            内部
-                        </div>
-                    </template>
-                </el-table-column>
-                <el-table-column
                         prop="createTime"
                         sortable
                         label="创建时间"
@@ -79,7 +51,7 @@
                     @handleSizeChange="handleSizeChange"/>
         </el-main>
         <el-footer>
-            <el-dialog width="35%" title="添加链接" :visible.sync="showAddForm">
+            <el-dialog width="35%" title="添加环境" :visible.sync="showAddForm">
                 <el-form ref="form" :rules="rules" :model="form"
                          label-width="100px"
                          size="small">
@@ -100,7 +72,7 @@
                     </el-form-item>
                 </el-form>
             </el-dialog>
-            <el-dialog width="35%" title="修改链接" :visible.sync="showUpdateForm">
+            <el-dialog width="35%" title="修改环境" :visible.sync="showUpdateForm">
                 <el-form ref="updateForm" :rules="rules" :model="updateForm"
                          label-width="100px"
                          size="small">
@@ -136,17 +108,13 @@
         },
         data() {
             return {
-                table: 'chaos_link',
+                table: 'chaos_env',
                 currentPage: 1,
                 limit: 20,
                 total: 0,
                 tableData: [],
                 showAddForm: false,
                 showUpdateForm: false,
-                platforms: [],
-                platformMu: '',
-                formIsroot: true,
-                updateFormIsroot: true,
                 form: {
                     title: '',
                     link: '',
@@ -172,7 +140,7 @@
                         {
                             min: 2,
                             max: 10,
-                            message: '长度在 2 到 10 个字符',
+                            message: '长度在 2 到 200 个字符',
                             trigger: 'change'
                         }
                     ]

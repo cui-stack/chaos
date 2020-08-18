@@ -17,8 +17,8 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @Accessors(chain = true)
 //@RequiredArgsConstructor(staticName = "of")
-@ApiModel(value = "ChaosLinkData", description = "")
-public class ChaosLinkData extends DATA {
+@ApiModel(value = "ChaosEnvData", description = "")
+public class ChaosEnvData extends DATA {
 
     private String mu;
 
@@ -28,12 +28,7 @@ public class ChaosLinkData extends DATA {
 
     private String info;
 
-    private Integer hits;
-
-    private Long sort;
-
     private LocalDateTime createTime;
 
-    private Integer status;
 
 }

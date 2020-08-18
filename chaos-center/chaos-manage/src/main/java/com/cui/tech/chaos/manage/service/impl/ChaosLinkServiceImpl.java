@@ -18,6 +18,7 @@ import com.cui.tech.chaos.model.service.PageService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.util.StringUtils;
 
 import java.util.List;
 
@@ -64,15 +65,15 @@ public class ChaosLinkServiceImpl extends ServiceImpl<ChaosLinkMapper, ChaosLink
 	public List<ChaosLinkData> selectByData(ChaosLinkData data) {
 		QueryWrapper<ChaosLink> query = new QueryWrapper<ChaosLink>();
 		//query.eq(!StringUtils.isEmpty(data.getPassword()),"password", data.getPassword());
-		query.orderByDesc(Table.ID);
+		query.orderByAsc(Table.SORT);
 		return convertService.convertToDTO(list(query), ChaosLinkData.class);
 	}
 
 	@Override
 	public PageList<ChaosLinkData> selectByPage(PageQueryDto<ChaosLinkData> pageData) {
 		QueryWrapper query = new QueryWrapper();
-		//query.eq(!StringUtils.isEmpty(pageData.getData().getPassword()),"phone", pageData.getData().getPhone());
-		query.orderByDesc(Table.ID);
+		query.eq(!StringUtils.isEmpty(pageData.getData().getStatus()),"status", pageData.getData().getStatus());
+		query.orderByAsc(Table.SORT);
 		return new PageList(page(pageService.page(pageData), query), ChaosLinkData.class);
 	}
 
