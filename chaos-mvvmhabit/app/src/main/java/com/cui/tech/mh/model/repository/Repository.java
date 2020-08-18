@@ -1,17 +1,19 @@
-package com.cui.tech.okya.model.repository;
+package com.cui.tech.mh.model.repository;
 
 
 import androidx.annotation.NonNull;
 import androidx.annotation.VisibleForTesting;
 
+import com.cui.tech.mh.model.api.dto.LoginUser;
+import com.cui.tech.mh.model.api.dto.data.UserData;
+import com.cui.tech.mh.model.datasource.LoginHttpDataSource;
+import com.cui.tech.mh.model.datasource.LoginLocalDataSource;
+import com.cui.tech.mh.model.datasource.UserHttpDataSource;
+
 import me.goldze.mvvmhabit.base.DataResponse;
 import me.goldze.mvvmhabit.base.PageQuery;
 import me.goldze.mvvmhabit.base.PageResponse;
-import com.cui.tech.okya.model.api.dto.data.OkyaUserData;
-import com.cui.tech.okya.model.api.dto.LoginUser;
-import com.cui.tech.okya.model.datasource.LoginHttpDataSource;
-import com.cui.tech.okya.model.datasource.LoginLocalDataSource;
-import com.cui.tech.okya.model.datasource.UserHttpDataSource;
+
 
 import io.reactivex.Observable;
 import me.goldze.mvvmhabit.base.BaseModel;
@@ -21,7 +23,7 @@ public class Repository extends BaseModel implements LoginHttpDataSource, LoginL
 
     private final LoginHttpDataSource loginHttpDataSource;
 
-    private final LoginLocalDataSource LoginLocalDataSource;
+    private final com.cui.tech.mh.model.datasource.LoginLocalDataSource LoginLocalDataSource;
 
     private final UserHttpDataSource userHttpDataSource;
 
@@ -68,17 +70,17 @@ public class Repository extends BaseModel implements LoginHttpDataSource, LoginL
     }
 
     @Override
-    public Observable<DataResponse<OkyaUserData>> one(String mu) {
+    public Observable<DataResponse<UserData>> one(String mu) {
         return userHttpDataSource.one(mu);
     }
 
     @Override
-    public Observable<DataResponse<OkyaUserData>> list(OkyaUserData data) {
+    public Observable<DataResponse<UserData>> list(UserData data) {
         return userHttpDataSource.list(data);
     }
 
     @Override
-    public Observable<PageResponse<OkyaUserData>> page(PageQuery page, OkyaUserData data) {
+    public Observable<PageResponse<UserData>> page(PageQuery page, UserData data) {
         return userHttpDataSource.page(page, data);
     }
 }

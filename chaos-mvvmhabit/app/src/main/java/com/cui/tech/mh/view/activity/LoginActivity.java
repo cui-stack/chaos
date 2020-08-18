@@ -1,4 +1,4 @@
-package com.cui.tech.okya.view.activity;
+package com.cui.tech.mh.view.activity;
 
 import android.os.Bundle;
 import android.text.method.HideReturnsTransformationMethod;
@@ -8,11 +8,12 @@ import androidx.annotation.Nullable;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
-import com.cui.tech.okya.BR;
-import com.cui.tech.okya.R;
-import com.cui.tech.okya.app.AppViewModelFactory;
-import com.cui.tech.okya.databinding.ActivityLoginBinding;
-import com.cui.tech.okya.vm.LoginViewModel;
+
+import com.cui.tech.mh.BR;
+import com.cui.tech.mh.R;
+import com.cui.tech.mh.app.AppViewModelFactory;
+import com.cui.tech.mh.databinding.ActivityLoginBinding;
+import com.cui.tech.mh.vm.LoginViewModel;
 
 import me.goldze.mvvmhabit.base.BaseActivity;
 
@@ -43,10 +44,10 @@ public class LoginActivity extends BaseActivity<ActivityLoginBinding, LoginViewM
                 @Override
                 public void onChanged(@Nullable Boolean aBoolean) {
                 if (viewModel.uc.pSwitchEvent.getValue()) {
-                    binding.tvPasswordVisible.setBackgroundResource(R.drawable.ic_password_visible);
+                    //binding.tvPasswordVisible.setBackgroundResource(R.drawable.ic_password_visible);
                     binding.etPassword.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
                 } else {
-                    binding.tvPasswordVisible.setBackgroundResource(R.drawable.ic_password_invisible);
+                    //binding.tvPasswordVisible.setBackgroundResource(R.drawable.ic_password_invisible);
                     binding.etPassword.setTransformationMethod(PasswordTransformationMethod.getInstance());
                 }
             }

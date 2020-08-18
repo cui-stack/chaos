@@ -1,9 +1,9 @@
-package com.cui.tech.okya.utils;
+package com.cui.tech.mh.utils;
 
 import android.content.Context;
 import android.text.TextUtils;
 
-import com.cui.tech.okya.BuildConfig;
+import com.cui.tech.mh.BuildConfig;
 
 import java.io.File;
 import java.util.Map;

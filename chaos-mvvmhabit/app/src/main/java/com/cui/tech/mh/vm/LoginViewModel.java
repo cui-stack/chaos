@@ -1,4 +1,4 @@
-package com.cui.tech.okya.vm;
+package com.cui.tech.mh.vm;
 
 import android.app.Application;
 import android.text.TextUtils;
@@ -9,8 +9,9 @@ import androidx.annotation.NonNull;
 import androidx.databinding.ObservableField;
 import androidx.databinding.ObservableInt;
 
-import com.cui.tech.okya.model.repository.Repository;
-import com.cui.tech.okya.view.activity.MainActivity;
+
+import com.cui.tech.mh.model.repository.Repository;
+import com.cui.tech.mh.view.activity.MainActivity;
 
 import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Consumer;

@@ -21,8 +21,6 @@
         <module>chaos-boot-starter-web</module>
         <module>chaos-boot-code</module>
 
-        <module>chaos-manage</module>
-        <module>chaos-task</module>
 
     </modules>
 </project>

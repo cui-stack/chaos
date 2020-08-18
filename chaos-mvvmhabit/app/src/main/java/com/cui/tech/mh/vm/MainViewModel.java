@@ -1,10 +1,10 @@
-package com.cui.tech.okya.vm;
+package com.cui.tech.mh.vm;
 
 import android.app.Application;
 
 import androidx.annotation.NonNull;
 
-import com.cui.tech.okya.model.repository.Repository;
+import com.cui.tech.mh.model.repository.Repository;
 
 import me.goldze.mvvmhabit.base.BaseViewModel;
 

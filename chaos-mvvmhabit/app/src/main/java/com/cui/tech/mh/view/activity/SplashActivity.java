@@ -1,17 +1,19 @@
-package com.cui.tech.okya.view.activity;
+package com.cui.tech.mh.view.activity;
 
 import android.os.Bundle;
 import android.os.Handler;
 
 import androidx.lifecycle.ViewModelProviders;
 
-import com.cui.tech.okya.BR;
-import com.cui.tech.okya.R;
-import com.cui.tech.okya.app.AppViewModelFactory;
-import com.cui.tech.okya.databinding.ActivitySplashBinding;
-import com.cui.tech.okya.vm.SplashViewModel;
+
+import com.cui.tech.mh.BR;
+import com.cui.tech.mh.R;
+import com.cui.tech.mh.app.AppViewModelFactory;
+import com.cui.tech.mh.databinding.ActivitySplashBinding;
+import com.cui.tech.mh.vm.SplashViewModel;
 
 import me.goldze.mvvmhabit.base.BaseActivity;
+
 
 /**
  * @author G.G

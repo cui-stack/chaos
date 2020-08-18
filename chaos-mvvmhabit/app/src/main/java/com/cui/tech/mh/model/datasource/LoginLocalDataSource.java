@@ -1,4 +1,4 @@
-package com.cui.tech.okya.model.datasource;
+package com.cui.tech.mh.model.datasource;
 
 public interface LoginLocalDataSource {
 

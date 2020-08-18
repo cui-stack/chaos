@@ -1,12 +1,12 @@
-package com.cui.tech.okya.app;
+package com.cui.tech.mh.app;
 
 import android.content.Context;
 
 import androidx.multidex.MultiDex;
 
-import com.cui.tech.okya.BuildConfig;
-import com.cui.tech.okya.R;
-import com.cui.tech.okya.view.activity.LoginActivity;
+import com.cui.tech.mh.BuildConfig;
+import com.cui.tech.mh.R;
+import com.cui.tech.mh.view.activity.LoginActivity;
 import com.squareup.leakcanary.LeakCanary;
 import com.xuexiang.xui.XUI;
 
@@ -49,7 +49,7 @@ public class AppApplication extends BaseApplication {
                 .showRestartButton(true) //是否显示重启按钮
                 .trackActivities(true) //是否跟踪Activity
                 .minTimeBetweenCrashesMs(2000) //崩溃的间隔时间(毫秒)
-                .errorDrawable(R.mipmap.yabi_splash_screen) //错误图标
+                .errorDrawable(R.mipmap.logo) //错误图标
                 .restartActivity(LoginActivity.class) //重新启动后的activity
 //                .errorActivity(YourCustomErrorActivity.class) //崩溃后的错误activity
 //                .eventListener(new YourCustomEventListener()) //崩溃后的错误监听

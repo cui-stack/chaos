@@ -116,4 +116,11 @@ public class ManageLoginController extends BaseController {
         return getResult(accessLimitService.release(limit));
     }
 
+    @PostMapping("/lock")
+    @ManageLoginToken(roles = {RoleConstant.ADMIN})
+    @ApiOperation(value = "", notes = "", httpMethod = "POST")
+    public DataResult<Boolean> lock(@RequestBody LimitDto limit) {
+        return getResult(accessLimitService.lock(limit));
+    }
+
 }

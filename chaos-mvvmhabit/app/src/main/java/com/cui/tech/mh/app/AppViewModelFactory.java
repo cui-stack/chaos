@@ -1,4 +1,4 @@
-package com.cui.tech.okya.app;
+package com.cui.tech.mh.app;
 
 import android.annotation.SuppressLint;
 import android.app.Application;
@@ -8,11 +8,12 @@ import androidx.annotation.VisibleForTesting;
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.cui.tech.okya.model.repository.Injection;
-import com.cui.tech.okya.model.repository.Repository;
-import com.cui.tech.okya.vm.LoginViewModel;
-import com.cui.tech.okya.vm.MainViewModel;
-import com.cui.tech.okya.vm.SplashViewModel;
+import com.cui.tech.mh.model.repository.Injection;
+import com.cui.tech.mh.model.repository.Repository;
+import com.cui.tech.mh.vm.LoginViewModel;
+import com.cui.tech.mh.vm.MainViewModel;
+import com.cui.tech.mh.vm.SplashViewModel;
+
 
 /**
  * Created by goldze on 2019/3/26.

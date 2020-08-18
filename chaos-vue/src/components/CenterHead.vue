@@ -15,7 +15,7 @@
             }
         },
         created() {
-            this.indexLink = "/iya/#" + this.$store.getters.getRoleinfo.indexLink
+            this.indexLink = "/chaos/#" + this.$store.getters.getRoleinfo.indexLink
         }
     }
 </script>
