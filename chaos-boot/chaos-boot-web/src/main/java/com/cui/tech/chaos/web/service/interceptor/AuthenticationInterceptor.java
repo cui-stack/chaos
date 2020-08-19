@@ -81,7 +81,6 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
                 if (wxLoginService == null) {
                     return false;
                 }
-                //Authorization TODO 替换
                 String token = httpServletRequest.getHeader("token");
                 loginUser = handleWxminiLogin(token, httpServletRequest);
             }

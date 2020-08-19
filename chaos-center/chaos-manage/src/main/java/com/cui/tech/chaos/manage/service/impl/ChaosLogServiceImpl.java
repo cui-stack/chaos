@@ -5,10 +5,10 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.cui.tech.chaos.manage.api.entity.ChaosLog;
-import com.cui.tech.chaos.manage.service.mapper.ChaosLogMapper;
 import com.cui.tech.chaos.manage.api.data.ChaosLogData;
+import com.cui.tech.chaos.manage.api.entity.ChaosLog;
 import com.cui.tech.chaos.manage.api.service.IChaosLogService;
+import com.cui.tech.chaos.manage.service.mapper.ChaosLogMapper;
 import com.cui.tech.chaos.model.db.MU;
 import com.cui.tech.chaos.model.db.Table;
 import com.cui.tech.chaos.model.db.UpdateData;
@@ -86,7 +86,6 @@ public class ChaosLogServiceImpl extends ServiceImpl<ChaosLogMapper, ChaosLog> i
     }
 
     @Override
-    @Async
     public void log(String userMu, String ip, String uri, long time, String request, String response) {
         insertModel(new ChaosLogData(userMu, ip, uri, time, request, response));
     }

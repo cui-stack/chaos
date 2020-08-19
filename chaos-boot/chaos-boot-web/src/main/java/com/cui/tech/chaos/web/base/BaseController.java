@@ -45,6 +45,10 @@ public abstract class BaseController<T> {
         if (StringUtils.isEmpty(token)) {
             return null;
         }
+        return getMnLoginUserByToken(token);
+    }
+
+    public ManageLoginUser getMnLoginUserByToken(String token) {
         String key = manageLoginKeyService.key(jwtHelper.getUserMuInJwtData(token));
         return (ManageLoginUser) redisHelper.get(key);
     }

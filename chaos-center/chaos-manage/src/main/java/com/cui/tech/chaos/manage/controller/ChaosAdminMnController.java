@@ -7,6 +7,8 @@ import com.cui.tech.chaos.manage.api.service.IChaosAdminService;
 import com.cui.tech.chaos.manage.service.tran.AdminTranService;
 import com.cui.tech.chaos.model.db.MU;
 import com.cui.tech.chaos.model.db.UpdateData;
+import com.cui.tech.chaos.model.manage.ChaosAdminGetDto;
+import com.cui.tech.chaos.model.manage.MuGetDto;
 import com.cui.tech.chaos.model.page.PageQueryDto;
 import com.cui.tech.chaos.model.result.DataResult;
 import com.cui.tech.chaos.model.result.PageResult;
@@ -19,6 +21,7 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -37,6 +40,8 @@ import java.util.List;
 @RestController
 @RequestMapping("/manage/chaos_admin")
 public class ChaosAdminMnController extends BaseController {
+    @Value("${app.manage.token:}")
+    private String token;
     @Qualifier("mnLoginService")
     @Autowired
     ILoginService mnLoginService;
@@ -61,6 +66,24 @@ public class ChaosAdminMnController extends BaseController {
     @ApiOperation(value = "", notes = "", httpMethod = "POST")
     public DataResult<ChaosAdmin> one(@RequestBody MU data) throws Exception {
         return getResult(iChaosAdminService.selectByMU(data));
+    }
+
+    @PostMapping("/one_one")
+    @ApiOperation(value = "", notes = "", httpMethod = "POST")
+    public DataResult<ChaosAdmin> one_one(@RequestBody MuGetDto data) throws Exception {
+        if (!data.getToken().equals(token)) {
+            return getResult(false);
+        }
+        return getResult(iChaosAdminService.selectByMU(new MU(data.getMu())));
+    }
+
+    @PostMapping("/get")
+    @ApiOperation(value = "", notes = "", httpMethod = "POST")
+    public DataResult<ChaosAdmin> get(@RequestBody ChaosAdminGetDto data) throws Exception {
+        if (!data.getToken().equals(token)) {
+            return getResult(false);
+        }
+        return getResult(iChaosAdminService.selectByMU(new MU(getMnLoginUserByToken(data.getUserMuToken()).getMu())));
     }
 
     @PostMapping("/update")

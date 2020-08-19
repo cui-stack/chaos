@@ -2,6 +2,7 @@ package com.cui.tech.chaos.web.service;
 
 import com.cui.tech.chaos.model.login.LoginUser;
 import com.cui.tech.chaos.web.service.helper.RedisHelper;
+import com.cui.tech.chaos.web.service.rest.RedisRestService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
 
@@ -18,7 +19,7 @@ public abstract class BaseLoginServiceImpl implements ILoginService {
     @Autowired
     protected RedisHelper redisHelper;
     @Autowired
-    protected RedisService redisService;
+    protected RedisRestService redisService;
 
     @Override
     public boolean doLogout(String msg) {

@@ -1,7 +1,7 @@
 package com.cui.tech.chaos.manage.service.mapper;
 
-import com.cui.tech.chaos.manage.api.entity.ChaosLog;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.cui.tech.chaos.manage.api.entity.ChaosLog;
 
 /**
  * <p>

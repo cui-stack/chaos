@@ -1,7 +1,8 @@
-package com.cui.tech.chaos.web.service;
+package com.cui.tech.chaos.web.service.rest;
 
 import com.cui.tech.chaos.model.login.ManageLoginUser;
-import com.cui.tech.chaos.model.redis.RedisSetDto;
+import com.cui.tech.chaos.model.manage.RedisGetDto;
+import com.cui.tech.chaos.model.manage.RedisSetDto;
 import com.cui.tech.chaos.model.result.DataResult;
 import com.cui.tech.chaos.model.role.ManageLoginUserRole;
 import com.cui.tech.chaos.web.service.helper.RedisHelper;
@@ -19,12 +20,13 @@ import java.util.LinkedHashMap;
  * @date 2020/8/6 11:04
  */
 @Component
-public class RedisService {
+public class RedisRestService {
     @Autowired
     protected RedisHelper redisHelper;
-
     @Value("${app.manage.host:}")
     private String host;
+    @Value("${app.manage.token:}")
+    private String token;
 
     @Autowired
     private RestTemplate restTemplate;
@@ -34,7 +36,7 @@ public class RedisService {
             return redisHelper.set(key, value, time);
         } else {
             ResponseEntity<DataResult> responseEntity =
-                    restTemplate.postForEntity(host + "/set", new RedisSetDto(key, value, time), DataResult.class);
+                    restTemplate.postForEntity(host + "/manage/data/set", new RedisSetDto(token, key, value, time), DataResult.class);
             return (Boolean) responseEntity.getBody().getData();
         }
     }
@@ -44,7 +46,7 @@ public class RedisService {
             return redisHelper.get(key);
         } else {
             ResponseEntity<DataResult> responseEntity =
-                    restTemplate.postForEntity(host + "/get", key, DataResult.class);
+                    restTemplate.postForEntity(host + "/manage/data/get", new RedisGetDto(token, key), DataResult.class);
             LinkedHashMap map = (LinkedHashMap) responseEntity.getBody().getData();
             LinkedHashMap roleMap = (LinkedHashMap) map.get("role");
             ManageLoginUserRole role = new ManageLoginUserRole((String) roleMap.get("name"), (String) roleMap.get("info"), (String) roleMap.get("indexLink"));
