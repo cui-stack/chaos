@@ -8,7 +8,7 @@ Vue.prototype.$axios = axios
 axios.defaults.headers.post['Content-Type'] = 'application/json';
 const httpService = axios.create({
   baseURL: baseUrl,
-  timeout: 3000
+  timeout: 30000
 });
 
 httpService.interceptors.request.use(
