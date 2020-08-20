@@ -1,9 +1,9 @@
-let baseUrl = "/api";
-switch (process.env.NODE_ENV) {
-    case 'dev':
+let baseUrl = "";
+switch (process.env.VUE_APP_ENV) {
+    case 'development':
         baseUrl = "https://dev.firepongo.tech"
         break
-    case 'test':
+    case 'testing':
         baseUrl = "https://test.firepongo.tech"
         break
     case 'production':

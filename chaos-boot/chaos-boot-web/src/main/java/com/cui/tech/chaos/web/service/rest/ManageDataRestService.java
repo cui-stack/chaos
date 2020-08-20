@@ -20,7 +20,7 @@ import java.util.LinkedHashMap;
  * @date 2020/8/6 11:04
  */
 @Component
-public class RedisRestService {
+public class ManageDataRestService {
     @Autowired
     protected RedisHelper redisHelper;
     @Value("${app.manage.host:}")
@@ -34,9 +34,16 @@ public class RedisRestService {
     public boolean set(String key, Object value, long time) {
         if (StringUtils.isEmpty(host)) {
             return redisHelper.set(key, value, time);
+        }
+        return false;
+    }
+
+    public boolean refreshToken(String key, Object value, long time) {
+        if (StringUtils.isEmpty(host)) {
+            return redisHelper.set(key, value, time);
         } else {
             ResponseEntity<DataResult> responseEntity =
-                    restTemplate.postForEntity(host + "/manage/data/set", new RedisSetDto(token, key, value, time), DataResult.class);
+                    restTemplate.postForEntity(host + "/manage/data/refreshToken", new RedisSetDto(token, key, value, time), DataResult.class);
             return (Boolean) responseEntity.getBody().getData();
         }
     }

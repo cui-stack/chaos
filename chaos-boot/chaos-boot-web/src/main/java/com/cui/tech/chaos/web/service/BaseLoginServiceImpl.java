@@ -2,7 +2,7 @@ package com.cui.tech.chaos.web.service;
 
 import com.cui.tech.chaos.model.login.LoginUser;
 import com.cui.tech.chaos.web.service.helper.RedisHelper;
-import com.cui.tech.chaos.web.service.rest.RedisRestService;
+import com.cui.tech.chaos.web.service.rest.ManageDataRestService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
 
@@ -19,7 +19,7 @@ public abstract class BaseLoginServiceImpl implements ILoginService {
     @Autowired
     protected RedisHelper redisHelper;
     @Autowired
-    protected RedisRestService redisService;
+    protected ManageDataRestService redisService;
 
     @Override
     public boolean doLogout(String msg) {
@@ -30,7 +30,7 @@ public abstract class BaseLoginServiceImpl implements ILoginService {
     @Override
     public List loginUsers() {
         Set keys = redisHelper.keys(getRedisLoginUser() + "*");
-        ArrayList list = (ArrayList) keys.stream().map(key -> redisService.get((String) key)).collect(Collectors.toList());
+        ArrayList list = (ArrayList) keys.stream().map(key -> redisHelper.get((String) key)).collect(Collectors.toList());
         return list;
     }
 

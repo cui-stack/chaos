@@ -47,7 +47,7 @@ public abstract class ManageLoginServiceImpl extends BaseLoginServiceImpl {
         }
         String newToken = jwtHelper.createToken(user.getMu());
         user.setToken(newToken);
-        redisService.set(loginKeyService.key(userMu), user,7 * 24 * 60 * 60);
+        redisService.refreshToken(loginKeyService.key(userMu), user,7 * 24 * 60 * 60);
         return newToken;
     }
 

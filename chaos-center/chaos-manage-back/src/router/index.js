@@ -7,7 +7,6 @@ import index from '@/views/index/index'
 import admin from '@/views/admin/admin'
 import addAdmin from '@/views/admin/addAdmin'
 import updateAdmin from '@/views/admin/updateAdmin'
-import limit from '@/views/admin/limit'
 
 import role from '@/views/role/role'
 
@@ -18,7 +17,6 @@ import platform from '@/views/platform/platform'
 import log from '@/views/log/log'
 
 import onlineAdmin from '@/views/online/admin'
-import onlineUser from '@/views/online/user'
 import link from '@/views/link/link'
 import env from '@/views/env/env'
 
@@ -70,12 +68,6 @@ export default new Router({
                     component: updateAdmin
                 },
                 {
-                    path: '/limit',
-                    name: 'limit',
-                    meta: {title: "访问限制"},
-                    component: limit
-                },
-                {
                     path: '/role',
                     name: 'role',
                     meta: {title: "角色"},
@@ -102,12 +94,6 @@ export default new Router({
                     name: 'onlineAdmin',
                     meta: {title: "在线管理员", keepAlive: true},
                     component: onlineAdmin
-                },
-                {
-                    path: '/onlineUser',
-                    name: 'onlineUser',
-                    meta: {title: "在线用户", keepAlive: true},
-                    component: onlineUser
                 },
                 {
                     path: '/link',

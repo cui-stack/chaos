@@ -12,7 +12,7 @@
                 </li>
             </ul>
             <br>
-            <el-select v-model="host" placeholder="请选择">
+            <el-select style="margin-top: 10px" v-model="host" placeholder="请选择">
                 <el-option
                         v-for="item in envs"
                         :key="item.mu"

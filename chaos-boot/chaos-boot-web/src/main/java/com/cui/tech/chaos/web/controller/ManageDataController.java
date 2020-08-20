@@ -2,6 +2,7 @@ package com.cui.tech.chaos.web.controller;
 
 import com.cui.tech.chaos.model.login.ManageLoginUser;
 import com.cui.tech.chaos.model.manage.ChaosAdminGetDto;
+import com.cui.tech.chaos.model.manage.ManageRefreshSetDto;
 import com.cui.tech.chaos.model.manage.RedisGetDto;
 import com.cui.tech.chaos.web.base.BaseController;
 import com.cui.tech.chaos.model.manage.RedisSetDto;
@@ -55,6 +56,18 @@ public class ManageDataController extends BaseController {
         }
         if (redisHelper.hasKey(redisSetDto.getKey())) {
             return getResult(redisHelper.set(redisSetDto.getKey(), redisSetDto.getValue(), redisSetDto.getTime()));
+        } else {
+            return getResult(false);
+        }
+    }
+    @PostMapping("/refreshToken")
+    @ApiOperation(value = "", notes = "", httpMethod = "POST")
+    public DataResult<Boolean> refreshToken(@RequestBody ManageRefreshSetDto setDto) {
+        if (!setDto.getToken().equals(token)) {
+            return getResult(false);
+        }
+        if (redisHelper.hasKey(setDto.getKey())) {
+            return getResult(redisHelper.set(setDto.getKey(), setDto.getValue(), setDto.getTime()));
         } else {
             return getResult(false);
         }

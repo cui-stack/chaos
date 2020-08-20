@@ -39,5 +39,6 @@
         WHERE
             ia.is_delete=0 AND iar.is_delete=0 AND ir.is_delete=0 AND irp.is_delete=0 AND
             ia.mu = #{mu}
+        ORDER BY t.id
     </select>
 </mapper>
