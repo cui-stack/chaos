@@ -19,6 +19,7 @@
         <module>chaos-boot-starter</module>
         <module>chaos-boot-starter-app</module>
         <module>chaos-boot-starter-web</module>
+
         <module>chaos-boot-code</module>
 
 

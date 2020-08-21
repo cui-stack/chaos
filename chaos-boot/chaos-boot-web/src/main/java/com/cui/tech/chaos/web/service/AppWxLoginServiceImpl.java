@@ -3,6 +3,7 @@ package com.cui.tech.chaos.web.service;
 import com.cui.tech.chaos.model.login.LoginDto;
 import com.cui.tech.chaos.model.login.LoginUser;
 import org.springframework.stereotype.Component;
+import org.springframework.util.StringUtils;
 
 /**
  * @author G.G
@@ -29,4 +30,5 @@ public class AppWxLoginServiceImpl extends BaseLoginServiceImpl {
     public String getRedisLoginUser() {
         return null;
     }
+
 }

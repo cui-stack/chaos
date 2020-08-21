@@ -1,10 +1,12 @@
 package com.cui.tech.chaos.web.service;
 
 import com.cui.tech.chaos.model.login.LoginDto;
+import com.cui.tech.chaos.model.login.LoginUser;
 import com.cui.tech.chaos.model.login.ManageLoginDto;
 import com.cui.tech.chaos.model.login.ManageLoginUser;
 import com.cui.tech.chaos.web.service.helper.JWTHelper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.StringUtils;
 
 import java.util.Date;
 import java.util.Set;
@@ -67,6 +69,14 @@ public abstract class ManageLoginServiceImpl extends BaseLoginServiceImpl {
     @Override
     public String getRedisLoginUser() {
         return loginKeyService.REDIS_LOGIN_USER;
+    }
+
+    @Override
+    public LoginUser getLoginUser(String msg) {
+        if (StringUtils.isEmpty(msg)) {
+            return null;
+        }
+        return(LoginUser) redisService.get(key(msg));
     }
 
 }

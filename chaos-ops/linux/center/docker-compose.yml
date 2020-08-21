@@ -87,8 +87,6 @@ services:
   xxljob:
     image: firepongo.tech:8288/cui/xxljob:latest
     container_name: c-xxljob
-    depends_on:
-      - mysql
     volumes:
       - ./xxljob/applogs:/data/applogs
     ports:

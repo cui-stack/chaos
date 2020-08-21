@@ -33,12 +33,12 @@ public abstract class BaseLoginServiceImpl implements ILoginService {
         ArrayList list = (ArrayList) keys.stream().map(key -> redisHelper.get((String) key)).collect(Collectors.toList());
         return list;
     }
-
     @Override
     public LoginUser getLoginUser(String msg) {
         if (StringUtils.isEmpty(msg)) {
             return null;
         }
-        return(LoginUser) redisService.get(key(msg));
+        return(LoginUser) redisHelper.get(key(msg));
     }
+
 }

@@ -13,6 +13,7 @@
     <modules>
         <module>chaos-manage</module>
         <module>chaos-task</module>
+        <module>chaos-admin</module>
 
     </modules>
 </project>

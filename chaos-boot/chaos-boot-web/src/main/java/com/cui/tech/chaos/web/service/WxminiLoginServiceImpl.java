@@ -1,9 +1,11 @@
 package com.cui.tech.chaos.web.service;
 
 import com.cui.tech.chaos.model.login.LoginDto;
+import com.cui.tech.chaos.model.login.LoginUser;
 import com.cui.tech.chaos.model.login.WxMiniLoginDto;
 import com.cui.tech.chaos.model.login.WxMiniLoginUser;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.StringUtils;
 
 import java.util.Date;
 
@@ -47,4 +49,6 @@ public abstract class WxminiLoginServiceImpl extends BaseLoginServiceImpl {
     public String getRedisLoginUser() {
         return loginKeyService.REDIS_LOGIN_USER;
     }
+
+
 }
