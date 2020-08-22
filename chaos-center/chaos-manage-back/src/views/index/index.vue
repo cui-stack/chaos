@@ -52,7 +52,7 @@
         name: 'Index',
         data() {
             return {
-                links: [], envs: [], host: 'http://iya101.com', port: ':8089',
+                links: [], envs: [], host: 'localhost', port: ':8089',
                 apiLink: '/swagger-ui.html#',
                 services: [
                     {
