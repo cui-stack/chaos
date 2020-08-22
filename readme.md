@@ -9,7 +9,7 @@
 |-----------------|------------------------|---------|---------------|----|
 |  chaos-ops      | docker                 |   ✅    |  运维架构      |      |
 |  chaos-boot     | springboot+dubbo       |   ✅    |  服务端架构   |[快速开始](https://gitee.com/c-stack/chaos/blob/master/chaos-boot/readme.md)|
-|  chaos-cloud    | springcloud            |   ✅    |  服务端架构    |       |
+|  chaos-cloud    | springcloud            |   ✅    |  服务端架构    |[快速开始](https://gitee.com/c-stack/chaos/blob/master/chaos-center/readme.md)       |
 |  chaos-vue      | vue+vuex+axios         |   ✅    |  后台架构      |[快速开始](https://gitee.com/c-stack/chaos/tree/master/chaos-vue/readme.md)    |
 | chaos-wordpress | wordpress              |   ✅    |               |     |
 |  chaos-ios      |                        |   🏗    |  IOS          |     |
