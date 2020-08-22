@@ -12,7 +12,7 @@
                 </li>
             </ul>
             <br>
-            <el-select style="margin-top: 10px" v-model="host" placeholder="请选择">
+            <el-select style="margin-top: 20px;width:100px" v-model="host" placeholder="请选择">
                 <el-option
                         v-for="item in envs"
                         :key="item.mu"
@@ -33,20 +33,12 @@
                 </li>
             </ul>
             <br>
-            <el-select v-model="hs" style="width: 100px;">
-                <el-option
-                        v-for="(item,i) in hss"
-                        :key="i"
-                        :label="item.head"
-                        :value="item.head">
-                </el-option>
-            </el-select>
             <el-input v-model="port" style="width: 420px;margin-top: 10px">
                 <template slot="prepend">{{host}}</template>
                 <template slot="append">{{apiLink}}</template>
             </el-input>
             <a style="margin-left: 10px"
-               :href=hs+host+port+apiLink
+               :href=host+port+apiLink
                target="_blank">API管理</a>
         </el-main>
     </el-container>
@@ -60,15 +52,7 @@
         name: 'Index',
         data() {
             return {
-                links: [], envs: [], host: 'iya101.com', port: ':8089',
-                hss: [
-                    {
-                        head: 'http://',
-                    },
-                    {
-                        head: 'https://',
-                    },
-                ], hs: 'https://',
+                links: [], envs: [], host: 'http://iya101.com', port: ':8089',
                 apiLink: '/swagger-ui.html#',
                 services: [
                     {

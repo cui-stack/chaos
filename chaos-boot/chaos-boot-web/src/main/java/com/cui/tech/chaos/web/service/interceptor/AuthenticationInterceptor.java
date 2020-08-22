@@ -130,7 +130,12 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
         if (jwtData.getUserMu() == null) {
             throw new AuthenticationException(ResultEnum.LOGIN_AGAIN, "无效token，请重新登录", httpServletRequest);
         }
-        ManageLoginUser loginUser = (ManageLoginUser) mnLoginService.getLoginUser(jwtData.getUserMu());
+        ManageLoginUser loginUser = null;
+        try {
+            loginUser = (ManageLoginUser) mnLoginService.getLoginUser(jwtData.getUserMu());
+        } catch (Exception e) {
+            throw new AuthenticationException(ResultEnum.LOGIN_AGAIN, "无效token，请重新登录", httpServletRequest);
+        }
         log.info("后台用户登录,用户token:[{}],session:[{}]", token, loginUser);
         if (StringUtils.isEmpty(loginUser)) {
             throw new AuthenticationException(ResultEnum.LOGIN_AGAIN, "用户不存在，请重新登录", httpServletRequest);
