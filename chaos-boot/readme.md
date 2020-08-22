@@ -29,7 +29,7 @@ firepongo.tech
 ```
 ### 2. 环境部署
 ```shell script
-cd ./chaos-ops/chaos-boot/chaos-center
+cd ./chaos-ops/linux/center
 docker-compose
 ```
 ### 3. 创建项目firepongo
@@ -77,27 +77,4 @@ public class WxminiLoginService extends WxminiLoginServiceImpl {
     @Override
     protected WxMiniLoginUser initUser(WxMiniLoginDto loginDto) {}
 }
-```
-### 5. 使用混沌后台
-#### 5.1 pom.xml
-```xml
-<dependency>
-    <groupId>com.cui.tech</groupId>
-    <artifactId>chaos-manage</artifactId>
-    <version>0.0.2-SNAPSHOT</version>
-</dependency>
-```
-#### 5.2 Application.java
-```java
-@ComponentScan(basePackages = {"com.cui.tech.chaos"})
-```
-#### 5.3 使用chaos-manage-back
-```shell script
-cd chaos-manage-back
-npm run dev
-```
-### 6. 使用研发中台
-```shell script
-cd chaos-boot-center
-npm run dev
 ```

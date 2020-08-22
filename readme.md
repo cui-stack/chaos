@@ -25,6 +25,6 @@
 |-----------------|---------------------------|-------------------|
 |  chaos-ops      |    运维端                 |                    |
 |  chaos-boot     |    服务端                 | 2.3.0-SNAPSHOT     |
-|  chaos-vue      |    后台前端               |  /back             |
+|  chaos-vue      |    后台前端               |  页面/back             |
 |  chaos-txmini   |    小程序端               |                    |
-|  chaos-center   |    研发中台               |  /manage           |
+|  chaos-center   |    研发中台               |  服务/chaos 页面/manage           |
