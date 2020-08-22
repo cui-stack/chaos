@@ -26,7 +26,7 @@ services:
     networks:
       - cui-ci
   rabbitmq:
-    image: rabbitmq:management-alpine
+    image: rabbitmq:management
     container_name: c-rabbitmq
     environment:
       - RABBITMQ_DEFAULT_USER=admin
@@ -52,14 +52,6 @@ services:
     volumes:
       - ./zookeeper:/conf/
     restart: always
-  zipkin:
-    image: openzipkin/zipkin:latest
-    container_name: c-zipkin
-    networks:
-      - cui-ci
-    ports:
-      - 9411:9411
-    restart: always
   dubbo-admin:
     image: firepongo.tech:8288/cui/dubbo-admin:latest
     container_name: c-dubbo-admin
@@ -71,14 +63,6 @@ services:
       - zookeeper
     ports:
       - 18888:18888
-    restart: always
-  chaos-admin:
-    image: firepongo.tech:8288/cui/chaos-admin:latest
-    container_name: c-chaos-admin
-    networks:
-      - cui-ci
-    ports:
-      - 8000:8000
     restart: always
 networks:
   cui-ci:
