@@ -48,7 +48,13 @@ public class ChaosLogMnController extends BaseController {
             return getResult(false);
         }
         validate(bindingResult);
-        ChaosLogData cld = new ChaosLogData(getMnLoginUserByToken(data.getUserMuToken()).getMu(), data.getIp(), data.getUri(), data.getTime(), data.getRequest(), data.getResponse());
+        String userMu = null;
+        if (data.getUri().startsWith("/api") || data.getUri().startsWith("/wxmini")) {
+            userMu = data.getUserMuToken();
+        } else if (data.getUri().startsWith("/manage")) {
+            userMu = getMnLoginUserByToken(data.getUserMuToken()).getMu();
+        }
+        ChaosLogData cld = new ChaosLogData(userMu, data.getIp(), data.getUri(), data.getTime(), data.getRequest(), data.getResponse());
         return getResult(iChaosLogService.insertModel(cld));
     }
 

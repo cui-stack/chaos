@@ -29,12 +29,18 @@ public class ChaosLogRestService {
     private String token;
     @Autowired
     private RestTemplate restTemplate;
+    @Autowired(required = false)
+    private ILogService iLogService;
 
-    public void log(String userMuToken, String remoteAddress, String requestURI, long time, String request, String response) {
+    public void log(String userMuToken, String ip, String uri, long time, String request, String response) {
         if (!StringUtils.isEmpty(host)) {
             ResponseEntity<DataResult> responseEntity =
-                    restTemplate.postForEntity(host + "/manage/chaos_log/add", new ChaosLogAddDto(token, userMuToken, remoteAddress, requestURI, time, request.substring(0, request.length() > 250 ? 250 : request.length()), response.substring(0, response.length() > 250 ? 250 : response.length())), DataResult.class);
+                    restTemplate.postForEntity(host + "/manage/chaos_log/add", new ChaosLogAddDto(token, userMuToken, ip, uri, time, request.substring(0, request.length() > 250 ? 250 : request.length()), response.substring(0, response.length() > 250 ? 250 : response.length())), DataResult.class);
             LinkedHashMap map = (LinkedHashMap) responseEntity.getBody().getData();
+        } else {
+            if (iLogService != null) {
+                iLogService.log(userMuToken, ip, uri, time, request, response);
+            }
         }
     }
 }

@@ -58,6 +58,10 @@ public abstract class BaseController<T> {
         if (StringUtils.isEmpty(token)) {
             return null;
         }
+        return (WxMiniLoginUser) getWxLoginUserByToken(token);
+    }
+
+    public WxMiniLoginUser getWxLoginUserByToken(String token) {
         String key = wxminiLoginKeyService.key(token);
         return (WxMiniLoginUser) redisHelper.get(key);
     }

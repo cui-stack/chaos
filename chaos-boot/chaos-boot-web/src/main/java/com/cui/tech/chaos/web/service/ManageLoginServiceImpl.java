@@ -4,6 +4,8 @@ import com.cui.tech.chaos.model.login.LoginDto;
 import com.cui.tech.chaos.model.login.LoginUser;
 import com.cui.tech.chaos.model.login.ManageLoginDto;
 import com.cui.tech.chaos.model.login.ManageLoginUser;
+import com.cui.tech.chaos.model.result.ResultEnum;
+import com.cui.tech.chaos.web.exception.AuthenticationException;
 import com.cui.tech.chaos.web.service.helper.JWTHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
@@ -43,13 +45,18 @@ public abstract class ManageLoginServiceImpl extends BaseLoginServiceImpl {
 
     @Override
     public String refreshToken(String userMu) {
-        ManageLoginUser user = (ManageLoginUser) redisService.get(loginKeyService.key(userMu));
+        ManageLoginUser user;
+        try {
+            user = (ManageLoginUser) redisService.get(loginKeyService.key(userMu));
+        } catch (Exception e) {
+            throw new AuthenticationException(ResultEnum.LOGIN_AGAIN, "无效token，请重新登录");
+        }
         if (user == null) {
             return null;
         }
         String newToken = jwtHelper.createToken(user.getMu());
         user.setToken(newToken);
-        redisService.refreshToken(loginKeyService.key(userMu), user,7 * 24 * 60 * 60);
+        redisService.refreshToken(loginKeyService.key(userMu), user, 7 * 24 * 60 * 60);
         return newToken;
     }
 
@@ -76,7 +83,11 @@ public abstract class ManageLoginServiceImpl extends BaseLoginServiceImpl {
         if (StringUtils.isEmpty(msg)) {
             return null;
         }
-        return(LoginUser) redisService.get(key(msg));
+        try {
+            return (LoginUser) redisService.get(key(msg));
+        } catch (Exception e) {
+            throw new AuthenticationException(ResultEnum.LOGIN_AGAIN, "无效token，请重新登录");
+        }
     }
 
 }
