@@ -4,7 +4,7 @@ package com.cui.tech.chaos.web.controller;
 import com.cui.tech.chaos.web.annotation.ManageLoginToken;
 import com.cui.tech.chaos.web.base.BaseController;
 import com.cui.tech.chaos.web.service.AccessLimitService;
-import com.cui.tech.chaos.web.service.ILoginService;
+import com.cui.tech.chaos.model.service.ILoginService;
 import com.cui.tech.chaos.model.login.LoginUser;
 import com.cui.tech.chaos.model.login.ManageLoginDto;
 import com.cui.tech.chaos.model.login.ManageLoginUser;

@@ -17,7 +17,7 @@ import com.cui.tech.chaos.model.login.ManageLoginDto;
 import com.cui.tech.chaos.model.login.ManageLoginUser;
 import com.cui.tech.chaos.model.page.PageList;
 import com.cui.tech.chaos.model.page.PageQueryDto;
-import com.cui.tech.chaos.web.service.IMnLoginUserService;
+import com.cui.tech.chaos.model.service.IMnLoginUserService;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Component;

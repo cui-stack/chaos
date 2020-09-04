@@ -8,7 +8,7 @@ import com.cui.tech.chaos.model.db.MU;
 import com.cui.tech.chaos.model.db.UpdateData;
 import com.cui.tech.chaos.model.page.PageList;
 import com.cui.tech.chaos.model.page.PageQueryDto;
-import com.cui.tech.chaos.web.service.IMnLoginUserService;
+import com.cui.tech.chaos.model.service.IMnLoginUserService;
 
 import java.util.List;
 

@@ -1,6 +1,7 @@
 package com.cui.tech.chaos.web.service;
 
 import com.cui.tech.chaos.model.login.LoginUser;
+import com.cui.tech.chaos.model.service.ILoginService;
 import com.cui.tech.chaos.web.service.helper.RedisHelper;
 import com.cui.tech.chaos.web.service.rest.ManageDataRestService;
 import org.springframework.beans.factory.annotation.Autowired;

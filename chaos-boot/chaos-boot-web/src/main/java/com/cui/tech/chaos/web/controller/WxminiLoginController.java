@@ -3,7 +3,7 @@ package com.cui.tech.chaos.web.controller;
 
 import com.alibaba.fastjson.JSONObject;
 import com.cui.tech.chaos.web.base.BaseController;
-import com.cui.tech.chaos.web.service.ILoginService;
+import com.cui.tech.chaos.model.service.ILoginService;
 import com.cui.tech.chaos.model.login.WxMiniLoginDto;
 import com.cui.tech.chaos.model.login.WxMiniLoginUser;
 import com.cui.tech.chaos.model.result.DataResult;

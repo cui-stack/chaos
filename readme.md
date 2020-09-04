@@ -2,7 +2,33 @@
 ![](https://img.shields.io/badge/language-javascript-wheat.svg)
 ![](https://img.shields.io/badge/license-MIT-000000.svg)
 
-# chaos 极速产品架构
+# chaos 快速应用架构
+技术全栈
+|         | 架构 | 构成             | chaos  |   进度  |    备注       |
+|-----------------|------------------------|---------|---------------|----|-----------------|
+|  多端  | uni-app |                  |       |       |      |
+|  | taro+taro-ui |  |  | 🏗 |  |
+|  | react-native |  |  |  |  |
+|  | flux |  |  |  |  |
+| PC-官网 | ? |  |  |  |  |
+| PC-后台 | vue+element |  | chaos-vue |  |  |
+|  | umi | react+ant.design.pro | chaso-umi |  |  |
+| 安卓 | mvvmhabbit |  | chaos-mvvmhabit |  |  |
+| IOS | ? |  |  |  |  |
+| 后端 | springboot+dubbo |  | chaos-boot | ✅ |  |
+|  | springcloud |  |  |  |  |
+|  | thinkphp |  |  |  |  |
+|  | koa+express |  |  |  |  |
+|  | python |  |  |  |  |
+|  | go |  |  |  |  |
+| 运维 | docker |  |  |  |  |
+|  | k8s |  |  |  |  |
+| 大数据 | hadoop |  |  |  |  |
+|  | spark |  |  |  |  |
+| 游戏 | cocos |  |  |  |  |
+| AI |  |  |  |  |  |
+|  |  |  |  |  |  |
+
 基于chaos架构可以快速构建一个拥有业内先进成熟研发技术的互联网产品
 
 |  服务           | 使用技术                |   进度  |    备注       |介绍|
@@ -21,7 +47,7 @@
 |  chaos-test     |                        |   🏗    |  测试架构      |     |
 
 # 最佳实践
-|  架构           | 介绍                      |   备注             | 
+|  架构           | 介绍                      |   备注             |
 |-----------------|---------------------------|-------------------|
 |  chaos-ops      |    运维端                 |                    |
 |  chaos-boot     |    服务端                 | 2.3.0-SNAPSHOT     |

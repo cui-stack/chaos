@@ -6,7 +6,7 @@ import com.cui.tech.chaos.web.annotation.ManageLoginToken;
 import com.cui.tech.chaos.web.annotation.WxminiLoginToken;
 import com.cui.tech.chaos.web.exception.AuthenticationException;
 import com.cui.tech.chaos.web.service.AccessLimitService;
-import com.cui.tech.chaos.web.service.ILoginService;
+import com.cui.tech.chaos.model.service.ILoginService;
 import com.cui.tech.chaos.model.login.JwtData;
 import com.cui.tech.chaos.model.login.LoginUser;
 import com.cui.tech.chaos.model.login.ManageLoginUser;

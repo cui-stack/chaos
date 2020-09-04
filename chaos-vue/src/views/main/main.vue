@@ -34,7 +34,7 @@
                 asideWidth: 300
             }
         },
-        mounted() {
+        created() {
             if (!this.$store.getters.getUserinfo.username) {
                 this.$router.push('/')
             }
