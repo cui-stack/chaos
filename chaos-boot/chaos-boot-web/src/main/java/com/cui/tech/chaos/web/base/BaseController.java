@@ -1,6 +1,7 @@
 package com.cui.tech.chaos.web.base;
 
 
+import com.cui.tech.chaos.model.db.DATA;
 import com.cui.tech.chaos.model.exception.BusinessException;
 import com.cui.tech.chaos.model.login.ManageLoginUser;
 import com.cui.tech.chaos.model.login.WxMiniLoginUser;
@@ -168,8 +169,16 @@ public abstract class BaseController<T> {
     }
 
     public DataResult<T> getResult(T data) {
+        return getResult(data, false);
+    }
+
+    public DataResult<T> getResult(T data, boolean isBlank) {
         DataResult dataResult = new DataResult();
-        dataResult.setData(data);
+        if (isBlank && data == null) {
+            dataResult.setData(new DATA());
+        } else {
+            dataResult.setData(data);
+        }
         return dataResult;
     }
 

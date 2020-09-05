@@ -30,6 +30,9 @@ public class ConvertService<T extends Model> {
      */
     public DTO convertToDTO(Model mm, Class c) {
         DTO t = null;
+        if (mm == null) {
+            return t;
+        }
         try {
             t = (DTO) c.newInstance();
         } catch (InstantiationException e) {
@@ -61,6 +64,9 @@ public class ConvertService<T extends Model> {
      */
     public MuModel convertToMuModel(DTO t, Class c) {
         MuModel mm = null;
+        if (t == null) {
+            return mm;
+        }
         try {
             mm = (MuModel) c.newInstance();
         } catch (InstantiationException e) {
