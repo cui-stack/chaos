@@ -9,7 +9,7 @@
 |  多端  | uni-app |                  |       |       |      |
 |  | taro+taro-ui |  |  | 🏗 |  |
 |  | react-native |  |  |  |  |
-|  | flux |  |  |  |  |
+|  | Flutter  |  |  |  |  |
 | PC-官网 | ? |  |  |  |  |
 | PC-后台 | vue+element |  | chaos-vue |  |  |
 |  | umi | react+ant.design.pro | chaso-umi |  |  |
