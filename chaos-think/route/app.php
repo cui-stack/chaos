@@ -10,8 +10,14 @@
 // +----------------------------------------------------------------------
 use think\facade\Route;
 
-Route::get('think', function () {
-    return 'hello,ThinkPHP6!';
-});
+Route::get('info/add/:data', 'info/one');
 
-Route::get('hello/:name', 'index/hello');
+Route::get('info/delete/:mu', 'info/delete');
+
+Route::get('info/update/:mu/:data', 'info/update');
+
+Route::get('info/one/:mu', 'info/one');
+
+Route::get('info/list/:data', 'info/list');
+
+Route::get('info/page/:page', 'info/page');
