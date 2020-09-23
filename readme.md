@@ -1,5 +1,6 @@
 ![](https://img.shields.io/badge/language-java-wheat.svg)
 ![](https://img.shields.io/badge/language-javascript-wheat.svg)
+![](https://img.shields.io/badge/language-TypeScript-wheat.svg)
 ![](https://img.shields.io/badge/license-MIT-000000.svg)
 
 # chaos 快速应用架构
