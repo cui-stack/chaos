@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 
@@ -48,10 +49,18 @@ public class AmapHelper {
         LinkedHashMap map = (LinkedHashMap) resp.get("regeocode");
         LinkedHashMap am = (LinkedHashMap) map.get("addressComponent");
         GaoDeAddress gaoDeAddress = new GaoDeAddress();
-        gaoDeAddress.setCity((String) am.get("city"));
-        gaoDeAddress.setProv((String) am.get("province"));
-        gaoDeAddress.setDist((String) am.get("district"));
-        gaoDeAddress.setAddr((String) map.get("formatted_address"));
+
+        Object city= am.get("city");
+        gaoDeAddress.setCity(city instanceof String?(String)city:"" );
+
+        Object province= am.get("province");
+        gaoDeAddress.setProv(province instanceof String?(String)province:"" );
+
+        Object district= am.get("district");
+        gaoDeAddress.setDist(district instanceof String?(String)district:"" );
+
+        Object formatted_address= map.get("formatted_address");
+        gaoDeAddress.setAddr(formatted_address instanceof String?(String)formatted_address:"" );
         return gaoDeAddress;
     }
 

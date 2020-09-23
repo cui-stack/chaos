@@ -22,7 +22,7 @@ import java.util.List;
 
 @Configuration
 @EnableSwagger2
-@Profile({"local", "dev", "test", "docker"})
+@Profile({"local", "dev", "test", "prod"})
 public class SwaggerConfig {
 
     @Bean

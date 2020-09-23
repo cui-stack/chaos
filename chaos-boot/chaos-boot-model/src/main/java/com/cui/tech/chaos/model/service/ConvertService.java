@@ -1,12 +1,14 @@
 package com.cui.tech.chaos.model.service;
 
 import com.cui.tech.chaos.model.DTO;
+import com.cui.tech.chaos.model.db.DATA;
 import com.cui.tech.chaos.model.db.Model;
 import com.cui.tech.chaos.model.db.MuModel;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.stream.Collectors;
@@ -17,127 +19,77 @@ import java.util.stream.Collectors;
  */
 @Component
 public class ConvertService<T extends Model> {
+
     public List<DTO> convertToDTO(List<T> mm, Class c) {
         return mm.stream().map(m -> convertToDTO(m, c)).collect(Collectors.toList());
     }
 
-    /**
-     * @param mm
-     * @param c
-     * @return
-     * @throws IllegalAccessException
-     * @throws InstantiationException
-     */
-    public DTO convertToDTO(Model mm, Class c) {
-        DTO t = null;
+    public List<DTO> convertToDTO(List<T> mm, Class c, Consumer<DTO> cc) {
+        return mm.stream().map(m -> convertToDTO(m, c, cc)).collect(Collectors.toList());
+    }
+
+    public List<DTO> convertToDTO(List<T> mm, Class c, BiConsumer<Model, DTO> cc) {
+        return mm.stream().map(m -> convertToDTO(m, c, cc)).collect(Collectors.toList());
+    }
+
+    public DTO convertToDTO(T mm, Class c) {
+        DTO target = null;
         if (mm == null) {
-            return t;
+            return null;
         }
         try {
-            t = (DTO) c.newInstance();
-        } catch (InstantiationException e) {
-            e.printStackTrace();
-        } catch (IllegalAccessException e) {
+            target = (DTO) c.newInstance();
+            BeanUtils.copyProperties(mm, target);
+        } catch (Exception e) {
             e.printStackTrace();
         }
-        convertToDTO(mm, t);
+        return target;
+    }
+
+    public DTO convertToDTO(T mm, Class c, BiConsumer<Model, DTO> cc) {
+        DTO t = convertToDTO(mm, c);
+        cc.accept(mm, t);
         return t;
     }
 
-    /**
-     * 转化一个MuModel为DTO
-     *
-     * @param mm
-     * @param t
-     */
-    public DTO convertToDTO(Model mm, DTO t) {
-        BeanUtils.copyProperties(mm, t);
+    public DTO convertToDTO(T mm, Class c, Consumer<DTO> cc) {
+        DTO t = convertToDTO(mm, c);
+        cc.accept(t);
         return t;
     }
 
-    /**
-     * @param t
-     * @param c
-     * @return
-     * @throws IllegalAccessException
-     * @throws InstantiationException
-     */
-    public MuModel convertToMuModel(DTO t, Class c) {
-        MuModel mm = null;
-        if (t == null) {
-            return mm;
+
+    public MuModel convertToMuModel(DTO tt, Class c) {
+        MuModel target = null;
+        if (tt == null) {
+            return null;
         }
         try {
-            mm = (MuModel) c.newInstance();
-        } catch (InstantiationException e) {
-            e.printStackTrace();
-        } catch (IllegalAccessException e) {
+            target = (MuModel) c.newInstance();
+            BeanUtils.copyProperties(tt, target);
+        } catch (Exception e) {
             e.printStackTrace();
         }
-        convertToMuModel(t, mm);
-        return mm;
+        return target;
+
     }
 
-    /**
-     * 转化一个DTO为MuModel
-     *
-     * @param t
-     * @param mm
-     */
-    public MuModel convertToMuModel(DTO t, MuModel mm) {
-        BeanUtils.copyProperties(t, mm);
-        return mm;
+    public Model convertToModel(DTO tt, Class c) {
+        Model target = null;
+        if (tt == null) {
+            return null;
+        }
+        try {
+            target = (Model) c.newInstance();
+            BeanUtils.copyProperties(tt, target);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return target;
     }
 
-    public Model convertToModel(DTO t, Model mm) {
-        BeanUtils.copyProperties(t, mm);
-        return mm;
+    public void change(DATA tt, Consumer<DATA> c) {
+        c.accept(tt);
     }
 
-
-    /**
-     * 通过自定义方式转化一个MuModel为DTO
-     *
-     * @param mm
-     * @param f
-     * @return
-     */
-    public DTO convertToDTO(MuModel mm, Function<MuModel, DTO> f) {
-        return f.apply(mm);
-    }
-
-    public DTO convertToDTO(Model mm, Function<Model, DTO> f) {
-        return f.apply(mm);
-    }
-
-    /**
-     * 通过自定义方式转化一个DTO为MuModel
-     *
-     * @param t
-     * @param f
-     * @return
-     */
-    public MuModel convertToMuModel(DTO t, Function<DTO, MuModel> f) {
-        return f.apply(t);
-    }
-
-    /**
-     * 修改DTO属性
-     *
-     * @param t
-     * @param c
-     */
-    public void changeFromDTO(DTO t, Consumer<DTO> c) {
-        c.accept(t);
-    }
-
-    /**
-     * 修改MuModel属性
-     *
-     * @param mm
-     * @param c
-     */
-    public void changeFromMuModel(MuModel mm, Consumer<DTO> c) {
-        c.accept(mm);
-    }
 }

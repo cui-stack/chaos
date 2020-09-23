@@ -16,6 +16,9 @@ public class PageQueryDto<T> extends DTO {
     @ApiModelProperty(value = "结果对象")
     private T data;
 
+    public PageQueryDto() {
+    }
+
     public PageQueryDto(T data) {
         this.data = data;
     }

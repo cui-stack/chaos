@@ -10,14 +10,20 @@ import org.springframework.beans.BeanUtils;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.springframework.data.domain.Page;
+
 @Data
 @ApiModel(value = "列表结果对象", description = "")
+@RequiredArgsConstructor(staticName = "of")
 public class PageList<T> extends DTO {
+    @NonNull
     @ApiModelProperty(value = "列表")
     private List<T> list;
+    @NonNull
     @ApiModelProperty(value = "总条数")
     private Long total;
     @ApiModelProperty(value = "当前页")
+    @NonNull
     private Long current;
 
     public PageList() {
@@ -47,5 +53,10 @@ public class PageList<T> extends DTO {
         this.setList(page.getRecords());
     }
 
+    public PageList(Page<T> page) {
+        this.setCurrent((long) page.getNumber() + 1);
+        this.setTotal(page.getTotalElements());
+        this.setList(page.getContent());
+    }
 
 }
