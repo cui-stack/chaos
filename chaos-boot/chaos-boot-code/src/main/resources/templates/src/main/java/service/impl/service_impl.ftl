@@ -66,15 +66,15 @@ public class ${table.serviceImplName} extends ServiceImpl<${table.mapperName}, $
 	@Override
 	public List<${entity}Data> selectByData(${entity}Data data) {
 		QueryWrapper<${entity}> query = new QueryWrapper<${entity}>();
-		//query.lambda().eq(!StringUtils.isEmpty(data.getMu()), ${entity}::getMu, data.getMu());
+		query.lambda().eq(!StringUtils.isEmpty(data.getMu()), ${entity}::getMu, data.getMu());
 		query.orderByDesc(Table.ID);
 		return convertService.convertToDTO(list(query), ${entity}Data.class);
 	}
 
 	@Override
 	public PageList<${entity}Data> selectByPage(PageQueryDto<${entity}Data> pageData) {
-		QueryWrapper query = new QueryWrapper();
-		//query.lambda().eq(!StringUtils.isEmpty(pageData.getData().getMu()), ${entity}::getMu, pageData.getData().getMu());
+		QueryWrapper<${entity}> query = new QueryWrapper<${entity}>();
+		query.lambda().eq(!StringUtils.isEmpty(pageData.getData().getMu()), ${entity}::getMu, pageData.getData().getMu());
 		query.orderByDesc(Table.ID);
 		return new PageList(page(pageService.page(pageData), query), ${entity}Data.class);
 	}

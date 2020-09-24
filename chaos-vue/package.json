@@ -17,7 +17,9 @@
     "vue-router": "^3.3.4",
     "vue-wechat-title": "^2.0.7",
     "vuex": "^3.5.1",
-    "vuex-along": "^1.2.11"
+    "vuex-along": "^1.2.11",
+    "less": "^3.12.2",
+    "less-loader": "^7.0.1"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.4.0",
@@ -42,7 +44,12 @@
       "parser": "babel-eslint"
     },
     "rules": {
-      "vue/no-parsing-error": [2, { "x-invalid-end-tag": false }]
+      "vue/no-parsing-error": [
+        2,
+        {
+          "x-invalid-end-tag": false
+        }
+      ]
     }
   },
   "browserslist": [
