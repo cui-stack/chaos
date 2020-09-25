@@ -17,8 +17,6 @@ import java.time.LocalDateTime;
 @ApiModel(value = "ChaosLinkData", description = "")
 public class ChaosLinkData extends DATA {
 
-    private String mu;
-
     private String link;
 
     private String title;

@@ -17,8 +17,6 @@ import java.time.LocalDateTime;
 @ApiModel(value = "ChaosEnvData", description = "")
 public class ChaosEnvData extends DATA {
 
-    private String mu;
-
     private String link;
 
     private String title;

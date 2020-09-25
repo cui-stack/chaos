@@ -15,6 +15,7 @@ import java.util.LinkedHashMap;
 
 /**
  * 高德地图
+ *
  * @author G.G
  * @date 2020/2/15 15:52
  */
@@ -30,15 +31,14 @@ public class AmapHelper {
                 + key;
         JSONObject resp = restTemplate.getForObject(url, JSONObject.class);
         String status = (String) resp.get("status");
-        Geo g = new Geo();
+        Geo g = null;
         if (status.equals("1")) {
             ArrayList geocodes = (ArrayList) resp.get("geocodes");
             LinkedHashMap geocode = (LinkedHashMap) geocodes.get(0);
             String location = (String) geocode.get("location");
             String[] ls = location.split(",");
-            g.setLng(ls[0]);
-            g.setLat(ls[1]);
-            g.setGeo(new GeoHashUtil().encode(Double.parseDouble(g.getLat()), Double.parseDouble(g.getLng())));
+            g = Geo.of(ls[0], ls[1]);
+            g.setGeo(new GeoHashUtil().encode(Double.parseDouble(g.getLat()), Double.parseDouble(g.getLon())));
         }
         return g;
     }
@@ -50,17 +50,17 @@ public class AmapHelper {
         LinkedHashMap am = (LinkedHashMap) map.get("addressComponent");
         GaoDeAddress gaoDeAddress = new GaoDeAddress();
 
-        Object city= am.get("city");
-        gaoDeAddress.setCity(city instanceof String?(String)city:"" );
+        Object city = am.get("city");
+        gaoDeAddress.setCity(city instanceof String ? (String) city : "");
 
-        Object province= am.get("province");
-        gaoDeAddress.setProv(province instanceof String?(String)province:"" );
+        Object province = am.get("province");
+        gaoDeAddress.setProv(province instanceof String ? (String) province : "");
 
-        Object district= am.get("district");
-        gaoDeAddress.setDist(district instanceof String?(String)district:"" );
+        Object district = am.get("district");
+        gaoDeAddress.setDist(district instanceof String ? (String) district : "");
 
-        Object formatted_address= map.get("formatted_address");
-        gaoDeAddress.setAddr(formatted_address instanceof String?(String)formatted_address:"" );
+        Object formatted_address = map.get("formatted_address");
+        gaoDeAddress.setAddr(formatted_address instanceof String ? (String) formatted_address : "");
         return gaoDeAddress;
     }
 

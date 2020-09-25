@@ -6,13 +6,13 @@
 			<servers>
 				<server>
 					<id>releases</id>
-					<username>deploy</username>
-					<password>deploy</password>
+					<username>cui</username>
+					<password>panpan5354</password>
 				</server>
 				<server>
 					<id>snapshots</id>
-					<username>deploy</username>
-					<password>deploy</password>
+					<username>cui</username>
+					<password>panpan5354</password>
 				</server>
 			</servers>
 
@@ -20,17 +20,17 @@
 				<mirror>
 					<id>nexus</id>
 					<mirrorOf>*</mirrorOf>
-					<url>http://firepongo.tech:8081/repository/maven-public/</url>
+					<url>http://www.firepongo.tech:8081/repository/maven-public/</url>
 				</mirror>
 			</mirrors>
 
 			<profiles>
-				<profile>
+				<profile>  
 				  <id>dev</id>
 				  <repositories>
 					<repository>
 					  <id>nexus</id>
-					  <url>http://firepongo.tech:8081/repository/maven-public/</url>
+					  <url>http://www.firepongo.tech:8081/repository/maven-public/</url>
 					  <releases>
 						<enabled>true</enabled>
 					  </releases>
@@ -41,7 +41,7 @@
 					</repository>
 				  </repositories>
 				  <activation>
-					<activeByDefault>true</activeByDefault>
+					<activeByDefault>true</activeByDefault>      
 					<jdk>1.8</jdk>
 				  </activation>
 				  <properties>

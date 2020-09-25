@@ -82,7 +82,7 @@
         <pluginRepository>
             <id>nexus</id>
             <name>nexus</name>
-            <url>http://firepongo.tech:8081/nexus/content/groups/public</url>
+            <url>http://www.firepongo.tech:8081/nexus/content/groups/public</url>
             <snapshots>
                 <enabled>true</enabled>
             </snapshots>
@@ -92,12 +92,12 @@
         <repository>
             <id>releases</id>
             <name>Releases</name>
-            <url>http://firepongo.tech:8081/repository/maven-releases/</url>
+            <url>http://www.firepongo.tech:8081/repository/maven-releases/</url>
         </repository>
         <snapshotRepository>
             <id>snapshots</id>
             <name>Snapshot</name>
-            <url>http://firepongo.tech:8081/repository/maven-snapshots/</url>
+            <url>http://www.firepongo.tech:8081/repository/maven-snapshots/</url>
         </snapshotRepository>
     </distributionManagement>
     <build>
