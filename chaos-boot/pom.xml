@@ -21,7 +21,6 @@
         <module>chaos-boot-starter-web</module>
         <module>chaos-boot-code</module>
 
-        <module>chaos-search</module>
 
     </modules>
 </project>

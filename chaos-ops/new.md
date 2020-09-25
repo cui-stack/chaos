@@ -69,5 +69,5 @@ GIT_HOME=/usr/local/git
 export PATH=$PATH:$GIT_HOME/bin
 source /etc/profile
 
-git config --global user.name  "username"  
-git config --global user.email  "email"
+git config --global credential.helper store
+并在服务器执行 git pull 使用账号密码
