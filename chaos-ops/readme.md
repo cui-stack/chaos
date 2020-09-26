@@ -1,30 +1,30 @@
-#chaos-ops基于docker的运维架构
-##框架集成
-|架构|介绍|备注|
+# chaos-ops基于docker的运维架构
+## 框架集成
+
+|环境|介绍|备注|
 |---|---|---|
-|window|docker环境||
-|linux|docker环境||
-|chaos-vue|后台前端|/back|
-|chaos-center|研发中台|/manage|
+|linux|docker/compose/k8s||
 
+## 服务矩阵
 
-#基于阿里云ecs的运维部署方案
-##服务矩阵
-|服务|使用技术|进度|环境|方式|版本|
-|---|---|---|---|-----------|-----------|
-|容器管理|portainer|✅|center|docker|1.6.29|
-|代码仓库|gitlab|✅|center|docker||
-|构件仓库|nexus|✅|center|compose|3|
-|镜像仓库|harbor|✅|center|compose|1.9.4|
-|CI执行器|gitlab-runner|✅|center|docker||
-|注册中心|zookeeper|✅|center/common|compose||
-|数据库|mysql|✅|center/common|compose||
-|KV数据库|redis|✅|center/common|compose||
-|消息总线|rabbitmq|✅|center/common|compose||
-|任务管理|xxljob|✅|center/common|compose||
-|链路追踪|zipkin|✅|center/common|compose||
-|RPC服务|dubbo-admin|✅|center/common|compose||
-|微服务管理|chaos-admin|✅|center/common|compose||
-|代理服务|nginx|✅|center/common|compose||
-##使用
-
+|服务|使用技术|方式|版本|进度|备注|
+|---|---|-----------|-----------|-----------|-----------|
+|容器管理|portainer|docker|1.6.29|✅||
+|代码仓库|gitlab/gitee|docker||✅||
+|项目构建|jenkins|tar|2.249.1|✅||
+|构件仓库|nexus|docker|3.27.0-03|✅||
+|镜像仓库|harbor|compose|1.9.4|✅||
+|CI执行器|gitlab-runner|docker||✅||
+|注册中心|zookeeper|compose||✅||
+|数据库|mysql|cloud||✅||
+|KV数据库|redis|compose||✅||
+|消息总线|rabbitmq|compose||✅||
+|任务管理|xxljob|?||✅||
+|链路追踪|zipkin|compose||✅||
+|RPC服务|dubbo-admin|compose||✅||
+|微服务管理|chaos-admin|compose||✅||
+|代理服务|nginx|compose||✅||
+|日志数据|kibana|docker|7.6.2|✅||
+|搜索引擎|elasticsearch|docker|7.6.2|✅||
+|数据报表|poli|docker||✅||
+|配置中心|nacos|docker||✅||
