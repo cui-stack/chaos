@@ -3,8 +3,8 @@
 ![](https://img.shields.io/badge/language-TypeScript-wheat.svg)
 ![](https://img.shields.io/badge/license-MIT-000000.svg)
 
-# 🐒  chaos(混沌) 全栈开发架构
-##  用于构建快速上线应用 💪💪💪
+# 🐒  chaos(混沌) 全栈开发架构  💪💪💪
+##  用于构建快速上线应用 💨💨💨
 
 # 🐒  最佳实践
 |架构|介绍|备注|
