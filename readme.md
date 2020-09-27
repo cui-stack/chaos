@@ -3,7 +3,7 @@
 ![](https://img.shields.io/badge/language-TypeScript-wheat.svg)
 ![](https://img.shields.io/badge/license-MIT-000000.svg)
 
-# 🐒  chaos 全栈开发架构
+# 🐒  chaos(混沌) 全栈开发架构
 ##  用于构建快速上线应用 💪💪💪
 
 # 🐒  最佳实践
@@ -66,5 +66,5 @@
 
 <div style="font-size: 26px;font-family: PingFangSC-Medium, PingFang SC;
 font-weight: 600;color: #424242;text-align:center;">
-Powered by  FirePongo.Tech 🐒
+Powered by  FirePongo.Tech(火猩科技) 🐒
 </div>
