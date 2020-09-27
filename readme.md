@@ -16,10 +16,9 @@
 
 [chaos-center-start-url]:https://gitee.com/c-stack/chaos/blob/master/chaos-center/readme.md
 [chaos-ops-start-url]:https://gitee.com/c-stack/chaos/blob/master/chaos-ops/readme.md
-[chaos-boot-start-url]:https://gitee.com/c-stack/
 [chaos-boot-start-url]:https://gitee.com/c-stack/chaos/blob/master/chaos-boot/readme.md
 [chaos-vue-start-url]:https://gitee.com/c-stack/chaos/tree/master/chaos-vue/readme.md
-[chaos-weapp-start-url]:https://gitee.com/c-stack/chaos/tree/master/chaos-txmini/readme.md
+[chaos-weapp-start-url]:https://gitee.com/c-stack/chaos/tree/master/chaos-weapp/readme.md
 
 # 🐒  服务矩阵
 |服务|使用技术|进度|备注|介绍|
@@ -33,7 +32,7 @@
 |chaos-ios||🏗|IOS||
 |chaos-mvvmhabit|mvvmhabit+AAC|✅|安卓端架构||
 |chaos-weapp|wx原生-2.10.1|✅|微信小程序|[快速开始][chaos-weapp-start-url]|
-|chaos-cocos|cocoscreator|🏗|游戏架构||
+|chaos-cocos|cocos-creator|🏗|游戏架构||
 |chaos-think|thinkphp-6|🏗|服务端架构||
 |chaos-product||🏗|产品架构||
 |chaos-test||🏗|测试架构||
