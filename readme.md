@@ -10,7 +10,6 @@
 |架构|介绍|备注|
 |---|---|---|
 |chaos-center|中台||
-|chaos-ops|运维端||
 |chaos-boot|服务端|2.3.0-SNAPSHOT|
 |chaos-vue|后台前端|0.1.0|
 |chaos-weapp|小程序端||
@@ -63,5 +62,9 @@
 ||spark|||||
 |游戏|cocos|||||
 |AI||||||
-|||||||
 
+
+<div style="font-size: 26px;font-family: PingFangSC-Medium, PingFang SC;
+font-weight: 600;color: #424242;text-align:center;">
+Powered by  FirePongo.Tech 🐒
+</div>
