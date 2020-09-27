@@ -34,8 +34,6 @@
 |chaos-weapp|wx原生-2.10.1|✅|微信小程序|[快速开始][chaos-weapp-start-url]|
 |chaos-cocos|cocos-creator|🏗|游戏架构||
 |chaos-think|thinkphp-6|🏗|服务端架构||
-|chaos-product||🏗|产品架构||
-|chaos-test||🏗|测试架构||
 
 # 🐒 技术全栈
 ||架构|构成|chaos|进度|备注|
