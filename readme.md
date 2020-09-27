@@ -6,7 +6,7 @@
 # chaos快速应用架构
 ## 基于chaos架构可以快速构建一个拥有业内先进成熟研发技术的互联网产品
 
-# 最佳实践
+# 🐵最佳实践
 |架构|介绍|备注|
 |---|---|---|
 |chaos-center|中台||
@@ -22,7 +22,7 @@
 [chaos-vue-start-url]:https://gitee.com/c-stack/chaos/tree/master/chaos-vue/readme.md
 [chaos-weapp-start-url]:https://gitee.com/c-stack/chaos/tree/master/chaos-txmini/readme.md
 
-# 服务矩阵
+# 🐵服务矩阵
 |服务|使用技术|进度|备注|介绍|
 |---|---|---|---|---|
 |chaos-center|chaos-boot-2.3.0-SNAPSHOT|✅|架构中台|[快速开始][chaos-center-start-url]|
@@ -39,7 +39,7 @@
 |chaos-product||🏗|产品架构||
 |chaos-test||🏗|测试架构||
 
-# 技术全栈
+# 🐵技术全栈
 ||架构|构成|chaos|进度|备注|
 |---|---|---|---|---|---|
 |多端|uni-app|||||
