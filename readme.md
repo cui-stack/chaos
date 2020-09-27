@@ -63,8 +63,5 @@
 |游戏|cocos|||||
 |AI||||||
 
-<center style="font-size: 22px; font-family: PingFangSC-Medium, PingFang SC;
-font-weight: 600; color: #424242; ">
-Powered by  FirePongo.Tech(火猩科技) 🐒
-</center>
+***Powered by  FirePongo.Tech(火猩科技) 🐒***
 
