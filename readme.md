@@ -64,7 +64,7 @@
 |AI||||||
 
 
-<div style="font-size: 26px;font-family: PingFangSC-Medium, PingFang SC;
-font-weight: 600;color: #424242;text-align:center;">
+<div style="font-size: 22px;font-family: PingFangSC-Medium, PingFang SC;
+font-weight: 600;color: #424242; text-align:center; ">
 Powered by  FirePongo.Tech(火猩科技) 🐒
 </div>
