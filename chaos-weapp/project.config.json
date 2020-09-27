@@ -30,7 +30,7 @@
 	"compileType": "miniprogram",
 	"libVersion": "2.10.1",
 	"appid": "wxbcbeee004e8289cf",
-	"projectname": "chaos-txmini",
+	"projectname": "chaos-weapp",
 	"isGameTourist": false,
 	"simulatorType": "wechat",
 	"simulatorPluginLibVersion": {},
