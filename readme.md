@@ -60,4 +60,4 @@
 |游戏|cocos|||||
 |AI||||||
 
-### ***Powered  by***  ***FirePongo.Tech*** (**阿暴 G.G**) 
+### ***Powered  by***  ***阿暴*** (**G.G**) 
