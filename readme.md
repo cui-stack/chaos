@@ -20,8 +20,8 @@
 [chaos-vue-start-url]:https://gitee.com/c-stack/chaos/tree/master/chaos-vue/readme.md
 [chaos-weapp-start-url]:https://gitee.com/c-stack/chaos/tree/master/chaos-weapp/readme.md
 
-# 🐒  服务矩阵
-|服务|使用技术|进度|备注|介绍|
+# 🐒  框架矩阵
+|服务|技术栈|进度|备注|介绍|
 |---|---|---|---|---|
 |chaos-center|chaos-boot-2.3.0-SNAPSHOT|✅|架构中台|[快速开始][chaos-center-start-url]|
 |chaos-ops|docker-19.03.8|✅|运维架构|[快速开始][chaos-ops-start-url]|
@@ -60,5 +60,5 @@
 |游戏|cocos|||||
 |AI||||||
 
-### ***Powered  by***  ***FirePongo.Tech*** (**火猩科技**) 
+### ***Powered  by***  ***FirePongo.Tech*** (**阿暴 G.G**) 
 
