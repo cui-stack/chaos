@@ -14,11 +14,11 @@
 |chaos-vue|后台前端|0.1.0|
 |chaos-weapp|小程序端||
 
-[chaos-center-start-url]:https://gitee.com/c-stack/chaos/blob/master/chaos-center/readme.md
-[chaos-ops-start-url]:https://gitee.com/c-stack/chaos/blob/master/chaos-ops/readme.md
-[chaos-boot-start-url]:https://gitee.com/c-stack/chaos/blob/master/chaos-boot/readme.md
-[chaos-vue-start-url]:https://gitee.com/c-stack/chaos/tree/master/chaos-vue/readme.md
-[chaos-weapp-start-url]:https://gitee.com/c-stack/chaos/tree/master/chaos-weapp/readme.md
+[chaos-center-start-url]:https://gitee.com/ape-stack/chaos/blob/master/chaos-center/readme.md
+[chaos-ops-start-url]:https://gitee.com/ape-stack/chaos/blob/master/chaos-ops/readme.md
+[chaos-boot-start-url]:https://gitee.com/ape-stack/chaos/blob/master/chaos-boot/readme.md
+[chaos-vue-start-url]:https://gitee.com/ape-stack/chaos/tree/master/chaos-vue/readme.md
+[chaos-weapp-start-url]:https://gitee.com/ape-stack/chaos/tree/master/chaos-weapp/readme.md
 
 # 🐒  框架矩阵
 |服务|技术栈|进度|备注|介绍|
