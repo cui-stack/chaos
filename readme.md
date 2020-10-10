@@ -36,20 +36,31 @@
 |chaos-think|thinkphp-6|🏗|服务端架构||
 
 # 🐒  架构展示  
+## 混沌后台
 ![x-os-url](images/%E6%B7%B7%E6%B2%8C%E4%B8%AD%E5%8F%B0.png)
-![framework-url](images/framework.png)
+## 代码管理系统
 ![code-url](images/%E4%BB%A3%E7%A0%81%E7%AE%A1%E7%90%86.png)
+## API管理系统
 ![swagger-url](images/API%E7%AE%A1%E7%90%86.jpg)
+## 构件管理系统
 ![nexus-url](images/%E6%9E%84%E4%BB%B6%E4%BB%93%E5%BA%93.jpg)
+## 自动化构件系统
 ![jenkins-url](images/%E6%9E%84%E4%BB%B6%E7%B3%BB%E7%BB%9F.png)
+## 服务治理系统
 ![dubbo-url](images/%E6%9C%8D%E5%8A%A1%E6%B2%BB%E7%90%86.jpg)
+## 服务监控系统
 ![springadmin-url](images/%E6%9C%8D%E5%8A%A1%E7%AE%A1%E7%90%86.jpg)
+## 镜像管理系统
 ![image-url](images/%E9%95%9C%E5%83%8F%E4%BB%93%E5%BA%93.jpg)
+## 环境管理系统
 ![portainer-url](images/%E7%8E%AF%E5%A2%83%E7%AE%A1%E7%90%86.jpg)
+## 任务管理系统
 ![task-url](images/%E4%BB%BB%E5%8A%A1%E4%B8%AD%E5%8F%B0.jpg)
+## 报表系统
 ![report-1-url](images/%E6%8A%A5%E8%A1%A8%E7%B3%BB%E7%BB%9F1.png)
 ![report-2-url](images/%E6%8A%A5%E8%A1%A8%E7%B3%BB%E7%BB%9F2.png)
 ![report-3-url](images/%E6%8A%A5%E8%A1%A8%E7%B3%BB%E7%BB%9F3.png)
+## 消息系统
 ![rabbitmq-url](images/%E6%B6%88%E6%81%AF%E4%B8%AD%E5%8F%B0.jpg)
 
 # 🐒 技术全栈
