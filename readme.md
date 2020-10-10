@@ -39,7 +39,7 @@
 ![x-os-url](https://gitee.com/ape-stack/chaos/blob/master/images/%E6%B7%B7%E6%B2%8C%E4%B8%AD%E5%8F%B0.png)
 ![framework-url](https://gitee.com/ape-stack/chaos/blob/master/images/framework.png)
 ![code-url](https://gitee.com/ape-stack/chaos/blob/master/images/%E4%BB%A3%E7%A0%81%E7%AE%A1%E7%90%86.png)
-![swagger-url](https://gitee.com/ape-stack/chaos/blob/master/images/API%E7%AE%A1%E7%90%86.jpg)
+![swagger-url](https://gitee.com/ape-stack/chaos/blob/master/images/swagger-api.jpg)
 ![nexus-url](https://gitee.com/ape-stack/chaos/blob/master/images/%E6%9E%84%E4%BB%B6%E4%BB%93%E5%BA%93.jpg)
 ![jenkins-url](https://gitee.com/ape-stack/chaos/blob/master/images/%E6%9E%84%E4%BB%B6%E7%B3%BB%E7%BB%9F.png)
 ![dubbo-url](https://gitee.com/ape-stack/chaos/blob/master/images/%E6%9C%8D%E5%8A%A1%E6%B2%BB%E7%90%86.jpg)
@@ -78,7 +78,7 @@
 |游戏|cocos|||||
 |AI||||||
 
-# 开发环境
+# 🐒 开发环境
 mybatisx 
 
 ### ***Powered  by***  ***阿暴*** (**G.G**) 
