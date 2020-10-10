@@ -9,7 +9,6 @@
 # 🐒  最佳实践  
 |架构|介绍|当前版本|
 |---|---|---|
-|chaos-center|中台||
 |chaos-boot|服务端|2.3.0-SNAPSHOT|
 |chaos-vue|后台前端||
 |chaos-weapp|小程序端||
