@@ -36,21 +36,21 @@
 |chaos-think|thinkphp-6|🏗|服务端架构||
 
 # 🐒  架构展示  
-![x-os-url][https://gitee.com/ape-stack/chaos/blob/master/images/%E6%B7%B7%E6%B2%8C%E4%B8%AD%E5%8F%B0.png]
-![framework-url][https://gitee.com/ape-stack/chaos/blob/master/images/framework.png]
-![code-url][https://gitee.com/ape-stack/chaos/blob/master/images/%E4%BB%A3%E7%A0%81%E7%AE%A1%E7%90%86.png]
-![swagger-url][https://gitee.com/ape-stack/chaos/blob/master/images/swagger-api.jpg]
-![nexus-url][https://gitee.com/ape-stack/chaos/blob/master/images/%E6%9E%84%E4%BB%B6%E4%BB%93%E5%BA%93.jpg]
-![jenkins-url][https://gitee.com/ape-stack/chaos/blob/master/images/%E6%9E%84%E4%BB%B6%E7%B3%BB%E7%BB%9F.png]
-![dubbo-url][https://gitee.com/ape-stack/chaos/blob/master/images/%E6%9C%8D%E5%8A%A1%E6%B2%BB%E7%90%86.jpg]
-![springadmin-url][https://gitee.com/ape-stack/chaos/blob/master/images/%E6%9C%8D%E5%8A%A1%E7%AE%A1%E7%90%86.jpg]
-![image-url][https://gitee.com/ape-stack/chaos/blob/master/images/%E9%95%9C%E5%83%8F%E4%BB%93%E5%BA%93.jpg]
-![portainer-url][https://gitee.com/ape-stack/chaos/blob/master/images/%E7%8E%AF%E5%A2%83%E7%AE%A1%E7%90%86.jpg]
-![task-url][https://gitee.com/ape-stack/chaos/blob/master/images/%E4%BB%BB%E5%8A%A1%E4%B8%AD%E5%8F%B0.jpg]
-![report-1-url][https://gitee.com/ape-stack/chaos/blob/master/images/%E6%8A%A5%E8%A1%A8%E7%B3%BB%E7%BB%9F1.png]
-![report-2-url][https://gitee.com/ape-stack/chaos/blob/master/images/%E6%8A%A5%E8%A1%A8%E7%B3%BB%E7%BB%9F2.png]
-![report-3-url][https://gitee.com/ape-stack/chaos/blob/master/images/%E6%8A%A5%E8%A1%A8%E7%B3%BB%E7%BB%9F3.png]
-![rabbitmq-url][https://gitee.com/ape-stack/chaos/blob/master/images/%E6%B6%88%E6%81%AF%E4%B8%AD%E5%8F%B0.jpg]
+![x-os-url](images/%E6%B7%B7%E6%B2%8C%E4%B8%AD%E5%8F%B0.png)
+![framework-url](images/framework.png)
+![code-url](images/%E4%BB%A3%E7%A0%81%E7%AE%A1%E7%90%86.png)
+![swagger-url](images/API%E7%AE%A1%E7%90%86.jpg)
+![nexus-url](images/%E6%9E%84%E4%BB%B6%E4%BB%93%E5%BA%93.jpg)
+![jenkins-url](images/%E6%9E%84%E4%BB%B6%E7%B3%BB%E7%BB%9F.png)
+![dubbo-url](images/%E6%9C%8D%E5%8A%A1%E6%B2%BB%E7%90%86.jpg)
+![springadmin-url](images/%E6%9C%8D%E5%8A%A1%E7%AE%A1%E7%90%86.jpg)
+![image-url](images/%E9%95%9C%E5%83%8F%E4%BB%93%E5%BA%93.jpg)
+![portainer-url](images/%E7%8E%AF%E5%A2%83%E7%AE%A1%E7%90%86.jpg)
+![task-url](images/%E4%BB%BB%E5%8A%A1%E4%B8%AD%E5%8F%B0.jpg)
+![report-1-url](images/%E6%8A%A5%E8%A1%A8%E7%B3%BB%E7%BB%9F1.png)
+![report-2-url](images/%E6%8A%A5%E8%A1%A8%E7%B3%BB%E7%BB%9F2.png)
+![report-3-url](images/%E6%8A%A5%E8%A1%A8%E7%B3%BB%E7%BB%9F3.png)
+![rabbitmq-url](images/%E6%B6%88%E6%81%AF%E4%B8%AD%E5%8F%B0.jpg)
 
 # 🐒 技术全栈
 ||架构|详细|chaos|进度|备注|
