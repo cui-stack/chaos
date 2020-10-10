@@ -6,12 +6,12 @@
 # 🐒  chaos(混沌) 全栈开发架构  💪💪💪
 ##  用于构建快速上线应用 💨💨💨
 
-# 🐒  最佳实践
-|架构|介绍|备注|
+# 🐒  最佳实践  
+|架构|介绍|当前版本|
 |---|---|---|
 |chaos-center|中台||
 |chaos-boot|服务端|2.3.0-SNAPSHOT|
-|chaos-vue|后台前端|0.1.0|
+|chaos-vue|后台前端||
 |chaos-weapp|小程序端||
 
 [chaos-center-start-url]:https://gitee.com/ape-stack/chaos/blob/master/chaos-center/readme.md
@@ -36,7 +36,7 @@
 |chaos-think|thinkphp-6|🏗|服务端架构||
 
 # 🐒 技术全栈
-||架构|构成|chaos|进度|备注|
+||架构|详细|chaos|进度|备注|
 |---|---|---|---|---|---|
 |多端|uni-app|||||
 ||taro+taro-ui|||🏗||
@@ -47,6 +47,7 @@
 ||umi|react+ant.design.pro|chaso-umi|||
 |安卓|mvvmhabbit||chaos-mvvmhabit|||
 |IOS|?|||||
+|||||||
 |后端|springboot+dubbo||chaos-boot|✅||
 ||springcloud|||||
 ||thinkphp|||||
@@ -59,5 +60,8 @@
 ||spark|||||
 |游戏|cocos|||||
 |AI||||||
+
+# 开发环境
+mybatisx 
 
 ### ***Powered  by***  ***阿暴*** (**G.G**) 

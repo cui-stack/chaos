@@ -32,7 +32,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @Api(tags = "${entity}Controller")
 @RestController
-@RequestMapping("/api/${table.name}")
+@RequestMapping("/api/${table.entityPath}")
 public class ${table.controllerName} extends ${superControllerClass} {
     @Autowired
     private I${entity}Service i${entity}Service;
