@@ -7,6 +7,7 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.*;
 import org.springframework.beans.BeanUtils;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -27,6 +28,7 @@ public class PageList<T> extends DTO {
     private Long current;
 
     public PageList() {
+        list = new ArrayList<>();
     }
 
     public PageList(IPage<T> page, Class c) {

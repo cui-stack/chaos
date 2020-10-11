@@ -4,6 +4,9 @@ import com.cui.tech.chaos.model.page.PageList;
 import io.swagger.annotations.ApiModel;
 import lombok.Data;
 
+/**
+ * @author G>G
+ */
 @Data
 @ApiModel(value = "列表结果对象", description = "")
 public class PageResult<T> extends Result {

@@ -1,8 +1,6 @@
 package com.cui.tech.chaos.model.login;
 
-import lombok.Data;
-import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
+import lombok.*;
 
 import javax.validation.constraints.NotBlank;
 
@@ -11,12 +9,11 @@ import javax.validation.constraints.NotBlank;
  * @date 2020/2/14 16:34
  */
 @Data
-@RequiredArgsConstructor(staticName = "of")
+@NoArgsConstructor
+@AllArgsConstructor
 public class AppLoginDto extends LoginDto {
     @NotBlank(message = "账户不能为空")
-    @NonNull
     private String username;
     @NotBlank(message = "密码不能为空")
-    @NonNull
     private String password;
 }

@@ -1,6 +1,7 @@
 package com.cui.tech.chaos.web.base;
 
 
+import com.cui.tech.chaos.model.DTO;
 import com.cui.tech.chaos.model.db.DATA;
 import com.cui.tech.chaos.model.exception.BusinessException;
 import com.cui.tech.chaos.model.login.ManageLoginUser;
@@ -100,62 +101,46 @@ public abstract class BaseController<T> {
         return user.getId();
     }
 
-    public DataResult getResult(BindingResult bindingResult, boolean methodEnd) {
-        return getResult(bindingResult, methodEnd, ResultEnum.FAILURE.getDefaultMsg());
-    }
-
-    public DataResult getResult(BindingResult bindingResult, boolean methodEnd, String failureMsg) {
-        DataResult dataResult = new DataResult();
+    public void validate(BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
-            dataResult.failure("500", String.join(",", bindingResult.getFieldErrors().stream().map(FieldError::getDefaultMessage).collect(Collectors.toList())));
-            return dataResult;
+            String msg = String.join(",", bindingResult.getFieldErrors().stream().map(FieldError::getDefaultMessage).collect(Collectors.toList()));
+            throw new BusinessException(ResultEnum.VALIDATE.getCode(), msg);
         }
-        boolean flag = methodEnd;
-        if (!flag) {
-            dataResult.failure(failureMsg);
-        }
-        dataResult.setData(methodEnd);
-        return dataResult;
     }
 
-    public DataResult getResult(boolean methodEnd) {
-        return getResult(methodEnd, ResultEnum.FAILURE.getDefaultMsg());
-    }
-
-    public DataResult getResult(boolean methodEnd, String failureMsg) {
+    public DataResult getResult(T data) {
         DataResult dataResult = new DataResult();
-        dataResult.setData(methodEnd);
-        if (!methodEnd) {
-            dataResult.failure(failureMsg);
+        if (data instanceof Boolean) {
+            if (!(Boolean) data) {
+                dataResult.failure();
+                dataResult.setData(data);
+            }
+        } else if (data instanceof DTO) {
+            if (data == null) {
+                dataResult.failure();
+                dataResult.setData(new DTO());
+            }
         }
         return dataResult;
     }
 
-    public DataResult getResult(BindingResult bindingResult, T methodReturn) {
-        return getResult(bindingResult, methodReturn, ResultEnum.FAILURE.getDefaultMsg());
-    }
-
-    public DataResult getResult(BindingResult bindingResult, T methodReturn, String failureMsg) {
-        DataResult dataResult = new DataResult();
-        if (bindingResult.hasErrors()) {
-            dataResult.failure("500", String.join(",", bindingResult.getFieldErrors().stream().map(FieldError::getDefaultMessage).collect(Collectors.toList())));
-            return dataResult;
-        }
-        if (methodReturn == null) {
-            dataResult.failure(failureMsg);
-        }
-        dataResult.setData(methodReturn);
-        return dataResult;
-    }
 
     public PageResult<T> getResult(PageList<T> pageList) {
         PageResult<T> listResult = new PageResult<T>();
+        if (pageList == null) {
+            listResult.failure();
+            pageList = new PageList();
+        }
         listResult.setPage(pageList);
         return listResult;
     }
 
     public MarkPageResult<T> getResult(PageList<T> pageList, String mark) {
         MarkPageResult<T> listResult = new MarkPageResult<T>();
+        if (pageList == null) {
+            listResult.failure();
+            pageList = new PageList();
+        }
         listResult.setPage(pageList);
         listResult.setMark(mark);
         return listResult;
@@ -163,30 +148,14 @@ public abstract class BaseController<T> {
 
     public MarkPagesResult<T> getResult(PageList<T> pl1, PageList<T> pl2, String mark) {
         MarkPagesResult<T> mpr = new MarkPagesResult<T>();
+        if (pl1 == null || pl2 == null) {
+            mpr.failure();
+            pl1 = new PageList();
+            pl2 = new PageList();
+        }
         mpr.setPages(Lists.newArrayList(pl1, pl2));
         mpr.setMark(mark);
         return mpr;
-    }
-
-    public DataResult<T> getResult(T data) {
-        return getResult(data, false);
-    }
-
-    public DataResult<T> getResult(T data, boolean isBlank) {
-        DataResult dataResult = new DataResult();
-        if (isBlank && data == null) {
-            dataResult.setData(new DATA());
-        } else {
-            dataResult.setData(data);
-        }
-        return dataResult;
-    }
-
-    public void validate(BindingResult bindingResult) {
-        if (bindingResult.hasErrors()) {
-            throw new BusinessException(ResultEnum.FAILURE, String.join(",", bindingResult.getFieldErrors().stream().map(FieldError::getDefaultMessage).collect(Collectors.toList())));
-        }
-
     }
 
 }

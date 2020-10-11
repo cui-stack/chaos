@@ -29,18 +29,16 @@ public class GlobalDefultExceptionHandler {
     @ExceptionHandler(BusinessException.class)
     @ResponseBody
     public Result businessException(BusinessException e) {
+        log.warn(e.getMessage());
         Result result = e.getResult();
-        log.warn(e.getObjectName() + "|" + e.getMethodName() + "=>" + e.getMessage());
-        e.printStackTrace();
         return result;
     }
 
     @ExceptionHandler(AuthenticationException.class)
     @ResponseBody
     public Result authenticationException(AuthenticationException e) {
+        log.info(e.getMessage());
         Result result = e.getResult();
-        log.warn(e.getObjectName() + "|" + e.getMethodName() + "=>" + e.getMessage());
-        e.printStackTrace();
         requestLogService.logRqquest(e.getRequest(), IpUtil.getIpAddr(e.getRequest()), e.getRequest().getRequestURI(), -1, "token:" + e.getRequest().getHeader("token"), result.getMsg());
         return result;
     }

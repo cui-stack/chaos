@@ -35,29 +35,33 @@ public class AppLoginController extends BaseController {
     @PostMapping("/login")
     @ApiOperation(value = "登录", notes = "", httpMethod = "POST")
     public DataResult<AppLoginUser> login(@RequestBody AppLoginDto user, BindingResult bindingResult, HttpServletRequest request) {
+        validate(bindingResult);
         AppLoginUser su = (AppLoginUser) appLoginService.doLogin(user);
-        return getResult(bindingResult, su);
+        return getResult(su);
     }
 
     @PostMapping("/phone/login")
     @ApiOperation(value = "登录", notes = "", httpMethod = "POST")
     public DataResult<AppLoginUser> phoneLogin(@RequestBody AppPhoneLoginDto user, BindingResult bindingResult, HttpServletRequest request) {
+        validate(bindingResult);
         AppLoginUser su = (AppLoginUser) appLoginService.doLogin(user);
-        return getResult(bindingResult, su);
+        return getResult(su);
     }
 
     @PostMapping("/wx/login")
     @ApiOperation(value = "登录", notes = "", httpMethod = "POST")
     public DataResult<AppLoginUser> wxLogin(@RequestBody AppCodeLoginDto user, BindingResult bindingResult, HttpServletRequest request) {
+        validate(bindingResult);
         AppLoginUser su = (AppLoginUser) appLoginService.doLogin(user);
-        return getResult(bindingResult, su);
+        return getResult(su);
     }
 
     @PostMapping("/hw/login")
     @ApiOperation(value = "登录", notes = "", httpMethod = "POST")
     public DataResult<AppLoginUser> hwLogin(@RequestBody AppCodeLoginDto user, BindingResult bindingResult, HttpServletRequest request) {
+        validate(bindingResult);
         AppLoginUser su = (AppLoginUser) appLoginService.doLogin(user);
-        return getResult(bindingResult, su);
+        return getResult(su);
     }
 
     @PostMapping("/logout")

@@ -5,8 +5,10 @@ import com.cui.tech.chaos.model.login.LoginUser;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
+import lombok.experimental.Accessors;
 
 @Data
+@Accessors(chain = true)
 @ApiModel(value = "基础结果对象", description = "")
 public class Result extends DTO {
     /**
@@ -29,39 +31,22 @@ public class Result extends DTO {
         this.setMsg(msg);
     }
 
-    /**
-     * 失败
-     *
-     * @return
-     */
-    public void failure() {
+    public Result failure() {
         this.setCode(ResultEnum.FAILURE.getCode());
         this.setMsg(ResultEnum.FAILURE.getDefaultMsg());
+        return this;
     }
 
-    public void failure(String message) {
-        this.setCode(ResultEnum.FAILURE.getCode());
-        this.setMsg(message);
-    }
-
-    public void failure(String result, String message) {
-        this.setCode(result);
-        this.setMsg(message);
-    }
-
-    public void unknow() {
+    public Result unknow() {
         this.setCode(ResultEnum.UNKONW_ERROR.getCode());
         this.setMsg(ResultEnum.UNKONW_ERROR.getDefaultMsg());
+        return this;
     }
 
-    /**
-     * 成功，返回数据
-     *
-     * @return
-     */
-    public void success() {
+    public Result success() {
         this.setCode(ResultEnum.SUCCESS.getCode());
         this.setMsg(ResultEnum.SUCCESS.getDefaultMsg());
+        return this;
     }
 
 }

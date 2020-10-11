@@ -63,7 +63,7 @@ public class WxminiLoginController extends BaseController {
         user.setToken(session_key);
         user.setUnionid(unionid);
         WxMiniLoginUser su = (WxMiniLoginUser) wxLoginService.doLogin(user);
-        return getResult(bindingResult, su);
+        return getResult(su);
     }
 
 }

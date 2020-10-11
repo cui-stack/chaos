@@ -53,11 +53,12 @@ public class ManageLoginController extends BaseController {
     @ApiOperation(value = "登录", notes = "", httpMethod = "POST")
     public DataResult<ManageLoginUser> login(@RequestBody ManageLoginDto user, BindingResult bindingResult, HttpServletRequest request) {
         log.info("用户[{}]登录", user.getUsername());
+        validate(bindingResult);
         if (mnLoginService == null) {
             return getResult(false);
         }
         user.setIp(IpUtil.getIpAddr(request));
-        return getResult(bindingResult, (ManageLoginUser) mnLoginService.doLogin(user), "账号密码错误,登录失败!");
+        return (DataResult<ManageLoginUser>) getResult((ManageLoginUser) mnLoginService.doLogin(user)).setMsg("账号密码错误,登录失败!");
     }
 
     @PostMapping("/logout")

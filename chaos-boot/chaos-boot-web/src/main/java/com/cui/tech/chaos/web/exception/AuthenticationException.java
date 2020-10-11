@@ -12,10 +12,6 @@ import javax.servlet.http.HttpServletRequest;
  */
 @Data
 public class AuthenticationException extends RuntimeException {
-    //出错的对象类
-    private String ObjectName = "AuthenticationInterceptor";
-    //出错的对象方法
-    private String methodName = "preHandle";
     private Result result;
     private HttpServletRequest request;
 
