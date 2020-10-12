@@ -18,5 +18,10 @@ public class MarkDataResult<T> extends DataResult {
         super();
     }
 
+    @Override
+    public MarkDataResult msg(String msg) {
+        this.setMsg(msg);
+        return this;
+    }
 
 }

@@ -23,5 +23,10 @@ public class DataResult<T> extends Result {
         success();
     }
 
+    public DataResult msg(String msg) {
+        this.setMsg(msg);
+        return this;
+    }
+
 
 }

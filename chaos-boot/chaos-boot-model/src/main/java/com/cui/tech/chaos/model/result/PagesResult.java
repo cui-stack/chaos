@@ -18,4 +18,8 @@ public class PagesResult<T> extends Result {
         success();
     }
 
+    public PagesResult msg(String msg) {
+        this.setMsg(msg);
+        return this;
+    }
 }

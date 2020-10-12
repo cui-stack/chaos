@@ -37,7 +37,7 @@ public class AppLoginController extends BaseController {
     public DataResult<AppLoginUser> login(@RequestBody AppLoginDto user, BindingResult bindingResult, HttpServletRequest request) {
         validate(bindingResult);
         AppLoginUser su = (AppLoginUser) appLoginService.doLogin(user);
-        return getResult(su);
+        return dataResult(su);
     }
 
     @PostMapping("/phone/login")
@@ -45,7 +45,7 @@ public class AppLoginController extends BaseController {
     public DataResult<AppLoginUser> phoneLogin(@RequestBody AppPhoneLoginDto user, BindingResult bindingResult, HttpServletRequest request) {
         validate(bindingResult);
         AppLoginUser su = (AppLoginUser) appLoginService.doLogin(user);
-        return getResult(su);
+        return dataResult(su);
     }
 
     @PostMapping("/wx/login")
@@ -53,7 +53,7 @@ public class AppLoginController extends BaseController {
     public DataResult<AppLoginUser> wxLogin(@RequestBody AppCodeLoginDto user, BindingResult bindingResult, HttpServletRequest request) {
         validate(bindingResult);
         AppLoginUser su = (AppLoginUser) appLoginService.doLogin(user);
-        return getResult(su);
+        return dataResult(su);
     }
 
     @PostMapping("/hw/login")
@@ -61,7 +61,7 @@ public class AppLoginController extends BaseController {
     public DataResult<AppLoginUser> hwLogin(@RequestBody AppCodeLoginDto user, BindingResult bindingResult, HttpServletRequest request) {
         validate(bindingResult);
         AppLoginUser su = (AppLoginUser) appLoginService.doLogin(user);
-        return getResult(su);
+        return dataResult(su);
     }
 
     @PostMapping("/logout")
@@ -69,9 +69,9 @@ public class AppLoginController extends BaseController {
     public DataResult<Boolean> logout(HttpServletRequest request) {
         log.info("用户[{}]登出");
         if (appLoginService == null) {
-            return getResult(false);
+            return dataResult(false);
         }
-        return getResult(appLoginService.doLogout(getMnLoginMU(request)));
+        return dataResult(appLoginService.doLogout(getMnLoginMU(request)));
     }
 
 }

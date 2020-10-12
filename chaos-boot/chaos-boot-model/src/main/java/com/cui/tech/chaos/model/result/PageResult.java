@@ -16,4 +16,9 @@ public class PageResult<T> extends Result {
         success();
     }
 
+    public PageResult msg(String msg) {
+        this.setMsg(msg);
+        return this;
+    }
+
 }

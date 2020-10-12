@@ -13,12 +13,15 @@ import com.cui.tech.chaos.web.service.WxminiLoginKeyService;
 import com.cui.tech.chaos.web.service.helper.JWTHelper;
 import com.cui.tech.chaos.web.service.helper.RedisHelper;
 import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 /**
@@ -108,24 +111,28 @@ public abstract class BaseController<T> {
         }
     }
 
-    public DataResult getResult(T data) {
+    public DataResult dataResult(T data) {
         DataResult dataResult = new DataResult();
-        if (data instanceof Boolean) {
-            if (!(Boolean) data) {
-                dataResult.failure();
-                dataResult.setData(data);
-            }
-        } else if (data instanceof DTO) {
-            if (data == null) {
-                dataResult.failure();
-                dataResult.setData(new DTO());
-            }
+        if (data instanceof Boolean && !(Boolean) data) {
+            dataResult.failure();
+            dataResult.setData(data);
+        } else if (data instanceof DTO && data == null) {
+            dataResult.failure();
+            dataResult.setData(new DTO());
+        } else if (data instanceof List && data == null) {
+            dataResult.failure();
+            dataResult.setData(Lists.newArrayList());
+        } else if (data instanceof Map && data == null) {
+            dataResult.failure();
+            dataResult.setData(Maps.newHashMap());
+        } else {
+            dataResult.setData(data);
         }
         return dataResult;
     }
 
 
-    public PageResult<T> getResult(PageList<T> pageList) {
+    public PageResult<T> pageResult(PageList<T> pageList) {
         PageResult<T> listResult = new PageResult<T>();
         if (pageList == null) {
             listResult.failure();
@@ -135,7 +142,7 @@ public abstract class BaseController<T> {
         return listResult;
     }
 
-    public MarkPageResult<T> getResult(PageList<T> pageList, String mark) {
+    public MarkPageResult<T> pageResult(PageList<T> pageList, String mark) {
         MarkPageResult<T> listResult = new MarkPageResult<T>();
         if (pageList == null) {
             listResult.failure();
@@ -146,7 +153,7 @@ public abstract class BaseController<T> {
         return listResult;
     }
 
-    public MarkPagesResult<T> getResult(PageList<T> pl1, PageList<T> pl2, String mark) {
+    public MarkPagesResult<T> pageResult(PageList<T> pl1, PageList<T> pl2, String mark) {
         MarkPagesResult<T> mpr = new MarkPagesResult<T>();
         if (pl1 == null || pl2 == null) {
             mpr.failure();

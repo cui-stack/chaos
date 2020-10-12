@@ -36,17 +36,4 @@ public class AuthenticationException extends RuntimeException {
         this.result = new Result(resultEnum.getCode(), msg);
     }
 
-    public AuthenticationException(String ObjectName, String methodName, ResultEnum resultEnum) {
-        super(resultEnum.getDefaultMsg());
-        this.ObjectName = ObjectName;
-        this.methodName = methodName;
-        this.result = new Result(resultEnum.getCode(), resultEnum.getDefaultMsg());
-    }
-
-    public AuthenticationException(String ObjectName, String methodName, ResultEnum resultEnum, String msg) {
-        super(msg);
-        this.ObjectName = ObjectName;
-        this.methodName = methodName;
-        this.result = new Result(resultEnum.getCode(), msg);
-    }
 }

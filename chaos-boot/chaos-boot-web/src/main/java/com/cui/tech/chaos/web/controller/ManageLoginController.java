@@ -55,10 +55,10 @@ public class ManageLoginController extends BaseController {
         log.info("用户[{}]登录", user.getUsername());
         validate(bindingResult);
         if (mnLoginService == null) {
-            return getResult(false);
+            return dataResult(false);
         }
         user.setIp(IpUtil.getIpAddr(request));
-        return (DataResult<ManageLoginUser>) getResult((ManageLoginUser) mnLoginService.doLogin(user)).setMsg("账号密码错误,登录失败!");
+        return (DataResult<ManageLoginUser>) dataResult((ManageLoginUser) mnLoginService.doLogin(user)).setMsg("账号密码错误,登录失败!");
     }
 
     @PostMapping("/logout")
@@ -67,9 +67,9 @@ public class ManageLoginController extends BaseController {
     public DataResult<Boolean> logout(HttpServletRequest request) {
         log.info("用户[{}]登出");
         if (mnLoginService == null) {
-            return getResult(false);
+            return dataResult(false);
         }
-        return getResult(mnLoginService.doLogout(getMnLoginMU(request)));
+        return dataResult(mnLoginService.doLogout(getMnLoginMU(request)));
     }
 
     @PostMapping("/loginAdmins")
@@ -77,9 +77,9 @@ public class ManageLoginController extends BaseController {
     @ApiOperation(value = "", notes = "", httpMethod = "POST")
     public DataResult<List<LoginUser>> loginAdmins() {
         if (mnLoginService == null) {
-            return getResult(false);
+            return dataResult(false);
         }
-        return getResult(mnLoginService.loginUsers());
+        return dataResult(mnLoginService.loginUsers());
     }
 
     @PostMapping("/loginUsers")
@@ -87,9 +87,9 @@ public class ManageLoginController extends BaseController {
     @ApiOperation(value = "", notes = "", httpMethod = "POST")
     public DataResult<List<LoginUser>> loginUsers() {
         if (wxLoginService == null) {
-            return getResult(false);
+            return dataResult(false);
         }
-        return getResult(wxLoginService.loginUsers());
+        return dataResult(wxLoginService.loginUsers());
     }
 
     @PostMapping("/logoutAll")
@@ -98,30 +98,30 @@ public class ManageLoginController extends BaseController {
     public DataResult<Boolean> logoutAll() {
         log.info("用户强制登出");
         if (mnLoginService == null) {
-            return getResult(false);
+            return dataResult(false);
         }
-        return getResult(mnLoginService.doLogoutAll());
+        return dataResult(mnLoginService.doLogoutAll());
     }
 
     @PostMapping("/limit")
     @ManageLoginToken(roles = {RoleConstant.ADMIN})
     @ApiOperation(value = "", notes = "", httpMethod = "POST")
     public DataResult<ArrayList> limit() {
-        return getResult(accessLimitService.limit());
+        return dataResult(accessLimitService.limit());
     }
 
     @PostMapping("/release")
     @ManageLoginToken(roles = {RoleConstant.ADMIN})
     @ApiOperation(value = "", notes = "", httpMethod = "POST")
     public DataResult<Boolean> release(@RequestBody LimitDto limit) {
-        return getResult(accessLimitService.release(limit));
+        return dataResult(accessLimitService.release(limit));
     }
 
     @PostMapping("/lock")
     @ManageLoginToken(roles = {RoleConstant.ADMIN})
     @ApiOperation(value = "", notes = "", httpMethod = "POST")
     public DataResult<Boolean> lock(@RequestBody LimitDto limit) {
-        return getResult(accessLimitService.lock(limit));
+        return dataResult(accessLimitService.lock(limit));
     }
 
 }

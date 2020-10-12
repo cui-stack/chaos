@@ -43,33 +43,33 @@ public class ManageDataController extends BaseController {
     @ApiOperation(value = "", notes = "", httpMethod = "POST")
     public DataResult<Object> get(@RequestBody RedisGetDto redisGetDto) {
         if (!redisGetDto.getToken().equals(token)) {
-            return getResult(false);
+            return dataResult(false);
         }
-        return getResult(redisHelper.get(redisGetDto.getKey()));
+        return dataResult(redisHelper.get(redisGetDto.getKey()));
     }
 
     @PostMapping("/set")
     @ApiOperation(value = "", notes = "", httpMethod = "POST")
     public DataResult<Boolean> set(@RequestBody RedisSetDto redisSetDto) {
         if (!redisSetDto.getToken().equals(token)) {
-            return getResult(false);
+            return dataResult(false);
         }
         if (redisHelper.hasKey(redisSetDto.getKey())) {
-            return getResult(redisHelper.set(redisSetDto.getKey(), redisSetDto.getValue(), redisSetDto.getTime()));
+            return dataResult(redisHelper.set(redisSetDto.getKey(), redisSetDto.getValue(), redisSetDto.getTime()));
         } else {
-            return getResult(false);
+            return dataResult(false);
         }
     }
     @PostMapping("/refreshToken")
     @ApiOperation(value = "", notes = "", httpMethod = "POST")
     public DataResult<Boolean> refreshToken(@RequestBody ManageRefreshSetDto setDto) {
         if (!setDto.getToken().equals(token)) {
-            return getResult(false);
+            return dataResult(false);
         }
         if (redisHelper.hasKey(setDto.getKey())) {
-            return getResult(redisHelper.set(setDto.getKey(), setDto.getValue(), setDto.getTime()));
+            return dataResult(redisHelper.set(setDto.getKey(), setDto.getValue(), setDto.getTime()));
         } else {
-            return getResult(false);
+            return dataResult(false);
         }
     }
 
@@ -82,8 +82,8 @@ public class ManageDataController extends BaseController {
     @ApiOperation(value = "", notes = "", httpMethod = "POST")
     public DataResult<ManageLoginUser> loginUser(@RequestBody ChaosAdminGetDto data) {
         if (!data.getToken().equals(token)) {
-            return getResult(false);
+            return dataResult(false);
         }
-        return getResult(getMnLoginUserByToken(data.getUserMuToken()));
+        return dataResult(getMnLoginUserByToken(data.getUserMuToken()));
     }
 }

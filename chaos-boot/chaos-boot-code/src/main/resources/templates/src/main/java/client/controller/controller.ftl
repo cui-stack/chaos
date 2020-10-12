@@ -42,21 +42,21 @@ public class ${table.controllerName} extends ${superControllerClass} {
     @ApiOperation(value = "单条", notes = "", httpMethod = "POST")
     public DataResult<${entity}Data> one(
         @RequestBody MU data) throws Exception {
-    return getResult(i${entity}Service.selectByMU(data));
+    return dataResult(i${entity}Service.selectByMU(data));
     }
 
     @PostMapping("/list")
     @WxminiLoginToken
     @ApiOperation(value = "列表", notes = "", httpMethod = "POST")
     public DataResult<List<${entity}Data>> list( @RequestBody ${entity}Data data) throws Exception {
-         return getResult(i${entity}Service.selectByData(data));
+         return dataResult(i${entity}Service.selectByData(data));
     }
 
     @PostMapping("/page")
     @WxminiLoginToken
     @ApiOperation(value = "分页", notes = "", httpMethod = "POST")
     public PageResult<${entity}Data> page( @RequestBody PageQueryDto<${entity}Data> data) throws Exception {
-        return getResult(i${entity}Service.selectByPage(data));
+        return pageResult(i${entity}Service.selectByPage(data));
     }
 
 }

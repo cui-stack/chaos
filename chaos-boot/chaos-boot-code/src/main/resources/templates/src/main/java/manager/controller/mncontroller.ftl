@@ -43,7 +43,7 @@ public class ${entity}MnController extends ${superControllerClass} {
     @ApiOperation(value = "", notes = "", httpMethod = "POST")
     public DataResult<MU> add(@RequestBody @Validated ${entity}Data data, BindingResult bindingResult) throws Exception {
         validate(bindingResult);
-        return getResult(i${entity}Service.insertModel(data));
+        return dataResult(i${entity}Service.insertModel(data));
     }
 
     @PostMapping("/update")
@@ -51,35 +51,35 @@ public class ${entity}MnController extends ${superControllerClass} {
     @ApiOperation(value = "", notes = "", httpMethod = "POST")
     public DataResult<Boolean> update( @ApiParam(value = "") @RequestBody @Validated UpdateData<${entity}Data> data, BindingResult bindingResult) throws Exception {
         validate(bindingResult);
-        return getResult(i${entity}Service.updateModelByMU(data));
+        return dataResult(i${entity}Service.updateModelByMU(data));
     }
 
     @PostMapping("/one")
     @ManageLoginToken
     @ApiOperation(value = "", notes = "", httpMethod = "POST")
     public DataResult<${entity}Data> one( @RequestBody MU data) throws Exception {
-        return getResult(i${entity}Service.selectByMU(data));
+        return dataResult(i${entity}Service.selectByMU(data));
     }
 
     @PostMapping("/list")
     @ManageLoginToken
     @ApiOperation(value = "列表", notes = "", httpMethod = "POST")
     public DataResult<List<${entity}Data>> list( @RequestBody ${entity}Data data) throws Exception {
-        return getResult(i${entity}Service.selectByData(data));
+        return dataResult(i${entity}Service.selectByData(data));
     }
 
     @PostMapping("/page")
     @ManageLoginToken
     @ApiOperation(value = "", notes = "", httpMethod = "POST")
     public PageResult<${entity}Data> page( @RequestBody PageQueryDto<${entity}Data> data) throws Exception {
-        return getResult(i${entity}Service.selectByPage(data));
+        return pageResult(i${entity}Service.selectByPage(data));
     }
 
     @PostMapping("/delete")
     @ManageLoginToken
     @ApiOperation(value = "删除", notes = "", httpMethod = "POST")
     public DataResult<Boolean> delete( @RequestBody MU data) throws Exception {
-        return getResult(i${entity}Service.deleteModel(data));
+        return dataResult(i${entity}Service.deleteModel(data));
     }
 
 }
