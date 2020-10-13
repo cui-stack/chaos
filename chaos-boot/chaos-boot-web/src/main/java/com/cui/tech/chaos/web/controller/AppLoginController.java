@@ -1,6 +1,7 @@
 package com.cui.tech.chaos.web.controller;
 
 import com.cui.tech.chaos.model.login.*;
+import com.cui.tech.chaos.model.result.ResultMsg;
 import com.cui.tech.chaos.web.base.BaseController;
 import com.cui.tech.chaos.model.service.ILoginService;
 import com.cui.tech.chaos.model.result.DataResult;
@@ -37,7 +38,7 @@ public class AppLoginController extends BaseController {
     public DataResult<AppLoginUser> login(@RequestBody AppLoginDto user, BindingResult bindingResult, HttpServletRequest request) {
         validate(bindingResult);
         AppLoginUser su = (AppLoginUser) appLoginService.doLogin(user);
-        return dataResult(su);
+        return dataResult(su,new ResultMsg().setFailure("用户不存在"));
     }
 
     @PostMapping("/phone/login")

@@ -15,11 +15,7 @@ public class PagesResult<T> extends Result {
     private ArrayList<PageList<T>> pages;
 
     public PagesResult() {
-        success();
+
     }
 
-    public PagesResult msg(String msg) {
-        this.setMsg(msg);
-        return this;
-    }
 }

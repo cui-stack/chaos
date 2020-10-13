@@ -4,10 +4,12 @@ package com.cui.tech.chaos.web.base;
 import com.cui.tech.chaos.model.DTO;
 import com.cui.tech.chaos.model.db.DATA;
 import com.cui.tech.chaos.model.exception.BusinessException;
+import com.cui.tech.chaos.model.login.AppLoginUser;
 import com.cui.tech.chaos.model.login.ManageLoginUser;
 import com.cui.tech.chaos.model.login.WxMiniLoginUser;
 import com.cui.tech.chaos.model.page.PageList;
 import com.cui.tech.chaos.model.result.*;
+import com.cui.tech.chaos.web.service.AppLoginKeyService;
 import com.cui.tech.chaos.web.service.ManageLoginKeyService;
 import com.cui.tech.chaos.web.service.WxminiLoginKeyService;
 import com.cui.tech.chaos.web.service.helper.JWTHelper;
@@ -40,6 +42,8 @@ public abstract class BaseController<T> {
     private WxminiLoginKeyService wxminiLoginKeyService;
     @Autowired
     private ManageLoginKeyService manageLoginKeyService;
+    @Autowired
+    private AppLoginKeyService appLoginKeyService;
 
     public String getToken(HttpServletRequest request) {
         return request.getHeader("token");
@@ -56,19 +60,6 @@ public abstract class BaseController<T> {
     public ManageLoginUser getMnLoginUserByToken(String token) {
         String key = manageLoginKeyService.key(jwtHelper.getUserMuInJwtData(token));
         return (ManageLoginUser) redisHelper.get(key);
-    }
-
-    public WxMiniLoginUser getWxLoginUser(HttpServletRequest request) {
-        String token = getToken(request);
-        if (StringUtils.isEmpty(token)) {
-            return null;
-        }
-        return (WxMiniLoginUser) getWxLoginUserByToken(token);
-    }
-
-    public WxMiniLoginUser getWxLoginUserByToken(String token) {
-        String key = wxminiLoginKeyService.key(token);
-        return (WxMiniLoginUser) redisHelper.get(key);
     }
 
     public String getMnLoginRole(HttpServletRequest request) {
@@ -88,6 +79,20 @@ public abstract class BaseController<T> {
         return user.getMu();
     }
 
+    public WxMiniLoginUser getWxLoginUser(HttpServletRequest request) {
+        String token = getToken(request);
+        if (StringUtils.isEmpty(token)) {
+            return null;
+        }
+        return (WxMiniLoginUser) getWxLoginUserByToken(token);
+    }
+
+    public WxMiniLoginUser getWxLoginUserByToken(String token) {
+        String key = wxminiLoginKeyService.key(token);
+        return (WxMiniLoginUser) redisHelper.get(key);
+    }
+
+
     public String getWxLoginMU(HttpServletRequest request) {
         WxMiniLoginUser user = getWxLoginUser(request);
         if (user == null) {
@@ -104,6 +109,26 @@ public abstract class BaseController<T> {
         return user.getId();
     }
 
+    public AppLoginUser getAppLoginUserByToken(String token) {
+        String key = appLoginKeyService.key(token);
+        return (AppLoginUser) redisHelper.get(key);
+    }
+
+    public AppLoginUser getAppLoginUser(HttpServletRequest request) {
+        String token = getToken(request);
+        if (StringUtils.isEmpty(token)) {
+            return null;
+        }
+        return (AppLoginUser) getAppLoginUserByToken(token);
+    }
+    public String getAppLoginMU(HttpServletRequest request) {
+        AppLoginUser user = getAppLoginUser(request);
+        if (user == null) {
+            return "";
+        }
+        return user.getMu();
+    }
+
     public void validate(BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             String msg = String.join(",", bindingResult.getFieldErrors().stream().map(FieldError::getDefaultMessage).collect(Collectors.toList()));
@@ -112,33 +137,38 @@ public abstract class BaseController<T> {
     }
 
     public DataResult dataResult(T data) {
+        return dataResult(data, null);
+    }
+
+    public DataResult dataResult(T data, ResultMsg msg) {
         DataResult dataResult = new DataResult();
-        if (data instanceof Boolean && !(Boolean) data) {
-            dataResult.failure();
-            dataResult.setData(data);
-        } else if (data instanceof DTO && data == null) {
-            dataResult.failure();
-            dataResult.setData(new DTO());
-        } else if (data instanceof List && data == null) {
-            dataResult.failure();
-            dataResult.setData(Lists.newArrayList());
-        } else if (data instanceof Map && data == null) {
-            dataResult.failure();
-            dataResult.setData(Maps.newHashMap());
+        if (data == null) {
+            if (msg == null || StringUtils.isEmpty(msg.getFailure())) {
+                dataResult.failure();
+            } else {
+                dataResult.setCode(ResultEnum.FAILURE.getCode()).setMsg(msg.getFailure());
+            }
+            dataResult.setData(new Object());
         } else {
+            if (msg == null || StringUtils.isEmpty(msg.getSuccess())) {
+                dataResult.success();
+            } else {
+                dataResult.setCode(ResultEnum.SUCCESS.getCode()).setMsg(msg.getSuccess());
+            }
             dataResult.setData(data);
         }
         return dataResult;
     }
 
-
     public PageResult<T> pageResult(PageList<T> pageList) {
         PageResult<T> listResult = new PageResult<T>();
         if (pageList == null) {
             listResult.failure();
-            pageList = new PageList();
+            listResult.setPage(new PageList());
+        } else {
+            listResult.success();
+            listResult.setPage(pageList);
         }
-        listResult.setPage(pageList);
         return listResult;
     }
 
@@ -146,7 +176,10 @@ public abstract class BaseController<T> {
         MarkPageResult<T> listResult = new MarkPageResult<T>();
         if (pageList == null) {
             listResult.failure();
-            pageList = new PageList();
+            listResult.setPage(new PageList());
+        } else {
+            listResult.success();
+            listResult.setPage(pageList);
         }
         listResult.setPage(pageList);
         listResult.setMark(mark);
@@ -157,10 +190,11 @@ public abstract class BaseController<T> {
         MarkPagesResult<T> mpr = new MarkPagesResult<T>();
         if (pl1 == null || pl2 == null) {
             mpr.failure();
-            pl1 = new PageList();
-            pl2 = new PageList();
+            mpr.setPages(Lists.newArrayList(new PageList(), new PageList()));
+        } else {
+            mpr.success();
+            mpr.setPages(Lists.newArrayList(pl1, pl2));
         }
-        mpr.setPages(Lists.newArrayList(pl1, pl2));
         mpr.setMark(mark);
         return mpr;
     }

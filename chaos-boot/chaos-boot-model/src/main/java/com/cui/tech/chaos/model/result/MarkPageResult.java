@@ -12,12 +12,7 @@ public class MarkPageResult<T> extends PageResult {
     private String mark;
 
     public MarkPageResult() {
-        super();
+
     }
 
-    @Override
-    public MarkPageResult msg(String msg) {
-        this.setMsg(msg);
-        return this;
-    }
 }

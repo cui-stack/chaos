@@ -20,12 +20,6 @@ public class DataResult<T> extends Result {
     private T data;
 
     public DataResult() {
-        success();
-    }
-
-    public DataResult msg(String msg) {
-        this.setMsg(msg);
-        return this;
     }
 
 

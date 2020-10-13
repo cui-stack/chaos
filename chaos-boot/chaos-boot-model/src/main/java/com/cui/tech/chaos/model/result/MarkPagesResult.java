@@ -12,12 +12,6 @@ public class MarkPagesResult<T> extends PagesResult {
     private String mark;
 
     public MarkPagesResult() {
-        super();
     }
 
-    @Override
-    public MarkPagesResult msg(String msg) {
-        this.setMsg(msg);
-        return this;
-    }
 }

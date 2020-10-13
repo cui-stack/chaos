@@ -2,6 +2,7 @@ package com.cui.tech.chaos.web.service.helper;
 
 import com.cui.tech.chaos.model.login.JwtData;
 import io.jsonwebtoken.*;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import java.util.Date;
@@ -12,13 +13,15 @@ import java.util.Date;
  */
 @Component
 public class JWTHelper {
+    @Value("${app.sign:chaos}")
+    private String sign;
 
     public String createToken(String userMu) {
         long now = System.currentTimeMillis();
         long exp = now + 1000 * 60 * 60 * 2;
         JwtBuilder builder = Jwts.builder().setId("888").setSubject("G.G")
                 .setIssuedAt(new Date())
-                .signWith(SignatureAlgorithm.HS256, "chaos")
+                .signWith(SignatureAlgorithm.HS256, sign)
                 .setExpiration(new Date(exp))
                 .claim("userMu", userMu);
         return builder.compact();

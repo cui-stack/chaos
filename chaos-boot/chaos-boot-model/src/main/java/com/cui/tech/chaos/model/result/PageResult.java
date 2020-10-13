@@ -13,12 +13,6 @@ public class PageResult<T> extends Result {
     private PageList<T> page;
 
     public PageResult() {
-        success();
-    }
-
-    public PageResult msg(String msg) {
-        this.setMsg(msg);
-        return this;
     }
 
 }

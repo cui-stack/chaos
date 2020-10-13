@@ -1,16 +1,10 @@
 package com.cui.tech.chaos.web.service.interceptor;
 
-import com.cui.tech.chaos.web.annotation.AccessLimit;
-import com.cui.tech.chaos.web.annotation.AccessTotalLimit;
-import com.cui.tech.chaos.web.annotation.ManageLoginToken;
-import com.cui.tech.chaos.web.annotation.WxminiLoginToken;
+import com.cui.tech.chaos.model.login.*;
+import com.cui.tech.chaos.web.annotation.*;
 import com.cui.tech.chaos.web.exception.AuthenticationException;
 import com.cui.tech.chaos.web.service.AccessLimitService;
 import com.cui.tech.chaos.model.service.ILoginService;
-import com.cui.tech.chaos.model.login.JwtData;
-import com.cui.tech.chaos.model.login.LoginUser;
-import com.cui.tech.chaos.model.login.ManageLoginUser;
-import com.cui.tech.chaos.model.login.WxMiniLoginUser;
 import com.cui.tech.chaos.model.result.ResultEnum;
 import com.cui.tech.chaos.model.role.RoleConstant;
 import com.cui.tech.chaos.web.service.helper.JWTHelper;
@@ -41,10 +35,11 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
     @Qualifier("wxLoginService")
     @Autowired(required = false)
     ILoginService wxLoginService;
+    @Qualifier("appLoginService")
+    @Autowired(required = false)
+    ILoginService appLoginService;
     @Autowired
     private JWTHelper jwtHelper;
-    @Autowired
-    private RedisHelper redisHelper;
     @Autowired
     private AccessLimitService accessLimitService;
 
@@ -84,6 +79,15 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
                 String token = httpServletRequest.getHeader("token");
                 loginUser = handleWxminiLogin(token, httpServletRequest);
             }
+        }else if (method.isAnnotationPresent(AppLoginToken.class)) {
+            AppLoginToken appLoginToken = method.getAnnotation(AppLoginToken.class);
+            if (appLoginToken.required()) {
+                if (appLoginService == null) {
+                    return false;
+                }
+                String token = httpServletRequest.getHeader("token");
+                loginUser = handleAppLogin(token, httpServletRequest);
+            }
         }
 
         if (!StringUtils.isEmpty(loginUser)) {
@@ -97,6 +101,17 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
             }
         }
         return true;
+    }
+
+    private LoginUser handleAppLogin(String token, HttpServletRequest httpServletRequest) {
+        if (StringUtils.isEmpty(token)) {
+            throw new AuthenticationException(ResultEnum.LOGIN_AGAIN, "无效token，请重新登录", httpServletRequest);
+        }
+        AppLoginUser loginUser = (AppLoginUser) appLoginService.getLoginUser(token);
+        if (StringUtils.isEmpty(loginUser)) {
+            throw new AuthenticationException(ResultEnum.LOGIN_AGAIN, "用户不存在，请重新登录", httpServletRequest);
+        }
+        return loginUser;
     }
 
     private LoginUser handleWxminiLogin(String token, HttpServletRequest httpServletRequest) {
