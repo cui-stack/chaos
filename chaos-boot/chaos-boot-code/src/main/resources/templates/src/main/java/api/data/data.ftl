@@ -5,7 +5,6 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.*;
 import lombok.experimental.Accessors;
-import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
@@ -14,9 +13,9 @@ import java.time.LocalDateTime;
 
 @Data
 @NoArgsConstructor
-@AllArgsConstructor
 @Accessors(chain = true)
 @RequiredArgsConstructor(staticName = "of")
+@EqualsAndHashCode(callSuper = false)
 @ApiModel(value="${entity}Data", description="${table.comment!}")
 public class ${entity}Data extends DATA{
 
