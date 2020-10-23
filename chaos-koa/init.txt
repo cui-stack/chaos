@@ -1,4 +1,0 @@
-create database koa;
-
-grant all privileges on koa.* to 'root'@'%' identified by 'root';
-grant all privileges on test.* to 'root'@'%' identified by 'root';
