@@ -1,80 +1,64 @@
 ![](https://img.shields.io/badge/language-java-wheat.svg)
-# chaos-boot 基于springboot+dubbo的服务端架构
-## 框架集成
-|  服务     | 使用技术                    |   进度        |    备注   |
-|----------|------------------------------|--------------|-----------|
-|  基础框架 | springboot                  |   ✅          |           |
-|  服务调用 | dubbo                       |   ✅          |           |
-|  注册中心 | zookeeper                   |   ✅          |           |
-|  数据映射 | mybatisplus                 |   ✅          |           |
-|  数据缓存 | redis                       |   ✅          |           |
-|  Api管理  | swagger2                    |   ✅          |           |
-|  消息总线 | rabbitmq                    |   ✅          |           |
-|  授权认证 | SpringSecurity/Jwt+redis    |   ✅          |           |
-|  任务调度 | xxl-Job                     |   ✅          |           |
-|  灰度分流 | nginx                       |   ✅          |           |
-|  基础框架 | actuator                    |   ✅          |           |
-|  服务监控 | springboot-admin            |   ✅          |           |
-|  链路追踪 | zipkin                      |   ✅          |           |
-|  配置中心 | nacos                       |   🏗          |           |
-|  服务容错 | SpringCloud Sentinel        |   🏗          |           |
-|  分库分表 | shading-jdbc                |   🏗          |           |
-|  监控告警 | prometheus                  |   🏗          |           |
-|  数据可视 | grafana                     |   🏗          |           |
+#chaos-boot基于springboot+dubbo的服务端架构
+##框架集成
+|服务|使用技术|进度|备注|
+|---|---|---|---|
+|基础框架|springboot|✅||
+|服务调用|dubbo|✅||
+|注册中心|zookeeper|✅||
+|数据映射|mybatisplus|✅||
+|数据缓存|redis|✅||
+|Api管理|swagger2|✅||
+|消息总线|rabbitmq|✅||
+|授权认证|SpringSecurity/Jwt+redis|✅||
+|任务调度|xxl-Job|🏗||
+|灰度分流|nginx|✅||
+|基础框架|actuator|✅||
+|服务监控|springboot-admin|✅||
+|链路追踪|zipkin|✅||
 
-## 快速开始
-### 1. 建域
+##快速开始
+1.项目构建
 ```
-firepongo.tech
+cdchaos-boot
+mvninstall
 ```
-### 2. 环境部署
-```shell script
-cd ./chaos-ops/linux/center
-docker-compose
+2.代码生成
+-使用代码生成器
 ```
-### 3. 创建项目firepongo
-```shell script
-cd chaos-boot-code 
-run CodeGenerator.main()
-input firepongo 
-input fo_user,fo_product
+cdchaos-boot-code(CodeHelper中配置数据库)
+runCodeGenerator.main()
 ```
-### 3.1 pom.xml
-```xml
-<project>
-    <parent>
-         <groupId>com.cui.tech</groupId>
-         <artifactId>chaos-boot-parent</artifactId>
-         <version>2.3.0-SNAPSHOT</version>
-         <relativePath/>
-    </parent>
-    <groupId>com.cui.tech</groupId>
-    <artifactId>firepongo-service</artifactId>
-    <version>0.0.2-SNAPSHOT</version>
-    <packaging>jar</packaging>
-    <dependencies>
-        <dependency>
-            <groupId>com.cui.tech</groupId>
-            <artifactId>chaos-boot-starter</artifactId>
-        </dependency>
-    </dependencies>
-</project>
+-idea输入
 ```
-### 3.1.Application.java
-```java
-@MapperScan({"com.cui.tech.firepongo.service.mapper", "com.cui.tech.chaos.manage.service.mapper"})
-@ComponentScan(basePackages = {"com.cui.tech.chaos", "com.cui.tech.firepongo"})
+输入项目名称fo
+输入fo_user,fo_product
+生成code项目
+拷贝代码并使用
 ```
-### 4. 组件
-#### 4.1. 微信小程序登录
-```java
-@Component("wxLoginService")
-public class WxminiLoginService extends WxminiLoginServiceImpl {
-    @Override
-    public ManageLoginUser getUserInfo(ManageLoginDto loginDto) {}
-    @Override
-    public void afterLogin(LoginUser loginUser) {}
-    @Override
-    protected WxMiniLoginUser initUser(WxMiniLoginDto loginDto) {}
-}
+
+##功能列表
 ```
+1.代码生成,创建MuModel,Service,controller相关服务
+2.通用登录(后台+小程序+客户端)/wxmini/login/manage/login/app/login
+3.API登录权限控制@ManageLoginToken@WxminiLoginToken@AppLoginToken
+4.API访问量控制@AccessTotalLimit@AccessLimit
+5.后端管理模块chaos-manage,提供平台,管理员,角色,资源管理RestApi
+6.chaos-back提供后端管理模块后台,包括在线管理(多环境),日志管理,
+7.全局日志跟踪,后台展示
+8.通用RestApi设计规范,(one,add,list,page,update,delete)
+```
+
+##中间件集成
+|服务|中间件|
+|---|---|
+|构建仓库|nexus|
+|镜像仓库|habor|
+|环境管理|portainer|
+|配置中心|nacos|
+|链路跟踪|zipkin|
+|服务管理|springboot-admin|
+|任务中台|xxl-job|
+|统计报表|poli|
+|日志分析|elasticsearch|
+|项目构建|jenkins|
