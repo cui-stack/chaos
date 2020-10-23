@@ -46,7 +46,4 @@
 ## 消息系统
 ![rabbitmq-url](images/%E6%B6%88%E6%81%AF%E4%B8%AD%E5%8F%B0.jpg)
 
-# 🐒 开发环境
-mybatisx 
-
 ### ***Powered  by***  ***阿暴*** (**G.G**) 
