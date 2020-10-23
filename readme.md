@@ -1,7 +1,7 @@
-![](https://img.shields.io/badge/language-java-DarkSlateBlue.svg)
-![](https://img.shields.io/badge/language-javascript-DarkSlateBlue.svg)
-![](https://img.shields.io/badge/language-TypeScript-DarkSlateBlue.svg)
-![](https://img.shields.io/badge/license-MIT-DarkSlateBlue.svg)
+![](https://img.shields.io/badge/language-java-483D8B.svg)
+![](https://img.shields.io/badge/language-javascript-483D8B.svg)
+![](https://img.shields.io/badge/language-TypeScript-483D8B.svg)
+![](https://img.shields.io/badge/license-MIT-483D8B.svg)
 
 # 🐒  chaos<混/沌> 全栈开发架构  💪💪💪
 ##  用于构建快速上线应用  💨💨💨
