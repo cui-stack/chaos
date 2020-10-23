@@ -3,8 +3,8 @@
 ![](https://img.shields.io/badge/language-TypeScript-wheat.svg)
 ![](https://img.shields.io/badge/license-MIT-000000.svg)
 
-# 🐒  chaos(混沌) 全栈开发架构  💪💪💪
-##  用于构建快速上线应用 💨💨💨
+# 🐒  chaos<混/沌> 全栈开发架构  💪💪💪
+##  用于构建快速上线应用  💨💨💨
 
 [chaos-boot-start-url]:https://gitee.com/ape-stack/chaos/blob/master/chaos-boot/readme.md
 [chaos-vue-start-url]:https://gitee.com/ape-stack/chaos/tree/master/chaos-vue/readme.md
@@ -17,6 +17,7 @@
 |chaos-vue|vue-2.6.11+vuex-3.5.1+axios-0.19.2|✅|后台架构|[快速开始][chaos-vue-start-url]|
 |chaos-mvvmhabit|mvvmhabit+AAC|✅|安卓端架构||
 |chaos-weapp|wx原生-2.10.1|✅|微信小程序|[快速开始][chaos-weapp-start-url]|
+|chaos-center||✅|||
 
 # 🐒  架构展示  
 ## 混沌后台
