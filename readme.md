@@ -1,7 +1,7 @@
-![](https://img.shields.io/badge/language-java-wheat.svg)
-![](https://img.shields.io/badge/language-javascript-wheat.svg)
-![](https://img.shields.io/badge/language-TypeScript-wheat.svg)
-![](https://img.shields.io/badge/license-MIT-000000.svg)
+![](https://img.shields.io/badge/language-java-05279D.svg)
+![](https://img.shields.io/badge/language-javascript-05279D.svg)
+![](https://img.shields.io/badge/language-TypeScript-05279D.svg)
+![](https://img.shields.io/badge/license-MIT-05279D.svg)
 
 # 🐒  chaos<混/沌> 全栈开发架构  💪💪💪
 ##  用于构建快速上线应用  💨💨💨
@@ -9,6 +9,7 @@
 [chaos-boot-start-url]:https://gitee.com/ape-stack/chaos/blob/master/chaos-boot/readme.md
 [chaos-vue-start-url]:https://gitee.com/ape-stack/chaos/tree/master/chaos-vue/readme.md
 [chaos-weapp-start-url]:https://gitee.com/ape-stack/chaos/tree/master/chaos-weapp/readme.md
+[chaos-center-start-url]:https://gitee.com/ape-stack/chaos/blob/master/chaos-center/readme.md
 
 # 🐒  框架矩阵
 |服务|技术栈|进度|备注|介绍|
@@ -17,7 +18,7 @@
 |chaos-vue|vue-2.6.11+vuex-3.5.1+axios-0.19.2|✅|后台架构|[快速开始][chaos-vue-start-url]|
 |chaos-mvvmhabit|mvvmhabit+AAC|✅|安卓端架构||
 |chaos-weapp|wx原生-2.10.1|✅|微信小程序|[快速开始][chaos-weapp-start-url]|
-|chaos-center||✅|||
+|chaos-center||✅|中台架构|[快速开始][chaos-center-start-url]|
 
 # 🐒  架构展示  
 ## 混沌后台

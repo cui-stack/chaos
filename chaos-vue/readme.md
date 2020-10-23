@@ -19,6 +19,6 @@ npm run build
 ```
 ## 管理界面
 ```
-vueui
+vue ui
 ```
 
