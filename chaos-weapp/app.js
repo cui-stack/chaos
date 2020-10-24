@@ -1,8 +1,6 @@
-let login = require('/utils/login')
 let page = require('/utils/page')
 App({
     onLaunch(options) {
-        login.login()
     },
     onShow(options) {
     },
@@ -17,5 +15,4 @@ App({
     },
     onThemeChange() {
     },
-    globalData: {}
 })

@@ -13,11 +13,15 @@ Page({
     onLoad: function (e) {
         wx.setStorageSync('referrer', e.referrer)
         wx.setStorageSync('source', e.source)
-        // Data.list('info', {}, (res) => {
-        //     this.setData({
-        //         list: res
-        //     })
-        // })
+        login.login()
+        this.init()
+    },
+    init: function () {
+        Data.list('chaos_info', {}, (res) => {
+            this.setData({
+                list: res
+            })
+        })
     },
     onShareAppMessage: function (e) {
         return {

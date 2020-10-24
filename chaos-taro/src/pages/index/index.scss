@@ -1,0 +1,16 @@
+@import '..\\..\\styles\\app';
+
+.index {
+  @include padding(38px);
+
+  Image {
+    width: 120px;
+    height: 120px;
+  }
+
+  .index_head {
+    text-align: center;
+    margin: 104px 0 60px;
+  }
+
+}

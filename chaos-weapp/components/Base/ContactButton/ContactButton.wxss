@@ -1,0 +1,51 @@
+.absolute_zero {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+.hover {
+  background-color: #f9f9f9;
+}
+.page {
+  position: relative;
+}
+.page .page_bt {
+  width: 100%;
+  position: absolute;
+  height: 100rpx;
+  z-index: 100;
+  line-height: 100rpx;
+  top: 0rpx;
+  opacity: 0;
+}
+.page .page_slot {
+  text-align: center;
+  display: inline-block;
+  font-size: 16px;
+  font-weight: bold;
+}
+.page .page_text {
+  display: inline-block;
+  text-align: center;
+  font-size: 30rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 700;
+  color: #333;
+  line-height: 44rpx;
+}
+.page .book_text {
+  font-size: 26rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #576B95;
+  line-height: 36rpx;
+}
+.page .slot_text {
+  font-size: 26rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #999;
+  line-height: 36rpx;
+}

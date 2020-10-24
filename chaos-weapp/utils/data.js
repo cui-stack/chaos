@@ -8,14 +8,6 @@ function add(table, d = {}, callback) {
     })
 }
 
-function remove(table, mu, callback) {
-    fetch.post('api/' + table + '/remove', {
-        mu: mu
-    }, function (res) {
-        doCb(callback, res)
-    })
-}
-
 function update(table, mu, d = {}, callback) {
     fetch.post('api/' + table + '/update', {
         mu: mu,
@@ -25,10 +17,16 @@ function update(table, mu, d = {}, callback) {
     })
 }
 
-function one(table, mu, callback) {
-    fetch.post('api/' + table + '/one', {
-        mu: mu
-    }, function (res) {
+function one(table, data, callback) {
+    let d
+    if ((typeof data) == 'string') {
+        d = {
+            mu: data
+        }
+    } else if ((typeof data) == 'object') {
+        d = data
+    }
+    fetch.post('api/' + table + '/one', d, function (res) {
         doCb(callback, res)
     })
 }
@@ -57,7 +55,6 @@ function pages(table, d = {}, pageNum = 1, pageSize = 15, callback) {
         data: d
     }
     show.loading()
-
     fetch.post('api/' + table + '/page', data, (res) => {
         wx.hideLoading()
         callback(res.pages, res.mark)
@@ -79,12 +76,6 @@ function search(uri, d = {}, pageNum = 1, pageSize = 15, callback, isShow = true
     })
 }
 
-function query(uri, data = {}, callback) {
-    fetch.post(uri, data, function (res) {
-        doCb(callback, res)
-    })
-}
-
 function submit(uri, data = {}, callback, isShow = true) {
     if (isShow)
         show.loading()
@@ -96,11 +87,8 @@ function submit(uri, data = {}, callback, isShow = true) {
 }
 
 function validate(thing) {
-    finish(() => {
-        return check.isLogin()
-    }, () => {
+    if (check.isLogin())
         thing()
-    })
 }
 
 function doCb(cb, res) {
@@ -111,36 +99,6 @@ function doCb(cb, res) {
     }
 }
 
-function chain(a, b) {
-    finish(a).then(b)
-}
-
-
-function finish(thing, success, fail) {
-    return new Promise(
-        (resolve, reject) => {
-            const result = thing()
-            if (result) {
-                resolve(result)
-            } else {
-                reject(result)
-            }
-        }
-    ).then(
-        (res) => {
-            if (success) {
-                success(res)
-            }
-        },
-        (err) => {
-            if (fail) {
-                fail(err)
-            }
-        }
-    )
-}
-
-//限流
 function throttle(fn, data = {}, delay = 500, context = null) {
     clearTimeout(fn.timeoutId);
     fn.timeoutId = setTimeout(function () {
@@ -151,7 +109,6 @@ function throttle(fn, data = {}, delay = 500, context = null) {
 
 module.exports = {
     add,
-    remove,
     update,
     one,
     list,
@@ -160,10 +117,7 @@ module.exports = {
 
     search,
     submit,
-    query,
     validate,
 
-    chain,
-    finish,
     throttle
 }

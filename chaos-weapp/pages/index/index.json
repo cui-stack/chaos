@@ -1,15 +1,4 @@
 {
-  "navigationBarBackgroundColor": "#fff",
-  "navigationBarTextStyle": "black",
-  "navigationStyle": "default",
-  "backgroundColor": "#ffffff",
-  "backgroundTextStyle": "dark",
-  "backgroundColorTop": "#ffffff",
-  "backgroundColorBottom": "#ffffff",
-  "enablePullDownRefresh": false,
-  "disableScroll": false,
   "usingComponents": {
-    "mp-searchbar": "weui-miniprogram/searchbar/searchbar",
-    "mp-icon": "weui-miniprogram/icon/icon"
   }
 }

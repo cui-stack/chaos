@@ -14,6 +14,13 @@
 npm install
 npm run dev
 npm run build
+npm run tep user
+@/router/index.js 添加配置
+chaos-back 增加资源+角色授权
+发布
+constans.js 配置环境
+npm run build:test
+npm run build
 ```
 ## 管理界面
 ```

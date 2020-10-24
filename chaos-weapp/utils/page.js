@@ -8,6 +8,12 @@ function back(delta = 1) {
     wx.navigateBack({delta: delta})
 }
 
+function redirectTo(url, p) {
+    wx.redirectTo({
+        url: path(url) + (p ? ('?' + p) : '')
+    })
+}
+
 function reLaunch(url) {
     wx.reLaunch({
         url: path(url),
@@ -22,5 +28,6 @@ module.exports = {
     to,
     back,
     reLaunch,
-    path
+    path,
+    redirectTo
 }

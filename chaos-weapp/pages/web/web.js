@@ -1,6 +1,7 @@
 let Data = require('./../../utils/data')
 let page = require('./../../utils/page')
 let store = require('./../../utils/store')
+let login = require('./../../utils/login')
 
 Page({
     data: {
@@ -9,10 +10,8 @@ Page({
         title: '',
     },
     onLoad: function (e) {
-        wx.setStorageSync('referrer', e.referrer)
-        wx.setStorageSync('source', e.source)
-
-        Data.one('info', e.mu,
+        login.login(e.referrer, e.source)
+        Data.one('iya_info', e.mu,
             (res) => {
                 this.setData({
                     mu: e.mu,
@@ -21,12 +20,9 @@ Page({
                 })
             })
     },
-    onShow: function () {
-
-    },
     onShareAppMessage: function (e) {
         return {
-            title: "",
+            title: "混沌",
             path: page.path("web") + "?referrer=" + store.mu() + "&mu=" + this.data.mu
         }
     },

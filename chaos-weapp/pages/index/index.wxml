@@ -2,14 +2,4 @@
     <view class="page_head">
         <image src='/images/pongo72.png'></image>
     </view>
-    <view class='page_search' bindtap='goDoctorlist'>
-        <view class="page_search_title">请输入搜索关键字</view>
-        <mp-icon icon="search" size="25" color="#808080"></mp-icon>
-    </view>
-    <view class="page_list">
-        <view wx:for="{{list}}" wx:key="index" class='page_list_item {{list.length!=index+1?"page_list_line":""}}' hover-class='page_list_item_hover' data-id="{{index}}" bindtap='goWeb'>
-            {{item.title}}
-        </view>
-    </view>
 </view>
-<Tab></Tab>
