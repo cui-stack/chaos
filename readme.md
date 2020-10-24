@@ -11,7 +11,7 @@
 [chaos-vue-start-url]:https://gitee.com/ape-stack/chaos/tree/master/chaos-vue/readme.md
 [chaos-weapp-start-url]:https://gitee.com/ape-stack/chaos/tree/master/chaos-weapp/readme.md
 [chaos-taro-start-url]:https://gitee.com/ape-stack/chaos/tree/master/chaos-taro/readme.md
-[chaos-mvvmhabit-start-url]:https://gitee.com/ape-stack/chaos/tree/master/chaos-mvvmhabit/readme.md
+[chaos-mh-start-url]:https://gitee.com/ape-stack/chaos/tree/master/chaos-mh/readme.md
 [chaos-center-start-url]:https://gitee.com/ape-stack/chaos/blob/master/chaos-center/readme.md
 
 # 🐒  架构矩阵
@@ -20,7 +20,7 @@
 | --------------- | --------------------------------------- | ---------------------------------------- | ------------------------------------- | ---- | ---------- |
 | chaos-boot      | springboot-2.3.2.RELEASE+dubbo-2.6.0    | IDEA+lombak+MyBatis-Log+MyBatisX+RainBow | [快速开始][chaos-boot-start-url]      | ✅    | 服务端 |
 | chaos-vue       | vue-2.6.11+vuex-3.5.1+axios-0.19.2+less | WebStore+VUE-tools+easyLess              | [快速开始][chaos-vue-start-url]       | ✅    | 后台   |
-| chaos-mvvmhabit | mvvmhabit+AAC                           | AS                                       | [快速开始][chaos-mvvmhabit-start-url] | ✅    | 安卓   |
+| chaos-mh        | mvvmhabit+AAC                           | AS                                       | [快速开始][chaos-mh-start-url] | ✅    | 安卓   |
 | chaos-weapp     | wx原生-2.10.1+less                      | WebStore+微信开发者工具                  | [快速开始][chaos-weapp-start-url]     | ✅    | 小程序 |
 | chaos-taro      | ts+taro3+taro-ui3+sass+dva.js           | VS                                       | [快速开始][chaos-taro-start-url]      | ✅    | 全端  |
 | chaos-center    | docker+compose                          |                                          | [快速开始][chaos-center-start-url]    | ✅    | 中台   |
