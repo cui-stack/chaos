@@ -12,7 +12,6 @@
     </properties>
 
     <modules>
-        <module>chaos-boot</module>
 
     </modules>
 </project>
