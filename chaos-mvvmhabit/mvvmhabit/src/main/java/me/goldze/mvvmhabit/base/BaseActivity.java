@@ -21,12 +21,6 @@ import me.goldze.mvvmhabit.base.BaseViewModel.ParameterField;
 import me.goldze.mvvmhabit.bus.Messenger;
 import me.goldze.mvvmhabit.utils.MaterialDialogUtils;
 
-
-/**
- * Created by goldze on 2017/6/15.
- * 一个拥有DataBinding框架的基Activity
- * 这里根据项目业务可以换成你自己熟悉的BaseActivity, 但是需要继承RxAppCompatActivity,方便LifecycleProvider管理生命周期
- */
 public abstract class BaseActivity<V extends ViewDataBinding, VM extends BaseViewModel> extends RxAppCompatActivity implements IBaseView {
     protected V binding;
     protected VM viewModel;
@@ -158,8 +152,7 @@ public abstract class BaseActivity<V extends ViewDataBinding, VM extends BaseVie
             dialog = dialog.getBuilder().title(title).build();
             dialog.show();
         } else {
-            MaterialDialog.Builder builder = MaterialDialogUtils.showIndeterminateProgressDialog(this, title, true);
-            dialog = builder.show();
+            dialog = MaterialDialogUtils.showIndeterminateProgressDialog(this, title, true).show();
         }
     }
 

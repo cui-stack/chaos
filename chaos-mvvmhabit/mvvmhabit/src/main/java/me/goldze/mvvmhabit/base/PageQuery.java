@@ -7,6 +7,22 @@ package me.goldze.mvvmhabit.base;
 public class PageQuery<T> {
     private Integer pageNum = 1;
     private Integer pageSize = 10;
+    private T data;
+    public Integer getPageSize() {
+        return pageSize;
+    }
+
+    public void setPageSize(Integer pageSize) {
+        this.pageSize = pageSize;
+    }
+
+    public T getData() {
+        return data;
+    }
+
+    public void setData(T data) {
+        this.data = data;
+    }
 
     public Integer getPageNum() {
         return pageNum;
@@ -16,5 +32,5 @@ public class PageQuery<T> {
         this.pageNum = pageNum;
     }
 
-    private T data;
+
 }

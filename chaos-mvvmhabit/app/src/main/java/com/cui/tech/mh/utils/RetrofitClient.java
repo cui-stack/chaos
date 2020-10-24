@@ -4,6 +4,7 @@ import android.content.Context;
 import android.text.TextUtils;
 
 import com.cui.tech.mh.BuildConfig;
+import com.cui.tech.mh.constant.SPField;
 
 import java.io.File;
 import java.util.Map;
@@ -20,6 +21,7 @@ import me.goldze.mvvmhabit.http.interceptor.CacheInterceptor;
 import me.goldze.mvvmhabit.http.interceptor.logging.Level;
 import me.goldze.mvvmhabit.http.interceptor.logging.LoggingInterceptor;
 import me.goldze.mvvmhabit.utils.KLog;
+import me.goldze.mvvmhabit.utils.SPUtils;
 import me.goldze.mvvmhabit.utils.Utils;
 import okhttp3.Cache;
 import okhttp3.ConnectionPool;
@@ -68,7 +70,7 @@ public class RetrofitClient {
         }
 
         if (httpCacheDirectory == null) {
-            httpCacheDirectory = new File(mContext.getCacheDir(), "goldze_cache");
+            httpCacheDirectory = new File(mContext.getCacheDir(), "chaos_cache");
         }
 
         try {
@@ -93,6 +95,7 @@ public class RetrofitClient {
                         .request("Request") // request的Tag
                         .response("Response")// Response的Tag
                         .addHeader("log-header", "I am the log request header.") // 添加打印头, 注意 key 和 value 都不能是中文
+                        .addHeader("token", SPUtils.getInstance().getString(SPField.TOKEN)) // 添加打印头, 注意 key 和 value 都不能是中文
                         .build()
                 )
                 .connectTimeout(DEFAULT_TIMEOUT, TimeUnit.SECONDS)
@@ -137,7 +140,6 @@ public class RetrofitClient {
                 .unsubscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(subscriber);
-
         return null;
     }
 }

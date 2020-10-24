@@ -8,7 +8,6 @@ import androidx.annotation.Nullable;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
-
 import com.cui.tech.mh.BR;
 import com.cui.tech.mh.R;
 import com.cui.tech.mh.app.AppViewModelFactory;
@@ -39,18 +38,24 @@ public class LoginActivity extends BaseActivity<ActivityLoginBinding, LoginViewM
     }
 
     @Override
+    public void initData() {
+    }
+
+    @Override
     public void initViewObservable() {
         viewModel.uc.pSwitchEvent.observe(this, new Observer<Boolean>() {
-                @Override
-                public void onChanged(@Nullable Boolean aBoolean) {
+            @Override
+            public void onChanged(@Nullable Boolean aBoolean) {
                 if (viewModel.uc.pSwitchEvent.getValue()) {
-                    //binding.tvPasswordVisible.setBackgroundResource(R.drawable.ic_password_visible);
+                    binding.tvPasswordVisible.setBackgroundResource(R.mipmap.base_password_visible);
                     binding.etPassword.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
                 } else {
-                    //binding.tvPasswordVisible.setBackgroundResource(R.drawable.ic_password_invisible);
+                    binding.tvPasswordVisible.setBackgroundResource(R.mipmap.base_password_invisible);
                     binding.etPassword.setTransformationMethod(PasswordTransformationMethod.getInstance());
                 }
             }
         });
     }
+
+
 }

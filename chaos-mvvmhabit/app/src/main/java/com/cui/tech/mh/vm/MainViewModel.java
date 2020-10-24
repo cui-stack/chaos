@@ -16,8 +16,8 @@ public class MainViewModel extends BaseViewModel<Repository> {
     private static final String TAG = "MainViewModel";
 
 
-    public MainViewModel(@NonNull Application application, Repository loginRepository) {
-        super(application, loginRepository);
+    public MainViewModel(@NonNull Application application, Repository repository) {
+        super(application, repository);
     }
 
     @Override

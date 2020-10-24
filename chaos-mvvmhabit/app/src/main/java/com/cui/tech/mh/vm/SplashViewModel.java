@@ -8,7 +8,6 @@ import com.cui.tech.mh.model.repository.Repository;
 
 import me.goldze.mvvmhabit.base.BaseViewModel;
 
-
 /**
  * @author G.G
  * @date 2020/8/11 23:07

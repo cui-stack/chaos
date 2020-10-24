@@ -9,13 +9,14 @@ import androidx.annotation.NonNull;
 import androidx.databinding.ObservableField;
 import androidx.databinding.ObservableInt;
 
-
+import com.cui.tech.mh.model.data.LoginUser;
 import com.cui.tech.mh.model.repository.Repository;
 import com.cui.tech.mh.view.activity.MainActivity;
 
 import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Consumer;
 import me.goldze.mvvmhabit.base.BaseViewModel;
+import me.goldze.mvvmhabit.base.DataResponse;
 import me.goldze.mvvmhabit.binding.command.BindingAction;
 import me.goldze.mvvmhabit.binding.command.BindingCommand;
 import me.goldze.mvvmhabit.binding.command.BindingConsumer;
@@ -30,33 +31,27 @@ import me.goldze.mvvmhabit.utils.ToastUtils;
 public class LoginViewModel extends BaseViewModel<Repository> {
     private static final String TAG = "LoginViewModel";
 
-    public class UIChangeObservable {
-        public SingleLiveEvent<Boolean> pSwitchEvent = new SingleLiveEvent<>();
-    }
-
-    public UIChangeObservable uc = new UIChangeObservable();
-
     public LoginViewModel(@NonNull Application application, Repository loginRepository) {
         super(application, loginRepository);
-        //username.set(model.getUserName());
     }
 
+    public ObservableField<String> username = new ObservableField<>("");
 
-    public ObservableField<String> phone = new ObservableField<>("");
     public ObservableField<String> password = new ObservableField<>("");
-    public ObservableInt isShowTvPhoneClear = new ObservableInt();
 
-    public BindingCommand clearPhone = new BindingCommand(new BindingAction() {
+    public ObservableInt isShowTvUsernameClear = new ObservableInt();
+
+    public BindingCommand clearUsername = new BindingCommand(new BindingAction() {
         @Override
         public void call() {
-            phone.set("");
+            username.set("");
         }
     });
 
-    public BindingCommand<Boolean> onFocusPhone = new BindingCommand<>(new BindingConsumer<Boolean>() {
+    public BindingCommand<Boolean> onFocusUsername = new BindingCommand<>(new BindingConsumer<Boolean>() {
         @Override
         public void call(Boolean hasFocus) {
-            isShowTvPhoneClear.set(hasFocus ? View.VISIBLE : View.INVISIBLE);
+            isShowTvUsernameClear.set(hasFocus ? View.VISIBLE : View.INVISIBLE);
         }
     });
 
@@ -67,10 +62,17 @@ public class LoginViewModel extends BaseViewModel<Repository> {
         }
     });
 
+    public class UIChangeObservable {
+        public SingleLiveEvent<Boolean> pSwitchEvent = new SingleLiveEvent<>();
+    }
+
+    public UIChangeObservable uc = new UIChangeObservable();
+
+
     public BindingCommand doLogin = new BindingCommand(new BindingAction() {
         @Override
         public void call() {
-            if (TextUtils.isEmpty(phone.get())) {
+            if (TextUtils.isEmpty(username.get())) {
                 ToastUtils.showShort("请输入账号！");
                 return;
             }
@@ -78,31 +80,38 @@ public class LoginViewModel extends BaseViewModel<Repository> {
                 ToastUtils.showShort("请输入密码！");
                 return;
             }
-            ToastUtils.showShort("开始登录");
+            login();
+        }
+    });
 
-            addSubscribe(model.login(phone.get(), password.get())
-                    .compose(RxUtils.schedulersTransformer())
-                    .doOnSubscribe(new Consumer<Disposable>() {
-                        @Override
-                        public void accept(Disposable disposable) throws Exception {
-                            //showDialog();
-                        }
-                    })
-                    .subscribe(new Consumer<Object>() {
-                        @Override
-                        public void accept(Object o) throws Exception {
-                            Log.d(TAG, "accept:  " + o.toString());
-                            //dismissDialog();
-                            model.saveUserName(phone.get());
+    private void login() {
+        ToastUtils.showShort("开始登录");
+        addSubscribe(model.login(username.get(), password.get())
+                .compose(RxUtils.schedulersTransformer())
+                .doOnSubscribe(new Consumer<Disposable>() {
+                    @Override
+                    public void accept(Disposable disposable) throws Exception {
+                        //showDialog();
+                    }
+                })
+                .subscribe(new Consumer<DataResponse<LoginUser>>() {
+                    @Override
+                    public void accept(DataResponse<LoginUser> data) throws Exception {
+                        Log.d(TAG, "accept:  " + data.toString());
+                        //dismissDialog();
+                        if (data.isOk()) {
+                            model.saveToken(data.getData().getToken());
                             ToastUtils.showShort("登录成功");
                             startActivity(MainActivity.class);
                             ToastUtils.showShort("进入主页");
                             finish();
+                        } else {
+                            ToastUtils.showShort(data.getMsg());
                         }
-                    }));
-        }
-    });
 
+                    }
+                }));
+    }
 
     @Override
     public void onDestroy() {

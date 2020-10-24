@@ -282,7 +282,7 @@ public class Messenger {
      * Unregister the receiver such as:
      * WeakMessenger.getDefault().unregister(this)" in onDestroy in the Activity is required avoid
      * to
-     * memory leak!
+     * main_tab_memory leak!
      *
      * @param recipient receiver of message
      */

@@ -60,7 +60,7 @@
     top: 0;
     left: 0;
     overflow-y: auto;
-    background-color: wheat;
+    background-color: #B0C4DE;
     font-family: "宋体";
     color: white;
     text-align: center;
@@ -73,7 +73,7 @@
   .login-area {
     text-align: center;
     background-color: white;
-    color: #ff746e;
+    color: #483D8B;
     width: 400px;
     height: 280px;
     margin: 10px auto;

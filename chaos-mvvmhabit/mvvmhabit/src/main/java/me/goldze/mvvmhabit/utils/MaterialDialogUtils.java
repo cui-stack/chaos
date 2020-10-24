@@ -83,7 +83,7 @@ public class MaterialDialogUtils {
     public static MaterialDialog.Builder showIndeterminateProgressDialog(Context context, String content, boolean horizontal) {
         MaterialDialog.Builder builder = new MaterialDialog.Builder(context)
                 .title(content)
-                .progress(true, 0)
+                .progress(true, 1)
                 .progressIndeterminateStyle(horizontal)
                 .canceledOnTouchOutside(false)
                 .backgroundColorRes(R.color.white)

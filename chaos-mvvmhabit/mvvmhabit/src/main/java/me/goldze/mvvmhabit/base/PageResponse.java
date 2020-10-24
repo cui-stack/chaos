@@ -9,4 +9,11 @@ import me.goldze.mvvmhabit.http.BaseResponse;
 public class PageResponse<T> extends BaseResponse {
     private PageList<T> page;
 
+    public PageList<T> getPage() {
+        return page;
+    }
+
+    public void setPage(PageList<T> page) {
+        this.page = page;
+    }
 }

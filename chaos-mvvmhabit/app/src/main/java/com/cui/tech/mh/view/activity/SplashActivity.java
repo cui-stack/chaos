@@ -5,7 +5,6 @@ import android.os.Handler;
 
 import androidx.lifecycle.ViewModelProviders;
 
-
 import com.cui.tech.mh.BR;
 import com.cui.tech.mh.R;
 import com.cui.tech.mh.app.AppViewModelFactory;
@@ -14,14 +13,11 @@ import com.cui.tech.mh.vm.SplashViewModel;
 
 import me.goldze.mvvmhabit.base.BaseActivity;
 
-
 /**
  * @author G.G
  * @date 2020/8/11 23:06
  */
 public class SplashActivity extends BaseActivity<ActivitySplashBinding, SplashViewModel> {
-
-    private Handler handler = new Handler();
 
     @Override
     public int initContentView(Bundle savedInstanceState) {
@@ -42,17 +38,14 @@ public class SplashActivity extends BaseActivity<ActivitySplashBinding, SplashVi
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        handler.postDelayed(runnableToLogin, 1000);
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                startActivity(LoginActivity.class);
+                finish();
+            }
+        }, 1000);
 
     }
-
-    private Runnable runnableToLogin = new Runnable() {
-        @Override
-        public void run() {
-            startActivity(LoginActivity.class);
-            finish();
-        }
-    };
-
 
 }

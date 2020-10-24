@@ -41,7 +41,7 @@
   .page {
     display: flex;
     width: 100%;
-    background-color: #438eb9;
+    background-color: #483D8B;
     height: 80px;
   }
 
