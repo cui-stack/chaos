@@ -16,14 +16,14 @@
 
 # 🐒  框架矩阵
 
-|服务|技术栈|进度|备注|介绍|
-|---|---|---|---|---|
-|chaos-boot|springboot-2.3.2.RELEASE+dubbo-2.6.0|✅|服务端架构|[快速开始][chaos-boot-start-url]|
-|chaos-vue|vue-2.6.11+vuex-3.5.1+axios-0.19.2+less|✅|后台架构|[快速开始][chaos-vue-start-url]|
-|chaos-mvvmhabit|mvvmhabit+AAC|✅|安卓端架构|[快速开始][chaos-mvvmhabit-start-url]|
-|chaos-weapp|wx原生-2.10.1+less|✅|微信小程序|[快速开始][chaos-weapp-start-url]|
-|chaos-taro|ts+taro3+taro-ui3+sass+dva.js|✅|全端架构|[快速开始][chaos-taro-start-url]|
-|chaos-center|docker+compose|✅|中台架构|[快速开始][chaos-center-start-url]|
+|服务|技术栈|进度|备注|介绍|工具|
+|---|---|---|---|---|---|
+|chaos-boot|springboot-2.3.2.RELEASE+dubbo-2.6.0|✅|服务端架构|[快速开始][chaos-boot-start-url]|IDEA+lombak+MyBatis Log+MyBatisX+RainBow|
+|chaos-vue|vue-2.6.11+vuex-3.5.1+axios-0.19.2+less|✅|后台架构|[快速开始][chaos-vue-start-url]|WebStore+VUE-tools+easyLess|
+|chaos-mvvmhabit|mvvmhabit+AAC|✅|安卓端架构|[快速开始][chaos-mvvmhabit-start-url]|AS|
+|chaos-weapp|wx原生-2.10.1+less|✅|微信小程序|[快速开始][chaos-weapp-start-url]|WebStore+微信开发者工具|
+|chaos-taro|ts+taro3+taro-ui3+sass+dva.js|✅|全端架构|[快速开始][chaos-taro-start-url]|VS|
+|chaos-center|docker+compose|✅|中台架构|[快速开始][chaos-center-start-url]||
 
 # 🐒  架构展示  
 
