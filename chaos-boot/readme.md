@@ -1,22 +1,5 @@
-# chaos-boot基于springboot+dubbo的服务端架构
-##  框架集成
-|服务|使用技术|进度|备注|
-|---|---|---|---|
-|基础框架|springboot|✅||
-|服务调用|dubbo|✅||
-|注册中心|zookeeper|✅||
-|数据映射|mybatisplus|✅||
-|数据缓存|redis|✅||
-|Api管理|swagger2|✅||
-|消息总线|rabbitmq|✅||
-|授权认证|SpringSecurity/Jwt+redis|✅||
-|任务调度|xxl-Job|🏗||
-|灰度分流|nginx|✅||
-|基础框架|actuator|✅||
-|服务监控|springboot-admin|✅||
-|链路追踪|zipkin|✅||
+#  快速开始
 
-##  快速开始
 1.项目构建
 ```
 cdchaos-boot
