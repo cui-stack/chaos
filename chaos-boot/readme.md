@@ -1,11 +1,11 @@
 #  快速开始
 
-1.项目构建
+1.  👣  项目构建
 ```
 cdchaos-boot
 mvninstall
 ```
-2.代码生成
+2.  👣  代码生成
 -使用代码生成器
 ```
 cdchaos-boot-code(CodeHelper中配置数据库)
