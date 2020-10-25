@@ -3,7 +3,7 @@
 ![](https://img.shields.io/badge/language-TypeScript-483D8B.svg)
 ![](https://img.shields.io/badge/license-MIT-483D8B.svg)
 #  ☯  chaos<混/沌>  全栈开发架构  
-##  用于构建快速上线应用  💨 💨💨  💨💨💨
+##  用于构建快速上线应用  💨  💨💨    💨💨💨
 [chaos-boot-start-url]:https://gitee.com/ape-stack/chaos/blob/master/chaos-boot/readme.md
 [chaos-vue-start-url]:https://gitee.com/ape-stack/chaos/tree/master/chaos-vue/readme.md
 [chaos-weapp-start-url]:https://gitee.com/ape-stack/chaos/tree/master/chaos-weapp/readme.md
