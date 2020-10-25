@@ -18,12 +18,12 @@
 
 | 架构            | 技术栈                                  | 工具                                     | 介绍                                  |  进度     | 备注       |
 | --------------- | --------------------------------------- | ---------------------------------------- | ------------------------------------- | ---- | ---------- |
-| chaos-boot | springboot-2.3.2.RELEASE+dubbo-2.6.0    | IDEA+lombak+MyBatis-Log+MyBatisX+RainBow | [快速开始][chaos-boot-start-url] | ✅ | 服务端 |
-| chaos-vue       | vue-2.6.11+vuex-3.5.1+axios-0.19.2+less | WebStore+VUE-tools+easyLess              | [快速开始][chaos-vue-start-url]       | ✅    | 后台     |
-| chaos-mh        | mvvmhabit+AAC                           | AS                                       | [快速开始][chaos-mh-start-url]         | ✅    | 安卓     |
-| chaos-weapp     | wx原生-2.10.1+less                      | WebStore+微信开发者工具                  | [快速开始][chaos-weapp-start-url]     | ✅    | 小程序   |
-| chaos-taro      | ts+taro3+taro-ui3+sass+dva.js           | VS+easySass                              | [快速开始][chaos-taro-start-url]      | ✅    | 全端    |
-| chaos-center    | docker+compose                          | Xshell                                  | [快速开始][chaos-center-start-url]    | ✅    | 中台     |
+| chaos-boot | springboot-2.3.2.RELEASE<br/>dubbo-2.6.0    | IDEA<br/>lombak<br/>MyBatis-Log<br/>MyBatisX<br/>RainBow | [快速开始][chaos-boot-start-url] | ✅ | 服务端 |
+| chaos-vue       | vue-2.6.11<br/>vuex-3.5.1<br/>axios-0.19.2<br/>less | WebStore<br/>VUE-tools<br/>easyLess              | [快速开始][chaos-vue-start-url]       | ✅    | 后台     |
+| chaos-mh        | mvvmhabit<br/>AAC                           | AS                                       | [快速开始][chaos-mh-start-url]         | ✅    | 安卓     |
+| chaos-weapp     | wx原生-2.10.1<br/>less                      | WebStore<br/>微信开发者工具                  | [快速开始][chaos-weapp-start-url]     | ✅    | 小程序   |
+| chaos-taro      | ts<br/>taro3<br/>taro-ui3<br/>sass<br/>dva.js           | VS<br/>easySass                              | [快速开始][chaos-taro-start-url]      | ✅    | 全端    |
+| chaos-center    | docker<br/>compose                          | Xshell                                  | [快速开始][chaos-center-start-url]    | ✅    | 中台     |
 
 # 🐒  架构展示  
 
