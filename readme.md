@@ -16,7 +16,7 @@
 #  ☯  架构矩阵
 |架构|技术栈|工具|介绍|进度|备注|
 |---|---|---|---|---|---|
-|chaos-boot<br/>|springboot-2.3.2<br>dubbo-2.6.0<br>zookeeper<br>redis<br>rabbitMq<br>MyBatis-plus<br>mysql<br>hutool<br>swagger2<br>jwt<br>spring-security<br>elasticsearch<br>actuator<br>springboot-admin<br>zipkin<br>|IDEA<br>lombak<br>MyBatis-Log<br>MyBatisX<br>|[快速开始][chaos-boot-start-url]<br/>|✅<br/>|服务端<br/>|
+|<div style="width: 120pt">chaos-boot<div>|springboot-2.3.2<br>dubbo-2.6.0<br>zookeeper<br>redis<br>rabbitMq<br>MyBatis-plus<br>mysql<br>hutool<br>swagger2<br>jwt<br>spring-security<br>elasticsearch<br>actuator<br>springboot-admin<br>zipkin<br>|IDEA<br>lombak<br>MyBatis-Log<br>MyBatisX<br>|[快速开始][chaos-boot-start-url]<br/>|✅<br/>|服务端<br/>|
 |chaos-cloud<br/>| nacos<br>sentinel<br>openfeign<br>dubbo<br>redis<br>MyBatis-plus<br/>mysql<br/>hutool<br/>swagger2<br>jwt<br/>spring-security<br/>actuator |IDEA<br>lombak<br>MyBatis-Log<br>MyBatisX<br>|[快速开始][chaos-cloud-start-url]<br/>|✅<br/>|服务端<br/>|
 |chaos-vue<br/>|vue-2.6.11<br>vue-router-3.3.4<br>element-ui-2.13.2<br>vuex-3.5.1<br>axios-0.19.2<br>less-3.12.2|WebStore<br>VUE-tools<br>easyLess|[快速开始][chaos-vue-start-url]<br/>|✅<br/>|后台<br/>|
 |chaos-mh<br/>|okhttp_3.10.0<br>retrofit_2.4.0<br>rxjava_2.2.3<br>glide_4.8.0<br>material-dialogs_0.9.6.0<br>androidx<br>AAC|AS|[快速开始][chaos-mh-start-url]<br/>|✅<br/>|安卓<br/>|
