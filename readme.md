@@ -14,16 +14,16 @@
 [chaos-mh-start-url]:https://gitee.com/ape-stack/chaos/tree/master/chaos-mh/readme.md
 [chaos-center-start-url]:https://gitee.com/ape-stack/chaos/blob/master/chaos-center/readme.md
 #  ☯  架构矩阵
-|架构|技术栈|介绍|进度|备注|
-|---|---|---|---|---|
-|chaos-boot|springboot-2.3.2<br>dubbo-2.6.0<br>zookeeper<br>redis<br>rabbitMq<br>MyBatis-plus<br>mysql<br>hutool<br>swagger2<br>jwt<br>spring-security<br>elasticsearch<br>actuator<br>springboot-admin<br>zipkin<br>|[快速开始][chaos-boot-start-url]|✅|服务端|
-|chaos-cloud| nacos<br>sentinel<br>openfeign<br>dubbo<br>redis<br>MyBatis-plus<br/>mysql<br/>hutool<br/>swagger2<br>jwt<br/>spring-security<br/>actuator |[快速开始][chaos-cloud-start-url]|✅|服务端|
-|chaos-vue|vue-2.6.11<br>vue-router-3.3.4<br>element-ui-2.13.2<br>vuex-3.5.1<br>axios-0.19.2<br>less-3.12.2|[快速开始][chaos-vue-start-url]|✅|后台<|
-|chaos-mh|okhttp_3.10.0<br>retrofit_2.4.0<br>rxjava_2.2.3<br>glide_4.8.0<br>material-dialogs_0.9.6.0<br>androidx<br>AAC|[快速开始][chaos-mh-start-url]|✅|安卓|
-|chaos-weapp|js<br>wx-2.10.1<br>weui<br>less|[快速开始][chaos-weapp-start-url]|✅|小程序|
-|chaos-taro|ts<br>react-16.10.0<br>taro-3.0.8<br>taro-ui-3.0.0-alpha.3<br>sass<br>dva-2.0.2|[快速开始][chaos-taro-start-url]|✅|全端|
-|chaos-uniapp|vue<br>vuex<br>uni-ui|[快速开始][chaos-uniapp-start-url]|✅|全端|
-|chaos-center|docker<br>compose|[快速开始][chaos-center-start-url]|✅|中台|
+|架构|技术栈|介绍|进度|
+|---|---|---|---|
+|chaos-boot<br>2.4.0-SNAPSHOT|springboot-2.3.2<br>dubbo-2.6.0<br>zookeeper<br>redis<br>rabbitMq<br>MyBatis-plus<br>mysql<br>hutool<br>swagger2<br>jwt<br>spring-security<br>elasticsearch<br>actuator<br>springboot-admin<br>zipkin<br>|[快速开始][chaos-boot-start-url]|✅|
+|chaos-cloud<br>1.0.0-SNAPSHOT| nacos<br>sentinel<br>openfeign<br>dubbo<br>redis<br>MyBatis-plus<br/>mysql<br/>hutool<br/>swagger2<br>jwt<br/>spring-security<br/>actuator |[快速开始][chaos-cloud-start-url]|✅|
+|chaos-vue<br>1.0.0|vue-2.6.11<br>vue-router-3.3.4<br>element-ui-2.13.2<br>vuex-3.5.1<br>axios-0.19.2<br>less-3.12.2|[快速开始][chaos-vue-start-url]|✅|
+|chaos-mh<br>1.0.0|okhttp_3.10.0<br>retrofit_2.4.0<br>rxjava_2.2.3<br>glide_4.8.0<br>material-dialogs_0.9.6.0<br>androidx<br>AAC|[快速开始][chaos-mh-start-url]|✅|
+|chaos-weapp|js<br>wx-2.10.1<br>weui<br>less|[快速开始][chaos-weapp-start-url]|✅|
+|chaos-taro<br>1.0.0|ts<br>react-16.10.0<br>taro-3.0.8<br>taro-ui-3.0.0-alpha.3<br>sass<br>dva-2.0.2|[快速开始][chaos-taro-start-url]|✅|
+|chaos-uniapp<br>1.0.0|vue<br>vuex<br>uni-ui|[快速开始][chaos-uniapp-start-url]|✅|
+|chaos-center|docker<br>compose|[快速开始][chaos-center-start-url]|✅|
 #  ☯  架构展示
 ##  混沌后台
 ![x-os-url](images/%E6%B7%B7%E6%B2%8C%E4%B8%AD%E5%8F%B0.png)

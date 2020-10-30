@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.cui.tech</groupId>
     <artifactId>chaos-cloud</artifactId>
-    <version>0.0.2-SNAPSHOT</version>
+    <version>1.0.0-SNAPSHOT</version>
     <packaging>pom</packaging>
     <properties>
         <maven.deploy.skip>true</maven.deploy.skip>
