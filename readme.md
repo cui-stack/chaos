@@ -43,18 +43,16 @@
 ![image-url](images/%E9%95%9C%E5%83%8F%E4%BB%93%E5%BA%93.jpg)
 ##  环境管理系统
 ![portainer-url](images/%E7%8E%AF%E5%A2%83%E7%AE%A1%E7%90%86.jpg)
-##  任务管理系统
-![task-url](images/%E4%BB%BB%E5%8A%A1%E4%B8%AD%E5%8F%B0.jpg)
 ##  报表系统
 ![report-1-url](images/%E6%8A%A5%E8%A1%A8%E7%B3%BB%E7%BB%9F1.png)
 ![report-2-url](images/%E6%8A%A5%E8%A1%A8%E7%B3%BB%E7%BB%9F2.png)
 ![report-3-url](images/%E6%8A%A5%E8%A1%A8%E7%B3%BB%E7%BB%9F3.png)
 ##  消息系统
 ![rabbitmq-url](images/%E6%B6%88%E6%81%AF%E4%B8%AD%E5%8F%B0.jpg)
-
+##  任务管理系统
+![task-url](images/%E4%BB%BB%E5%8A%A1%E4%B8%AD%E5%8F%B0.jpg)
 #  ☯  联系我们
-**邮箱: 632381896@qq.com**
-**微信: GoodGolden2088**
+**邮箱: 632381896@qq.com**  
+**微信: GoodGolden2088**  
 
-<center><font face="黑体" color="#483D8B" size=18>Poweredby 阿暴 🆙 </font></center>
-
+# Poweredby 阿暴<G/G> 🆙🆙🆙
