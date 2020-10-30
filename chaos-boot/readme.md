@@ -2,8 +2,7 @@
 
 ## 组成
 chaos-boot-dependencies 包依赖管理
-chaos-boot-core 基于springboot,lombok,mysql,mybatis-plus,fastjson,hutool,
-swagger2,hibernate-validator,qcloudsms,redis+基于MU模型的相关定义
+chaos-boot-core 基于springboot,lombok,mysql,mybatis-plus,fastjson,hutool,swagger2,hibernate-validator,qcloudsms,redis+基于MU模型的相关定义
 chaos-boot-model 引入dubbo,zookeeper,springboot-admin 开启dubbo
 chaos-boot-app 引入rabbit 
 
