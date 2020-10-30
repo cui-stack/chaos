@@ -4,14 +4,15 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.cui.tech.chaos.model.DTO;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import lombok.*;
+import lombok.Data;
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.BeanUtils;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import org.springframework.data.domain.Page;
 
 @Data
 @ApiModel(value = "列表结果对象", description = "")
@@ -55,10 +56,5 @@ public class PageList<T> extends DTO {
         this.setList(page.getRecords());
     }
 
-    public PageList(Page<T> page) {
-        this.setCurrent((long) page.getNumber() + 1);
-        this.setTotal(page.getTotalElements());
-        this.setList(page.getContent());
-    }
 
 }

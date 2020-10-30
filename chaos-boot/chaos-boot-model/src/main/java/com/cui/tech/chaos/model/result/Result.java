@@ -1,7 +1,6 @@
 package com.cui.tech.chaos.model.result;
 
 import com.cui.tech.chaos.model.DTO;
-import com.cui.tech.chaos.model.login.LoginUser;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;

@@ -1,7 +1,5 @@
 package com.cui.tech.chaos.model.config;
 
-import com.cui.tech.chaos.model.ThreadPoolFactory;
-import com.cui.tech.chaos.model.constant.ThreadPoolTypeEnum;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

@@ -1,7 +1,6 @@
 package com.cui.tech.chaos.model.db;
 
 import com.baomidou.mybatisplus.annotation.*;
-import com.cui.tech.chaos.model.DTO;
 import lombok.Data;
 
 import java.time.LocalDateTime;

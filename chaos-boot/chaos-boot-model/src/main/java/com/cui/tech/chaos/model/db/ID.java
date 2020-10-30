@@ -1,9 +1,7 @@
 package com.cui.tech.chaos.model.db;
 
 import com.cui.tech.chaos.model.DTO;
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 /**
  * @author G.G

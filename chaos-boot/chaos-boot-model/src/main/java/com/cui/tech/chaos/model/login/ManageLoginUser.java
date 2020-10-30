@@ -2,7 +2,6 @@ package com.cui.tech.chaos.model.login;
 
 import com.cui.tech.chaos.model.role.ManageLoginUserRole;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 @Data
 public class ManageLoginUser extends LoginUser {

@@ -1,7 +1,6 @@
 package com.cui.tech.chaos.model.login;
 
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 @Data
 public class WxMiniLoginUser extends LoginUser {

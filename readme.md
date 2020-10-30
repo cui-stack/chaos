@@ -48,5 +48,6 @@
 ![report-3-url](images/%E6%8A%A5%E8%A1%A8%E7%B3%BB%E7%BB%9F3.png)
 ##  消息系统
 ![rabbitmq-url](images/%E6%B6%88%E6%81%AF%E4%B8%AD%E5%8F%B0.jpg)
-###  ***Poweredby******阿暴***(**G.G**)
+###  ***Poweredby*** 阿暴<G/G> 🆙
+
 

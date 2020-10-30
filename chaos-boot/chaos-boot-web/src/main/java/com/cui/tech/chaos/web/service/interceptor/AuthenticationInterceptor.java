@@ -8,7 +8,6 @@ import com.cui.tech.chaos.model.service.ILoginService;
 import com.cui.tech.chaos.model.result.ResultEnum;
 import com.cui.tech.chaos.model.role.RoleConstant;
 import com.cui.tech.chaos.web.service.helper.JWTHelper;
-import com.cui.tech.chaos.web.service.helper.RedisHelper;
 import io.jsonwebtoken.ExpiredJwtException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

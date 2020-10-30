@@ -11,7 +11,7 @@
     </parent>
 
     <groupId>com.cui.tech</groupId>
-    <artifactId>chaos-boot-code</artifactId>
+    <artifactId>chaos-boot-manage</artifactId>
     <packaging>jar</packaging>
 
     <dependencies>
@@ -23,7 +23,6 @@
             <groupId>com.cui.tech</groupId>
             <artifactId>chaos-boot-web</artifactId>
         </dependency>
-
     </dependencies>
 
 </project>

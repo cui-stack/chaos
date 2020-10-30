@@ -1,7 +1,6 @@
 package com.cui.tech.chaos.model.result;
 
 import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.experimental.Accessors;
 
