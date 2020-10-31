@@ -13,6 +13,17 @@
 [chaos-uniapp-start-url]:https://gitee.com/ape-stack/chaos/tree/master/chaos-uniapp/readme.md
 [chaos-mh-start-url]:https://gitee.com/ape-stack/chaos/tree/master/chaos-mh/readme.md
 [chaos-center-start-url]:https://gitee.com/ape-stack/chaos/blob/master/chaos-center/readme.md
+#  ☯  架构实践
+| 端         | 架构                    |
+| ---------- | ----------------------- |
+| 全端       | chaos-taro🉑chaos-uniapp |
+| 客户端     | chaos-mh                |
+| 微信小程序 | chaos-weapp             |
+| 后台       | chaos-vue               |
+| 后端       | chaos-boot🉑chaos-cloud  |
+| 运维       | chaos-center            |
+
+
 #  ☯  架构矩阵
 |架构|技术栈|介绍|进度|
 |---|---|---|---|
@@ -51,7 +62,10 @@
 ![rabbitmq-url](images/%E6%B6%88%E6%81%AF%E4%B8%AD%E5%8F%B0.jpg)
 ##  任务管理系统
 ![task-url](images/%E4%BB%BB%E5%8A%A1%E4%B8%AD%E5%8F%B0.jpg)
+
+
 #  ☯  联系我们
+
 **邮箱: 632381896@qq.com**  
 **微信: GoodGolden2088**  
 **群群: 1067845715**  
