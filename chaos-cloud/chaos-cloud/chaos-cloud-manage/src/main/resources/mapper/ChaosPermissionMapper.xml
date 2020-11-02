@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.firepongo.chaos.manage.service.mapper.ChaosPermissionMapper">
+    <select id="selectPermissionByAdmin"
+            resultType="com.firepongo.chaos.manage.api.data.ChaosPermissionData">
+        SELECT
+            suptitle,
+            ip.title,
+            ip.link,
+            t.icon
+        FROM
+            chaos_admin ia
+        LEFT JOIN chaos_admin_role iar ON ia.mu = iar.admin_mu
+        LEFT JOIN chaos_role ir ON iar.role_mu = ir.mu
+        LEFT JOIN chaos_role_permission irp ON irp.role_mu = ir.mu
+        LEFT JOIN (
+            SELECT
+                mu,
+                supmu,
+                title,
+                link
+            FROM
+                chaos_permission
+            WHERE
+                is_delete=0 AND
+                isroot = 0
+        ) ip ON ip.mu = irp.permission_mu
+        LEFT JOIN (
+            SELECT
+                mu,
+                title suptitle,
+                icon
+            FROM
+                chaos_permission
+            WHERE
+                is_delete=0 AND
+                isroot = 1
+        ) t ON ip.supmu = t.mu
+        WHERE
+            ia.is_delete=0 AND iar.is_delete=0 AND ir.is_delete=0 AND irp.is_delete=0 AND
+            ia.mu = #{mu}
+    </select>
+</mapper>
