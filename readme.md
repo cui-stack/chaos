@@ -37,31 +37,31 @@
 
 #  ☯  架构展示
 ##  混沌后台
-![x-os-url](chaos-boot/images/%E6%B7%B7%E6%B2%8C%E4%B8%AD%E5%8F%B0.png)
+![x-os-url](chaos-cloud/images/%E6%B7%B7%E6%B2%8C%E4%B8%AD%E5%8F%B0.png)
 ##  代码管理系统
-![code-url](chaos-boot/images/%E4%BB%A3%E7%A0%81%E7%AE%A1%E7%90%86.png)
+![code-url](chaos-cloud/images/%E4%BB%A3%E7%A0%81%E7%AE%A1%E7%90%86.png)
 ##  API管理系统
-![swagger-url](chaos-boot/images/API%E7%AE%A1%E7%90%86.jpg)
+![swagger-url](chaos-cloud/images/API%E7%AE%A1%E7%90%86.jpg)
 ##  构件管理系统
-![nexus-url](chaos-boot/images/%E6%9E%84%E4%BB%B6%E4%BB%93%E5%BA%93.jpg)
+![nexus-url](chaos-cloud/images/%E6%9E%84%E4%BB%B6%E4%BB%93%E5%BA%93.jpg)
 ##  自动化构件系统
-![jenkins-url](chaos-boot/images/%E6%9E%84%E4%BB%B6%E7%B3%BB%E7%BB%9F.png)
+![jenkins-url](chaos-cloud/images/%E6%9E%84%E4%BB%B6%E7%B3%BB%E7%BB%9F.png)
 ##  服务治理系统
-![dubbo-url](chaos-boot/images/%E6%9C%8D%E5%8A%A1%E6%B2%BB%E7%90%86.jpg)
+![dubbo-url](chaos-cloud/images/%E6%9C%8D%E5%8A%A1%E6%B2%BB%E7%90%86.jpg)
 ##  服务监控系统
-![springadmin-url](chaos-boot/images/%E6%9C%8D%E5%8A%A1%E7%AE%A1%E7%90%86.jpg)
+![springadmin-url](chaos-cloud/images/%E6%9C%8D%E5%8A%A1%E7%AE%A1%E7%90%86.jpg)
 ##  镜像管理系统
-![image-url](chaos-boot/images/%E9%95%9C%E5%83%8F%E4%BB%93%E5%BA%93.jpg)
+![image-url](chaos-cloud/images/%E9%95%9C%E5%83%8F%E4%BB%93%E5%BA%93.jpg)
 ##  环境管理系统
-![portainer-url](chaos-boot/images/%E7%8E%AF%E5%A2%83%E7%AE%A1%E7%90%86.jpg)
+![portainer-url](chaos-cloud/images/%E7%8E%AF%E5%A2%83%E7%AE%A1%E7%90%86.jpg)
 ##  报表系统
-![report-1-url](chaos-boot/images/%E6%8A%A5%E8%A1%A8%E7%B3%BB%E7%BB%9F1.png)
-![report-2-url](chaos-boot/images/%E6%8A%A5%E8%A1%A8%E7%B3%BB%E7%BB%9F2.png)
-![report-3-url](chaos-boot/images/%E6%8A%A5%E8%A1%A8%E7%B3%BB%E7%BB%9F3.png)
+![report-1-url](chaos-cloud/images/%E6%8A%A5%E8%A1%A8%E7%B3%BB%E7%BB%9F1.png)
+![report-2-url](chaos-cloud/images/%E6%8A%A5%E8%A1%A8%E7%B3%BB%E7%BB%9F2.png)
+![report-3-url](chaos-cloud/images/%E6%8A%A5%E8%A1%A8%E7%B3%BB%E7%BB%9F3.png)
 ##  消息系统
-![rabbitmq-url](chaos-boot/images/%E6%B6%88%E6%81%AF%E4%B8%AD%E5%8F%B0.jpg)
+![rabbitmq-url](chaos-cloud/images/%E6%B6%88%E6%81%AF%E4%B8%AD%E5%8F%B0.jpg)
 ##  任务管理系统
-![task-url](chaos-boot/images/%E4%BB%BB%E5%8A%A1%E4%B8%AD%E5%8F%B0.jpg)
+![task-url](chaos-cloud/images/%E4%BB%BB%E5%8A%A1%E4%B8%AD%E5%8F%B0.jpg)
 
 #  ☯  联系我们
 **邮箱: 632381896@qq.com**  
