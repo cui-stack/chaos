@@ -12,7 +12,7 @@
 [chaos-center-start-url]:https://gitee.com/ape-stack/chaos/blob/master/chaos-center/readme.md
 
 #  ☯  chaos<混/沌>  全栈开发架构  
-**用于构建快速上线应用**  💨   💨💨      💨💨💨
+**用于构建快速上线应用**  💨 💨💨 💨💨💨
 
 #  ☯  架构实践
 | 端         | 架构                    |

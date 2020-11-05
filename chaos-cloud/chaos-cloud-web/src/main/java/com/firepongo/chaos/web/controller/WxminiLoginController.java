@@ -2,12 +2,12 @@ package com.firepongo.chaos.web.controller;
 
 
 import com.alibaba.fastjson.JSONObject;
+import com.firepongo.chaos.web.helper.IpUtil;
 import com.firepongo.chaos.web.base.BaseController;
-import com.firepongo.chaos.app.login.ILoginService;
-import com.firepongo.chaos.app.login.weapp.WxMiniLoginDto;
-import com.firepongo.chaos.app.login.weapp.WxMiniLoginUser;
+import com.firepongo.chaos.web.service.login.ILoginService;
+import com.firepongo.chaos.app.login.wxmini.WxMiniLoginDto;
+import com.firepongo.chaos.app.login.wxmini.WxMiniLoginUser;
 import com.firepongo.chaos.app.result.data.DataResult;
-import com.firepongo.chaos.web.util.addr.IpUtil;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
@@ -29,7 +29,7 @@ import javax.servlet.http.HttpServletRequest;
 @Slf4j
 @RestController
 @RequestMapping("/wxmini")
-@Api(tags = "WxminiLoginController", description = "登录模块")
+@Api(tags = "WxminiLoginController")
 public class WxminiLoginController extends BaseController {
 
     @Qualifier("wxLoginService")
@@ -51,17 +51,15 @@ public class WxminiLoginController extends BaseController {
     @ApiOperation(value = "登录", notes = "", httpMethod = "POST")
     public DataResult<WxMiniLoginUser> login(@RequestBody WxMiniLoginDto user, BindingResult bindingResult, HttpServletRequest request) {
         log.info("用户[{}]登录", user.getCode());
-        String ip = IpUtil.getIpAddr(request);
-        String url = "https://api.weixin.qq.com/sns/jscode2session?appid=" + appid + "&secret=" + secret + "&js_code=" + user.getCode() + "&grant_type=authorization_code";
+        String url = "https://api.weixin.qq.com/sns/jscode2session?appid=" + appid
+                + "&secret=" + secret + "&js_code=" + user.getCode() + "&grant_type=authorization_code";
         String resp = restTemplate.getForObject(url, String.class);
         JSONObject json = JSONObject.parseObject(resp);
-        String session_key = (String) json.get("session_key");
-        String openid = (String) json.get("openid");
-        String unionid = (String) json.get("unionid");
-        user.setOpenid(openid);
-        user.setIp(ip);
-        user.setToken(session_key);
-        user.setUnionid(unionid);
+
+        user.setOpenid((String) json.get("openid"));
+        user.setIp(IpUtil.getIpAddr(request));
+        user.setToken((String) json.get("session_key"));
+        user.setUnionid((String) json.get("unionid"));
         WxMiniLoginUser su = (WxMiniLoginUser) wxLoginService.doLogin(user);
         return dataResult(su);
     }

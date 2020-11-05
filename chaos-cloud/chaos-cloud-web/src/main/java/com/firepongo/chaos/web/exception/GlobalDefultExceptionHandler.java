@@ -1,9 +1,9 @@
 package com.firepongo.chaos.web.exception;
 
 import com.firepongo.chaos.app.exception.BusinessException;
+import com.firepongo.chaos.web.helper.IpUtil;
 import com.firepongo.chaos.web.service.RequestLogService;
 import com.firepongo.chaos.app.result.Result;
-import com.firepongo.chaos.web.util.addr.IpUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.ControllerAdvice;

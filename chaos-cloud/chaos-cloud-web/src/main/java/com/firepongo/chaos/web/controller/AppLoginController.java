@@ -1,11 +1,9 @@
 package com.firepongo.chaos.web.controller;
 
-import com.firepongo.chaos.app.login.app.AppLoginDto;
 import com.firepongo.chaos.app.login.app.AppLoginUser;
 import com.firepongo.chaos.app.login.app.AppPhoneLoginDto;
 import com.firepongo.chaos.app.result.data.DataResult;
-import com.firepongo.chaos.app.result.ResultMsg;
-import com.firepongo.chaos.app.login.ILoginService;
+import com.firepongo.chaos.web.service.login.ILoginService;
 import com.firepongo.chaos.web.base.BaseController;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -45,7 +43,8 @@ public class AppLoginController extends BaseController {
         if (appLoginService == null) {
             return dataResult(false);
         }
-        return dataResult(appLoginService.doLogout(getMnLoginMU(request)));
+        //  return dataResult(appLoginService.doLogout(getMnLoginMU(request)));
+        return null;
     }
 
 }

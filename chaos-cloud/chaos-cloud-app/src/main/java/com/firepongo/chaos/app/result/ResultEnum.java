@@ -10,6 +10,7 @@ public enum ResultEnum {
     //4xx 资源权限异常
     LOGIN_AGAIN("401", "登录过期"),
     TOKEN_EXP("403", "Token失效"),
+    TIME_OUT("408", "请求超时"),
     ACCESS_LIMIT("409", "访问限制"),
     USERNAME_PASSWORD_ERROR("411", "账号或密码错误"),
     //5xx 请求错误(业务)

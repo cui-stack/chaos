@@ -16,11 +16,9 @@
         <module>chaos-cloud-parent</module>
         <module>chaos-cloud-app</module>
         <module>chaos-cloud-web</module>
-        <module>chaos-cloud-manage</module>
+        <module>chaos-cloud-admin</module>
         <module>chaos-cloud-search</module>
-        <module>chaos-cloud-auth</module>
-        <module>chaos-cloud-gateway</module>
         <module>chaos-cloud-code</module>
-
+        <module>chaos-cloud-gateway</module>
     </modules>
 </project>
