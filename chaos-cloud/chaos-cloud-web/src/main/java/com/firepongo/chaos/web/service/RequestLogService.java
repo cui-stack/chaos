@@ -29,7 +29,7 @@ public class RequestLogService extends BaseController {
         String rp = response.substring(0, response.length() > 250 ? 250 : response.length());
         String userMu = "";
         if (uri.startsWith("/api") || uri.startsWith("/wxmini")) {
-            userMu = getWxLoginMU(httpServletRequest);
+            userMu = getWxLoginUserByToken(getToken(httpServletRequest)).getMu();
         } else if (uri.startsWith("/manage")) {
             if (!StringUtils.isEmpty(host)) {
                 //获取managetoken,在manage服务器解析userMu

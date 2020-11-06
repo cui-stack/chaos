@@ -15,9 +15,17 @@ public abstract class WxminiLoginServiceImpl extends BaseLoginServiceImpl {
 
     @Override
     protected void dealRedisToken(LoginUser loginUser) {
-        WxMiniLoginUser user =(WxMiniLoginUser)loginUser;
+        WxMiniLoginUser user = (WxMiniLoginUser) loginUser;
         redisService.set(loginKeyService.key(user.getToken()), user, 8 * 60 * 60);
     }
 
+    @Override
+    public WxMiniLoginUser getLoginUser(String data) {
+        return (WxMiniLoginUser) redisService.get(loginKeyService.key(data));
+    }
+    @Override
+    public String refreshToken(String data) {
+        return null;
+    }
 
 }

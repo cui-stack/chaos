@@ -1,5 +1,6 @@
 package com.firepongo.chaos.web.exception;
 
+import com.firepongo.chaos.app.exception.BusinessException;
 import com.firepongo.chaos.app.result.Result;
 import com.firepongo.chaos.app.result.ResultEnum;
 import lombok.Data;
@@ -11,29 +12,22 @@ import javax.servlet.http.HttpServletRequest;
  * @date 2020/5/28 16:27
  */
 @Data
-public class AuthenticationException extends RuntimeException {
+public class AuthenticationException extends BusinessException {
     private Result result;
     private HttpServletRequest request;
 
     public AuthenticationException(ResultEnum resultEnum) {
-        super(resultEnum.getDefaultMsg());
-        this.result = new Result(resultEnum.getCode(), resultEnum.getDefaultMsg());
+        super(resultEnum);
     }
 
     public AuthenticationException(String code, String msg) {
-        super(msg);
-        this.result = new Result(code, msg);
+        super(code,msg);
     }
 
-    public AuthenticationException(ResultEnum resultEnum, String msg, HttpServletRequest request) {
-        super(msg);
-        this.result = new Result(resultEnum.getCode(), msg);
+    public AuthenticationException(String code, String msg, HttpServletRequest request) {
+        super(code,msg);
         this.request = request;
     }
 
-    public AuthenticationException(ResultEnum resultEnum, String msg) {
-        super(msg);
-        this.result = new Result(resultEnum.getCode(), msg);
-    }
 
 }

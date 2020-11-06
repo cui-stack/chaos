@@ -12,7 +12,6 @@ import java.util.Map.Entry;
  * @date 2020/3/11 11:46
  */
 
-
 //java版计算signature签名
 public class BaiduLbsyunSnCal {
     public static void main(String[] args) throws UnsupportedEncodingException,

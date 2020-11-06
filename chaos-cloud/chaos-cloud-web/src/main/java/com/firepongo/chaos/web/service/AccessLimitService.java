@@ -39,7 +39,7 @@ public class AccessLimitService {
             redisHelper.incr(access_total_limit + userMU + "@" + httpServletRequest.getRequestURI(), 1);
         } else {
             //超出访问次数
-            throw new AuthenticationException(ResultEnum.ACCESS_LIMIT, "您浏览得太快了", httpServletRequest);
+            throw new AuthenticationException(ResultEnum.ACCESS_LIMIT.getCode(), "您浏览得太快了", httpServletRequest);
         }
     }
 

@@ -13,5 +13,5 @@ public class WeappMessage {
     private String touser;
     private String template_id;
     private String page = "pages/index/index";
-    private Map<String, WeappTemplateData> data;
+    private Map<String, WxminiTemplateData> data;
 }

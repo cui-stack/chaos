@@ -10,6 +10,7 @@ import com.firepongo.chaos.app.result.data.DataResult;
 import com.firepongo.chaos.app.result.page.MarkPageResult;
 import com.firepongo.chaos.app.result.page.MarkPagesResult;
 import com.firepongo.chaos.app.result.page.PageResult;
+import com.firepongo.chaos.web.service.JwtService;
 import com.firepongo.chaos.web.service.login.app.AppLoginKeyService;
 import com.firepongo.chaos.web.service.login.manage.ManageLoginKeyService;
 import com.firepongo.chaos.web.service.login.wxmini.WxminiLoginKeyService;
@@ -27,6 +28,8 @@ import java.util.stream.Collectors;
 public abstract class BaseController<T> {
     @Autowired
     private RedisService redisHelper;
+    @Autowired
+    private JwtService jwtService;
 
     @Autowired
     private WxminiLoginKeyService wxminiLoginKeyService;
@@ -39,69 +42,42 @@ public abstract class BaseController<T> {
         return request.getHeader("token");
     }
 
-    public ManageLoginUser getMnLoginUser(HttpServletRequest request) {
-        String token = getToken(request);
-        if (StringUtils.isEmpty(token)) {
-            return null;
-        }
-        return getMnLoginUserByToken(token);
-    }
-
     public ManageLoginUser getMnLoginUserByToken(String token) {
-        //String key = manageLoginKeyService.key(jwtHelper.getUserMuInJwtData(token));
-        String key ="2";
-        return (ManageLoginUser) redisHelper.get(key);
-    }
-
-    public String getMnLoginMU(HttpServletRequest request) {
-        ManageLoginUser user = getMnLoginUser(request);
-        if (user == null) {
-            return "";
-        }
-        return user.getMu();
-    }
-
-    public WxMiniLoginUser getWxLoginUser(HttpServletRequest request) {
-        String token = getToken(request);
         if (StringUtils.isEmpty(token)) {
-            return null;
+            throw new BusinessException();
         }
-        return (WxMiniLoginUser) getWxLoginUserByToken(token);
+        String key = manageLoginKeyService.key(jwtService.getUserMuInJwtData(token));
+        ManageLoginUser user = (ManageLoginUser) redisHelper.get(key);
+        if (user == null) {
+            throw new BusinessException();
+        }
+        return user;
     }
 
     public WxMiniLoginUser getWxLoginUserByToken(String token) {
-        String key = wxminiLoginKeyService.key(token);
-        return (WxMiniLoginUser) redisHelper.get(key);
-    }
-
-
-    public String getWxLoginMU(HttpServletRequest request) {
-        WxMiniLoginUser user = getWxLoginUser(request);
-        if (user == null) {
-            return "";
+        if (StringUtils.isEmpty(token)) {
+            throw new BusinessException();
         }
-        return user.getMu();
+        String key = wxminiLoginKeyService.key(token);
+        WxMiniLoginUser user = (WxMiniLoginUser) redisHelper.get(key);
+        if (user == null) {
+            throw new BusinessException();
+        }
+        return user;
     }
 
     public AppLoginUser getAppLoginUserByToken(String token) {
+        if (StringUtils.isEmpty(token)) {
+            throw new BusinessException();
+        }
         String key = appLoginKeyService.key(token);
-        return (AppLoginUser) redisHelper.get(key);
+        AppLoginUser user = (AppLoginUser) redisHelper.get(key);
+        if (user == null) {
+            throw new BusinessException();
+        }
+        return user;
     }
 
-    public AppLoginUser getAppLoginUser(HttpServletRequest request) {
-        String token = getToken(request);
-        if (StringUtils.isEmpty(token)) {
-            return null;
-        }
-        return (AppLoginUser) getAppLoginUserByToken(token);
-    }
-    public String getAppLoginMU(HttpServletRequest request) {
-        AppLoginUser user = getAppLoginUser(request);
-        if (user == null) {
-            return "";
-        }
-        return user.getMu();
-    }
 
     public void validate(BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
@@ -120,14 +96,14 @@ public abstract class BaseController<T> {
             if (msg == null || StringUtils.isEmpty(msg.getFailure())) {
                 dataResult.failure();
             } else {
-                dataResult.msg(ResultEnum.FAILURE.getCode(),msg.getFailure());
+                dataResult.msg(ResultEnum.FAILURE.getCode(), msg.getFailure());
             }
             dataResult.setData(new Object());
         } else {
             if (msg == null || StringUtils.isEmpty(msg.getSuccess())) {
                 dataResult.success();
             } else {
-                dataResult.msg(ResultEnum.SUCCESS.getCode(),msg.getSuccess());
+                dataResult.msg(ResultEnum.SUCCESS.getCode(), msg.getSuccess());
             }
             dataResult.setData(data);
         }

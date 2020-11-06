@@ -12,6 +12,7 @@ import lombok.experimental.Accessors;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Accessors(chain = true)
 public class ResultMsg {
     private String success;
     private String failure;
