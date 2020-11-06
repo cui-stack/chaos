@@ -59,7 +59,7 @@ public class ManageLoginController extends BaseController {
         if (mnLoginService == null) {
             return dataResult(false);
         }
-        return dataResult(mnLoginService.doLogout(manageLoginKeyService.key(getAppLoginUserByToken(getToken(request)).getMu())));
+        return dataResult(mnLoginService.doLogout(manageLoginKeyService.key(getMnLoginUserByToken(getToken(request)).getMu())));
     }
 
 }
