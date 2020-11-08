@@ -73,7 +73,7 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
                 List<String> result = Arrays.asList(manageLoginToken.roles());
                 ArrayList<String> roles = new ArrayList<>(result);
                 if (!roles.contains(RoleConstant.GUEST)) {
-                    String role = ((ManageLoginUser) loginUser).getRole();
+                    String role = ((ManageLoginUser) loginUser).getRoleName();
                     if (!roles.contains(role)) {
                         return false;
                     }
@@ -110,7 +110,7 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
         }
         WxMiniLoginUser loginUser = (WxMiniLoginUser) wxLoginService.getLoginUser(token);
         if (StringUtils.isEmpty(loginUser)) {
-            throw new AuthenticationException(ResultEnum.LOGIN_AGAIN.getCode(), "用户不存在，请重新登录", httpServletRequest);
+            throw new AuthenticationException(ResultEnum.LOGIN_AGAIN.getCode(), "失效登录，请重新登录", httpServletRequest);
         }
         return loginUser;
     }
@@ -142,7 +142,7 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
         }
         log.info("后台用户登录,用户token:[{}],session:[{}]", token, loginUser);
         if (StringUtils.isEmpty(loginUser)) {
-            throw new AuthenticationException(ResultEnum.LOGIN_AGAIN.getCode(), "用户不存在，请重新登录", httpServletRequest);
+            throw new AuthenticationException(ResultEnum.LOGIN_AGAIN.getCode(), "失效登录，请重新登录", httpServletRequest);
         }
         if (!token.equals(loginUser.getToken())) {
             throw new AuthenticationException(ResultEnum.LOGIN_AGAIN.getCode(), "服务器token更新，请重新登录", httpServletRequest);

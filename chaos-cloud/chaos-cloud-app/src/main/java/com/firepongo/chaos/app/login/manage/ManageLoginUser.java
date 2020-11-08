@@ -5,6 +5,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 
+import java.util.List;
+
 @Data
 @NoArgsConstructor
 @Accessors(chain = true)
@@ -12,8 +14,10 @@ public class ManageLoginUser extends LoginUser {
     private String token;
     private String username;
     private String phone;
-    private String role;
+    private String roleInfo;
+    private String roleName;
     private String indexLink;
+    List<ManageMenu> menus;
 
     public ManageLoginUser(String mu, String username, String phone) {
         this.setMu(mu);

@@ -3,10 +3,12 @@ package com.firepongo.chaos.app.db;
 import com.baomidou.mybatisplus.annotation.*;
 import com.firepongo.chaos.app.DTO;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 
 @Data
+@NoArgsConstructor
 public class IdModel extends DTO {
     @TableId(value = "id", type = IdType.AUTO)
     private Integer id;

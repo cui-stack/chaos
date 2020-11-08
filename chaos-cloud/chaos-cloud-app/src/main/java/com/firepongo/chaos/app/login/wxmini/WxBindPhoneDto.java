@@ -1,6 +1,7 @@
 package com.firepongo.chaos.app.login.wxmini;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 
 /**
@@ -8,6 +9,7 @@ import lombok.experimental.Accessors;
  * @date 2020/2/16 15:20
  */
 @Data
+@NoArgsConstructor
 @Accessors(chain = true)
 public class WxBindPhoneDto  {
     private String wid;

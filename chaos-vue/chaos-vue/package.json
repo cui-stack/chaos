@@ -1,6 +1,6 @@
 {
   "name": "chaos-vue",
-  "version": "1.0.2",
+  "version": "1.0.24",
   "main": "lib/chaos-vue.umd.min.js",
   "private": false,
   "license": "MIT",
@@ -21,7 +21,7 @@
     "vue-router": "^3.3.4",
     "vue-wechat-title": "^2.0.7",
     "vuex": "^3.5.1",
-    "vuex-along": "^1.2.11",
+    "vuex-along": "^1.2.11"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.4.0",

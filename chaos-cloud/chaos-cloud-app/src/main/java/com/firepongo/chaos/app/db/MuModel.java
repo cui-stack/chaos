@@ -2,6 +2,7 @@ package com.firepongo.chaos.app.db;
 
 import com.baomidou.mybatisplus.annotation.*;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 
@@ -9,6 +10,7 @@ import java.time.LocalDateTime;
  * @author G.G
  */
 @Data
+@NoArgsConstructor
 public class MuModel extends Model {
     @TableField(value = "id")
     private Integer id;

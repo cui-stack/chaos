@@ -11,6 +11,7 @@ import lombok.NonNull;
  * @date 2020/2/26 15:57
  */
 @Data
+@NoArgsConstructor
 public class DATA extends DTO {
     private String mu;
 

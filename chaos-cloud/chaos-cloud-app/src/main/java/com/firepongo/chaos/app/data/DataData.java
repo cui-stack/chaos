@@ -1,12 +1,14 @@
 package com.firepongo.chaos.app.data;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  * @author G.G
  * @date 2020/9/1 18:19
  */
 @Data
+@NoArgsConstructor
 public class DataData {
     //历史总计
     private Double total;

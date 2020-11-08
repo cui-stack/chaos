@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
  * @date 2019/11/7 17:30
  */
 @Data
+@NoArgsConstructor
 public class ID extends DTO {
     private Integer id;
 

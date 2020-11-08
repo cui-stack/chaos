@@ -1,12 +1,14 @@
 package com.firepongo.chaos.app.address;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  * @author G.G
  * @date 2020/3/11 13:49
  */
 @Data
+@NoArgsConstructor
 public class BaiduLocation {
     private String address;
     private Integer status;
