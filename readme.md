@@ -1,7 +1,6 @@
-# chaos 快速开发架构
-
+# chaos 快速开发架构<组件>
+提供基础组件定义
 ## 快速开始
-
 ### chaos-chloud
 cd /chaos-cloud
 mvn install
@@ -21,3 +20,7 @@ npm run lib
 npm publish
 cd /chaos-vue/chaos-data
 npm publish
+特性列表
+1,通用组件Head,CenterHead,Input,Paging,SideMenu
+2,通用函数fetch,store,Data
+3,通用对象PageData,RuleData
