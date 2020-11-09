@@ -16,5 +16,8 @@
         <module>chaos-cloud-parent</module>
         <module>chaos-cloud-app</module>
         <module>chaos-cloud-web</module>
+        <module>chaos-cloud-code</module>
+        <module>chaos-cloud-admin</module>
+
     </modules>
 </project>

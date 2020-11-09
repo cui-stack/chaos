@@ -59,6 +59,16 @@
                 <artifactId>chaos-cloud-web</artifactId>
                 <version>${chao-cloud.version}</version>
             </dependency>
+            <dependency>
+                <groupId>com.firepongo</groupId>
+                <artifactId>chaos-cloud-admin</artifactId>
+                <version>${chao-cloud.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.firepongo</groupId>
+                <artifactId>chaos-cloud-code</artifactId>
+                <version>${chao-cloud.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
     <dependencies>

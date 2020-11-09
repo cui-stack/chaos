@@ -127,7 +127,7 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
             String userMu = (String) e.getClaims().get("userMu");
             String refresh = mnLoginService.refreshToken(userMu);
             if (StringUtils.isEmpty(refresh)) {
-                throw new AuthenticationException(ResultEnum.LOGIN_AGAIN.getCode(), "续签失效，请重新登录", httpServletRequest);
+                throw new AuthenticationException(ResultEnum.LOGIN_AGAIN.getCode(), "失效Token续签，请重新登录", httpServletRequest);
             }
             throw new AuthenticationException(ResultEnum.REFRESH_TOKEN.getCode(), refresh, httpServletRequest);
         }

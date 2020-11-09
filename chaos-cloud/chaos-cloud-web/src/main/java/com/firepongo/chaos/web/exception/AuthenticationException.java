@@ -13,7 +13,6 @@ import javax.servlet.http.HttpServletRequest;
  */
 @Data
 public class AuthenticationException extends BusinessException {
-    private Result result;
     private HttpServletRequest request;
 
     public AuthenticationException(ResultEnum resultEnum) {
