@@ -14,14 +14,11 @@ import java.util.Date;
 public class WxMiniLoginUser extends LoginUser {
     private String token;
     private String nick;
-    private String username;
+    private String name;
     private String phone;
 
-    public WxMiniLoginUser(String mu, String token, String nick, String username, String phone) {
+    public WxMiniLoginUser(String mu, String token) {
         this.setMu(mu);
         this.token = token;
-        this.nick = nick;
-        this.username = username;
-        this.phone = phone;
     }
 }

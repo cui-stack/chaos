@@ -22,7 +22,6 @@ import springfox.documentation.spring.web.plugins.Docket;
 import java.lang.reflect.Field;
 import java.util.*;
 
-
 @Profile({"local", "dev", "test"})
 @EnableOpenApi
 @Configuration
