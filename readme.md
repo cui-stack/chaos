@@ -1,7 +1,7 @@
 # chaos 快速开发架构
-架构组成:chaos+[order](https://gitee.com/ape-stack/order)    
-chaos:提供基础组件定义  
-order:提供开箱可用的架构模型
+架构组成：chaos+[order](https://gitee.com/ape-stack/order)    
+chaos：提供基础组件定义  
+order：提供开箱可用的架构模型
 ## 快速开始
 ### chaos-chloud
 ```
