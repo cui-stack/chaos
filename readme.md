@@ -88,7 +88,7 @@ npm install chaos-vue --save
 3. 通用对象PageData,RuleData  
 
 # 联系我们
-![wx](chaos/image/wx_mine.jpg)
+![wx](image/wx_mine.jpg)
 # Poweredby 阿暴
 
 
