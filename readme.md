@@ -7,30 +7,9 @@
 **chaos**是用来支撑order的模块化解决方案
 
 ## 环境准备
-```shell script
-npm config set registry https://registry.npm.taobao.org
+1. verdaccio
+2. nexus
 
-安装verdaccio
-npm install -g verdaccio --unsafe-perm
-ln -s /usr/local/nodejs/node-v12.18.4-linux-x64/bin/verdaccio  /usr/local/bin/verdaccio
-vi  /root/.config/verdaccio/config.yaml
-在最后一行中加入 
-listen: 0.0.0.0:4873
-verdaccio
-
-安装pm2
-npm install pm2 -g 
-ln -s /usr/local/nodejs/node-v12.18.4-linux-x64/lib/node_modules/pm2/bin/pm2  /usr/local/bin/pm2
-pm2
-pm2 start `which sinopia`
-npm adduser --registry http://firepongo.com:4873
-
-使用
-http://firepongo.com:4873
-npm set registry http://firepongo.com:4873
-npm publish
-
-```
 # 快速开始
 ## chaos-cloud
 包装springcloud
