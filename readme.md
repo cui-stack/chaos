@@ -51,7 +51,7 @@ web服务：定义为提供Restfull接口的服务
 4. Stream
 5. Alibaba Cloud ACM
 6. Alibaba Cloud SchedulerX
-### 架构特性列表  
+### 架构特性 
 1. MU,DTO,DATA定义  
 2. 全局异常机制  
 3. 全局拦截机制  
@@ -88,8 +88,8 @@ npm install chaos-vue --save
 3. 通用对象PageData,RuleData  
 
 # 联系我们
+![wx](chaos/image/wx_mine.jpg)
 # Poweredby 阿暴
-![wx](chaos/images/%E6%9C%8D%E5%8A%A1%E6%B2%BB%E7%90%86.jpg)
 
 
 
