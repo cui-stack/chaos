@@ -34,7 +34,7 @@
     "eslint-plugin-vue": "^6.2.2",
     "image-webpack-loader": "^6.0.0",
     "less": "^3.12.2",
-    "less-loader": "^7.0.1",
+    "less-loader": "^7.0.2",
     "vue-template-compiler": "^2.6.11"
   },
   "eslintConfig": {

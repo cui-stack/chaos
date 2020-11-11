@@ -5,12 +5,8 @@ import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.firepongo.chaos.admin.api.data.ChaosAdminData;
-import com.firepongo.chaos.admin.api.data.ChaosAdminData;
 import com.firepongo.chaos.admin.api.data.ChaosRoleData;
 import com.firepongo.chaos.admin.api.entity.ChaosAdmin;
-import com.firepongo.chaos.admin.api.entity.ChaosAdmin;
-import com.firepongo.chaos.admin.api.entity.ChaosRole;
-import com.firepongo.chaos.admin.api.service.IChaosAdminRoleService;
 import com.firepongo.chaos.admin.api.service.IChaosAdminService;
 import com.firepongo.chaos.admin.service.mapper.ChaosAdminMapper;
 import com.firepongo.chaos.app.db.MU;
@@ -24,7 +20,6 @@ import com.firepongo.chaos.app.page.PageQueryDto;
 import com.firepongo.chaos.app.service.ConvertService;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.dubbo.config.annotation.Service;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
@@ -129,4 +124,6 @@ public class ChaosAdminServiceImpl extends ServiceImpl<ChaosAdminMapper, ChaosAd
         entity.setPassword(DigestUtils.md5Hex(data.getData().getPassword()));
         return update(entity, update);
     }
+
+
 }

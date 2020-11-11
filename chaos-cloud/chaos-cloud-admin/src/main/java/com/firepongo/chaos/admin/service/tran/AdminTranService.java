@@ -3,13 +3,18 @@ package com.firepongo.chaos.admin.service.tran;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.firepongo.chaos.admin.api.data.ChaosAdminData;
 import com.firepongo.chaos.admin.api.data.ChaosAdminRoleData;
+import com.firepongo.chaos.admin.api.data.ChaosRoleData;
 import com.firepongo.chaos.admin.api.data.ChaosRolePermissionListData;
 import com.firepongo.chaos.admin.api.entity.ChaosRolePermission;
-import com.firepongo.chaos.admin.api.service.IChaosAdminRoleService;
-import com.firepongo.chaos.admin.api.service.IChaosAdminService;
-import com.firepongo.chaos.admin.api.service.IChaosRolePermissionService;
+import com.firepongo.chaos.admin.api.service.*;
 import com.firepongo.chaos.app.db.MU;
 import com.firepongo.chaos.app.db.UpdateData;
+import com.firepongo.chaos.app.login.LoginDto;
+import com.firepongo.chaos.app.login.LoginUser;
+import com.firepongo.chaos.app.login.manage.IMnLoginUserService;
+import com.firepongo.chaos.app.login.manage.ManageLoginDto;
+import com.firepongo.chaos.app.login.manage.ManageLoginUser;
+import com.firepongo.chaos.app.login.manage.ManageMenu;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +25,7 @@ import org.springframework.util.CollectionUtils;
 import org.springframework.util.StringUtils;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.stream.Collectors;
 
 
@@ -38,6 +44,13 @@ public class AdminTranService {
 
     @Autowired
     private IChaosRolePermissionService iChaosRolePermissionService;
+
+    @Autowired
+    private IMnLoginUserService iMnLoginUserService;
+    @Autowired
+    private IChaosRoleService iChaosRoleService;
+    @Autowired
+    private IChaosPermissionService iChaosPermissionService;
 
     @Transactional(rollbackFor = {Exception.class})
     public boolean addAdmin(ChaosAdminData data) {
@@ -102,5 +115,21 @@ public class AdminTranService {
             TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();
             return false;
         }
+    }
+
+    public ManageLoginUser getManageLoginUser(LoginDto loginDto) {
+        ManageLoginDto manageLoginDto = (ManageLoginDto) loginDto;
+        ManageLoginUser user = iMnLoginUserService.selectByUsernameAndPassword(manageLoginDto);
+        if (user == null) {
+            return null;
+        }
+        ChaosAdminRoleData chaosAdminRole = iChaosAdminRoleService.selectByAdmin(user.getMu());
+        ChaosRoleData role = iChaosRoleService.selectByMU(MU.of(chaosAdminRole.getRoleMu()));
+        user.setRoleName(role.getName());
+        user.setRoleInfo(role.getInfo());
+        user.setIndexLink(role.getIndexLink());
+        List<ManageMenu> menus = iChaosPermissionService.selectPermissionByAdmin(user.getMu());
+        user.setMenus(menus);
+        return user;
     }
 }

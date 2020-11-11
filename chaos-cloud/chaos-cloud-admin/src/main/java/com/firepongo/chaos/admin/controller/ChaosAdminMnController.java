@@ -4,9 +4,12 @@ import com.firepongo.chaos.admin.api.data.ChaosAdminData;
 import com.firepongo.chaos.admin.api.entity.ChaosAdmin;
 import com.firepongo.chaos.admin.api.entity.ChaosRole;
 import com.firepongo.chaos.admin.api.service.IChaosAdminService;
+import com.firepongo.chaos.admin.service.impl.ChaosAdminServiceImpl;
 import com.firepongo.chaos.admin.service.tran.AdminTranService;
 import com.firepongo.chaos.app.db.MU;
 import com.firepongo.chaos.app.db.UpdateData;
+import com.firepongo.chaos.app.login.manage.ManageLoginDto;
+import com.firepongo.chaos.app.login.manage.ManageLoginUser;
 import com.firepongo.chaos.app.page.PageQueryDto;
 import com.firepongo.chaos.app.result.data.DataResult;
 import com.firepongo.chaos.app.result.page.PageResult;
@@ -37,7 +40,7 @@ import java.util.List;
 public class ChaosAdminMnController extends BaseController {
 
     @Autowired
-    private IChaosAdminService iChaosAdminService;
+    private ChaosAdminServiceImpl iChaosAdminService;
 
     @Autowired
     private AdminTranService adminTranService;
@@ -72,30 +75,35 @@ public class ChaosAdminMnController extends BaseController {
     public DataResult<List<ChaosAdmin>> list(@RequestBody ChaosAdminData data) throws Exception {
         return dataResult(iChaosAdminService.selectByData(data));
     }
+
     @ManageLoginToken
     @PostMapping("/page")
     @ApiOperation(value = "", notes = "", httpMethod = "POST")
     public PageResult<ChaosAdmin> page(@RequestBody PageQueryDto<ChaosAdminData> data) throws Exception {
         return pageResult(iChaosAdminService.selectByPage(data));
     }
+
     @ManageLoginToken
     @PostMapping("/delete")
     @ApiOperation(value = "删除", notes = "", httpMethod = "POST")
     public DataResult<Boolean> delete(@RequestBody MU data) throws Exception {
         return dataResult(iChaosAdminService.deleteModel(data));
     }
+
     @ManageLoginToken
     @PostMapping("/index")
     @ApiOperation(value = "", notes = "", httpMethod = "POST")
     public DataResult<ChaosRole> index(HttpServletRequest request) throws Exception {
         return dataResult(iChaosAdminService.selectIndexLink(getMnLoginUserByToken(getToken(request)).getMu()));
     }
+
     @ManageLoginToken
     @PostMapping("/adminRole")
     @ApiOperation(value = "", notes = "", httpMethod = "POST")
     public DataResult<ChaosAdminData> adminRole(@RequestBody MU data) throws Exception {
         return dataResult(iChaosAdminService.selectAdminRoleByMU(data));
     }
+
     @ManageLoginToken
     @PostMapping("/updateAdminRole")
     @ApiOperation(value = "", notes = "", httpMethod = "POST")
@@ -103,6 +111,7 @@ public class ChaosAdminMnController extends BaseController {
         validate(bindingResult);
         return dataResult(adminTranService.updateAdminRole(data));
     }
+
     @ManageLoginToken
     @PostMapping("/updateByPassword")
     @ApiOperation(value = "更新用户", notes = "", httpMethod = "POST")
@@ -115,6 +124,12 @@ public class ChaosAdminMnController extends BaseController {
         }
         return dataResult(true);
 
+    }
+
+    @ManageLoginToken
+    @PostMapping("/selectByUp")
+    public ManageLoginUser selectByUsernameAndPassword(ManageLoginDto loginDto) {
+        return adminTranService.getManageLoginUser(loginDto);
     }
 
 

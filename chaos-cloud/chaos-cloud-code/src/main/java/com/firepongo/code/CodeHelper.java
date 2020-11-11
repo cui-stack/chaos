@@ -1,4 +1,4 @@
-package com.cui.tech.code;
+package com.firepongo.code;
 
 import com.baomidou.mybatisplus.core.exceptions.MybatisPlusException;
 import com.baomidou.mybatisplus.core.toolkit.StringPool;

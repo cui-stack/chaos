@@ -17,6 +17,11 @@ const state = {
     lastPost: {
         url: '',
         params: {}
+    },
+    baseUrl: {
+        dev: '',
+        test: '',
+        prod: ''
     }
 }
 
@@ -48,7 +53,10 @@ const mutations = {
         state.menus = []
         state.lastPost.params = {}
         state.lastPosturl = ''
-    }
+    },
+    SetBaseUrl(state, data) {
+        state.baseUrl = data
+    },
 }
 
 const getters = {
@@ -60,6 +68,9 @@ const getters = {
     },
     getLastPost: function (state) {
         return state.lastPost;
+    },
+    getBaseUrl: function (state) {
+        return state.baseUrl;
     }
 }
 
@@ -78,7 +89,10 @@ const actions = {
     },
     logout({commit}, data) {
         commit('Logout', data)
-    }
+    },
+    setBaseUrl({commit}, data) {
+        commit('SetBaseUrl', data)
+    },
 }
 
 const store = new Vuex.Store({
