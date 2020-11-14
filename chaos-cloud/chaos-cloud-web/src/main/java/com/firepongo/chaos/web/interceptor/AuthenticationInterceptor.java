@@ -106,11 +106,11 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
     private LoginUser handleWxminiLogin(String token, HttpServletRequest httpServletRequest) {
         // 执行认证
         if (StringUtils.isEmpty(token)) {
-            throw new AuthenticationException(ResultEnum.LOGIN_AGAIN.getCode(), "无效token，请重新登录", httpServletRequest);
+            throw new AuthenticationException(ResultEnum.LOGIN_AGAIN.getCode(), "无效Token，请重新登录", httpServletRequest);
         }
         WxMiniLoginUser loginUser = (WxMiniLoginUser) wxLoginService.getLoginUser(token);
         if (StringUtils.isEmpty(loginUser)) {
-            throw new AuthenticationException(ResultEnum.LOGIN_AGAIN.getCode(), "失效登录，请重新登录", httpServletRequest);
+            throw new AuthenticationException(ResultEnum.LOGIN_AGAIN.getCode(), "登录过期，请重新登录", httpServletRequest);
         }
         return loginUser;
     }
@@ -118,7 +118,7 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
     private ManageLoginUser handleManageLogin(String token, HttpServletRequest httpServletRequest) {
         // 执行认证
         if (StringUtils.isEmpty(token)) {
-            throw new AuthenticationException(ResultEnum.LOGIN_AGAIN.getCode(), "无效token，请重新登录", httpServletRequest);
+            throw new AuthenticationException(ResultEnum.LOGIN_AGAIN.getCode(), "无效Token，请重新登录", httpServletRequest);
         }
         JwtData jwtData = null;
         try {
@@ -127,12 +127,12 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
             String userMu = (String) e.getClaims().get("userMu");
             String refresh = mnLoginService.refreshToken(userMu);
             if (StringUtils.isEmpty(refresh)) {
-                throw new AuthenticationException(ResultEnum.LOGIN_AGAIN.getCode(), "失效Token续签，请重新登录", httpServletRequest);
+                throw new AuthenticationException(ResultEnum.LOGIN_AGAIN.getCode(), "Token续签失败，请重新登录", httpServletRequest);
             }
             throw new AuthenticationException(ResultEnum.REFRESH_TOKEN.getCode(), refresh, httpServletRequest);
         }
         if (jwtData.getUserMu() == null) {
-            throw new AuthenticationException(ResultEnum.LOGIN_AGAIN.getCode(), "无效token，请重新登录", httpServletRequest);
+            throw new AuthenticationException(ResultEnum.LOGIN_AGAIN.getCode(), "Token信息错误，请重新登录", httpServletRequest);
         }
         ManageLoginUser loginUser = null;
         try {
@@ -140,12 +140,11 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
         } catch (Exception e) {
             throw new AuthenticationException(ResultEnum.LOGIN_AGAIN.getCode(), "无效token，请重新登录", httpServletRequest);
         }
-        log.info("后台用户登录,用户token:[{}],session:[{}]", token, loginUser);
         if (StringUtils.isEmpty(loginUser)) {
-            throw new AuthenticationException(ResultEnum.LOGIN_AGAIN.getCode(), "失效登录，请重新登录", httpServletRequest);
+            throw new AuthenticationException(ResultEnum.LOGIN_AGAIN.getCode(), "登录过期，请重新登录", httpServletRequest);
         }
         if (!token.equals(loginUser.getToken())) {
-            throw new AuthenticationException(ResultEnum.LOGIN_AGAIN.getCode(), "服务器token更新，请重新登录", httpServletRequest);
+            throw new AuthenticationException(ResultEnum.LOGIN_AGAIN.getCode(), "Token更新，请重新登录", httpServletRequest);
         }
         return loginUser;
     }

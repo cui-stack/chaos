@@ -19,10 +19,10 @@ public class GlobalDefultExceptionHandler {
     @ExceptionHandler(Exception.class)
     @ResponseBody
     public Result defultExcepitonHandler(Exception e) {
-        log.error("系统未知错误");
         e.printStackTrace();
         Result result = new Result();
         result.unknow();
+        log.error("错误编码[{}],错误信息[{}]", result.getCode(), result.getMsg());
         return result;
     }
 
@@ -31,15 +31,16 @@ public class GlobalDefultExceptionHandler {
     public Result businessException(BusinessException e) {
         log.warn(e.getMessage());
         Result result = e.getResult();
+        log.warn("业务异常编码[{}],错误信息[{}]", result.getCode(), result.getMsg());
         return result;
     }
 
     @ExceptionHandler(AuthenticationException.class)
     @ResponseBody
     public Result authenticationException(AuthenticationException e) {
-        log.info(e.getMessage());
         Result result = e.getResult();
-        requestLogService.logRqquest(e.getRequest(), IpUtil.getIpAddr(e.getRequest()), e.getRequest().getRequestURI(), -1, "token:" + e.getRequest().getHeader("token"), result.getMsg());
+        //requestLogService.logRqquest(e.getRequest(), IpUtil.getIpAddr(e.getRequest()), e.getRequest().getRequestURI(), -1, "token:" + e.getRequest().getHeader("token"), result.getMsg());
+        log.warn("认证错误编码[{}],错误信息[{}]", result.getCode(), result.getMsg());
         return result;
     }
 

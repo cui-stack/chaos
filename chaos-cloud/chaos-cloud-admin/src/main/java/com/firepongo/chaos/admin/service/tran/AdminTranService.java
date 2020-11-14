@@ -5,10 +5,12 @@ import com.firepongo.chaos.admin.api.data.ChaosAdminData;
 import com.firepongo.chaos.admin.api.data.ChaosAdminRoleData;
 import com.firepongo.chaos.admin.api.data.ChaosRoleData;
 import com.firepongo.chaos.admin.api.data.ChaosRolePermissionListData;
+import com.firepongo.chaos.admin.api.entity.ChaosAdmin;
 import com.firepongo.chaos.admin.api.entity.ChaosRolePermission;
 import com.firepongo.chaos.admin.api.service.*;
 import com.firepongo.chaos.app.db.MU;
 import com.firepongo.chaos.app.db.UpdateData;
+import com.firepongo.chaos.app.exception.BusinessException;
 import com.firepongo.chaos.app.login.LoginDto;
 import com.firepongo.chaos.app.login.LoginUser;
 import com.firepongo.chaos.app.login.manage.IMnLoginUserService;
@@ -95,7 +97,7 @@ public class AdminTranService {
     public boolean grant(ChaosRolePermissionListData data) {
         try {
             ArrayList<ChaosRolePermission> addList = (ArrayList) data.getAddMus().stream().map(permissionMu -> {
-                ChaosRolePermission entity =new ChaosRolePermission();
+                ChaosRolePermission entity = new ChaosRolePermission();
                 return entity.setRoleMu(data.getRoleMu()).setPermissionMu(permissionMu);
             }).collect(Collectors.toList());
             boolean result = true;
@@ -117,12 +119,16 @@ public class AdminTranService {
         }
     }
 
-    public ManageLoginUser getManageLoginUser(LoginDto loginDto) {
-        ManageLoginDto manageLoginDto = (ManageLoginDto) loginDto;
-        ManageLoginUser user = iMnLoginUserService.selectByUsernameAndPassword(manageLoginDto);
+    public ManageLoginUser getManageLoginUser(ManageLoginDto loginDto) {
+        ManageLoginUser user = iMnLoginUserService.selectByUsernameAndPassword(loginDto);
         if (user == null) {
             return null;
         }
+        getManageLoginRole(user);
+        return user;
+    }
+
+    private void getManageLoginRole(ManageLoginUser user) {
         ChaosAdminRoleData chaosAdminRole = iChaosAdminRoleService.selectByAdmin(user.getMu());
         ChaosRoleData role = iChaosRoleService.selectByMU(MU.of(chaosAdminRole.getRoleMu()));
         user.setRoleName(role.getName());
@@ -130,6 +136,34 @@ public class AdminTranService {
         user.setIndexLink(role.getIndexLink());
         List<ManageMenu> menus = iChaosPermissionService.selectPermissionByAdmin(user.getMu());
         user.setMenus(menus);
+    }
+
+    public ManageLoginUser doPhoneLogin(ManageLoginDto loginDto) {
+        ManageLoginUser user = iMnLoginUserService.selectByPhone(loginDto);
+        if (user == null && doInitAdmin(loginDto)) {
+            user = iMnLoginUserService.selectByPhone(loginDto);
+        } else {
+            throw new BusinessException();
+        }
+        getManageLoginRole(user);
         return user;
+    }
+
+    @Transactional(rollbackFor = {Exception.class})
+    public boolean doInitAdmin(ManageLoginDto loginDto) {
+        try {
+            ChaosAdminData cad = new ChaosAdminData();
+            cad.setPhone(loginDto.getPhone()).setUsername(loginDto.getPhone());
+            MU mu = iChaosAdminService.insertModel(cad);
+            ChaosAdminRoleData card = new ChaosAdminRoleData();
+            card.setAdminMu(mu.getMu()).setRoleMu(loginDto.getRoleMu());
+            iChaosAdminRoleService.insertModel(card);
+        } catch (Exception e) {
+            e.printStackTrace();
+            log.error("业务回滚", e);
+            TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();
+            return false;
+        }
+        return true;
     }
 }

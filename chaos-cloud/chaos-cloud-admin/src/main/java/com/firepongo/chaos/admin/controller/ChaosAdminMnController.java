@@ -128,8 +128,14 @@ public class ChaosAdminMnController extends BaseController {
 
     @ManageLoginToken
     @PostMapping("/selectByUp")
-    public ManageLoginUser selectByUsernameAndPassword(ManageLoginDto loginDto) {
-        return adminTranService.getManageLoginUser(loginDto);
+    public DataResult<ManageLoginUser> selectByUsernameAndPassword(@RequestBody ManageLoginDto loginDto) {
+        return dataResult(adminTranService.getManageLoginUser(loginDto));
+    }
+
+    @ManageLoginToken
+    @PostMapping("/doPhoneLogin")
+    public DataResult<ManageLoginUser> doPhoneLogin(@RequestBody ManageLoginDto loginDto) {
+        return dataResult(adminTranService.doPhoneLogin(loginDto));
     }
 
 

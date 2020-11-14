@@ -20,7 +20,8 @@
         <java.version>1.8</java.version>
         <spring-boot.version>2.2.5.RELEASE</spring-boot.version>
         <spring-cloud.version>Hoxton.SR3</spring-cloud.version>
-        <spring-cloud-alibaba.version>2.2.1.RELEASE</spring-cloud-alibaba.version>
+        <spring-cloud-alibaba.version>2.2.1.RELEASE
+        </spring-cloud-alibaba.version>
         <chao-cloud.version>3.0.0-SNAPSHOT</chao-cloud.version>
         <mybatis-plus.version>3.4.0</mybatis-plus.version>
         <springfox-boot.version>3.0.0</springfox-boot.version>
@@ -110,9 +111,9 @@
             <version>1.2.73</version>
         </dependency>
         <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-databind</artifactId>
-            <version>2.11.3</version>
+            <groupId>com.fasterxml.jackson.datatype</groupId>
+            <artifactId>jackson-datatype-jsr310</artifactId>
+            <version>2.9.4</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -124,7 +125,8 @@
         <pluginRepository>
             <id>nexus</id>
             <name>nexus</name>
-            <url>http://www.firepongo.tech:8081/nexus/content/groups/public</url>
+            <url>http://www.firepongo.tech:8081/nexus/content/groups/public
+            </url>
             <snapshots>
                 <enabled>true</enabled>
             </snapshots>
@@ -139,7 +141,8 @@
         <snapshotRepository>
             <id>snapshots</id>
             <name>Snapshot</name>
-            <url>http://www.firepongo.tech:8081/repository/maven-snapshots/</url>
+            <url>http://www.firepongo.tech:8081/repository/maven-snapshots/
+            </url>
         </snapshotRepository>
     </distributionManagement>
     <build>

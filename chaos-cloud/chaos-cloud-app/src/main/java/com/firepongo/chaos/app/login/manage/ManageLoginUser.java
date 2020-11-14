@@ -17,12 +17,14 @@ public class ManageLoginUser extends LoginUser {
     private String roleInfo;
     private String roleName;
     private String indexLink;
+    private Integer status;
     List<ManageMenu> menus;
 
-    public ManageLoginUser(String mu, String username, String phone) {
+    public ManageLoginUser(String mu, String username, String phone, Integer status) {
         this.setMu(mu);
         this.username = username;
         this.phone = phone;
+        this.status = status;
     }
 
 }

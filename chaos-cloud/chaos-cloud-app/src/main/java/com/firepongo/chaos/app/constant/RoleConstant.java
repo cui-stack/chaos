@@ -5,10 +5,10 @@ package com.firepongo.chaos.app.constant;
  * @date 2020/11/5 21:42
  */
 public interface RoleConstant {
-    String GUEST = "guest";
+    String GUEST = "GUEST";
 
-    String ADMIN = "admin";
+    String ADMIN = "ADMIN";
 
     //运营
-    String OP = "op";
+    String OP = "OP";
 }

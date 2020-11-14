@@ -95,13 +95,23 @@ public class ChaosAdminServiceImpl extends ServiceImpl<ChaosAdminMapper, ChaosAd
         ChaosAdmin user = getOne(new QueryWrapper<ChaosAdmin>()
                 .eq("username", loginDto.getUsername())
                 .eq("password", DigestUtils.md5Hex(loginDto.getPassword()))
-                .eq("status", 0)
                 .eq("platform_mu", loginDto.getPlatformMu()));
         if (user == null) {
             return null;
         }
-        return new ManageLoginUser(user.getMu(), user.getUsername(), user.getPhone());
+        return new ManageLoginUser(user.getMu(), user.getUsername(), user.getPhone(), user.getStatus());
 
+    }
+
+    @Override
+    public ManageLoginUser selectByPhone(ManageLoginDto loginDto) {
+        ChaosAdmin user = getOne(new QueryWrapper<ChaosAdmin>()
+                .eq("phone", loginDto.getPhone())
+                .eq("platform_mu", loginDto.getPlatformMu()));
+        if (user == null) {
+            return null;
+        }
+        return new ManageLoginUser(user.getMu(), user.getUsername(), user.getPhone(), user.getStatus());
     }
 
     @Override

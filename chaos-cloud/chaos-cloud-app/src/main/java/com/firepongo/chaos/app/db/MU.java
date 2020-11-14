@@ -1,5 +1,6 @@
 package com.firepongo.chaos.app.db;
 
+import com.firepongo.chaos.app.DTO;
 import lombok.*;
 import lombok.experimental.Accessors;
 
@@ -10,7 +11,7 @@ import lombok.experimental.Accessors;
 @Data
 @NoArgsConstructor
 @RequiredArgsConstructor(staticName = "of")
-public class MU {
+public class MU extends DTO {
     @NonNull
     private String mu;
 

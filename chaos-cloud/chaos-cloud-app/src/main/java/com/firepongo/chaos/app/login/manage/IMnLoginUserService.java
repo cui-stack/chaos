@@ -10,4 +10,5 @@ import com.firepongo.chaos.app.login.manage.ManageLoginUser;
 public interface IMnLoginUserService {
     ManageLoginUser selectByUsernameAndPassword(ManageLoginDto loginDto);
 
+    ManageLoginUser selectByPhone(ManageLoginDto loginDto);
 }
