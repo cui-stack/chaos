@@ -3,10 +3,10 @@ package ${cfg.p}.api.service;
 import com.baomidou.mybatisplus.extension.service.IService;
 import ${cfg.p}.api.entity.${entity};
 import ${cfg.p}.api.data.${entity}Data;
-import MU;
-import UpdateData;
-import PageList;
-import PageQueryDto;
+import com.firepongo.chaos.app.db.MU;
+import com.firepongo.chaos.app.db.UpdateData;
+import com.firepongo.chaos.app.page.PageList;
+import com.firepongo.chaos.app.page.PageQueryDto;
 
 import java.util.List;
 

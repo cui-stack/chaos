@@ -1,15 +1,13 @@
 package ${cfg.p}.client.controller;
 
-import ${cfg.p}.api.entity.${entity};
 import ${cfg.p}.api.data.${entity}Data;
 import ${cfg.p}.api.service.I${entity}Service;
-import MU;
-import UpdateData;
-import PageQueryDto;
-import DataResult;
-import PageResult;
-import com.cui.tech.chaos.web.annotation.WxminiLoginToken;
-import com.cui.tech.chaos.web.base.BaseController;
+import com.firepongo.chaos.app.db.MU;
+import com.firepongo.chaos.app.page.PageQueryDto;
+import com.firepongo.chaos.app.result.data.DataResult;
+import com.firepongo.chaos.app.result.page.PageResult;
+import com.firepongo.chaos.web.annotation.WxminiLoginToken;
+import com.firepongo.chaos.web.base.BaseController;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;

@@ -2,7 +2,7 @@ package ${cfg.p}.api.entity;
 
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
-import MuModel;
+import com.firepongo.chaos.app.db.MuModel;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -24,7 +24,7 @@ import java.time.LocalDateTime;
  */
 @Data
 @NoArgsConstructor
-@EqualsAndHashCode(callSuper = false)
+@EqualsAndHashCode
 @Accessors(chain = true)
 @TableName("${table.name}")
 @ApiModel(value="${entity}实体", description="${table.comment!}")

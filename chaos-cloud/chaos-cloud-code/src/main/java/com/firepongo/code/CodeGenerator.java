@@ -22,7 +22,6 @@ public class CodeGenerator {
         gc.setFileOverride(true);
         gc.setAuthor("G.G");
         gc.setOpen(false);
-        gc.setSwagger2(true); //实体属性 Swagger2 注解
         mpg.setGlobalConfig(gc);
 
         PackageConfig pc = CodeHelper.initPackageConfig();
@@ -34,7 +33,7 @@ public class CodeGenerator {
             @Override
             public void initMap() {
                 Map<String, Object> params = new HashMap<String, Object>();
-                params.put("p", "com.cui.tech." + pc.getModuleName());
+                params.put("p", "com." + pc.getModuleName());
                 params.put("a", pc.getModuleName().substring(0, 1).toUpperCase() + pc.getModuleName().substring(1));
                 this.setMap(params);
             }

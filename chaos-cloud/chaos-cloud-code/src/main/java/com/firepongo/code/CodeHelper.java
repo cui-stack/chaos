@@ -39,12 +39,12 @@ public class CodeHelper {
         StrategyConfig strategy = new StrategyConfig();
         strategy.setNaming(NamingStrategy.underline_to_camel);
         strategy.setColumnNaming(NamingStrategy.underline_to_camel);
-        strategy.setSuperEntityClass("com.cui.tech.chaos.model.db.MuModel");
+        strategy.setSuperEntityClass("com.firepongo.chaos.app.db.MuModel");
         strategy.setEntityLombokModel(true);
         strategy.setRestControllerStyle(true);
         // 公共父类
 
-        strategy.setSuperControllerClass("com.cui.tech.chaos.base.BaseController");
+        strategy.setSuperControllerClass("com.firepongo.chaos.web.base.BaseController");
         strategy.setInclude(CodeHelper.scanner("表名，多个英文逗号分割").split(","));
         strategy.setControllerMappingHyphenStyle(true);
         //strategy.setTablePrefix(pc.getModuleName() + "_");
@@ -55,7 +55,7 @@ public class CodeHelper {
         // 包配置
         final PackageConfig pc = new PackageConfig();
         pc.setModuleName(CodeHelper.scanner("模块名"));
-        pc.setParent("com.cui.tech");
+        pc.setParent("com");
         return pc;
     }
 
@@ -108,20 +108,17 @@ public class CodeHelper {
         String tp = "templates/src/main/";
 
         focList.add(FileOutConfig(tp + "resources/mapper/mapper.xml.ftl", "/src/main/resources/mapper/", "Mapper" + StringPool.DOT_XML));
-        focList.add(FileOutConfig(tp + "resources/application.yml.ftl", "/src/main/resources/application.yml"));
-        focList.add(FileOutConfig(tp + "resources/application-base.yml.ftl", "/src/main/resources/application-base.yml"));
-        focList.add(FileOutConfig(tp + "resources/application-dev.yml.ftl", "/src/main/resources/application-dev.yml"));
 
-        focList.add(FileOutConfig(tp + "java/api/data/data.ftl", "/src/main/java/com/cui/tech/" + pcmodel + "/api/data/", "Data" + StringPool.DOT_JAVA));
-        focList.add(FileOutConfig(tp + "java/api/entity/model.ftl", "/src/main/java/com/cui/tech/" + pcmodel + "/api/entity/", StringPool.DOT_JAVA));
-        focList.add(FileOutConfig(tp + "java/api/service/iservice.ftl", "/src/main/java/com/cui/tech/" + pcmodel + "/api/service/I", "Service" + StringPool.DOT_JAVA));
-        focList.add(FileOutConfig(tp + "java/service/impl/service_impl.ftl", "/src/main/java/com/cui/tech/" + pcmodel + "/service/impl/", "ServiceImpl" + StringPool.DOT_JAVA));
-        focList.add(FileOutConfig(tp + "java/service/mapper/mapper.ftl", "/src/main/java/com/cui/tech/" + pcmodel + "/service/mapper/", "Mapper" + StringPool.DOT_JAVA));
+        focList.add(FileOutConfig(tp + "java/api/data/data.ftl", "/src/main/java/com/" + pcmodel + "/api/data/", "Data" + StringPool.DOT_JAVA));
+        focList.add(FileOutConfig(tp + "java/api/entity/model.ftl", "/src/main/java/com/" + pcmodel + "/api/entity/", StringPool.DOT_JAVA));
+        focList.add(FileOutConfig(tp + "java/api/service/iservice.ftl", "/src/main/java/com/" + pcmodel + "/api/service/I", "Service" + StringPool.DOT_JAVA));
+        focList.add(FileOutConfig(tp + "java/service/impl/service_impl.ftl", "/src/main/java/com/" + pcmodel + "/service/impl/", "ServiceImpl" + StringPool.DOT_JAVA));
+        focList.add(FileOutConfig(tp + "java/service/mapper/mapper.ftl", "/src/main/java/com/" + pcmodel + "/service/mapper/", "Mapper" + StringPool.DOT_JAVA));
 
-        focList.add(FileOutConfig(tp + "java/manager/controller/mncontroller.ftl", "/src/main/java/com/cui/tech/" + pcmodel + "/manager/controller/", "MnController" + StringPool.DOT_JAVA));
-        focList.add(FileOutConfig(tp + "java/client/controller/controller.ftl", "/src/main/java/com/cui/tech/" + pcmodel + "/client/controller/", "Controller" + StringPool.DOT_JAVA));
+        focList.add(FileOutConfig(tp + "java/manager/controller/mncontroller.ftl", "/src/main/java/com/" + pcmodel + "/manager/controller/", "MnController" + StringPool.DOT_JAVA));
+        focList.add(FileOutConfig(tp + "java/client/controller/controller.ftl", "/src/main/java/com/" + pcmodel + "/client/controller/", "Controller" + StringPool.DOT_JAVA));
         focList.add(FileOutConfig("templates/pom.xml.ftl", "/pom.xml"));
-        focList.add(FileOutConfig(tp + "Application.ftl", "/src/main/java/com/cui/tech/" + pcmodel + "/" + pcmodel.substring(0, 1).toUpperCase() + pcmodel.substring(1) + "Application" + StringPool.DOT_JAVA));
+        focList.add(FileOutConfig(tp + "Application.ftl", "/src/main/java/com/" + pcmodel + "/" + pcmodel.substring(0, 1).toUpperCase() + pcmodel.substring(1) + "Application" + StringPool.DOT_JAVA));
 
         return focList;
     }

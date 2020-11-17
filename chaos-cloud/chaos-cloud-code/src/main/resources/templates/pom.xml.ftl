@@ -4,27 +4,20 @@
 
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>com.cui.tech</groupId>
-        <artifactId>chaos-parent</artifactId>
-        <version>2.2.0-SNAPSHOT</version>
+        <groupId>com.firepongo</groupId>
+        <artifactId>chaos-cloud-dependencies</artifactId>
+        <version>3.0.0-SNAPSHOT</version>
         <relativePath/>
     </parent>
 
-    <groupId>com.cui.tech</groupId>
+    <groupId>com.${package.ModuleName}</groupId>
     <artifactId>${package.ModuleName}-service</artifactId>
-    <version>0.0.2-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <dependencies>
         <dependency>
-            <groupId>com.cui.tech</groupId>
-            <artifactId>chaos-boot-starter</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
+            <groupId>com.firepongo</groupId>
+            <artifactId>chaos-cloud-web</artifactId>
         </dependency>
     </dependencies>
 

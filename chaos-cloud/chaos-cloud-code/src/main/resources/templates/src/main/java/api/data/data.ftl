@@ -1,6 +1,6 @@
 package ${cfg.p}.api.data;
 
-import DATA;
+import com.firepongo.chaos.app.db.DATA;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.*;
@@ -14,8 +14,7 @@ import java.time.LocalDateTime;
 @Data
 @NoArgsConstructor
 @Accessors(chain = true)
-@RequiredArgsConstructor(staticName = "of")
-@EqualsAndHashCode(callSuper = false)
+@EqualsAndHashCode
 @ApiModel(value="${entity}Data", description="${table.comment!}")
 public class ${entity}Data extends DATA{
 
