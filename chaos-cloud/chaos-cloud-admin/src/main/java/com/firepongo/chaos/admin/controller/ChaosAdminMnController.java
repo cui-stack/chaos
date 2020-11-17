@@ -1,6 +1,7 @@
 package com.firepongo.chaos.admin.controller;
 
 import com.firepongo.chaos.admin.api.data.ChaosAdminData;
+import com.firepongo.chaos.admin.api.data.ChaosRoleData;
 import com.firepongo.chaos.admin.api.entity.ChaosAdmin;
 import com.firepongo.chaos.admin.api.entity.ChaosRole;
 import com.firepongo.chaos.admin.api.service.IChaosAdminService;
@@ -57,7 +58,7 @@ public class ChaosAdminMnController extends BaseController {
     @PostMapping("/one")
     @ManageLoginToken
     @ApiOperation(value = "", notes = "", httpMethod = "POST")
-    public DataResult<ChaosAdmin> one(@RequestBody MU data) throws Exception {
+    public DataResult<ChaosAdminData> one(@RequestBody MU data) throws Exception {
         return dataResult(iChaosAdminService.selectByMU(data));
     }
 
@@ -72,14 +73,14 @@ public class ChaosAdminMnController extends BaseController {
     @PostMapping("/list")
     @ManageLoginToken
     @ApiOperation(value = "列表", notes = "", httpMethod = "POST")
-    public DataResult<List<ChaosAdmin>> list(@RequestBody ChaosAdminData data) throws Exception {
+    public DataResult<List<ChaosAdminData>> list(@RequestBody ChaosAdminData data) throws Exception {
         return dataResult(iChaosAdminService.selectByData(data));
     }
 
     @ManageLoginToken
     @PostMapping("/page")
     @ApiOperation(value = "", notes = "", httpMethod = "POST")
-    public PageResult<ChaosAdmin> page(@RequestBody PageQueryDto<ChaosAdminData> data) throws Exception {
+    public PageResult<ChaosAdminData> page(@RequestBody PageQueryDto<ChaosAdminData> data) throws Exception {
         return pageResult(iChaosAdminService.selectByPage(data));
     }
 
@@ -93,7 +94,7 @@ public class ChaosAdminMnController extends BaseController {
     @ManageLoginToken
     @PostMapping("/index")
     @ApiOperation(value = "", notes = "", httpMethod = "POST")
-    public DataResult<ChaosRole> index(HttpServletRequest request) throws Exception {
+    public DataResult<ChaosRoleData> index(HttpServletRequest request) throws Exception {
         return dataResult(iChaosAdminService.selectIndexLink(getMnLoginUserByToken(getToken(request)).getMu()));
     }
 

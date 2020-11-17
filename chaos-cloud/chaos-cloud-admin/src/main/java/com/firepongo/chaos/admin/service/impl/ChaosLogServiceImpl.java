@@ -4,7 +4,7 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.firepongo.chaos.admin.api.data.ChaosLogData;
+import com.firepongo.chaos.app.db.ChaosLogData;
 import com.firepongo.chaos.admin.api.entity.ChaosLog;
 import com.firepongo.chaos.admin.api.service.IChaosLogService;
 import com.firepongo.chaos.admin.service.mapper.ChaosLogMapper;
@@ -36,6 +36,7 @@ import java.util.List;
 public class ChaosLogServiceImpl extends ServiceImpl<ChaosLogMapper, ChaosLog> implements IChaosLogService, ILogService {
     @Autowired
     private ConvertService convertService;
+
     @Override
     public MU insertModel(ChaosLogData data) {
         ChaosLog entity = (ChaosLog) convertService.convertToMuModel(data, ChaosLog.class);
@@ -78,8 +79,8 @@ public class ChaosLogServiceImpl extends ServiceImpl<ChaosLogMapper, ChaosLog> i
     }
 
     @Override
-    public void log(String userMu, String ip, String uri, long time, String request, String response) {
-        insertModel(ChaosLogData.of(userMu, ip, uri, time, request, response));
+    public void log(String userMu, String ip, String uri, long time, String request, String response, String platform, String env) {
+        insertModel(ChaosLogData.of(userMu, ip, uri, time, request, response, platform, env));
     }
 
 }

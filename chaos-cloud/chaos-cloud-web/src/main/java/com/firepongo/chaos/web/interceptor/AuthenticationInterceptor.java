@@ -54,7 +54,6 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
 
     @Override
     public boolean preHandle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object object) throws Exception {
-        // 如果不是映射到方法直接通过
         if (!(object instanceof HandlerMethod)) {
             return true;
         }
@@ -116,7 +115,6 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
     }
 
     private ManageLoginUser handleManageLogin(String token, HttpServletRequest httpServletRequest) {
-        // 执行认证
         if (StringUtils.isEmpty(token)) {
             throw new AuthenticationException(ResultEnum.LOGIN_AGAIN.getCode(), "无效Token，请重新登录", httpServletRequest);
         }

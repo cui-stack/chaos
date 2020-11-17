@@ -5,5 +5,5 @@ package com.firepongo.chaos.web.service;
  * @date 2020/4/27 14:59
  */
 public interface ILogService {
-    void log(String userMu, String ip, String uri, long time, String request, String response);
+    void log(String userMu, String ip, String uri, long time, String request, String response, String platform, String env);
 }

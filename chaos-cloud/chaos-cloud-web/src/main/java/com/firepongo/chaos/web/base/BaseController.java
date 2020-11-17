@@ -1,6 +1,7 @@
 package com.firepongo.chaos.web.base;
 
 
+import com.firepongo.chaos.app.DTO;
 import com.firepongo.chaos.app.exception.BusinessException;
 import com.firepongo.chaos.app.login.app.AppLoginUser;
 import com.firepongo.chaos.app.login.manage.ManageLoginUser;
@@ -98,7 +99,7 @@ public abstract class BaseController<T> {
             } else {
                 dataResult.msg(ResultEnum.FAILURE.getCode(), msg.getFailure());
             }
-            dataResult.setData(new Object());
+            dataResult.setData(null);
         } else {
             if (msg == null || StringUtils.isEmpty(msg.getSuccess())) {
                 dataResult.success();

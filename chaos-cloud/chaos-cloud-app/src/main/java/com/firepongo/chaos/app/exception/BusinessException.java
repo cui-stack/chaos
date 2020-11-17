@@ -6,9 +6,13 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@NoArgsConstructor
 public class BusinessException extends RuntimeException {
     private Result result;
+
+    public BusinessException() {
+        super(ResultEnum.FAILURE.getDefaultMsg());
+        this.result = new Result(ResultEnum.FAILURE.getCode(), ResultEnum.FAILURE.getDefaultMsg());
+    }
 
     public BusinessException(ResultEnum resultEnum) {
         super(resultEnum.getDefaultMsg());

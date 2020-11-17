@@ -9,7 +9,10 @@ import com.firepongo.chaos.app.result.data.DataResult;
 import com.firepongo.chaos.web.base.BaseController;
 import com.firepongo.chaos.web.helper.IpUtil;
 import com.firepongo.chaos.web.service.AccessLimitService;
+import com.firepongo.chaos.web.service.RedisService;
 import com.firepongo.chaos.web.service.login.ILoginService;
+import com.firepongo.chaos.web.service.login.manage.ManageLoginKeyService;
+import com.firepongo.chaos.web.service.login.wxmini.WxminiLoginKeyService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
@@ -24,32 +27,49 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 @Slf4j
 @RestController
-@RequestMapping("/cache")
+@RequestMapping("/manage")
 @Api(tags = "RedisDataController")
 public class RedisDataController extends BaseController {
 
     @Autowired
-    AccessLimitService accessLimitService;
+    private AccessLimitService accessLimitService;
+    @Autowired
+    private RedisService redisService;
+    @Autowired
+    private WxminiLoginKeyService wxminiLoginKeyService;
+    @Autowired
+    private ManageLoginKeyService manageLoginKeyService;
 
     @PostMapping("/loginAdmins")
     @ApiOperation(value = "", notes = "", httpMethod = "POST")
     public DataResult<List<LoginUser>> loginAdmins() {
-        return dataResult(null);
+        Set set = redisService.keys(manageLoginKeyService.key("*"));
+        List<ManageLoginUser> list = (List<ManageLoginUser>) set.stream().map((key) ->
+                redisService.get((String) key)
+        ).collect(Collectors.toList());
+        return dataResult(list);
     }
 
     @PostMapping("/loginUsers")
     @ApiOperation(value = "", notes = "", httpMethod = "POST")
     public DataResult<List<LoginUser>> loginUsers() {
-        return dataResult(null);
+        Set set = redisService.keys(wxminiLoginKeyService.key("*"));
+        List<ManageLoginUser> list = (List<ManageLoginUser>) set.stream().map((key) ->
+                redisService.get((String) key)
+        ).collect(Collectors.toList());
+        return dataResult(list);
     }
 
     @PostMapping("/logoutAll")
     @ApiOperation(value = "登出", notes = "", httpMethod = "POST")
     public DataResult<Boolean> logoutAll() {
-        return dataResult(null);
+        redisService.del(manageLoginKeyService.key("*"));
+        return dataResult(true);
     }
 
     @PostMapping("/limit")

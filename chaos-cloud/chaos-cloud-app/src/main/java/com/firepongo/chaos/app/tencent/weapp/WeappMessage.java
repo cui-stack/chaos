@@ -1,5 +1,6 @@
 package com.firepongo.chaos.app.tencent.weapp;
 
+import com.firepongo.chaos.app.DTO;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -11,7 +12,7 @@ import java.util.Map;
  */
 @Data
 @NoArgsConstructor
-public class WeappMessage {
+public class WeappMessage extends DTO {
     private String touser;
     private String template_id;
     private String page = "pages/index/index";

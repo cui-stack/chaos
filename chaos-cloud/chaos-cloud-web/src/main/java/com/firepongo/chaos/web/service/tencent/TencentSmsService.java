@@ -24,7 +24,6 @@ public class TencentSmsService {
     @Value("${app.tencent.sms.smsSign:}")
     String smsSign;
 
-    //指定模板ID单发短信
     public boolean send(String phoneNumber, int templateId, String[] params) {
         try {
             SmsSingleSender ssender = new SmsSingleSender(appid, appkey);
@@ -32,32 +31,31 @@ public class TencentSmsService {
                     templateId, params, smsSign, "", "");
             return result.result == 0;
         } catch (HTTPException e) {
-            e.printStackTrace();// HTTP响应码错误
+            e.printStackTrace();
             return false;
         } catch (JSONException e) {
-            e.printStackTrace();// json解析错误
+            e.printStackTrace();
             return false;
         } catch (IOException e) {
-            e.printStackTrace();// 网络IO错误
+            e.printStackTrace();
             return false;
         }
     }
 
-    //群发,200
     public boolean sendAll(String[] phoneNumbers, int templateId, String[] params) {
         try {
             SmsMultiSender msender = new SmsMultiSender(appid, appkey);
             SmsMultiSenderResult result = msender.sendWithParam("86", phoneNumbers,
-                    templateId, params, smsSign, "", "");  // 签名不能为空串
+                    templateId, params, smsSign, "", "");
             return result.result == 0;
         } catch (HTTPException e) {
-            e.printStackTrace();// HTTP响应码错误
+            e.printStackTrace();
             return false;
         } catch (JSONException e) {
-            e.printStackTrace();// json解析错误
+            e.printStackTrace();
             return false;
         } catch (IOException e) {
-            e.printStackTrace();// 网络IO错误
+            e.printStackTrace();
             return false;
         }
     }
@@ -69,13 +67,13 @@ public class TencentSmsService {
                     msg, 2, "");
             return result.result == 0;
         } catch (HTTPException e) {
-            e.printStackTrace();// HTTP响应码错误
+            e.printStackTrace();
             return false;
         } catch (JSONException e) {
-            e.printStackTrace();// json解析错误
+            e.printStackTrace();
             return false;
         } catch (IOException e) {
-            e.printStackTrace();// 网络IO错误
+            e.printStackTrace();
             return false;
         }
     }
@@ -87,13 +85,13 @@ public class TencentSmsService {
                     2, 2, msg, "");
             return result.result == 0;
         } catch (HTTPException e) {
-            e.printStackTrace();// HTTP响应码错误
+            e.printStackTrace();
             return false;
         } catch (JSONException e) {
-            e.printStackTrace();// json解析错误
+            e.printStackTrace();
             return false;
         } catch (IOException e) {
-            e.printStackTrace();// 网络IO错误
+            e.printStackTrace();
             return false;
         }
     }
@@ -112,13 +110,13 @@ public class TencentSmsService {
             SmsStatusPullReplyResult replyResult = spuller.pullReply(maxNum);
             System.out.println(replyResult);
         } catch (HTTPException e) {
-            e.printStackTrace();// HTTP响应码错误
+            e.printStackTrace();
             return false;
         } catch (JSONException e) {
-            e.printStackTrace();// json解析错误
+            e.printStackTrace();
             return false;
         } catch (IOException e) {
-            e.printStackTrace();// 网络IO错误
+            e.printStackTrace();
             return false;
         }
         return true;
@@ -126,9 +124,9 @@ public class TencentSmsService {
 
     public void pullPhoneStatus(String phoneNumber) {
         try {
-            int beginTime = 1511125600;  // 开始时间(unix timestamp)
-            int endTime = 1511841600;    // 结束时间(unix timestamp)
-            int maxNum = 10;             // 单次拉取最大量
+            int beginTime = 1511125600;
+            int endTime = 1511841600;
+            int maxNum = 10;
             SmsMobileStatusPuller mspuller = new SmsMobileStatusPuller(appid, appkey);
 
             // 拉取短信回执

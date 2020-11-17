@@ -1,5 +1,6 @@
 package com.firepongo.chaos.app.tencent.weapp;
 
+import com.firepongo.chaos.app.DTO;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -11,7 +12,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class WxminiTemplateData {
+public class WxminiTemplateData extends DTO {
     private String value;
 
 }

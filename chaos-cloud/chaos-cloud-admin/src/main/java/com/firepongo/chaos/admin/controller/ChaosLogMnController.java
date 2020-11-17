@@ -1,6 +1,6 @@
 package com.firepongo.chaos.admin.controller;
 
-import com.firepongo.chaos.admin.api.data.ChaosLogData;
+import com.firepongo.chaos.app.db.ChaosLogData;
 import com.firepongo.chaos.admin.api.entity.ChaosLog;
 import com.firepongo.chaos.admin.api.service.IChaosLogService;
 import com.firepongo.chaos.app.db.MU;
@@ -14,7 +14,6 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -22,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 /**
@@ -34,6 +34,14 @@ import java.util.List;
 public class ChaosLogMnController extends BaseController {
     @Autowired
     private IChaosLogService iChaosLogService;
+
+    @ManageLoginToken
+    @PostMapping("/add")
+    @ApiOperation(value = "", notes = "", httpMethod = "POST")
+    public DataResult<MU> add(@RequestBody @Validated ChaosLogData data, BindingResult bindingResult, HttpServletRequest request) throws Exception {
+        validate(bindingResult);
+        return dataResult(iChaosLogService.insertModel(data));
+    }
 
     @ManageLoginToken
     @PostMapping("/one")

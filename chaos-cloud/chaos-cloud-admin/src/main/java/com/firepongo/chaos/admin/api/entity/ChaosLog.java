@@ -4,10 +4,7 @@ import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.firepongo.chaos.app.db.MuModel;
 import io.swagger.annotations.ApiModel;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
+import lombok.*;
 import lombok.experimental.Accessors;
 
 /**
@@ -21,7 +18,7 @@ import lombok.experimental.Accessors;
 @Data
 @Accessors(chain = true)
 @TableName("chaos_log")
-@ApiModel(value="ChaosLog实体", description="")
+@ApiModel(value = "ChaosLog实体", description = "")
 public class ChaosLog extends MuModel {
 
     @TableField("user_mu")
@@ -41,6 +38,9 @@ public class ChaosLog extends MuModel {
 
     @TableField("response")
     private String response;
-
+    @TableField("platform")
+    private String platform;
+    @TableField("env")
+    private String env;
 
 }

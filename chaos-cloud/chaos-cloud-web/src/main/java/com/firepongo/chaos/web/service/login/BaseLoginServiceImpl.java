@@ -5,6 +5,8 @@ import com.firepongo.chaos.app.login.LoginUser;
 import com.firepongo.chaos.web.service.RedisService;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
 /**
@@ -23,7 +25,10 @@ public abstract class BaseLoginServiceImpl implements ILoginService {
             return null;
         }
         loginUser.setIp(loginDto.getIp());
-        loginUser.setLoginTime(new Date());
+        DateTimeFormatter df = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        LocalDateTime time = LocalDateTime.now();
+        String now = df.format(time);
+        loginUser.setLoginTime(now);
         dealRedisToken(loginUser);
         afterLogin(loginUser);
         return loginUser;

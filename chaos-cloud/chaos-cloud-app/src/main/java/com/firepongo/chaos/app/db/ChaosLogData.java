@@ -1,11 +1,14 @@
-package com.firepongo.chaos.admin.api.data;
+package com.firepongo.chaos.app.db;
 
-import com.firepongo.chaos.app.db.DATA;
 import io.swagger.annotations.ApiModel;
-import lombok.*;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
 import lombok.experimental.Accessors;
 
 @Data
+@NoArgsConstructor
 @RequiredArgsConstructor(staticName = "of")
 @Accessors(chain = true)
 @ApiModel(value = "ChaosLogData", description = "")
@@ -22,5 +25,9 @@ public class ChaosLogData extends DATA {
     private String request;
     @NonNull
     private String response;
+    @NonNull
+    private String platform;
+    @NonNull
+    private String env;
 
 }

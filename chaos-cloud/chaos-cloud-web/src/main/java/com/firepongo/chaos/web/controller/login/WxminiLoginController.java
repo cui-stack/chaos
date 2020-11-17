@@ -43,8 +43,7 @@ public class WxminiLoginController extends BaseController {
     private String appid;
     @Value("${app.wxmini.secret:}")
     private String secret;
-    @Autowired
-    private WxminiLoginKeyService wxminiLoginKeyService;
+
 
     /**
      * @param user
