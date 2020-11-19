@@ -84,7 +84,7 @@ export function submit(table, method, data, cb) {
         type: 'warning',
         center: true
     }).then(() => {
-        fetch.post('/manage/' + table + '/' + method, {data: data}
+        fetch.post('/manage/' + table + '/' + method, data
         ).then((res) => {
             doCb(cb, res)
         })
@@ -117,9 +117,6 @@ function doCb(cb, res) {
     }
 }
 
-export function chain(a = []) {
-    a.shift()(a)
-}
 
 export default {
     add,
@@ -129,11 +126,12 @@ export default {
     list,
     page,
 
-    search,
-    query,
     validate,
+    //分页通用查询
+    search,
+    //无分页通用查询
+    query,
+    //提交
     submit,
-
-    chain,
 
 }

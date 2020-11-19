@@ -16,5 +16,4 @@ public class ManageLoginDto extends LoginDto {
 
     private String captcha;
     private String phone;
-    private String roleMu;
 }

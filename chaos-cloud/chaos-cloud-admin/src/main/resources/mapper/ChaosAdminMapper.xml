@@ -26,6 +26,7 @@
             ia. NAME,
             ia.`status`,
             ia.platform_mu,
+            ia.phone,
             iar.role_mu
         FROM
             chaos_admin ia,

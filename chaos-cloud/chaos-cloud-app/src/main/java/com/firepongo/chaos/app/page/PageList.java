@@ -16,6 +16,7 @@ import java.util.stream.Collectors;
 
 
 @Data
+@NoArgsConstructor
 @ApiModel(value = "列表结果对象", description = "")
 public class PageList<T> extends DTO {
     @ApiModelProperty(value = "列表")
@@ -24,10 +25,6 @@ public class PageList<T> extends DTO {
     private Long total;
     @ApiModelProperty(value = "当前页")
     private Long current;
-
-    public PageList() {
-        list = new ArrayList<>();
-    }
 
     public PageList(IPage<T> page, Class c) {
         this.setCurrent(page.getCurrent());

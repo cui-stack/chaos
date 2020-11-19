@@ -9,6 +9,8 @@ import com.firepongo.chaos.admin.service.impl.ChaosAdminServiceImpl;
 import com.firepongo.chaos.admin.service.tran.AdminTranService;
 import com.firepongo.chaos.app.db.MU;
 import com.firepongo.chaos.app.db.UpdateData;
+import com.firepongo.chaos.app.exception.BusinessException;
+import com.firepongo.chaos.app.login.manage.IMnLoginUserService;
 import com.firepongo.chaos.app.login.manage.ManageLoginDto;
 import com.firepongo.chaos.app.login.manage.ManageLoginUser;
 import com.firepongo.chaos.app.page.PageQueryDto;
@@ -45,6 +47,8 @@ public class ChaosAdminMnController extends BaseController {
 
     @Autowired
     private AdminTranService adminTranService;
+    @Autowired
+    private IMnLoginUserService iMnLoginUserService;
 
     @PostMapping("/add")
     @ManageLoginToken
@@ -88,7 +92,7 @@ public class ChaosAdminMnController extends BaseController {
     @PostMapping("/delete")
     @ApiOperation(value = "删除", notes = "", httpMethod = "POST")
     public DataResult<Boolean> delete(@RequestBody MU data) throws Exception {
-        return dataResult(iChaosAdminService.deleteModel(data));
+        return dataResult(adminTranService.deleteAdmin(data));
     }
 
     @ManageLoginToken
@@ -136,7 +140,12 @@ public class ChaosAdminMnController extends BaseController {
     @ManageLoginToken
     @PostMapping("/doPhoneLogin")
     public DataResult<ManageLoginUser> doPhoneLogin(@RequestBody ManageLoginDto loginDto) {
-        return dataResult(adminTranService.doPhoneLogin(loginDto));
+        ManageLoginUser user = iMnLoginUserService.selectByPhone(loginDto);
+        if (user == null) {
+            user = adminTranService.doInitAdmin(loginDto);
+        }
+        adminTranService.getManageLoginRole(user);
+        return dataResult(user);
     }
 
 

@@ -1,11 +1,13 @@
 package com.firepongo.chaos.admin.service.tran;
 
+import cn.hutool.core.util.RandomUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.firepongo.chaos.admin.api.data.ChaosAdminData;
 import com.firepongo.chaos.admin.api.data.ChaosAdminRoleData;
 import com.firepongo.chaos.admin.api.data.ChaosRoleData;
 import com.firepongo.chaos.admin.api.data.ChaosRolePermissionListData;
 import com.firepongo.chaos.admin.api.entity.ChaosAdmin;
+import com.firepongo.chaos.admin.api.entity.ChaosAdminRole;
 import com.firepongo.chaos.admin.api.entity.ChaosRolePermission;
 import com.firepongo.chaos.admin.api.service.*;
 import com.firepongo.chaos.app.db.MU;
@@ -55,7 +57,7 @@ public class AdminTranService {
     private IChaosPermissionService iChaosPermissionService;
 
     @Transactional(rollbackFor = {Exception.class})
-    public boolean addAdmin(ChaosAdminData data) {
+    public MU addAdmin(ChaosAdminData data) {
         try {
             log.info("添加运营账户");
             data.setZip(data.getPassword());
@@ -63,19 +65,18 @@ public class AdminTranService {
             MU mu = iChaosAdminService.insertModel(data);
             ChaosAdminRoleData entity = new ChaosAdminRoleData();
             iChaosAdminRoleService.insertModel(entity.setAdminMu(mu.getMu()).setRoleMu(data.getRoleMu()));
-            return true;
+            return mu;
         } catch (Exception e) {
             e.printStackTrace();
             log.error("", e);
             TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();
-            return false;
+            return null;
         }
     }
 
     @Transactional(rollbackFor = {Exception.class})
     public boolean updateAdminRole(UpdateData<ChaosAdminData> data) {
         try {
-            log.info("");
             if (!StringUtils.isEmpty(data.getData().getPassword())) {
                 data.getData().setZip(data.getData().getPassword());
                 data.getData().setPassword(DigestUtils.md5Hex(data.getData().getPassword()));
@@ -87,7 +88,6 @@ public class AdminTranService {
             return f1 && f2;
         } catch (Exception e) {
             e.printStackTrace();
-            log.error("", e);
             TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();
             return false;
         }
@@ -128,8 +128,9 @@ public class AdminTranService {
         return user;
     }
 
-    private void getManageLoginRole(ManageLoginUser user) {
+    public void getManageLoginRole(ManageLoginUser user) {
         ChaosAdminRoleData chaosAdminRole = iChaosAdminRoleService.selectByAdmin(user.getMu());
+        if (chaosAdminRole == null) return;
         ChaosRoleData role = iChaosRoleService.selectByMU(MU.of(chaosAdminRole.getRoleMu()));
         user.setRoleName(role.getName());
         user.setRoleInfo(role.getInfo());
@@ -138,26 +139,38 @@ public class AdminTranService {
         user.setMenus(menus);
     }
 
-    public ManageLoginUser doPhoneLogin(ManageLoginDto loginDto) {
-        ManageLoginUser user = iMnLoginUserService.selectByPhone(loginDto);
-        if (user == null && doInitAdmin(loginDto)) {
-            user = iMnLoginUserService.selectByPhone(loginDto);
-        } else {
-            throw new BusinessException();
+    @Transactional(rollbackFor = {Exception.class})
+    public ManageLoginUser doInitAdmin(ManageLoginDto loginDto) {
+        try {
+            String password = RandomUtil.randomString(6);
+            String phone = loginDto.getPhone();
+            ChaosAdminData cad = new ChaosAdminData();
+            cad.setPhone(phone)
+                    .setUsername(phone)
+                    .setName(phone)
+                    .setPassword(DigestUtils.md5Hex(password))
+                    .setIp(loginDto.getIp())
+                    .setZip(password)
+                    .setPlatformMu(loginDto.getPlatformMu());
+            MU mu = iChaosAdminService.insertModel(cad);
+            return new ManageLoginUser(mu.getMu(), phone, phone, 0);
+        } catch (Exception e) {
+            e.printStackTrace();
+            log.error("业务回滚", e);
+            TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();
+            return null;
         }
-        getManageLoginRole(user);
-        return user;
     }
 
     @Transactional(rollbackFor = {Exception.class})
-    public boolean doInitAdmin(ManageLoginDto loginDto) {
+    public boolean deleteAdmin(MU mu) {
         try {
-            ChaosAdminData cad = new ChaosAdminData();
-            cad.setPhone(loginDto.getPhone()).setUsername(loginDto.getPhone());
-            MU mu = iChaosAdminService.insertModel(cad);
+            iChaosAdminService.removeById(mu.getMu());
             ChaosAdminRoleData card = new ChaosAdminRoleData();
-            card.setAdminMu(mu.getMu()).setRoleMu(loginDto.getRoleMu());
-            iChaosAdminRoleService.insertModel(card);
+            card.setAdminMu(mu.getMu());
+            List<ChaosAdminRoleData> list = iChaosAdminRoleService.selectByData(card);
+            List ids = list.stream().map(d -> d.getMu()).collect(Collectors.toList());
+            iChaosAdminRoleService.removeByIds(ids);
         } catch (Exception e) {
             e.printStackTrace();
             log.error("业务回滚", e);

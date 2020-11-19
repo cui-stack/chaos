@@ -25,6 +25,7 @@ import org.apache.dubbo.config.annotation.Service;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.util.StringUtils;
 
 import java.util.List;
 
@@ -80,6 +81,7 @@ public class ChaosAdminRoleServiceImpl extends ServiceImpl<ChaosAdminRoleMapper,
     @Override
     public List<ChaosAdminRoleData> selectByData(ChaosAdminRoleData data) {
         QueryWrapper<ChaosAdminRole> query = new QueryWrapper<ChaosAdminRole>();
+        query.lambda().eq(!StringUtils.isEmpty(data.getAdminMu()), ChaosAdminRole::getAdminMu, data.getAdminMu());
         query.orderByDesc(Table.ID);
         return convertService.convertToDTO(list(query), ChaosAdminRoleData.class);
     }

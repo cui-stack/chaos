@@ -62,6 +62,7 @@ public class ChaosRoleServiceImpl extends ServiceImpl<ChaosRoleMapper, ChaosRole
     @Override
     public List<ChaosRoleData> selectByData(ChaosRoleData data) {
         QueryWrapper<ChaosRole> query = new QueryWrapper<ChaosRole>();
+        query.lambda().eq(!StringUtils.isEmpty(data.getPlatformMu()), ChaosRole::getPlatformMu, data.getPlatformMu());
         query.orderByDesc(Table.ID);
         return convertService.convertToDTO(list(query), ChaosRoleData.class);
     }
@@ -75,7 +76,6 @@ public class ChaosRoleServiceImpl extends ServiceImpl<ChaosRoleMapper, ChaosRole
         query.orderByDesc(Table.ID);
         return new PageList(page(new Page(pageData.getPageNum(), pageData.getPageSize()), query));
     }
-
 
 
 }

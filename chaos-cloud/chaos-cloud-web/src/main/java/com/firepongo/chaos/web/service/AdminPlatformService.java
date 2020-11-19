@@ -102,6 +102,22 @@ public class AdminPlatformService {
         }
     }
 
+    public ManageLoginUser doPhoneLogin(String phone, String platformMu) throws AuthenticationException {
+        ObjectMapper mapper = new ObjectMapper();
+        JsonNode rootNode = mapper.createObjectNode();
+        ((ObjectNode) rootNode).put("phone", phone);
+        ((ObjectNode) rootNode).put("platformMu", platformMu);
+        String json = getJson(mapper, rootNode);
+        DataResult<ManageLoginUser> result = requestAdmin("/manage/chaos_admin/doPhoneLogin", json);
+        if (result.getCode().equals(ResultEnum.SUCCESS.getCode())) {
+            ManageLoginUser user = mapper.convertValue(result.getData(), new TypeReference<ManageLoginUser>() {
+            });
+            return user;
+        } else {
+            return null;
+        }
+    }
+
     public void log(String userMu, String ip, String uri, long time, String request, String response) {
         if (iLogService != null) {
             iLogService.log(userMu, ip, uri, time, request, response, platform, env);
