@@ -76,21 +76,41 @@ public class AdminTranService {
 
     @Transactional(rollbackFor = {Exception.class})
     public boolean updateAdminRole(UpdateData<ChaosAdminData> data) {
+        String adminMu = data.getMu();
+        String roleMu = data.getData().getRoleMu();
         try {
-            if (!StringUtils.isEmpty(data.getData().getPassword())) {
-                data.getData().setZip(data.getData().getPassword());
-                data.getData().setPassword(DigestUtils.md5Hex(data.getData().getPassword()));
-            } else {
-                data.getData().setPassword(null);
+            boolean adminUpdated = dealUpdateAdmin(data);
+            if (StringUtils.isEmpty(roleMu)) {
+                return adminUpdated;
             }
-            boolean f1 = iChaosAdminService.updateModelByMU(data);
-            boolean f2 = iChaosAdminRoleService.updateRoleByAdmin(data.getMu(), data.getData().getRoleMu());
-            return f1 && f2;
+            boolean roleUpdated = dealUpdateRole(adminMu, roleMu);
+            return adminUpdated && roleUpdated;
         } catch (Exception e) {
             e.printStackTrace();
             TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();
             return false;
         }
+    }
+
+    private boolean dealUpdateRole(String adminMu, String roleMu) {
+        boolean roleUpdated = true;
+        List<ChaosAdminRoleData> list = iChaosAdminRoleService.selectByData(ChaosAdminRoleData.of(adminMu));
+        if (list.size() == 0) {
+            iChaosAdminRoleService.insertModel(new ChaosAdminRoleData(adminMu, roleMu));
+        } else if (list.size() == 1) {
+            roleUpdated = iChaosAdminRoleService.updateRoleByAdmin(adminMu, roleMu);
+        }
+        return roleUpdated;
+    }
+
+    private boolean dealUpdateAdmin(UpdateData<ChaosAdminData> data) {
+        if (!StringUtils.isEmpty(data.getData().getPassword())) {
+            data.getData().setZip(data.getData().getPassword());
+            data.getData().setPassword(DigestUtils.md5Hex(data.getData().getPassword()));
+        } else {
+            data.getData().setPassword(null);
+        }
+        return iChaosAdminService.updateModelByMU(data);
     }
 
     @Transactional(rollbackFor = {Exception.class})

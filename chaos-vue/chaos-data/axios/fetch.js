@@ -45,7 +45,6 @@ httpService.interceptors.response.use(
         });
       } else if (response.data.code == 200) {
         if (response.data.data instanceof Array) {
-          //console.log('数组长度: '+response.data.data.length)
         } else if (response.data.data == true) {
           Message({
             type: 'success',
@@ -65,7 +64,6 @@ httpService.interceptors.response.use(
       });
     }
   },
-  // 处理处理
   error => {
     if (error && error.response && error.response.status) {
       switch (error.response.status) {

@@ -74,6 +74,14 @@ public class ChaosAdminMnController extends BaseController {
         return dataResult(iChaosAdminService.updateModelByMU(data));
     }
 
+    @PostMapping("/updateLoginLog")
+    @ManageLoginToken
+    @ApiOperation(value = "", notes = "", httpMethod = "POST")
+    public DataResult<Boolean> updateLoginLog(@ApiParam(value = "") @RequestBody @Validated UpdateData<ChaosAdminData> data, BindingResult bindingResult) throws Exception {
+        validate(bindingResult);
+        return dataResult(iChaosAdminService.updateLoginLog(data));
+    }
+
     @PostMapping("/list")
     @ManageLoginToken
     @ApiOperation(value = "列表", notes = "", httpMethod = "POST")

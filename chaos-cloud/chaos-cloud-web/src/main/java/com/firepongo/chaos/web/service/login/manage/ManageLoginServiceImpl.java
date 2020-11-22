@@ -4,6 +4,7 @@ import com.firepongo.chaos.app.login.LoginUser;
 import com.firepongo.chaos.app.login.manage.ManageLoginUser;
 import com.firepongo.chaos.app.result.ResultEnum;
 import com.firepongo.chaos.web.exception.AuthenticationException;
+import com.firepongo.chaos.web.service.AdminPlatformService;
 import com.firepongo.chaos.web.service.JwtService;
 import com.firepongo.chaos.web.service.RedisService;
 import com.firepongo.chaos.web.service.login.BaseLoginServiceImpl;
@@ -18,6 +19,8 @@ public abstract class ManageLoginServiceImpl extends BaseLoginServiceImpl {
     private JwtService jwtService;
     @Autowired
     protected RedisService redisService;
+    @Autowired
+    private AdminPlatformService adminPlatformService;
 
     @Override
     protected void dealRedisToken(LoginUser loginUser) {
@@ -54,6 +57,11 @@ public abstract class ManageLoginServiceImpl extends BaseLoginServiceImpl {
         } catch (Exception e) {
             throw new AuthenticationException(ResultEnum.LOGIN_AGAIN.getCode(), "无效token，请重新登录");
         }
+    }
+
+    @Override
+    public  void afterLogin(LoginUser loginUser){
+        adminPlatformService.updateLoginLog(loginUser.getMu(),loginUser.getIp());
     }
 
 

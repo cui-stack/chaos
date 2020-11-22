@@ -152,6 +152,19 @@ public class AdminPlatformService {
 
     }
 
+    public void updateLoginLog(String mu, String ip) {
+        ObjectMapper mapper = new ObjectMapper();
+        JsonNode rootNode = mapper.createObjectNode();
+        ((ObjectNode) rootNode).put("mu", mu);
+        JsonNode dataNode = mapper.createObjectNode();
+        ((ObjectNode) dataNode).put("ip", ip);
+
+        ((ObjectNode) rootNode).putPOJO("data",dataNode);
+        String json = getJson(mapper, rootNode);
+        DataResult<LinkedHashMap<String, String>> result = requestAdmin("/manage/chaos_admin/updateLoginLog", json);
+
+    }
+
     private String getJson(ObjectMapper mapper, JsonNode rootNode) {
         String json = "";
         try {

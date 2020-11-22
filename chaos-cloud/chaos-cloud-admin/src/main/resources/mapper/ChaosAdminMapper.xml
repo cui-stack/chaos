@@ -26,14 +26,11 @@
             ia. NAME,
             ia.`status`,
             ia.platform_mu,
-            ia.phone,
             iar.role_mu
         FROM
-            chaos_admin ia,
-            chaos_admin_role iar
+            chaos_admin ia
+        LEFT JOIN chaos_admin_role iar ON iar.admin_mu = ia.mu
         WHERE
-            iar.admin_mu = ia.mu
-        AND
             ia.mu = #{mu}
     </select>
 </mapper>
