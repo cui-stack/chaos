@@ -1,9 +1,8 @@
-import {Message} from 'element-ui';
-import {MessageBox} from 'element-ui';
+import {Message, MessageBox} from 'element-ui';
 import fetch from "../axios/fetch";
 
-export function add(table, d = {}, cb) {
-    fetch.post('/manage/' + table + '/add', d).then((res) => {
+export function add(table, data = {}, cb) {
+    fetch.post('/manage/' + table + '/add', data).then((res) => {
         doCb(cb, res)
     })
 }
@@ -15,7 +14,7 @@ export function remove(table, mu, cb) {
         type: 'warning',
         center: true
     }).then(() => {
-        fetch.post('/manage/' + table + '/delete', {mu: mu}
+        fetch.post('/manage/' + table + '/delete', {mu}
         ).then((res) => {
             doCb(cb, res)
         })
@@ -27,46 +26,43 @@ export function remove(table, mu, cb) {
     });
 }
 
-export function update(table, mu, d = {}, cb) {
-    const data = {
-        mu: mu,
-        data: d
-    }
-    fetch.post('/manage/' + table + '/update', data).then((res) => {
+export function update(table, mu, data = {}, cb) {
+    fetch.post('/manage/' + table + '/update', {
+        mu,
+        data
+    }).then((res) => {
         doCb(cb, res)
     })
 }
 
 export function one(table, mu, cb) {
-    fetch.post('/manage/' + table + '/one', {mu: mu}).then((res) => {
+    fetch.post('/manage/' + table + '/one', {mu}).then((res) => {
         doCb(cb, res)
     })
 }
 
-export function list(table, d = {}, cb) {
-    fetch.post('/manage/' + table + '/list', d).then((res) => {
+export function list(table, data = {}, cb) {
+    fetch.post('/manage/' + table + '/list', data).then((res) => {
         doCb(cb, res)
     })
 }
 
-export function page(table, pageNum = 1, pageSize = 20, d = {}, cb) {
-    const data = {
-        pageNum: pageNum,
-        pageSize: pageSize,
-        data: d
-    }
-    fetch.post('/manage/' + table + '/page', data).then((res) => {
+export function page(table, pageNum = 1, pageSize = 20, data = {}, cb) {
+    fetch.post('/manage/' + table + '/page', {
+        pageNum,
+        pageSize,
+        data
+    }).then((res) => {
         doCb(cb, res)
     })
 }
 
-export function search(table, method, pageNum = 1, pageSize = 20, d = {}, cb) {
-    const data = {
-        pageNum: pageNum,
-        pageSize: pageSize,
-        data: d
-    }
-    fetch.post('/manage/' + table + '/' + method, data).then((res) => {
+export function search(table, method, pageNum = 1, pageSize = 20, data = {}, cb) {
+    fetch.post('/manage/' + table + '/' + method, {
+        pageNum,
+        pageSize,
+        data
+    }).then((res) => {
         doCb(cb, res)
     })
 }

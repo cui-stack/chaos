@@ -9,7 +9,7 @@
         mu = #{mu}
     </update>
 
-    <select id="selectIndexLink" resultType="com.firepongo.chaos.admin.api.data.ChaosRoleData">
+    <select id="selectIndexLink" resultType="com.firepongo.chaos.app.admin.ChaosRoleData">
         SELECT
 	        ir.index_link,ir.info
         FROM
@@ -20,7 +20,7 @@
 	        ia.mu = #{mu}
     </select>
     <select id="selectAdminRoleByMU"
-            resultType="com.firepongo.chaos.admin.api.data.ChaosAdminData">
+            resultType="com.firepongo.chaos.app.admin.ChaosAdminData">
         SELECT
             ia.username,
             ia. NAME,

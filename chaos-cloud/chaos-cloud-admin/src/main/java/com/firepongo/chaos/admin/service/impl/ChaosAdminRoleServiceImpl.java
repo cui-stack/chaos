@@ -81,7 +81,9 @@ public class ChaosAdminRoleServiceImpl extends ServiceImpl<ChaosAdminRoleMapper,
     @Override
     public List<ChaosAdminRoleData> selectByData(ChaosAdminRoleData data) {
         QueryWrapper<ChaosAdminRole> query = new QueryWrapper<ChaosAdminRole>();
-        query.lambda().eq(!StringUtils.isEmpty(data.getAdminMu()), ChaosAdminRole::getAdminMu, data.getAdminMu());
+        query.lambda()
+                .eq(!StringUtils.isEmpty(data.getAdminMu()), ChaosAdminRole::getAdminMu, data.getAdminMu())
+                .eq(!StringUtils.isEmpty(data.getRoleMu()), ChaosAdminRole::getRoleMu, data.getRoleMu());
         query.orderByDesc(Table.ID);
         return convertService.convertToDTO(list(query), ChaosAdminRoleData.class);
     }

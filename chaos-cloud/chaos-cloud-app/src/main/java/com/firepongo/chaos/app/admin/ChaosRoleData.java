@@ -1,4 +1,4 @@
-package com.firepongo.chaos.admin.api.data;
+package com.firepongo.chaos.app.admin;
 
 import com.firepongo.chaos.app.db.DATA;
 import io.swagger.annotations.ApiModel;

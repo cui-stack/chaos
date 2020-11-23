@@ -3,6 +3,7 @@ package com.firepongo.chaos.admin.controller;
 import com.firepongo.chaos.admin.api.data.ChaosPermissionData;
 import com.firepongo.chaos.admin.api.entity.ChaosPermission;
 import com.firepongo.chaos.admin.api.service.IChaosPermissionService;
+import com.firepongo.chaos.admin.service.tran.AdminTranService;
 import com.firepongo.chaos.app.db.MU;
 import com.firepongo.chaos.app.db.UpdateData;
 import com.firepongo.chaos.app.page.PageQueryDto;
@@ -34,6 +35,9 @@ public class ChaosPermissionMnController extends BaseController {
 
     @Autowired
     private IChaosPermissionService iChaosPermissionService;
+
+    @Autowired
+    private AdminTranService adminTranService;
 
     @ManageLoginToken
     @PostMapping("/add")
@@ -76,7 +80,7 @@ public class ChaosPermissionMnController extends BaseController {
     @PostMapping("/delete")
     @ApiOperation(value = "删除", notes = "", httpMethod = "POST")
     public DataResult<Boolean> delete(@RequestBody MU data) throws Exception {
-        return dataResult(iChaosPermissionService.deleteModel(data));
+        return dataResult(adminTranService.deletePermission(data));
     }
 
     @ManageLoginToken

@@ -6,6 +6,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.firepongo.chaos.admin.api.data.ChaosRolePermissionData;
 import com.firepongo.chaos.admin.api.data.ChaosRolePermissionListData;
+import com.firepongo.chaos.admin.api.entity.ChaosAdminRole;
 import com.firepongo.chaos.admin.api.entity.ChaosRolePermission;
 import com.firepongo.chaos.admin.api.entity.ChaosRolePermission;
 import com.firepongo.chaos.admin.api.service.IChaosPermissionService;
@@ -25,6 +26,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.transaction.interceptor.TransactionAspectSupport;
 import org.springframework.util.CollectionUtils;
+import org.springframework.util.StringUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -71,6 +73,9 @@ public class ChaosRolePermissionServiceImpl extends ServiceImpl<ChaosRolePermiss
     @Override
     public List<ChaosRolePermissionData> selectByData(ChaosRolePermissionData data) {
         QueryWrapper<ChaosRolePermission> query = new QueryWrapper<ChaosRolePermission>();
+        query.lambda()
+                .eq(!StringUtils.isEmpty(data.getRoleMu()), ChaosRolePermission::getRoleMu, data.getRoleMu())
+                .eq(!StringUtils.isEmpty(data.getPermissionMu()), ChaosRolePermission::getPermissionMu, data.getPermissionMu());
         query.orderByDesc(Table.ID);
         return convertService.convertToDTO(list(query), ChaosRolePermissionData.class);
     }

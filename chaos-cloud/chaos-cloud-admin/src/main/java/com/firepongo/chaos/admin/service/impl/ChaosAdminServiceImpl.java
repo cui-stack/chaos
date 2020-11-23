@@ -4,11 +4,11 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.firepongo.chaos.admin.api.data.ChaosAdminData;
-import com.firepongo.chaos.admin.api.data.ChaosRoleData;
+import com.firepongo.chaos.app.admin.ChaosRoleData;
 import com.firepongo.chaos.admin.api.entity.ChaosAdmin;
 import com.firepongo.chaos.admin.api.service.IChaosAdminService;
 import com.firepongo.chaos.admin.service.mapper.ChaosAdminMapper;
+import com.firepongo.chaos.app.admin.ChaosAdminData;
 import com.firepongo.chaos.app.db.MU;
 import com.firepongo.chaos.app.db.Table;
 import com.firepongo.chaos.app.db.UpdateData;
@@ -84,7 +84,8 @@ public class ChaosAdminServiceImpl extends ServiceImpl<ChaosAdminMapper, ChaosAd
         query.lambda()
                 .eq(!StringUtils.isEmpty(pageData.getData().getPlatformMu()), ChaosAdmin::getPlatformMu, pageData.getData().getPlatformMu())
                 .eq(!StringUtils.isEmpty(pageData.getData().getName()), ChaosAdmin::getName, pageData.getData().getName())
-                .eq(!StringUtils.isEmpty(pageData.getData().getUsername()), ChaosAdmin::getUsername, pageData.getData().getUsername());
+                .eq(!StringUtils.isEmpty(pageData.getData().getUsername()), ChaosAdmin::getUsername, pageData.getData().getUsername())
+                .eq(!StringUtils.isEmpty(pageData.getData().getPhone()), ChaosAdmin::getPhone, pageData.getData().getPhone());
         query.orderByDesc(Table.ID);
         return new PageList(page(new Page(pageData.getPageNum(), pageData.getPageSize()), query));
     }

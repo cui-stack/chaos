@@ -1,15 +1,11 @@
 package com.firepongo.chaos.admin.controller;
 
-import com.firepongo.chaos.admin.api.data.ChaosAdminData;
-import com.firepongo.chaos.admin.api.data.ChaosRoleData;
-import com.firepongo.chaos.admin.api.entity.ChaosAdmin;
-import com.firepongo.chaos.admin.api.entity.ChaosRole;
-import com.firepongo.chaos.admin.api.service.IChaosAdminService;
+import com.firepongo.chaos.app.admin.ChaosRoleData;
 import com.firepongo.chaos.admin.service.impl.ChaosAdminServiceImpl;
 import com.firepongo.chaos.admin.service.tran.AdminTranService;
+import com.firepongo.chaos.app.admin.ChaosAdminData;
 import com.firepongo.chaos.app.db.MU;
 import com.firepongo.chaos.app.db.UpdateData;
-import com.firepongo.chaos.app.exception.BusinessException;
 import com.firepongo.chaos.app.login.manage.IMnLoginUserService;
 import com.firepongo.chaos.app.login.manage.ManageLoginDto;
 import com.firepongo.chaos.app.login.manage.ManageLoginUser;
@@ -150,7 +146,7 @@ public class ChaosAdminMnController extends BaseController {
     public DataResult<ManageLoginUser> doPhoneLogin(@RequestBody ManageLoginDto loginDto) {
         ManageLoginUser user = iMnLoginUserService.selectByPhone(loginDto);
         if (user == null) {
-            user = adminTranService.doInitAdmin(loginDto);
+            user = adminTranService.doInitAdminByPhone(loginDto);
         }
         adminTranService.getManageLoginRole(user);
         return dataResult(user);

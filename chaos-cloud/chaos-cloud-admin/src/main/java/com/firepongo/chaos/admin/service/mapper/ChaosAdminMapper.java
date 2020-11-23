@@ -1,10 +1,9 @@
 package com.firepongo.chaos.admin.service.mapper;
 
-import com.firepongo.chaos.admin.api.data.ChaosAdminData;
-import com.firepongo.chaos.admin.api.data.ChaosRoleData;
-import com.firepongo.chaos.admin.api.entity.ChaosAdmin;
-import com.firepongo.chaos.admin.api.entity.ChaosRole;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.firepongo.chaos.app.admin.ChaosRoleData;
+import com.firepongo.chaos.admin.api.entity.ChaosAdmin;
+import com.firepongo.chaos.app.admin.ChaosAdminData;
 import org.apache.ibatis.annotations.Param;
 
 /**

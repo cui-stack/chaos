@@ -1,6 +1,6 @@
 package com.firepongo.chaos.admin.controller;
 
-import com.firepongo.chaos.app.db.ChaosLogData;
+import com.firepongo.chaos.app.admin.ChaosLogData;
 import com.firepongo.chaos.admin.api.entity.ChaosLog;
 import com.firepongo.chaos.admin.api.service.IChaosLogService;
 import com.firepongo.chaos.app.db.MU;

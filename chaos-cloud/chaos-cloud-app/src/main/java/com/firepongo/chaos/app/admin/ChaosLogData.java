@@ -1,5 +1,6 @@
-package com.firepongo.chaos.app.db;
+package com.firepongo.chaos.app.admin;
 
+import com.firepongo.chaos.app.db.DATA;
 import io.swagger.annotations.ApiModel;
 import lombok.Data;
 import lombok.NoArgsConstructor;

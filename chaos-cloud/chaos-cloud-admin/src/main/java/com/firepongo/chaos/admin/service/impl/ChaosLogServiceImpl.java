@@ -4,7 +4,7 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.firepongo.chaos.app.db.ChaosLogData;
+import com.firepongo.chaos.app.admin.ChaosLogData;
 import com.firepongo.chaos.admin.api.entity.ChaosLog;
 import com.firepongo.chaos.admin.api.service.IChaosLogService;
 import com.firepongo.chaos.admin.service.mapper.ChaosLogMapper;

@@ -5,10 +5,15 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
+import com.firepongo.chaos.app.admin.ChaosAdminData;
+import com.firepongo.chaos.app.admin.ChaosRoleData;
 import com.firepongo.chaos.app.exception.BusinessException;
 import com.firepongo.chaos.app.login.manage.ManageLoginUser;
+import com.firepongo.chaos.app.page.PageQueryDto;
+import com.firepongo.chaos.app.result.Result;
 import com.firepongo.chaos.app.result.ResultEnum;
 import com.firepongo.chaos.app.result.data.DataResult;
+import com.firepongo.chaos.app.result.page.PageResult;
 import com.firepongo.chaos.web.exception.AuthenticationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -20,7 +25,6 @@ import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 import org.springframework.web.client.RestTemplate;
 
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 
 /**
@@ -48,7 +52,11 @@ public class AdminPlatformService {
     @Autowired(required = false)
     private ILogService iLogService;
 
-    public DataResult requestAdmin(String path, String json) {
+    public Result requestAdmin(String path, String json) {
+        return requestAdmin(path, json, DataResult.class);
+    }
+
+    public Result requestAdmin(String path, String json, Class c) {
         HttpHeaders requestHeaders = new HttpHeaders();
         requestHeaders.add("token", (String) redisService.get("app_admin_token"));
         MediaType type = MediaType.parseMediaType("application/json; charset=UTF-8");
@@ -57,11 +65,11 @@ public class AdminPlatformService {
 
         HttpEntity<String> requestEntity = new HttpEntity<>(json, requestHeaders);
         String url = host + path;
-        ResponseEntity<DataResult> responseEntity = restTemplate.postForEntity(url, requestEntity, DataResult.class);
-        DataResult result = responseEntity.getBody();
+        ResponseEntity<Result> responseEntity = restTemplate.postForEntity(url, requestEntity, c);
+        Result result = responseEntity.getBody();
         if (result.getCode().equals(ResultEnum.REFRESH_TOKEN.getCode())) {
             redisService.set("app_admin_token", result.getMsg(), 7 * 24 * 60 * 60);
-            this.requestAdmin(path, json);
+            this.requestAdmin(path, json, c);
         } else if (result.getCode().equals(ResultEnum.LOGIN_AGAIN.getCode())) {
             this.platformLogin();
         }
@@ -75,7 +83,7 @@ public class AdminPlatformService {
         ((ObjectNode) rootNode).put("password", password);
         ((ObjectNode) rootNode).put("platformMu", 1);
         String json = getJson(mapper, rootNode);
-        DataResult result = requestAdmin("/manage/login", json);
+        DataResult<ManageLoginUser> result = (DataResult<ManageLoginUser>) requestAdmin("/manage/login", json);
         if (result.getCode().equals(ResultEnum.SUCCESS.getCode())) {
             ManageLoginUser user = mapper.convertValue(result.getData(), new TypeReference<ManageLoginUser>() {
             });
@@ -92,7 +100,7 @@ public class AdminPlatformService {
         ((ObjectNode) rootNode).put("password", password);
         ((ObjectNode) rootNode).put("platformMu", platformMu);
         String json = getJson(mapper, rootNode);
-        DataResult<ManageLoginUser> result = requestAdmin("/manage/chaos_admin/selectByUp", json);
+        DataResult<ManageLoginUser> result = (DataResult<ManageLoginUser>) requestAdmin("/manage/chaos_admin/selectByUp", json);
         if (result.getCode().equals(ResultEnum.SUCCESS.getCode())) {
             ManageLoginUser user = mapper.convertValue(result.getData(), new TypeReference<ManageLoginUser>() {
             });
@@ -108,7 +116,7 @@ public class AdminPlatformService {
         ((ObjectNode) rootNode).put("phone", phone);
         ((ObjectNode) rootNode).put("platformMu", platformMu);
         String json = getJson(mapper, rootNode);
-        DataResult<ManageLoginUser> result = requestAdmin("/manage/chaos_admin/doPhoneLogin", json);
+        DataResult<ManageLoginUser> result = (DataResult<ManageLoginUser>) requestAdmin("/manage/chaos_admin/doPhoneLogin", json);
         if (result.getCode().equals(ResultEnum.SUCCESS.getCode())) {
             ManageLoginUser user = mapper.convertValue(result.getData(), new TypeReference<ManageLoginUser>() {
             });
@@ -133,7 +141,7 @@ public class AdminPlatformService {
             ((ObjectNode) rootNode).put("platform", platform);
             ((ObjectNode) rootNode).put("env", env);
             String json = getJson(mapper, rootNode);
-            DataResult result = requestAdmin("/manage/chaos_log/add", json);
+            DataResult result = (DataResult) requestAdmin("/manage/chaos_log/add", json);
         }
     }
 
@@ -144,13 +152,14 @@ public class AdminPlatformService {
             JsonNode rootNode = mapper.createObjectNode();
             ((ObjectNode) rootNode).put("mu", mu);
             String json = getJson(mapper, rootNode);
-            DataResult<LinkedHashMap<String, String>> result = requestAdmin("/manage/chaos_admin/one", json);
+            DataResult<LinkedHashMap<String, String>> result = (DataResult<LinkedHashMap<String, String>>) requestAdmin("/manage/chaos_admin/one", json);
             adminName = result.getData().get("name");
             redisService.hset("app_admin_name", "mu", adminName);
         }
         return adminName;
 
     }
+
 
     public void updateLoginLog(String mu, String ip) {
         ObjectMapper mapper = new ObjectMapper();
@@ -159,11 +168,36 @@ public class AdminPlatformService {
         JsonNode dataNode = mapper.createObjectNode();
         ((ObjectNode) dataNode).put("ip", ip);
 
-        ((ObjectNode) rootNode).putPOJO("data",dataNode);
+        ((ObjectNode) rootNode).putPOJO("data", dataNode);
         String json = getJson(mapper, rootNode);
-        DataResult<LinkedHashMap<String, String>> result = requestAdmin("/manage/chaos_admin/updateLoginLog", json);
+        DataResult<LinkedHashMap<String, String>> result = (DataResult<LinkedHashMap<String, String>>) requestAdmin("/manage/chaos_admin/updateLoginLog", json);
 
     }
+
+    public PageResult<ChaosAdminData> pageAdmin(PageQueryDto<ChaosAdminData> data) {
+        ObjectMapper mapper = new ObjectMapper();
+        JsonNode rootNode = mapper.createObjectNode();
+        ((ObjectNode) rootNode).put("pageNum", data.getPageNum());
+        ((ObjectNode) rootNode).put("pageSize", data.getPageSize());
+
+        JsonNode dataNode = mapper.createObjectNode();
+        ((ObjectNode) dataNode).put("platformMu", data.getData().getPlatformMu());
+        ((ObjectNode) dataNode).put("phone", data.getData().getPhone());
+        ((ObjectNode) rootNode).putPOJO("data", dataNode);
+        String json = getJson(mapper, rootNode);
+        PageResult<ChaosAdminData> result = (PageResult<ChaosAdminData>) requestAdmin("/manage/chaos_admin/page", json, PageResult.class);
+        return result;
+    }
+
+    public DataResult<ChaosRoleData> listRole(ChaosRoleData data) {
+        ObjectMapper mapper = new ObjectMapper();
+        JsonNode rootNode = mapper.createObjectNode();
+        ((ObjectNode) rootNode).put("platformMu", data.getPlatformMu());
+        String json = getJson(mapper, rootNode);
+        DataResult<ChaosRoleData> result = (DataResult<ChaosRoleData>) requestAdmin("/manage/chaos_role/list", json);
+        return result;
+    }
+
 
     private String getJson(ObjectMapper mapper, JsonNode rootNode) {
         String json = "";

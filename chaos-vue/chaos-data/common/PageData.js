@@ -1,64 +1,56 @@
-export function dataData(table, from, updateFrom, rules, rest) {
-    let r = {
-        table: table,
+export function dataData(table, form, updateForm, rules, rest) {
+    return {
+        table,
         currentPage: 1,
         limit: 20,
         total: 0,
         tableData: [],
         showAddForm: false,
-        form: from,
+        form,
         showUpdateForm: false,
-        updateForm: updateFrom,
-        rules: rules
+        updateForm,
+        rules,
+        ...rest
     }
-
-    for (let i in rest) {
-        r[i] = rest[i];
-    }
-    return r
 }
 
-export function tableData(table, d) {
-    let r = {
-        table: table,
+export function tableData(table, rest) {
+    return {
+        table,
         currentPage: 1,
         limit: 20,
         total: 0,
         tableData: [],
+        ...rest
     }
-
-    for (var i in d) {
-        r[i] = d[i];
-    }
-    return r
 }
 
-export function formData(table, d) {
-    let r = {
-        table: table,
-        form: {},
-    }
-    for (let i in d) {
-        r[i] = d[i];
-    }
-    return r
-}
-
-export function pushData(name, d) {
+export function formData(table, form, rules, rest) {
     return {
-        name: name,
-        params: d
+        table,
+        form,
+        showAddForm: false,
+        rules,
+        ...rest
+    }
+
+}
+
+export function pushData(name, data) {
+    return {
+        name,
+        params: data
     }
 }
 
 export function pushMu(name, mu) {
-    return pushData(name, {mu: mu})
+    return pushData(name, {mu})
 }
 
 export default {
+    dataData,
     tableData,
     formData,
     pushData,
-    pushMu,
-    dataData
+    pushMu
 }

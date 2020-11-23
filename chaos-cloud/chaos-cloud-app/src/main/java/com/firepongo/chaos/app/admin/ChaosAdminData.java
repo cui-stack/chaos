@@ -1,9 +1,9 @@
-package com.firepongo.chaos.admin.api.data;
+package com.firepongo.chaos.app.admin;
 
 import com.firepongo.chaos.app.db.DATA;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import lombok.*;
+import lombok.Data;
 import lombok.experimental.Accessors;
 
 import java.time.LocalDateTime;

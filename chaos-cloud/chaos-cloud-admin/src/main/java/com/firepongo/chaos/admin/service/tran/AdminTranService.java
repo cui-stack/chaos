@@ -2,19 +2,15 @@ package com.firepongo.chaos.admin.service.tran;
 
 import cn.hutool.core.util.RandomUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.firepongo.chaos.admin.api.data.ChaosAdminData;
 import com.firepongo.chaos.admin.api.data.ChaosAdminRoleData;
-import com.firepongo.chaos.admin.api.data.ChaosRoleData;
+import com.firepongo.chaos.app.admin.ChaosRoleData;
+import com.firepongo.chaos.admin.api.data.ChaosRolePermissionData;
 import com.firepongo.chaos.admin.api.data.ChaosRolePermissionListData;
-import com.firepongo.chaos.admin.api.entity.ChaosAdmin;
-import com.firepongo.chaos.admin.api.entity.ChaosAdminRole;
 import com.firepongo.chaos.admin.api.entity.ChaosRolePermission;
 import com.firepongo.chaos.admin.api.service.*;
+import com.firepongo.chaos.app.admin.ChaosAdminData;
 import com.firepongo.chaos.app.db.MU;
 import com.firepongo.chaos.app.db.UpdateData;
-import com.firepongo.chaos.app.exception.BusinessException;
-import com.firepongo.chaos.app.login.LoginDto;
-import com.firepongo.chaos.app.login.LoginUser;
 import com.firepongo.chaos.app.login.manage.IMnLoginUserService;
 import com.firepongo.chaos.app.login.manage.ManageLoginDto;
 import com.firepongo.chaos.app.login.manage.ManageLoginUser;
@@ -40,26 +36,28 @@ import java.util.stream.Collectors;
 @Slf4j
 @Service
 public class AdminTranService {
+
+    @Autowired
+    private IMnLoginUserService iMnLoginUserService;
+
     @Autowired
     private IChaosAdminService iChaosAdminService;
+
+    @Autowired
+    private IChaosRoleService iChaosRoleService;
 
     @Autowired
     private IChaosAdminRoleService iChaosAdminRoleService;
 
     @Autowired
-    private IChaosRolePermissionService iChaosRolePermissionService;
+    private IChaosPermissionService iChaosPermissionService;
 
     @Autowired
-    private IMnLoginUserService iMnLoginUserService;
-    @Autowired
-    private IChaosRoleService iChaosRoleService;
-    @Autowired
-    private IChaosPermissionService iChaosPermissionService;
+    private IChaosRolePermissionService iChaosRolePermissionService;
 
     @Transactional(rollbackFor = {Exception.class})
     public MU addAdmin(ChaosAdminData data) {
         try {
-            log.info("添加运营账户");
             data.setZip(data.getPassword());
             data.setPassword(DigestUtils.md5Hex(data.getPassword()));
             MU mu = iChaosAdminService.insertModel(data);
@@ -160,7 +158,7 @@ public class AdminTranService {
     }
 
     @Transactional(rollbackFor = {Exception.class})
-    public ManageLoginUser doInitAdmin(ManageLoginDto loginDto) {
+    public ManageLoginUser doInitAdminByPhone(ManageLoginDto loginDto) {
         try {
             String password = RandomUtil.randomString(6);
             String phone = loginDto.getPhone();
@@ -183,14 +181,61 @@ public class AdminTranService {
     }
 
     @Transactional(rollbackFor = {Exception.class})
-    public boolean deleteAdmin(MU mu) {
+    public boolean deleteAdmin(MU admin) {
         try {
-            iChaosAdminService.removeById(mu.getMu());
+            iChaosAdminService.removeById(admin.getMu());
+
             ChaosAdminRoleData card = new ChaosAdminRoleData();
-            card.setAdminMu(mu.getMu());
+            card.setAdminMu(admin.getMu());
             List<ChaosAdminRoleData> list = iChaosAdminRoleService.selectByData(card);
             List ids = list.stream().map(d -> d.getMu()).collect(Collectors.toList());
             iChaosAdminRoleService.removeByIds(ids);
+        } catch (Exception e) {
+            e.printStackTrace();
+            log.error("业务回滚", e);
+            TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();
+            return false;
+        }
+        return true;
+    }
+
+    @Transactional(rollbackFor = {Exception.class})
+    public boolean deleteRole(MU role) {
+        try {
+            iChaosRoleService.removeById(role.getMu());
+
+            ChaosAdminRoleData card = new ChaosAdminRoleData();
+            card.setRoleMu(role.getMu());
+            List<ChaosAdminRoleData> cardList = iChaosAdminRoleService.selectByData(card);
+            List cardIds = cardList.stream().map(d -> d.getMu()).collect(Collectors.toList());
+            iChaosAdminRoleService.removeByIds(cardIds);
+
+            ChaosRolePermissionData crpd=new ChaosRolePermissionData();
+            crpd.setRoleMu(role.getMu());
+            List<ChaosRolePermissionData> crpdList = iChaosRolePermissionService.selectByData(crpd);
+            List crpdIds = crpdList.stream().map(d -> d.getMu()).collect(Collectors.toList());
+            iChaosRolePermissionService.removeByIds(crpdIds);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            log.error("业务回滚", e);
+            TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();
+            return false;
+        }
+        return true;
+    }
+
+    @Transactional(rollbackFor = {Exception.class})
+    public boolean deletePermission(MU permission) {
+        try {
+            iChaosPermissionService.removeById(permission.getMu());
+
+            ChaosRolePermissionData crpd=new ChaosRolePermissionData();
+            crpd.setPermissionMu(permission.getMu());
+            List<ChaosRolePermissionData> crpdList = iChaosRolePermissionService.selectByData(crpd);
+            List crpdIds = crpdList.stream().map(d -> d.getMu()).collect(Collectors.toList());
+            iChaosRolePermissionService.removeByIds(crpdIds);
+
         } catch (Exception e) {
             e.printStackTrace();
             log.error("业务回滚", e);

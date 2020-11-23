@@ -1,8 +1,9 @@
 package com.firepongo.chaos.admin.controller;
 
 import com.firepongo.chaos.admin.api.entity.ChaosRole;
-import com.firepongo.chaos.admin.api.data.ChaosRoleData;
+import com.firepongo.chaos.app.admin.ChaosRoleData;
 import com.firepongo.chaos.admin.api.service.IChaosRoleService;
+import com.firepongo.chaos.admin.service.tran.AdminTranService;
 import com.firepongo.chaos.app.db.MU;
 import com.firepongo.chaos.app.db.UpdateData;
 import com.firepongo.chaos.app.page.PageQueryDto;
@@ -34,6 +35,9 @@ public class ChaosRoleMnController extends BaseController {
 
     @Autowired
     private IChaosRoleService iChaosRoleService;
+
+    @Autowired
+    private AdminTranService adminTranService;
 
     @ManageLoginToken
     @PostMapping("/add")
@@ -76,7 +80,7 @@ public class ChaosRoleMnController extends BaseController {
     @PostMapping("/delete")
     @ApiOperation(value = "删除", notes = "", httpMethod = "POST")
     public DataResult<Boolean> delete(@RequestBody MU data) throws Exception {
-        return dataResult(iChaosRoleService.deleteModel(data));
+        return dataResult(adminTranService.deleteRole(data));
     }
 
 }

@@ -2,7 +2,7 @@ package com.firepongo.chaos.admin.api.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.firepongo.chaos.admin.api.entity.ChaosRole;
-import com.firepongo.chaos.admin.api.data.ChaosRoleData;
+import com.firepongo.chaos.app.admin.ChaosRoleData;
 import com.firepongo.chaos.app.db.MU;
 import com.firepongo.chaos.app.db.UpdateData;
 import com.firepongo.chaos.app.page.PageList;
