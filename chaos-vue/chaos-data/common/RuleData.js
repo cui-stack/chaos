@@ -1,9 +1,10 @@
 export function data(datas = []) {
     let rules = {}
     for (let index in datas) {
-        rules[datas[index]['key']] = v(datas[index]['msg'])
-        if (datas[index]['validator'])
-            rules[datas[index]['key']].push(validator(datas[index]['validator']))
+        let data = datas[index]
+        rules[data['key']] = v(data['msg'], data['min'], data['max'])
+        if (data['validator'])
+            rules[data['key']].push(validator(data['validator']))
     }
     return rules
 }
