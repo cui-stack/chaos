@@ -52,7 +52,8 @@ public class RequestLogService extends BaseController {
         }
         if (uri.equals("/manage/chaos_admin/add")) {
             DataResult<MU> data = (DataResult<MU>) result;
-            userMu = data.getData().getMu();
+            if (data.getData() != null)
+                userMu = data.getData().getMu();
         }
         String rq = request.substring(0, request.length() > 250 ? 250 : request.length());
         String rp = response.substring(0, response.length() > 250 ? 250 : response.length());

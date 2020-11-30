@@ -10,6 +10,7 @@ import com.firepongo.chaos.app.login.manage.IMnLoginUserService;
 import com.firepongo.chaos.app.login.manage.ManageLoginDto;
 import com.firepongo.chaos.app.login.manage.ManageLoginUser;
 import com.firepongo.chaos.app.page.PageQueryDto;
+import com.firepongo.chaos.app.result.ResultMsg;
 import com.firepongo.chaos.app.result.data.DataResult;
 import com.firepongo.chaos.app.result.page.PageResult;
 import com.firepongo.chaos.web.annotation.ManageLoginToken;
@@ -52,7 +53,7 @@ public class ChaosAdminMnController extends BaseController {
     public DataResult<MU> add(@RequestBody @Validated ChaosAdminData data, BindingResult bindingResult, HttpServletRequest request) throws Exception {
         validate(bindingResult);
         data.setIp(IpUtil.getIpAddr(request));
-        return dataResult(adminTranService.addAdmin(data));
+        return dataResult(adminTranService.addAdmin(data), new ResultMsg().setFailure("新增失败,请检查数据!"));
     }
 
     @PostMapping("/one")
