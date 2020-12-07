@@ -13,6 +13,7 @@ public enum ResultEnum {
     TIME_OUT("408", "请求超时"),
     ACCESS_LIMIT("409", "访问限制"),
     USERNAME_PASSWORD_ERROR("411", "账号或密码错误"),
+    NEED_AUTHORIZE("412", "需要授权"),
     //5xx 请求错误(业务)
     FAILURE("500", "执行失败"),
     VALIDATE("501", "参数错误"),

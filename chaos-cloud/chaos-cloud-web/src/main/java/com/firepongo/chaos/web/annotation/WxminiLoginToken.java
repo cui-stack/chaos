@@ -13,4 +13,6 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 public @interface WxminiLoginToken {
     boolean required() default true;
+    boolean needPhone() default true;
+
 }

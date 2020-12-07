@@ -15,12 +15,14 @@ import com.firepongo.chaos.app.result.ResultEnum;
 import com.firepongo.chaos.app.result.data.DataResult;
 import com.firepongo.chaos.app.result.page.PageResult;
 import com.firepongo.chaos.web.exception.AuthenticationException;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 import org.springframework.web.client.RestTemplate;
@@ -32,6 +34,7 @@ import java.util.LinkedHashMap;
  * @date 2020/11/13 17:33
  */
 @Component
+@Slf4j
 public class AdminPlatformService {
     @Autowired
     private RestTemplate restTemplate;
@@ -126,6 +129,7 @@ public class AdminPlatformService {
         }
     }
 
+    @Async
     public void log(String userMu, String ip, String uri, long time, String request, String response) {
         if (iLogService != null) {
             iLogService.log(userMu, ip, uri, time, request, response, platform, env);
@@ -141,7 +145,11 @@ public class AdminPlatformService {
             ((ObjectNode) rootNode).put("platform", platform);
             ((ObjectNode) rootNode).put("env", env);
             String json = getJson(mapper, rootNode);
-            DataResult result = (DataResult) requestAdmin("/manage/chaos_log/add", json);
+            try {
+                DataResult result = (DataResult) requestAdmin("/manage/chaos_log/add", json);
+            } catch (Exception e) {
+                log.warn("记录日志失败!");
+            }
         }
     }
 

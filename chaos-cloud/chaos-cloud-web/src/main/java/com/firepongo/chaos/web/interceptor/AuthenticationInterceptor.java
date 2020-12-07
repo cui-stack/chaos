@@ -48,8 +48,6 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
     @Autowired
     private JwtService jwtService;
     @Autowired
-    private RedisService redisService;
-    @Autowired
     private AccessLimitService accessLimitService;
 
     @Override
@@ -86,6 +84,12 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
                 }
                 String token = httpServletRequest.getHeader("token");
                 loginUser = handleWxminiLogin(token, httpServletRequest);
+                if (wxminiLoginToken.needPhone()) {
+                    WxMiniLoginUser wmlu = (WxMiniLoginUser) loginUser;
+                    if (StringUtils.isEmpty(wmlu.getPhone())) {
+                        throw new AuthenticationException(ResultEnum.NEED_AUTHORIZE.getCode(), "需要授权手机号", httpServletRequest);
+                    }
+                }
             }
         }
 

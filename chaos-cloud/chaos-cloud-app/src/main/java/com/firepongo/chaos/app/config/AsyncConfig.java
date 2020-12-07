@@ -3,8 +3,10 @@ package com.firepongo.chaos.app.config;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.scheduling.TaskScheduler;
 import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
+import org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler;
 
 import java.util.concurrent.Executor;
 import java.util.concurrent.ThreadPoolExecutor;
@@ -27,8 +29,6 @@ public class AsyncConfig {
         executor.setAwaitTerminationSeconds(60);
         return executor;
     }
-
-
 
     /**
      * io密集型的线程池
