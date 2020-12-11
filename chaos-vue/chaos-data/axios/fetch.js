@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import {Message} from 'element-ui';
 import axios from 'axios';
-import store from './../vuex/store'
+import store from '../vuex/index'
 import baseUrl from './../constans'
 
 Vue.prototype.$axios = axios
@@ -13,7 +13,7 @@ const httpService = axios.create({
 
 httpService.interceptors.request.use(
     config => {
-        config.headers['token'] = store.getters.getUserinfo.token;
+        config.headers['token'] = store.getters.user.token;
         return config;
     },
     error => {
@@ -29,8 +29,8 @@ httpService.interceptors.response.use(
             });
         }
         if (response.data.code == 201) {
-            store.dispatch('refreshToken', response.data.msg)
-            return post(store.getters.getLastPost.url, store.getters.getLastPost.params)
+            store.dispatch('admin/refreshToken', response.data.msg)
+            return post(store.getters.lastPost.url, store.getters.lastPost.params)
         }
         if (response.data.code == 401 || response.data.code == 403) {
             Message({
@@ -86,6 +86,7 @@ httpService.interceptors.response.use(
             if (response.data.page) {
                 return response.data.page;
             }
+            return {}
         }
         Message({
             type: 'error',
@@ -145,7 +146,7 @@ httpService.interceptors.response.use(
 )
 
 export function post(url, params = {}) {
-    store.dispatch('setLastPost', {url, params})
+    store.dispatch('app/setLastPost', {url, params})
     return new Promise((resolve, reject) => {
         httpService({
             url: url,

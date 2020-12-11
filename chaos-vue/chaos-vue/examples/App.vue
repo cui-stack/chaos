@@ -1,12 +1,9 @@
 <template>
 
     <div>
-        <!--        <Paging :currentPage='currentPage' :total='total' :limit='limit'-->
-        <!--                @handleCurrentChange='handleCurrentChange'-->
-        <!--                @handleSizeChange='handleSizeChange'/>-->
-
-        <!--        <Head :username=this.username :rolename=this.rolename></Head>-->
-        <SideMenu :menus=this.menus></SideMenu>
+        <Head ></Head>
+        <CenterHead></CenterHead>
+        <SideMenu> </SideMenu>
     </div>
 
 </template>

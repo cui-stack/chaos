@@ -1,16 +1,9 @@
 <template>
     <el-container>
-        <el-header style="height: 40px">
-            <el-radio-group v-model="isCollapse" @change="doChange">
-                <el-radio-button :label="false">展开</el-radio-button>
-                <el-radio-button :label="true" v-if="isShow">收起
-                </el-radio-button>
-            </el-radio-group>
-        </el-header>
         <el-main>
             <el-menu
+                    :collapse=sidebar
                     router
-                    :collapse="isCollapse"
                     class="side-menu"
                     background-color="#fff"
                     text-color="#545c64"
@@ -38,30 +31,18 @@
         data() {
             return {
                 isCollapse: false,
-                isShow: true
+                asideWidth: 300,
+                menus: []
             }
         },
-        props: {
-            'menus': {
-                required: false,
-                default: function () {
-                    return []
-                }
+        computed: {
+            sidebar() {
+                return this.$store.getters.isCollapse
             },
         },
-        methods: {
-            doChange() {
-                if (this.isCollapse) {
-                    this.isShow = false
-                    setTimeout(function () {
-                        this.$emit("sideMenuChange", this.isCollapse)
-                    }.bind(this), 300)
-                } else {
-                    this.isShow = true
-                    this.$emit("sideMenuChange", this.isCollapse)
-                }
-            }
-        }
+        created() {
+            this.menus = this.$store.getters.menus
+        },
     }
 </script>
 <style scoped>

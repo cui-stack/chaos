@@ -20,5 +20,6 @@ public class ChaosPlatformData extends DATA{
     @ApiModelProperty(value = "平台名称")
     private String name;
 
+    private String info;
 
 }

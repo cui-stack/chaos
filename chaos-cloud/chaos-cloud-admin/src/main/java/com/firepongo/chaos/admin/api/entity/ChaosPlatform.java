@@ -33,4 +33,8 @@ public class ChaosPlatform extends MuSortModel {
     private String name;
 
 
+    @ApiModelProperty(value = "平台名称")
+    @TableField("info")
+    private String info;
+
 }

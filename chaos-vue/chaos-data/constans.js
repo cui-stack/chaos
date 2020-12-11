@@ -1,15 +1,15 @@
-import store from './vuex/store'
+import store from './vuex/index'
 
 let baseUrl = ''
 switch (process.env.VUE_APP_ENV) {
     case 'production':
-        baseUrl = store.getters.getBaseUrl.prod
+        baseUrl = store.getters.baseUrl.prod
         break
     case 'testing':
-        baseUrl = store.getters.getBaseUrl.test
+        baseUrl = store.getters.baseUrl.test
         break
     case 'development':
-        baseUrl = store.getters.getBaseUrl.dev
+        baseUrl = store.getters.baseUrl.dev
         break
 }
 export default baseUrl;

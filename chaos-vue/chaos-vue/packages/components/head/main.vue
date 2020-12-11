@@ -2,16 +2,14 @@
     <el-container class="cv_page">
         <el-container class="cv_page_left">
             <img src="../../assets/images/pongo64.png"/>
-            <span>管理系统</span>
+            <span>管理后台</span>
         </el-container>
-
         <el-container class="cv_page_right">
             <el-dropdown>
                 <span class="el-dropdown-link">
-                    {{rolename}}:{{username}}
+                     {{rolename}} <br>{{username}}
                     <i class="el-icon-caret-bottom"></i>
                 </span>
-
                 <el-dropdown-menu slot="dropdown">
                     <el-dropdown-item @click.native="logout">退出
                     </el-dropdown-item>
@@ -25,29 +23,31 @@
 
     export default {
         name: "Head",
-        props: {
-            'rolename': {
-                required: false,
-                default: ''
-            },
-            'username': {
-                required: false,
-                default: ''
-            },
+        data() {
+            return {
+                username: '',
+                rolename: '',
+            }
+        },
+        created() {
+            let {username, roleName} = this.$store.getters.user
+            this.username = username;
+            this.rolename = roleName;
         },
         methods: {
             logout() {
-                this.$emit("onLogout");
+                this.$store.dispatch('admin/logout')
+                this.$store.dispatch('app/logout')
+                this.$router.push('/')
             },
         }
-
     }
 </script>
 <style scoped>
     .cv_page {
         display: flex;
         width: 100%;
-        background-color: #438eb9;
+        background-color: #483D8B;
         height: 80px;
     }
 

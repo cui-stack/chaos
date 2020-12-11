@@ -1,6 +1,6 @@
 {
   "name": "chaos-vue",
-  "version": "1.0.24",
+  "version": "1.0.56",
   "main": "lib/chaos-vue.umd.min.js",
   "private": false,
   "license": "MIT",
@@ -9,33 +9,34 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "lib": "vue-cli-service build --target lib --name chaos-vue --dest lib packages/index.js"
+    "pub": "vue-cli-service build --target lib --name chaos-vue --dest lib packages/index.js && npm publish"
   },
   "dependencies": {
     "axios": "^0.19.2",
     "babel-polyfill": "^6.26.0",
-    "core-js": "^3.6.5",
+    "chaos-data": "^1.0.41",
+    "core-js": "^3.8.1",
     "cos-js-sdk-v5": "^0.5.27",
-    "element-ui": "^2.13.2",
-    "vue": "^2.6.11",
-    "vue-router": "^3.3.4",
+    "element-ui": "^2.14.1",
+    "vue": "^2.6.12",
+    "vue-router": "^3.4.9",
     "vue-wechat-title": "^2.0.7",
-    "vuex": "^3.5.1",
+    "vuex": "^3.6.0",
     "vuex-along": "^1.2.11"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.4.0",
     "@vue/cli-plugin-eslint": "~4.4.0",
-    "@vue/cli-plugin-router": "^4.4.6",
+    "@vue/cli-plugin-router": "^4.5.9",
     "@vue/cli-service": "~4.4.0",
     "babel-eslint": "^10.1.0",
-    "compression-webpack-plugin": "^4.0.0",
+    "compression-webpack-plugin": "^4.0.1",
     "eslint": "^6.7.2",
     "eslint-plugin-vue": "^6.2.2",
     "image-webpack-loader": "^6.0.0",
     "less": "^3.12.2",
-    "less-loader": "^7.0.2",
-    "vue-template-compiler": "^2.6.11"
+    "less-loader": "^7.1.0",
+    "vue-template-compiler": "^2.6.12"
   },
   "eslintConfig": {
     "root": true,
