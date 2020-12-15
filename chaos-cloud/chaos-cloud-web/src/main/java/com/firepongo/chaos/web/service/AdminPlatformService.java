@@ -154,7 +154,7 @@ public class AdminPlatformService {
     }
 
     public String adminName(String mu) {
-        String adminName = (String) redisService.hget("app_admin_name", "mu");
+        String adminName = (String) redisService.hget("app_admin_name", mu);
         if (StringUtils.isEmpty(adminName)) {
             ObjectMapper mapper = new ObjectMapper();
             JsonNode rootNode = mapper.createObjectNode();
@@ -162,7 +162,7 @@ public class AdminPlatformService {
             String json = getJson(mapper, rootNode);
             DataResult<LinkedHashMap<String, String>> result = (DataResult<LinkedHashMap<String, String>>) requestAdmin("/manage/chaos_admin/one", json);
             adminName = result.getData().get("name");
-            redisService.hset("app_admin_name", "mu", adminName);
+            redisService.hset("app_admin_name", mu, adminName);
         }
         return adminName;
 
