@@ -1,0 +1,51 @@
+app:
+  admin:
+    host: "http://localhost:38089"
+server:
+  port: 38899
+feign:
+  sentinel:
+    enabled: true
+dubbo:
+  protocol:
+    name: dubbo
+    port: -1
+  registry:
+    address: spring-cloud://localhost
+  cloud:
+    subscribed-services: order-service
+spring:
+  application:
+    name: order-manage
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+    sentinel:
+      transport:
+        port: 8720
+        dashboard: 127.0.0.1:8080
+  redis:
+    database: 3
+    port: 6379
+    timeout: 2000
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+swagger:
+  enable: true
+  application-name: ${spring.application.name}
+  application-version: 1.0
+  application-description: order swagger api
+  try-host: http://localhost:${server.port}
+logging:
+  level:
+    root: INFO
+    com:
+      favorites: DEBUG
+    org:
+      hibernate: ERROR
+      springframework:
+        web: INFO

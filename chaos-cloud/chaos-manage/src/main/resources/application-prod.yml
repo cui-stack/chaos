@@ -1,0 +1,13 @@
+app:
+  admin:
+    username: "order-manage"
+    password: "order-manage"
+spring:
+  rabbitmq:
+    addresses: 127.0.0.1
+    username: admin
+    password: admin
+  redis:
+    host: 127.0.0.1
+    password: admin
+

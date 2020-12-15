@@ -1,0 +1,25 @@
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+server:
+  port: 38089
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql://127.0.0.1:3306/chaos?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
+    username: root
+    password: root
+    druid:
+      test-on-borrow: true
+      test-while-idle: true
+      validation-query: SELECT 1
+  redis:
+    host: 127.0.0.1
+    password:
+    database: 8
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"

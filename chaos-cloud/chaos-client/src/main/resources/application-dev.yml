@@ -1,0 +1,13 @@
+app:
+  admin:
+    username: "order-client-dev"
+    password: "order-client-dev"
+spring:
+  rabbitmq:
+    addresses: localhost
+    username: admin
+    password: admin
+  redis:
+    host: localhost
+    password: admin
+

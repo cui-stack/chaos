@@ -1,0 +1,14 @@
+app:
+  admin:
+    host: "http://localhost:38089"
+    username: "order-manage-local"
+    password: "order-manage-local"
+spring:
+  rabbitmq:
+    addresses: 127.0.0.1
+    username: admin
+    password: admin
+  redis:
+    host: 127.0.0.1
+    password:
+

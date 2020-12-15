@@ -3,41 +3,68 @@
 ![](https://img.shields.io/badge/language-TypeScript-483D8B.svg)
 ![](https://img.shields.io/badge/license-MIT-483D8B.svg)
 
-# chaos介绍
-**chaos**是用来支撑order的模块化解决方案
+# 自问自答
+1. chaos是什么？   
+chaos是一个通用型互联网软件架构。  
+后端使用SpringCloud，前端使用VUE，通过chaos可以快速搭建一个互联网系统。  
+2. chaos的应用场景在哪儿？   
+chaos适用于较小用户量（千万级用户以下）的互联网场景的软件开发（包括并不限于APP，小程序，管理后台）。   
+3. chaos怎么使用？  
+代码下载：`git clone https://gitee.com/ape-stack/chaos.git  `   
+开发环境使用：IDEA启动chaos-cloud的后端服务（java），vscode启动chaos-vue的前端页面（npm）。  
+生产环境使用：待补充   
 
-## 环境准备
-1. verdaccio
-2. nexus
-
+# 设计原则 
+## 后端的设计和规范：  
+1. 数据库使用mysql。   
+2. 数据库表默认需要id、mu、create_time，modify_time，is_delete，version字段。   
+3. 服务端代码结构包括：model（实体和接口定义），service（服务实现），manage（后台接口），client（前台接口）。  
+4. 实体定义：MuModel对应数据库表结构、Data对应协议结构、Data默认等同于排除默认字段的MuModel结构。   
+5. 服务间提供dubbo、feign两种调用方式，service间使用dubbo调用，web层（manage，client）使用feign调用。    
+6. service处理事务，包括本地事务和分布式事务（通过seata，待补充支持）。  
+7. web层默认提供Restful服务（只使用post），manage服务提供add，delete，update，one，list，page；client提供提供one，list，page。   
+8. 对于基础业务可以通过chaos-cloud-code代码快速生成（通过代码生成可以节约88%的开发时间）。  
+## 前端的设计和规范  
+1. 前端fetch处理协议级业务，包括http code逻辑，token逻辑，lastPost逻辑。  
+2. 提供Data.js处理后端服务接口包括（add，remove，update，one，list，page）和（search，query，submit）。    
+3. 提供PageData.js，定义页面数据。    
+4. 使用vuex处理全局数据，提供admin，app模块。    
+5. 使用mixin，提供page分页的通用mixin。   
+6. 基于elementUI，提供通用组件，包括paging，sideMenu，等等。  
+7. 对于通用页面可以通过`npm run tmp`创建（通过代码生成可以节约88%的开发时间）。
 # 快速开始
-## chaos-cloud
-包装springcloud
+## 开发流程
+```
+1. 数据库设计
+2. 使用代码生成器生成服务端代码
+3. 使用代码生成器生成前端页面代码
+4. 调整代码逻辑
+5. 其他
+```
+## 项目构建
+使用chaos-admin（提供了通用的后端账户权限管理（可选））
+```
+执行init_chaos.sql  
+启动chaos-admin-service
+启动chaos-admin-back 
+```
 
-### 构建
-```shell script
-cd /chaos-cloud
-mvn install
-mvn deploy
+使用chaos-cloud构建后端服务
 ```
-### 使用
-app服务：定义为不提供Restfull接口的服务
-```xml
-<dependency>
-    <groupId>com.firepongo</groupId>
-    <artifactId>chaos-cloud-app</artifactId>
-    <exclusions>
-</dependency>
+安装nacos，redis，mysql服务
+启动chaos-service
+启动chaos-client
+启动chaos-manage
 ```
-web服务：定义为提供Restfull接口的服务
-```xml
-<dependency>
-    <groupId>com.firepongo</groupId>
-    <artifactId>chaos-cloud-web</artifactId>
-    <exclusions>
-</dependency>
+
+使用chaos-vue构建后台 
 ```
-### 集成特性
+启动chaos-vue
+```
+
+# 集成特性
+## chaos-cloud
+### 已集成特性
 1. SpringCloud、nacos
 2. dubbo
 3. openfeign
@@ -55,7 +82,7 @@ web服务：定义为提供Restfull接口的服务
 4. Stream
 5. Alibaba Cloud ACM
 6. Alibaba Cloud SchedulerX
-### 架构特性 
+### 架构特性
 1. MU,DTO,DATA定义  
 2. 全局异常机制  
 3. 全局拦截机制  
@@ -65,31 +92,17 @@ web服务：定义为提供Restfull接口的服务
 7. 通用转换DATA<->MuModel 
 
 ## chaos-vue
-包装vue
-### 构建
-```shell script
-cd /chaos-vue/chaos-vue
-npm run lib
-npm publish
-cd /chaos-vue/chaos-data
-npm publish
-```
-### 使用
-```shell script
-npm install chaos-data --save
-npm install chaos-vue --save
-```
-### 集成特性
+### 已集成特性
 1. vue
 2. vue-cli3
 3. vue-router
 4. vuex
 5. axios
 6. element-ui
-#### 特性列表  
-1. 通用组件Head,CenterHead,Input,Paging,SideMenu  
-2. 通用函数fetch,store,Data,show  
-3. 通用对象PageData,RuleData  
+### 架构特性
+1. 通用组件Head、CenterHead、Input、Paging、SideMenu  
+2. 通用函数fetch、store、Data、show  
+3. 通用对象PageData、RuleData  
 
 # 联系我们
 ![wx](image/wx_mine.jpg)

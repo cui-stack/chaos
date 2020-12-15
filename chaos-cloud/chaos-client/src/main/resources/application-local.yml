@@ -1,0 +1,9 @@
+spring:
+  rabbitmq:
+    addresses: center.firepongo.com
+    username: admin
+    password: admin
+  redis:
+    host: center.firepongo.com
+    password: admin
+
