@@ -31,33 +31,42 @@ chaos-vue提供了通用后台UI模块，通用请求模块等等
 3. 了解SpringCloud，VUE项目构建方式
 
 ## 开始使用
-1. 安装依赖，在根目录执行    
-`mvn install`
-2. 安装chaos-vue-base前端基础组件    
-`npm publish`
+1. 安装依赖，在根目录执行 
+```   
+mvn install
+```
+2. 安装chaos-vue-base前端基础组件 
+```   
+npm publish
+```
 3. 安装mysql，redis，nacos服务   
 4. 启动chaos-admin服务
-5. 执行数据库脚本   
-`init_chaos.sql`
-6. 启动chaos-admin-service
-idea下启动SpringBoot项目方式  
-7. 启动chaos-admin-back
-在idea/vscode的相应目录下执行以下命令
+5. 执行数据库脚本 
+```  
+init_chaos.sql
 ```
+6. 启动chaos-admin-service
+```
+idea下启动SpringBoot项目方式  
+```
+7. 启动chaos-admin-back
+```
+在idea/vscode的相应目录下执行以下命令
 npm install
 npm run dev
-```
 访问127.0.0.1:8080可访问管理后台，默认账号密码（admin/admin123）   
+```
 9. 启动chaos-service
 10. 启动chaos-manage
 11. 启动chaos-client
 12. 启动chaos-vue
-在idea/vscode的相应目录下执行以下命令
 ```
+在idea/vscode的相应目录下执行以下命令
 npm install
 npm run dev
-```
 访问127.0.0.1:8081可访问管理后台，默认账号密码（admina/admin123）   
+```
+
 ## 功能截图
 ![wx](image/1.png)
 ![wx](image/3.png)
