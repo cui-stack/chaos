@@ -21,6 +21,8 @@ vue: 2.6.12（待升级）
 vue-router: 3.4.9      
 vuex: 3.6.0     
 element-ui: 2.14.1      
+5. chaos架构
+![wx](image/chaos架构.png)
 
 # 设计原则 
 ## 后端的设计和规范：  
@@ -108,6 +110,7 @@ element-ui: 2.14.1
 4. vuex
 5. axios
 6. element-ui
+7. normalize
 ### 架构特性
 1. 通用组件Head、CenterHead、Input、Paging、SideMenu  
 2. 通用函数fetch、store、Data、show  
