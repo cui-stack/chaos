@@ -13,14 +13,14 @@ chaos适用于较小用户量（千万级用户以下）的互联网场景的软
 代码下载：`git clone https://gitee.com/ape-stack/chaos.git  `   
 开发环境使用：IDEA启动chaos-cloud的后端服务（java），vscode启动chaos-vue的前端页面（npm）。  
 生产环境使用：待补充   
-4. chaos架构框架版本？
-spring-boot.version: 2.2.5.RELEASE
-spring-cloud.version: Hoxton.SR3
-spring-cloud-alibaba.version: 2.2.1.RELEASE
-vue: 2.6.12（待升级）
-vue-router: 3.4.9
-vuex: 3.6.0
-element-ui: 2.14.1
+4. chaos架构框架版本？    
+spring-boot.version: 2.2.5.RELEASE    
+spring-cloud.version: Hoxton.SR3    
+spring-cloud-alibaba.version: 2.2.1.RELEASE    
+vue: 2.6.12（待升级）        
+vue-router: 3.4.9      
+vuex: 3.6.0     
+element-ui: 2.14.1      
 
 # 设计原则 
 ## 后端的设计和规范：  
@@ -113,7 +113,8 @@ element-ui: 2.14.1
 3. 通用对象PageData、RuleData  
 
 # 联系我们
-![wx](image/wx_mine.jpg?width=20&height=20)
+![wx](image/wx_mine.jpg?width=20&height=20){:height="100" width="100"}
+
 # QQ群号：1067845715 
 # Poweredby 阿暴
 
