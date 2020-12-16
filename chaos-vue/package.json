@@ -1,5 +1,5 @@
 {
-  "name": "order-vue",
+  "name": "chaos-vue",
   "version": "1.0.0",
   "scripts": {
     "dev": "vue-cli-service serve",
