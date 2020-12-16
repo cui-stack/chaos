@@ -21,7 +21,7 @@ vue: 2.6.12（待升级）
 vue-router: 3.4.9      
 vuex: 3.6.0     
 element-ui: 2.14.1      
-5. chaos架构
+5. chaos架构详情？
 ![wx](image/chaos架构.png)
 
 # 设计原则 
