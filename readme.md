@@ -7,65 +7,60 @@
 ## chaos是什么？   
 chaos是一个通用型互联网软件架构，chaos是一个全栈快速开发架构；通过chaos可以快速搭建一个互联网应用      
 
-## chaos的应用场景在哪儿？   
+## chaos的应用场景？   
 chaos适用于较小用户量（千万级用户以下）的互联网场景的软件开发（包括并不限于APP，小程序，管理后台）     
 
 ## chaos的愿景？    
 chaos希望通过整合互联网优秀的框架，约定各端协议，整合第三方服务，提供一个基础版本的软件架构，让软件开发不再从0开始       
   
-## chaos提供的能力？    
+## chaos的组成？    
 chaos-cloud是基于SpringCloud Alibaba，nacos，dubbo，openfeign等框架的服务端架构     
 chaos-vue是基于VUE，vuex，elementUI的前端架构
 
-## chaos原生能力？ 
+## chaos的能力？ 
 chaos-admin是基于chaos架构和设计理念开发的管理系统（管理管理员，角色，权限，统一登录，日志记录等等）      
 chaos-cloud提供了通用登录服务，API鉴权等等  
 chaos-vue提供了通用后台UI模块，通用请求模块等等
   
 # 快速开始
 ## 知识储备
-本架构面向于全栈开发，语言主要使用java，javaScript    
-使用架构前需要了解的知识包括：
+本架构面向于全栈开发，语言主要使用java，javaScript，使用架构前需要了解：
 1. 使用IDEA，vscode，git完成项目开发    
 2. 使用maven，npm完成代码组件构建
 3. 了解SpringCloud，VUE项目构建方式
 
 ## 开始使用
-1. 安装依赖，在根目录执行 
-```   
-mvn install
-```
-2. 安装chaos-vue-base前端基础组件 
-```   
-npm publish
-```
+1.  安装依赖，在根目录执行 
+    ```   
+    mvn install
+    ```
+2.  安装chaos-vue-base前端基础组件 
+    ```   
+    npm publish
+    ```
 3. 安装mysql，redis，nacos服务   
-4. 启动chaos-admin服务
-5. 执行数据库脚本 
-```  
-init_chaos.sql
-```
-6. 启动chaos-admin-service
-```
-idea下启动SpringBoot项目方式  
-```
-7. 启动chaos-admin-back
-```
-在idea/vscode的相应目录下执行以下命令
-npm install
-npm run dev
-访问127.0.0.1:8080可访问管理后台，默认账号密码（admin/admin123）   
-```
-9. 启动chaos-service
-10. 启动chaos-manage
-11. 启动chaos-client
-12. 启动chaos-vue
-```
-在idea/vscode的相应目录下执行以下命令
-npm install
-npm run dev
-访问127.0.0.1:8081可访问管理后台，默认账号密码（admina/admin123）   
-```
+4. 启动chaos-admin-service
+    ```  
+    执行数据库脚本 init_chaos.sql
+    idea下启动SpringBoot项目方式
+    ```
+5. 启动chaos-admin-back
+    ```
+    在idea/vscode的相应目录下执行以下命令
+    npm install
+    npm run dev
+    访问127.0.0.1:8080可访问管理后台，默认账号密码（admin/admin123）   
+    ```
+6. 启动chaos-service
+7. 启动chaos-manage
+8. 启动chaos-client
+9. 启动chaos-vue
+    ```
+    在idea/vscode的相应目录下执行以下命令
+    npm install
+    npm run dev
+    访问127.0.0.1:8081可访问管理后台，默认账号密码（admina/admin123）   
+    ```
 
 ## 功能截图
 ![wx](image/1.png)
