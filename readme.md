@@ -4,21 +4,23 @@
 ![](https://img.shields.io/badge/license-MIT-483D8B.svg)
 
 # 架构简介
-1. chaos是什么？   
-  chaos是一个通用型互联网软件架构，chaos是一个全栈快速开发架构；通过chaos可以快速搭建一个互联网应用      
+## chaos是什么？   
+chaos是一个通用型互联网软件架构，chaos是一个全栈快速开发架构；通过chaos可以快速搭建一个互联网应用      
 
-2. chaos的应用场景在哪儿？   
-  chaos适用于较小用户量（千万级用户以下）的互联网场景的软件开发（包括并不限于APP，小程序，管理后台）     
+## chaos的应用场景在哪儿？   
+chaos适用于较小用户量（千万级用户以下）的互联网场景的软件开发（包括并不限于APP，小程序，管理后台）     
 
-3. chaos的愿景？    
-  chaos希望通过整合互联网优秀的框架，约定各端协议，整合第三方服务，提供一个基础版本的软件架构，让软件开发不再从0开始       
+## chaos的愿景？    
+chaos希望通过整合互联网优秀的框架，约定各端协议，整合第三方服务，提供一个基础版本的软件架构，让软件开发不再从0开始       
   
-4. chaos提供的能力？    
-  chaos-cloud是基于SpringCloud Alibaba，nacos，dubbo，openfeign等框架的服务端架构     
-  chaos-vue是基于VUE，vuex，elementUI的前端架构
+## chaos提供的能力？    
+chaos-cloud是基于SpringCloud Alibaba，nacos，dubbo，openfeign等框架的服务端架构     
+chaos-vue是基于VUE，vuex，elementUI的前端架构
 
-5. chaos原生能力
-  chaos-admin是基于chaos架构和设计理念开发的管理系统（管理管理员，角色，权限，统一登录，日志记录等等）      
+## chaos原生能力？ 
+chaos-admin是基于chaos架构和设计理念开发的管理系统（管理管理员，角色，权限，统一登录，日志记录等等）      
+chaos-cloud提供了通用登录服务，API鉴权等等  
+chaos-vue提供了通用后台UI模块，通用请求模块等等
   
 # 快速开始
 ## 知识储备
