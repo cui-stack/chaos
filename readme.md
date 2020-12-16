@@ -119,9 +119,8 @@ element-ui: 2.14.1
 ![wx](image/5.png)
 
 # 联系我们
-## QQ群号：1067845715 
-
 ![wx](image/wx_mine_486x629.jpg)
+## QQ群号：1067845715 
 
 # Poweredby 阿暴
 
