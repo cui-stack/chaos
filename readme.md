@@ -5,24 +5,31 @@
 
 # 自问自答
 1. chaos是什么？   
-chaos是一个通用型互联网软件架构。  
-后端使用SpringCloud，前端使用VUE，通过chaos可以快速搭建一个互联网系统。  
+  chaos是一个通用型互联网软件架构。  
+  后端使用SpringCloud，前端使用VUE，通过chaos可以快速搭建一个互联网系统。  
+
 2. chaos的应用场景在哪儿？   
-chaos适用于较小用户量（千万级用户以下）的互联网场景的软件开发（包括并不限于APP，小程序，管理后台）。   
+  chaos适用于较小用户量（千万级用户以下）的互联网场景的软件开发（包括并不限于APP，小程序，管理后台）
+
 3. chaos怎么使用？  
-代码下载：`git clone https://gitee.com/ape-stack/chaos.git  `   
-开发环境使用：IDEA启动chaos-cloud的后端服务（java），vscode启动chaos-vue的前端页面（npm）。  
-生产环境使用：待补充   
+  代码下载：`git clone https://gitee.com/ape-stack/chaos.git  `   
+  开发环境使用：IDEA启动chaos-cloud的后端服务（java），vscode启动chaos-vue的前端页面（npm）  
+  生产环境使用：待补充   
+
 4. chaos架构框架版本？    
-spring-boot.version: 2.2.5.RELEASE    
-spring-cloud.version: Hoxton.SR3    
-spring-cloud-alibaba.version: 2.2.1.RELEASE    
-vue: 2.6.12（待升级）        
-vue-router: 3.4.9      
-vuex: 3.6.0     
-element-ui: 2.14.1      
+
+  | 业务端 | 框架                 | 版本          | 备注   |
+  | ------ | -------------------- | ------------- | ------ |
+  | 后端   | spring-boot          | 2.2.5.RELEASE |        |
+  |        | spring-cloud         | Hoxton.SR3    |        |
+  |        | spring-cloud-alibaba | 2.2.1.RELEASE |        |
+  | 前端   | vue                  | 2.6.12        | 待升级 |
+  |        | vue-router           | 3.4.9         |        |
+  |        | vuex                 | 3.6.0         |        |
+  |        | element-ui           | 2.14.1        |        |
+
 5. chaos架构详情？
-![wx](image/chaos架构.png)
+  ![wx](image/chaos架构.png)
 
 # 设计原则 
 ## 后端的设计和规范：  
@@ -117,7 +124,6 @@ element-ui: 2.14.1
 3. 通用对象PageData、RuleData  
 # 功能截图
 ![wx](image/1.png)
-![wx](image/2.png)
 ![wx](image/3.png)
 ![wx](image/4.png)
 ![wx](image/5.png)
