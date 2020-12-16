@@ -12,6 +12,7 @@ File Encoding         : 65001
 
 Date: 2020-11-25 15:52:19
 */
+CREATE DATABASE chaos CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
 
 SET FOREIGN_KEY_CHECKS=0;
 

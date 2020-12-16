@@ -3,87 +3,75 @@
 ![](https://img.shields.io/badge/language-TypeScript-483D8B.svg)
 ![](https://img.shields.io/badge/license-MIT-483D8B.svg)
 
-# 自问自答
+# 架构简介
 1. chaos是什么？   
-  chaos是一个通用型互联网软件架构。  
-  后端使用SpringCloud，前端使用VUE，通过chaos可以快速搭建一个互联网系统。  
+  chaos是一个通用型互联网软件架构，chaos是一个全栈快速开发架构；通过chaos可以快速搭建一个互联网应用      
 
 2. chaos的应用场景在哪儿？   
-  chaos适用于较小用户量（千万级用户以下）的互联网场景的软件开发（包括并不限于APP，小程序，管理后台）
+  chaos适用于较小用户量（千万级用户以下）的互联网场景的软件开发（包括并不限于APP，小程序，管理后台）     
 
-3. chaos怎么使用？  
-  代码下载：`git clone https://gitee.com/ape-stack/chaos.git  `   
-  开发环境使用：IDEA启动chaos-cloud的后端服务（java），vscode启动chaos-vue的前端页面（npm）  
-  生产环境使用：待补充   
+3. chaos的愿景？    
+  chaos希望通过整合互联网优秀的框架，约定各端协议，整合第三方服务，提供一个基础版本的软件架构，让软件开发不再从0开始       
+  
+4. chaos提供的能力？    
+  chaos-cloud是基于SpringCloud Alibaba，nacos，dubbo，openfeign等框架的服务端架构     
+  chaos-vue是基于VUE，vuex，elementUI的前端架构
 
-4. chaos架构框架版本？    
-
-      | 业务端 | 框架                 | 版本          | 备注   |
-      | ------ | -------------------- | ------------- | ------ |
-      | 后端   | spring-boot          | 2.2.5.RELEASE |        |
-      |        | spring-cloud         | Hoxton.SR3    |        |
-      |        | spring-cloud-alibaba | 2.2.1.RELEASE |        |
-      | 前端   | vue                  | 2.6.12        | 待升级 |
-      |        | vue-router           | 3.4.9         |        |
-      |        | vuex                 | 3.6.0         |        |
-      |        | element-ui           | 2.14.1        |        |
-
-5. chaos架构详情？
-  ![wx](image/chaos架构.png)
-
-# 设计原则 
-## 后端的设计和规范：  
-1. 数据库使用mysql。   
-2. 数据库表默认需要id、mu、create_time，modify_time，is_delete，version字段。   
-3. 服务端代码结构包括：model（实体和接口定义），service（服务实现），manage（后台接口），client（前台接口）。  
-4. 实体定义：MuModel对应数据库表结构、Data对应协议结构、Data默认等同于排除默认字段的MuModel结构。   
-5. 服务间提供dubbo、feign两种调用方式，service间使用dubbo调用，web层（manage，client）使用feign调用。    
-6. service处理事务，包括本地事务和分布式事务（通过seata，待补充支持）。  
-7. web层默认提供Restful服务（只使用post），manage服务提供add，delete，update，one，list，page；client提供提供one，list，page。   
-8. 对于基础业务可以通过chaos-cloud-code代码快速生成（通过代码生成可以节约88%的开发时间）。  
-## 前端的设计和规范  
-1. 前端fetch处理协议级业务，包括http code逻辑，token逻辑，lastPost逻辑。  
-2. 提供Data.js处理后端服务接口包括（add，remove，update，one，list，page）和（search，query，submit）。    
-3. 提供PageData.js，定义页面数据。    
-4. 使用vuex处理全局数据，提供admin，app模块。    
-5. 使用mixin，提供page分页的通用mixin。   
-6. 基于elementUI，提供通用组件，包括paging，sideMenu，等等。  
-7. 对于通用页面可以通过`npm run tmp`创建（通过代码生成可以节约88%的开发时间）。
-
+5. chaos原生能力
+  chaos-admin是基于chaos架构和设计理念开发的管理系统（管理管理员，角色，权限，统一登录，日志记录等等）      
+  
 # 快速开始
-## 准备
-1. 安装chaos-cloud-base mvn install（可使用nexus）
-2. 安装chaos-vue-base npm publish（可使用verdaccio）
+## 知识储备
+本架构面向于全栈开发，语言主要使用java，javaScript    
+使用架构前需要了解的知识包括：
+1. 使用IDEA，vscode，git完成项目开发    
+2. 使用maven，npm完成代码组件构建
+3. 了解SpringCloud，VUE项目构建方式
+
+## 开始使用
+1. 安装依赖，在根目录执行    
+`mvn install`
+2. 安装chaos-vue-base前端基础组件    
+`npm publish`
+3. 安装mysql，redis，nacos服务   
+4. 启动chaos-admin服务
+5. 执行数据库脚本   
+`init_chaos.sql`
+6. 启动chaos-admin-service
+idea下启动SpringBoot项目方式  
+7. 启动chaos-admin-back
+在idea/vscode的相应目录下执行以下命令
+```
+npm install
+npm run dev
+```
+访问127.0.0.1:8080可访问管理后台，默认账号密码（admin/admin123）   
+9. 启动chaos-service
+10. 启动chaos-manage
+11. 启动chaos-client
+12. 启动chaos-vue
+在idea/vscode的相应目录下执行以下命令
+```
+npm install
+npm run dev
+```
+访问127.0.0.1:8081可访问管理后台，默认账号密码（admina/admin123）   
+## 功能截图
+![wx](image/1.png)
+![wx](image/3.png)
+![wx](image/4.png)
+![wx](image/5.png)
+
 ## 开发流程
 ```
-1. 数据库设计
-2. 使用代码生成器生成服务端代码
-3. 使用代码生成器生成前端页面代码
+1. 完成数据库设计
+2. 使用代码生成器chaos-cloud-app生成服务端代码
+3. 使用代码生成器npm run tep生成前端页面代码
 4. 调整代码逻辑
-5. 其他
-```
-## 项目构建
-使用chaos-admin（提供了通用的后端账户权限管理（可选））
-```
-执行init_chaos.sql  
-启动chaos-admin-service
-启动chaos-admin-back 
+5. 完成业务需求
 ```
 
-使用chaos-cloud构建后端服务
-```
-安装nacos，redis，mysql服务
-启动chaos-service
-启动chaos-client
-启动chaos-manage
-```
-
-使用chaos-vue构建后台 
-```
-启动chaos-vue
-```
-
-# 集成特性
+# 架构细节
 ## chaos-cloud
 ### 已集成特性
 1. SpringCloud、nacos
@@ -125,11 +113,25 @@
 1. 通用组件Head、CenterHead、Input、Paging、SideMenu  
 2. 通用函数fetch、store、Data、show  
 3. 通用对象PageData、RuleData  
-# 功能截图
-![wx](image/1.png)
-![wx](image/3.png)
-![wx](image/4.png)
-![wx](image/5.png)
+
+# 设计原则 
+## 后端的设计和规范：  
+1. 数据库使用mysql。   
+2. 数据库表默认需要id、mu、create_time，modify_time，is_delete，version字段。   
+3. 服务端代码结构包括：model（实体和接口定义），service（服务实现），manage（后台接口），client（前台接口）。  
+4. 实体定义：MuModel对应数据库表结构、Data对应协议结构、Data默认等同于排除默认字段的MuModel结构。   
+5. 服务间提供dubbo、feign两种调用方式，service间使用dubbo调用，web层（manage，client）使用feign调用。    
+6. service处理事务，包括本地事务和分布式事务（通过seata，待补充支持）。  
+7. web层默认提供Restful服务（只使用post），manage服务提供add，delete，update，one，list，page；client提供提供one，list，page。   
+8. 对于基础业务可以通过chaos-cloud-code代码快速生成（通过代码生成可以节约88%的开发时间）。  
+## 前端的设计和规范  
+1. 前端fetch处理协议级业务，包括http code逻辑，token逻辑，lastPost逻辑。  
+2. 提供Data.js处理后端服务接口包括（add，remove，update，one，list，page）和（search，query，submit）。    
+3. 提供PageData.js，定义页面数据。    
+4. 使用vuex处理全局数据，提供admin，app模块。    
+5. 使用mixin，提供page分页的通用mixin。   
+6. 基于elementUI，提供通用组件，包括paging，sideMenu，等等。  
+7. 对于通用页面可以通过`npm run tmp`创建（通过代码生成可以节约88%的开发时间）。
 
 # 联系我们
 ![wx](image/wx_mine_486x629.jpg)

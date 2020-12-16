@@ -13,6 +13,7 @@
     </properties>
 
     <modules>
+        <module>chaos-cloud-base</module>
         <module>chaos-cloud</module>
         <module>chaos-admin/chaos-admin-service</module>
     </modules>
