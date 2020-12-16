@@ -18,15 +18,15 @@
 
 4. chaos架构框架版本？    
 
-  | 业务端 | 框架                 | 版本          | 备注   |
-  | ------ | -------------------- | ------------- | ------ |
-  | 后端   | spring-boot          | 2.2.5.RELEASE |        |
-  |        | spring-cloud         | Hoxton.SR3    |        |
-  |        | spring-cloud-alibaba | 2.2.1.RELEASE |        |
-  | 前端   | vue                  | 2.6.12        | 待升级 |
-  |        | vue-router           | 3.4.9         |        |
-  |        | vuex                 | 3.6.0         |        |
-  |        | element-ui           | 2.14.1        |        |
+      | 业务端 | 框架                 | 版本          | 备注   |
+      | ------ | -------------------- | ------------- | ------ |
+      | 后端   | spring-boot          | 2.2.5.RELEASE |        |
+      |        | spring-cloud         | Hoxton.SR3    |        |
+      |        | spring-cloud-alibaba | 2.2.1.RELEASE |        |
+      | 前端   | vue                  | 2.6.12        | 待升级 |
+      |        | vue-router           | 3.4.9         |        |
+      |        | vuex                 | 3.6.0         |        |
+      |        | element-ui           | 2.14.1        |        |
 
 5. chaos架构详情？
   ![wx](image/chaos架构.png)
