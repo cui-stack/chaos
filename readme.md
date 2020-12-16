@@ -111,11 +111,18 @@ element-ui: 2.14.1
 1. 通用组件Head、CenterHead、Input、Paging、SideMenu  
 2. 通用函数fetch、store、Data、show  
 3. 通用对象PageData、RuleData  
+# 功能截图
+![wx](image/1.png)
+![wx](image/2.png)
+![wx](image/3.png)
+![wx](image/4.png)
+![wx](image/5.png)
 
 # 联系我们
+## QQ群号：1067845715 
+
 ![wx](image/wx_mine_486x629.jpg)
 
-# QQ群号：1067845715 
 # Poweredby 阿暴
 
 
