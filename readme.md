@@ -51,6 +51,9 @@
 7. 对于通用页面可以通过`npm run tmp`创建（通过代码生成可以节约88%的开发时间）。
 
 # 快速开始
+## 准备
+1. 安装chaos-cloud-base mvn install（可使用nexus）
+2. 安装chaos-vue-base npm publish（可使用verdaccio）
 ## 开发流程
 ```
 1. 数据库设计
