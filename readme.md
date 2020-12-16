@@ -40,6 +40,7 @@ element-ui: 2.14.1
 5. 使用mixin，提供page分页的通用mixin。   
 6. 基于elementUI，提供通用组件，包括paging，sideMenu，等等。  
 7. 对于通用页面可以通过`npm run tmp`创建（通过代码生成可以节约88%的开发时间）。
+
 # 快速开始
 ## 开发流程
 ```
@@ -123,6 +124,7 @@ element-ui: 2.14.1
 ## QQ群号：1067845715 
 
 # Poweredby 阿暴
+# Poweredby [火猩科技](https://firepongo.gitee.io/)
 
 
 
