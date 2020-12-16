@@ -121,8 +121,7 @@ element-ui: 2.14.1
 
 # 联系我们
 ![wx](image/wx_mine_486x629.jpg)
-# QQ群号
-## 1067845715 
+## QQ群号：1067845715 
 
 # Poweredby 阿暴
 # Poweredby [火猩科技](https://firepongo.gitee.io/)
