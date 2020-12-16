@@ -113,7 +113,7 @@ element-ui: 2.14.1
 3. 通用对象PageData、RuleData  
 
 # 联系我们
-![wx](image/wx_mine.jpg?width=20&height=20){:height="100" width="100"}
+![wx](image/wx_mine_486x629.jpg)
 
 # QQ群号：1067845715 
 # Poweredby 阿暴
