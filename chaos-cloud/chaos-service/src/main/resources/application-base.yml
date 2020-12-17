@@ -13,12 +13,12 @@ dubbo:
   registry:
     address: spring-cloud://localhost
   scan:
-    base-packages: com.order.service
+    base-packages: com.firepongo.chaos.service
   cloud:
     subscribed-services:
 spring:
   application:
-    name: order-service
+    name: chaos-service
   cloud:
     nacos:
       discovery:

@@ -1,0 +1,40 @@
+version: '3'
+services:
+  nacos:
+    container_name: f-nacos
+    image: nacos/nacos-server
+    restart: always
+    environment:
+      MODE: standalone
+    ports:
+      - 8848:8848
+    networks:
+      - firepongo-ci
+  nginx:
+    image: nginx:latest
+    container_name: f-nginx
+    volumes:
+      - ./nginx/www/:/usr/share/nginx/html
+      - ./nginx/conf/nginx.conf:/etc/nginx/nginx.conf
+      - ./nginx/cert:/etc/nginx/cert
+      - ./nginx/conf.d:/etc/nginx/conf.d
+      - ./nginx/logs:/var/log/nginx
+    ports:
+      - 80:80
+    restart: always
+    networks:
+      - firepongo-ci
+  redis:
+    image: redis:latest
+    container_name: f-redis
+    restart: always
+    command: redis-server --requirepass firepongo!tech
+    ports:
+      - 6379:6379
+    volumes:
+      - ./redis/data:/data
+    networks:
+      - firepongo-ci
+networks:
+  firepongo-ci:
+    driver: bridge

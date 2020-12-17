@@ -30,36 +30,50 @@ chaos-vue提供了通用后台UI模块，通用请求模块等等
 3. 了解SpringCloud，VUE项目构建方式
 
 ## 开始使用
-1.  安装依赖，在根目录执行 
+1.  服务端模块安装，在根目录执行 
     ```   
     在/chaos/chaos-cloud-base/chaos-cloud-dependencies/目录执行 mvn install
     在/chaos/目录执行mvn install
     打开插件 enable lombook 
     ```
-2. 安装mysql，redis，nacos服务   
+2. 安装mysql，redis，nacos，nginx服务   
    ```
-   默认127.0.0.1
+   默认地址:127.0.0.1
+   脚本目录:/chaos/chaos-cloud/resource/
+   docker-compose.yml 安装redis，nacos，nginx
+   nginx.conf 默认nginx配置
    ``` 
 3. 启动chaos-admin-service
     ```  
-    执行数据库脚本 init_chaos.sql
+    执行数据库脚本 /chaos/chaos-cloud/resource/init_chaos_admin.sql
+    执行AdminApplication.main()
     ```
 4. 启动chaos-admin-back
     ```
-    在/chaos-admin/chaos-admin-back执行
+    在/chaos/chaos-admin/chaos-admin-back执行
     npm install --registry=http://www.firepongo.tech:4873
     npm run dev
     访问127.0.0.1:8080可访问管理后台，默认账号密码（admin/admin123）   
     ```
 5. 启动chaos-service
+    ```
+    执行/chaos/chaos-cloud/resource/init_chaso_cloud.sql
+    执行ChaosApplication.main()
+    ```
 6. 启动chaos-manage
+    ```
+    执行ChaosManageApplication.main()
+    ```
 7. 启动chaos-client
+    ```
+    执行ChaosClientApplication.main()
+    ```
 8. 启动chaos-vue
     ```
-    在/chaos-vue执行
+    在/chaos/chaos-vue执行
     npm install
     npm run dev
-    访问127.0.0.1:8080可访问管理后台，默认账号密码（admina/admin123）   
+    访问127.0.0.1:8080可访问管理后台，默认账号密码（admina/admin123） （同时启动需要注意端口！）  
     ```
 
 ## 功能截图

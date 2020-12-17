@@ -10,7 +10,7 @@ import org.springframework.context.annotation.ComponentScan;
 import javax.annotation.PostConstruct;
 
 @SpringBootApplication(exclude = {DataSourceAutoConfiguration.class})
-@ComponentScan(basePackages = {"com.firepongo", "com.order"})
+@ComponentScan(basePackages = {"com.firepongo"})
 public class ChaosManageApplication {
     @Autowired
     private AdminPlatformService adminPlatformService;

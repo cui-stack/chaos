@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication(exclude = {DataSourceAutoConfiguration.class})
-@ComponentScan(basePackages = {"com.firepongo", "com.order"})
+@ComponentScan(basePackages = {"com.firepongo"})
 public class ChaosClientApplication {
 
     public static void main(String[] args) {

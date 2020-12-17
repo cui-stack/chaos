@@ -4,7 +4,7 @@ Navicat MySQL Data Transfer
 Source Server         : localhost
 Source Server Version : 50715
 Source Host           : localhost:3306
-Source Database       : order
+Source Database       : chaos
 
 Target Server Type    : MYSQL
 Target Server Version : 50715
@@ -16,10 +16,10 @@ Date: 2020-12-01 14:22:20
 SET FOREIGN_KEY_CHECKS=0;
 
 -- ----------------------------
--- Table structure for order_info
+-- Table structure for chaos_info
 -- ----------------------------
-DROP TABLE IF EXISTS `order_info`;
-CREATE TABLE `order_info` (
+DROP TABLE IF EXISTS `chaos_info`;
+CREATE TABLE `chaos_info` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `mu` varchar(64) NOT NULL,
   `create_time` datetime NOT NULL,
@@ -34,14 +34,14 @@ CREATE TABLE `order_info` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ROW_FORMAT=DYNAMIC;
 
 -- ----------------------------
--- Records of order_info
+-- Records of chaos_info
 -- ----------------------------
 
 -- ----------------------------
--- Table structure for order_user
+-- Table structure for chaos_user
 -- ----------------------------
-DROP TABLE IF EXISTS `order_user`;
-CREATE TABLE `order_user` (
+DROP TABLE IF EXISTS `chaos_user`;
+CREATE TABLE `chaos_user` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `mu` varchar(64) NOT NULL,
   `openid` varchar(255) NOT NULL,
@@ -78,5 +78,5 @@ CREATE TABLE `order_user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ROW_FORMAT=DYNAMIC;
 
 -- ----------------------------
--- Records of order_user
+-- Records of chaos_user
 -- ----------------------------

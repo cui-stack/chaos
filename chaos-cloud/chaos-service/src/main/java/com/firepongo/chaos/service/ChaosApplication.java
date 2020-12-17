@@ -6,8 +6,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
-@MapperScan("com.order.service.mapper")
-@ComponentScan(basePackages = {"com.firepongo", "com.order"})
+@MapperScan("com.firepongo.chaos.service.mapper")
+@ComponentScan(basePackages = {"com.firepongo"})
 public class ChaosApplication {
 
     public static void main(String[] args) {
