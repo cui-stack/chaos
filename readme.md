@@ -32,22 +32,22 @@ chaos-vue提供了通用后台UI模块，通用请求模块等等
 ## 开始使用
 1.  安装依赖，在根目录执行 
     ```   
-    mvn install
+    在/chaos/chaos-cloud-base/chaos-cloud-dependencies/目录执行 mvn install
+    在/chaos/目录执行mvn install
+    打开插件 enable lombook 
     ```
-2.  安装chaos-vue-base前端基础组件 
-    ```   
-    npm publish
-    ```
-3. 安装mysql，redis，nacos服务   
-4. 启动chaos-admin-service
+2. 安装mysql，redis，nacos服务   
+   ```
+   默认127.0.0.1
+   ``` 
+3. 启动chaos-admin-service
     ```  
     执行数据库脚本 init_chaos.sql
-    idea下启动SpringBoot项目方式
     ```
 5. 启动chaos-admin-back
     ```
-    在idea/vscode的相应目录下执行以下命令
-    npm install
+    在/chaos-admin/chaos-admin-back执行
+    npm install --registry=http://www.firepongo.tech:4873
     npm run dev
     访问127.0.0.1:8080可访问管理后台，默认账号密码（admin/admin123）   
     ```
@@ -56,10 +56,10 @@ chaos-vue提供了通用后台UI模块，通用请求模块等等
 8. 启动chaos-client
 9. 启动chaos-vue
     ```
-    在idea/vscode的相应目录下执行以下命令
+    在/chaos-vue执行
     npm install
     npm run dev
-    访问127.0.0.1:8081可访问管理后台，默认账号密码（admina/admin123）   
+    访问127.0.0.1:8080可访问管理后台，默认账号密码（admina/admin123）   
     ```
 
 ## 功能截图
@@ -86,7 +86,7 @@ chaos-vue提供了通用后台UI模块，通用请求模块等等
 4. mysql、mybatis-plus
 5. redis
 6. rabbit
-7. lombok、fastjson、hutool、qcloudsms
+7. lombok、jackson、hutool、qcloudsms
 8. swagger3
 9. hibernate-validator
 10. sentinel
