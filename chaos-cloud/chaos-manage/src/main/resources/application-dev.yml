@@ -1,7 +1,7 @@
 app:
   admin:
-    username: "order-manage-dev"
-    password: "order-manage-dev"
+    username: "chaos-manage-dev"
+    password: "chaos-manage-dev"
 spring:
   rabbitmq:
     addresses: localhost

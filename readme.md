@@ -40,10 +40,10 @@ chaos-vue提供了通用后台UI模块，通用请求模块等等功能
 2. 安装mysql，redis，nacos，nginx服务   
 ```
    默认地址:127.0.0.1
+   执行数据库脚本 /chaos/chaos-cloud/resource/init_chaos.sql
 ``` 
 3. 启动chaos-admin-service
 ```  
-   执行数据库脚本 /chaos/chaos-cloud/resource/init_chaos_admin.sql
    执行AdminApplication.main()
 ```
 4. 启动chaos-admin-back
@@ -55,7 +55,6 @@ chaos-vue提供了通用后台UI模块，通用请求模块等等功能
 ```
 5. 启动chaos-service
 ```
-   执行/chaos/chaos-cloud/resource/init_chaso_cloud.sql
    执行ChaosApplication.main()
 ```
 6. 启动chaos-manage

@@ -1,8 +1,8 @@
 app:
   admin:
-    host: "http://localhost:38089"
-    username: "order-manage-local"
-    password: "order-manage-local"
+    host: "http://127.0.0.1:38089"
+    username: "chaos-manage-local"
+    password: "chaos-manage-local"
 spring:
   rabbitmq:
     addresses: 127.0.0.1

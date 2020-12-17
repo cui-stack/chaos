@@ -10,10 +10,10 @@ dubbo:
   registry:
     address: spring-cloud://localhost
   cloud:
-    subscribed-services: order-service
+    subscribed-services: chaos-service
 spring:
   application:
-    name: order-client
+    name: chaos-client
   cloud:
     nacos:
       discovery:

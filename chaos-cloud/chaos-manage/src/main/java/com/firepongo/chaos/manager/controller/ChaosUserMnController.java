@@ -29,10 +29,10 @@ import lombok.extern.slf4j.Slf4j;
 * @since 2020-11-17
 */
 @Slf4j
-@Api(tags = "OrderUserMnController")
+@Api(tags = "ChaosUserMnController")
 @RestController
-@RequestMapping("/manage/orderUser")
-public class OrderUserMnController extends BaseController {
+@RequestMapping("/manage/chaosUser")
+public class ChaosUserMnController extends BaseController {
 
     @Reference
     private IChaosUserService iChaosUserService;

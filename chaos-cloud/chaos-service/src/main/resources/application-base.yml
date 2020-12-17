@@ -13,7 +13,7 @@ dubbo:
   registry:
     address: spring-cloud://localhost
   scan:
-    base-packages: com.firepongo.chaos.service
+    base-packages:  com.firepongo.chaos
   cloud:
     subscribed-services:
 spring:

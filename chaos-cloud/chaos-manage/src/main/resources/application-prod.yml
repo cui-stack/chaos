@@ -1,7 +1,7 @@
 app:
   admin:
-    username: "order-manage"
-    password: "order-manage"
+    username: "chaos-manage"
+    password: "chaos-manage"
 spring:
   rabbitmq:
     addresses: 127.0.0.1
