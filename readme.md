@@ -44,17 +44,17 @@ chaos-vue提供了通用后台UI模块，通用请求模块等等
     ```  
     执行数据库脚本 init_chaos.sql
     ```
-5. 启动chaos-admin-back
+4. 启动chaos-admin-back
     ```
     在/chaos-admin/chaos-admin-back执行
     npm install --registry=http://www.firepongo.tech:4873
     npm run dev
     访问127.0.0.1:8080可访问管理后台，默认账号密码（admin/admin123）   
     ```
-6. 启动chaos-service
-7. 启动chaos-manage
-8. 启动chaos-client
-9. 启动chaos-vue
+5. 启动chaos-service
+6. 启动chaos-manage
+7. 启动chaos-client
+8. 启动chaos-vue
     ```
     在/chaos-vue执行
     npm install
