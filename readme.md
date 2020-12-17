@@ -143,7 +143,6 @@ chaos是基于VUE的spa架构
 3. 通用对象PageData、RuleData  
 
 # 设计理念 
-
 ## 后端的设计和规范：  
 1. 数据库使用mysql。   
 2. 数据库表默认需要id、mu、create_time，modify_time，is_delete，version字段。   
