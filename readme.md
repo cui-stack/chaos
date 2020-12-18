@@ -16,6 +16,7 @@ chaos希望通过整合互联网优秀的框架，约定各端协议，整合第
 ## chaos的组成？    
 chaos-cloud是基于SpringCloud Alibaba，nacos，dubbo，openfeign等框架的服务端架构     
 chaos-vue是基于VUE，vuex，elementUI的前端架构
+chaos-weapp是基于微信原生，vant的微信小程序架构
 
 ## chaos的能力？ 
 chaos-admin是基于chaos架构和设计理念开发的管理系统（提供管理员，角色，权限，统一登录，日志记录等等功能）      
