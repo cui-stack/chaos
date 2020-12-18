@@ -80,7 +80,9 @@ npm run dev
 下载https://developers.weixin.qq.com/miniprogram/dev/devtools/download.html
 在chaos/chaos-cloud/chaos-client application-base.yml 配置（appid，secret）
 启动chaos-client
-微信开发者工具导入chaos/chaos-weapp，构建打开（默认关闭了登录功能）
+在微信开发者工具导入chaos/chaos-weapp，构建打开（默认关闭了登录功能）
+在chaos/chaos-weapp执行 npm install
+在微信开发者工具打开‘使用npm模块’，并构建npm
 ```
 ## 功能截图
 ![wx](image/1.png)
@@ -170,6 +172,10 @@ chaos是基于VUE的spa架构
 6. element-ui
 7. normalize
 8. less
+
+## chaos-weapp
+1. 微信原生
+2. vant
 
 ### 架构特性
 1. 通用组件Head、CenterHead、Input、Paging、SideMenu  
