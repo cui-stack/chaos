@@ -1,0 +1,12 @@
+1608258730467|20|statement|connection 0|url jdbc:p6spy:mysql://127.0.0.1:3306/chaos?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai|SELECT 1|SELECT 1
+1608258730486|2|statement|connection 1|url jdbc:p6spy:mysql://127.0.0.1:3306/chaos?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai|SELECT 1|SELECT 1
+1608258730486|1|statement|connection 0|url jdbc:p6spy:mysql://127.0.0.1:3306/chaos?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai|SELECT 1|SELECT 1
+1608258730489|1|statement|connection 1|url jdbc:p6spy:mysql://127.0.0.1:3306/chaos?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai|SELECT 1|SELECT 1
+1608258730550|6|statement|connection 0|url jdbc:p6spy:mysql://127.0.0.1:3306/chaos?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai|SELECT COUNT(1) FROM chaos_user WHERE is_delete = 0|SELECT COUNT(1) FROM chaos_user WHERE is_delete = 0
+1608258730550|6|statement|connection 1|url jdbc:p6spy:mysql://127.0.0.1:3306/chaos?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai|SELECT COUNT(1) FROM chaos_user WHERE is_delete = 0|SELECT COUNT(1) FROM chaos_user WHERE is_delete = 0
+1608258730561|0|statement|connection 2|url jdbc:p6spy:mysql://127.0.0.1:3306/chaos?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai|SELECT 1|SELECT 1
+1608258730563|1|statement|connection 2|url jdbc:p6spy:mysql://127.0.0.1:3306/chaos?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai|SELECT 1|SELECT 1
+1608258730566|2|statement|connection 2|url jdbc:p6spy:mysql://127.0.0.1:3306/chaos?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai|SELECT COUNT(1) FROM chaos_user WHERE is_delete = 0|SELECT COUNT(1) FROM chaos_user WHERE is_delete = 0
+1608260853187|0|statement|connection 3|url jdbc:p6spy:mysql://127.0.0.1:3306/chaos?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai|SELECT 1|SELECT 1
+1608260853191|0|statement|connection 3|url jdbc:p6spy:mysql://127.0.0.1:3306/chaos?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai|SELECT 1|SELECT 1
+1608260853198|6|statement|connection 3|url jdbc:p6spy:mysql://127.0.0.1:3306/chaos?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai|SELECT COUNT(1) FROM chaos_user WHERE is_delete = 0|SELECT COUNT(1) FROM chaos_user WHERE is_delete = 0

@@ -11,7 +11,7 @@ import java.util.Map;
 
 public class CodeGenerator {
 
-    public static void code(String[] args) {
+    public static void main(String[] args) {
         // 代码生成器
         AutoGenerator mpg = new AutoGenerator();
 
@@ -33,7 +33,7 @@ public class CodeGenerator {
             @Override
             public void initMap() {
                 Map<String, Object> params = new HashMap<String, Object>();
-                params.put("p", "com." + pc.getModuleName());
+                params.put("p", "com.firepongo." + pc.getModuleName());
                 params.put("a", pc.getModuleName().substring(0, 1).toUpperCase() + pc.getModuleName().substring(1));
                 this.setMap(params);
             }

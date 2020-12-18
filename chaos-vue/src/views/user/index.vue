@@ -1,21 +1,4 @@
-/**
- * pages模版快速生成脚本,执行命令 npm run tep `文件名`
- */
-
-const fs = require('fs');
-
-const dirName = process.argv[2];
-const upperDirName = dirName.charAt(0).toUpperCase() + dirName.slice(1)
-
-if (!dirName) {
-    console.log('文件夹名称不能为空！');
-    console.log('示例：npm run tep test');
-    process.exit(0);
-}
-
-// 页面模版
-const indexTep =
-`<template>
+<template>
     <el-container>
         <el-header>
             <el-container>
@@ -64,12 +47,12 @@ const indexTep =
     import {page} from 'chaos-data/mixin/page'
 
     export default {
-        name: '${dirName}',
+        name: 'user',
         mixins: [page],
         components: {
         },
         data() {
-            return PageData.dataData('chaos${upperDirName}', {
+            return PageData.dataData('chaosUser', {
                 title: '',
             }, {
                 mu: '',
@@ -130,15 +113,3 @@ const indexTep =
 
 </style>
 
-`;
-
-
-fs.mkdirSync(`./src/views/${dirName}`); // mkdir $1
-process.chdir(`./src/views/${dirName}`); // cd $1
-
-fs.writeFileSync('index.vue', indexTep);
-
-console.log(`模版${dirName}已创建,请手动增加route`);
-
-
-process.exit(0);

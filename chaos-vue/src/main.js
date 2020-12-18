@@ -9,7 +9,7 @@ import router from './router'
 import store from 'chaos-data/vuex/index';
 import ChaosVue from 'chaos-vue';
 import 'chaos-vue/lib/chaos-vue.css';
-import '@/styles/index.scss'
+import '@/styles/index.less'
 
 Vue.config.productionTip = false
 Vue.use(ElementUI);

@@ -1,9 +1,9 @@
 <template>
 
     <div>
-        <Head ></Head>
+        <Head></Head>
         <CenterHead></CenterHead>
-        <SideMenu> </SideMenu>
+        <SideMenu></SideMenu>
     </div>
 
 </template>

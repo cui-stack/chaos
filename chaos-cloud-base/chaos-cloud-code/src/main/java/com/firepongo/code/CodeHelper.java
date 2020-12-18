@@ -55,7 +55,7 @@ public class CodeHelper {
         // 包配置
         final PackageConfig pc = new PackageConfig();
         pc.setModuleName(CodeHelper.scanner("模块名"));
-        pc.setParent("com");
+        pc.setParent("com.firepongo");
         return pc;
     }
 
@@ -77,9 +77,9 @@ public class CodeHelper {
         DataSourceConfig dsc = new DataSourceConfig();
         dsc.setDriverName("com.mysql.cj.jdbc.Driver");
 
-        dsc.setUrl("jdbc:mysql://firepongo.tech:3306/chaos?useUnicode=true&useSSL=false&characterEncoding=utf8");
-        dsc.setUsername("fire");
-        dsc.setPassword("pongo");
+        dsc.setUrl("jdbc:mysql://127.0.0.1:3306/chaos?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone = GMT");
+        dsc.setUsername("root");
+        dsc.setPassword("root");
         mpg.setDataSource(dsc);
         return dsc;
     }
@@ -109,16 +109,16 @@ public class CodeHelper {
 
         focList.add(FileOutConfig(tp + "resources/mapper/mapper.xml.ftl", "/src/main/resources/mapper/", "Mapper" + StringPool.DOT_XML));
 
-        focList.add(FileOutConfig(tp + "java/api/data/data.ftl", "/src/main/java/com/" + pcmodel + "/api/data/", "Data" + StringPool.DOT_JAVA));
-        focList.add(FileOutConfig(tp + "java/api/entity/model.ftl", "/src/main/java/com/" + pcmodel + "/api/entity/", StringPool.DOT_JAVA));
-        focList.add(FileOutConfig(tp + "java/api/service/iservice.ftl", "/src/main/java/com/" + pcmodel + "/api/service/I", "Service" + StringPool.DOT_JAVA));
-        focList.add(FileOutConfig(tp + "java/service/impl/service_impl.ftl", "/src/main/java/com/" + pcmodel + "/service/impl/", "ServiceImpl" + StringPool.DOT_JAVA));
-        focList.add(FileOutConfig(tp + "java/service/mapper/mapper.ftl", "/src/main/java/com/" + pcmodel + "/service/mapper/", "Mapper" + StringPool.DOT_JAVA));
+        focList.add(FileOutConfig(tp + "java/api/data/data.ftl", "/src/main/java/com/firepongo/" + pcmodel + "/api/data/", "Data" + StringPool.DOT_JAVA));
+        focList.add(FileOutConfig(tp + "java/api/entity/model.ftl", "/src/main/java/com/firepongo/" + pcmodel + "/api/entity/", StringPool.DOT_JAVA));
+        focList.add(FileOutConfig(tp + "java/api/service/iservice.ftl", "/src/main/java/com/firepongo/" + pcmodel + "/api/service/I", "Service" + StringPool.DOT_JAVA));
+        focList.add(FileOutConfig(tp + "java/service/impl/service_impl.ftl", "/src/main/java/com/firepongo/" + pcmodel + "/service/impl/", "ServiceImpl" + StringPool.DOT_JAVA));
+        focList.add(FileOutConfig(tp + "java/service/mapper/mapper.ftl", "/src/main/java/com/firepongo/" + pcmodel + "/service/mapper/", "Mapper" + StringPool.DOT_JAVA));
 
-        focList.add(FileOutConfig(tp + "java/manager/controller/mncontroller.ftl", "/src/main/java/com/" + pcmodel + "/manager/controller/", "MnController" + StringPool.DOT_JAVA));
-        focList.add(FileOutConfig(tp + "java/client/controller/controller.ftl", "/src/main/java/com/" + pcmodel + "/client/controller/", "Controller" + StringPool.DOT_JAVA));
+        focList.add(FileOutConfig(tp + "java/manager/controller/mncontroller.ftl", "/src/main/java/com/firepongo/" + pcmodel + "/manager/controller/", "MnController" + StringPool.DOT_JAVA));
+        focList.add(FileOutConfig(tp + "java/client/controller/controller.ftl", "/src/main/java/com/firepongo/" + pcmodel + "/client/controller/", "Controller" + StringPool.DOT_JAVA));
         focList.add(FileOutConfig("templates/pom.xml.ftl", "/pom.xml"));
-        focList.add(FileOutConfig(tp + "Application.ftl", "/src/main/java/com/" + pcmodel + "/" + pcmodel.substring(0, 1).toUpperCase() + pcmodel.substring(1) + "Application" + StringPool.DOT_JAVA));
+        focList.add(FileOutConfig(tp + "Application.ftl", "/src/main/java/com/firepongo/" + pcmodel + "/" + pcmodel.substring(0, 1).toUpperCase() + pcmodel.substring(1) + "Application" + StringPool.DOT_JAVA));
 
         return focList;
     }
