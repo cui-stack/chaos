@@ -33,7 +33,7 @@ chaos-weapp提供了基础的微信原生小程序模板
 4. 了解docker使用（可选）   
 
 ## 构建服务
-1.  服务端模块安装，在根目录执行 
+1.  安卓服务端基础模块 
 ```   
 在/chaos/chaos-cloud-base/chaos-cloud-dependencies/目录执行 mvn install
 在/chaos/目录执行  mvn install
@@ -58,15 +58,15 @@ npm run dev
 ```
 5. 启动chaos-service
 ```
-启动ChaosApplication.main()
+执行ChaosApplication.main()
 ```
 6. 启动chaos-manage
 ```
-启动ChaosManageApplication.main()
+执行ChaosManageApplication.main()
 ```
 7. 启动chaos-client
 ```
-启动ChaosClientApplication.main()
+执行ChaosClientApplication.main()
 ```
 8. 启动chaos-vue
 ```
@@ -80,7 +80,7 @@ npm run dev
 在https://mp.weixin.qq.com/  微信公众平台-小程序-开发-开发管理-开发设置-开发者ID-获取（appid，secret）
 下载https://developers.weixin.qq.com/miniprogram/dev/devtools/download.html
 在chaos/chaos-cloud/chaos-client application-base.yml 配置（appid，secret）
-启动chaos-client
+执行ChaosClientApplication.main()
 在微信开发者工具导入chaos/chaos-weapp，构建打开（默认关闭了登录功能）
 在chaos/chaos-weapp执行 npm install
 在微信开发者工具打开‘使用npm模块’，并构建npm
