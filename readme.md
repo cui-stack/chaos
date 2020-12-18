@@ -21,6 +21,7 @@ chaos-vue是基于VUE，vuex，elementUI的前端架构
 chaos-admin是基于chaos架构和设计理念开发的管理系统（提供管理员，角色，权限，统一登录，日志记录等等功能）      
 chaos-cloud提供了通用登录服务，API鉴权等等功能    
 chaos-vue提供了通用后台UI模块，通用请求模块等等功能    
+chaos-weapp提供了基础的微信原生小程序模板
 
 # 快速开始
 ## 知识储备
@@ -73,7 +74,14 @@ npm install
 npm run dev
 访问127.0.0.1:8080可访问管理后台，默认账号密码（admina/admin123） （同时启动需要注意端口！）  
 ```
-
+9.启动chaos-weapp（原生微信小程序）
+```
+在https://mp.weixin.qq.com/  微信公众平台-小程序-开发-开发管理-开发设置-开发者ID-获取（appid，secret）
+下载https://developers.weixin.qq.com/miniprogram/dev/devtools/download.html
+在chaos/chaos-cloud/chaos-client application-base.yml 配置（appid，secret）
+启动chaos-client
+微信开发者工具导入chaos/chaos-weapp，构建打开（默认关闭了登录功能）
+```
 ## 功能截图
 ![wx](image/1.png)
 ![wx](image/3.png)

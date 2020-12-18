@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 import lombok.extern.slf4j.Slf4j;
+import org.apache.dubbo.config.annotation.Reference;
 
 /**
 *
@@ -32,7 +33,7 @@ import lombok.extern.slf4j.Slf4j;
 @RestController
 @RequestMapping("/api/${table.entityPath}")
 public class ${table.controllerName} extends ${superControllerClass} {
-    @Autowired
+    @Reference
     private I${entity}Service i${entity}Service;
 
     @PostMapping("/one")

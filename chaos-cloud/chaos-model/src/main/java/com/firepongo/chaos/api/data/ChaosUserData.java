@@ -1,5 +1,6 @@
 package com.firepongo.chaos.api.data;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.firepongo.chaos.app.db.DATA;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -47,7 +48,9 @@ public class ChaosUserData extends DATA{
     private String city;
 
     private String dist;
-
+    @JsonFormat(
+            pattern = "yyyy-MM-dd HH:mm:ss"
+    )
     private LocalDateTime lastloginTime;
 
     private String ip;

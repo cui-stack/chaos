@@ -1,0 +1,36 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/web/web"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#f8f8f8",
+    "navigationBarTitleText": "去火星",
+    "navigationBarTextStyle": "black"
+  },
+  "debug": false,
+  "functionalPages": false,
+  "requiredBackgroundModes": [
+    "audio",
+    "location"
+  ],
+  "plugins": {},
+  "resizable": false,
+  "usingComponents": {
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "获取您的位置用于服务"
+    }
+  },
+  "sitemapLocation": "sitemap.json",
+  "useExtendedLib": {
+    "weui": true
+  },
+  "darkmode": false,
+  "networkTimeout": {
+    "request": 10000,
+    "downloadFile": 10000
+  }
+}

@@ -1,3 +1,7 @@
+app:
+  wxmini:
+    appid:
+    secret:
 server:
   port: 58899
 feign:
