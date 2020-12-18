@@ -19,7 +19,7 @@ chaos-vue是基于VUE，vuex，elementUI的前端架构
 chaos-weapp是基于微信原生，vant的微信小程序架构
 
 ## chaos的能力？ 
-chaos-admin是基于chaos架构和设计理念开发的管理系统（提供管理员，角色，权限，统一登录，日志记录等等功能）      
+chaos-admin是基于chaos架构和设计理念开发的管理系统（提供管理员，角色，权限，统一登录，日志等等功能）      
 chaos-cloud提供了通用登录服务，API鉴权等等功能    
 chaos-vue提供了通用后台UI模块，通用请求模块等等功能    
 chaos-weapp提供了基础的微信原生小程序模板
