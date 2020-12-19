@@ -33,7 +33,7 @@ chaos-weapp提供了基础的微信原生小程序模板
 4. 了解docker使用（可选）   
 
 ## 构建服务
-1.  安卓服务端基础模块 
+1.  安装服务端基础模块 
 ```   
 在/chaos/chaos-cloud-base/chaos-cloud-dependencies/目录执行 mvn install
 在/chaos/目录执行  mvn install
@@ -179,9 +179,7 @@ chaos是基于VUE的spa架构
 2. vant
 
 ### 架构特性
-1. 通用组件Head、CenterHead、Input、Paging、SideMenu  
-2. 通用函数fetch、store、Data、show  
-3. 通用对象PageData、RuleData  
+1. 通用函数fetch、store、Data、show  
 
 # 设计理念 
 ## 后端的设计和规范：  
