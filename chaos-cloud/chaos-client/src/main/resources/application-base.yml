@@ -39,7 +39,7 @@ swagger:
   enable: true
   application-name: ${spring.application.name}
   application-version: 1.0
-  application-description: iya swagger api
+  application-description: chaos client swagger api
   try-host: http://localhost:${server.port}
 logging:
   level:

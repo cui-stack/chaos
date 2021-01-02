@@ -17,15 +17,16 @@ chaos希望通过整合互联网优秀的框架，约定协议，整合第三方
 chaos-cloud是基于SpringCloud Alibaba，nacos，dubbo，openfeign等框架的服务端架构     
 chaos-vue是基于VUE，vuex，elementUI的前端架构       
 chaos-weapp是基于微信原生，vant的微信小程序架构
+chaos-umi是基于umi（dva（redux）/react hooks，antDesign.Pro，less）的前端架构
 
 ## chaos的能力？ 
 chaos-admin是基于chaos架构和设计理念开发的管理系统（提供管理员，角色，权限，统一登录，日志等等功能）      
 chaos-cloud提供了通用登录服务，API鉴权等等功能    
-chaos-vue提供了通用后台UI模块，通用请求模块等等功能    
+chaos-vue/chaos-umi提供了通用后台UI模块，通用请求模块等等功能    
 chaos-weapp提供了基础的微信原生小程序模板
 
 # 快速开始
-## 知识储备
+## 预备知识
 本架构面向于全栈开发，语言主要使用java，javaScript，使用架构前需要了解：
 1. 使用IDEA，vscode，git完成项目开发    
 2. 使用maven，npm完成代码组件构建
@@ -71,7 +72,7 @@ npm run dev
 8. 启动chaos-vue
 ```
 在/chaos/chaos-vue执行
-npm install
+npm install --registry=http://www.firepongo.tech:4873
 npm run dev
 访问127.0.0.1:8080可访问管理后台，默认账号密码（admina/admin123） （同时启动需要注意端口！）  
 ```

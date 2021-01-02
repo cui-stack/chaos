@@ -5,6 +5,7 @@ const getters = {
   baseUrl: state => state.app.baseUrl,
   isCollapse: state => state.app.isCollapse,
   asideWidth: state => state.app.asideWidth,
+  path: state => state.app.path,
 }
 export default getters
 

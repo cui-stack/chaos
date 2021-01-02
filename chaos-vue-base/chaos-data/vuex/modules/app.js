@@ -9,7 +9,8 @@ const state = {
         prod: ''
     },
     isCollapse: false,
-    asideWidth: 300
+    asideWidth: 300,
+    path:'/back/'
 }
 
 const mutations = {
@@ -18,6 +19,9 @@ const mutations = {
     },
     SetBaseUrl(state, data) {
         state.baseUrl = data
+    },
+    SetPath(state, data) {
+        state.path = data
     },
     ToggleSidebar: state => {
         state.isCollapse = !state.isCollapse
@@ -36,6 +40,9 @@ const actions = {
     },
     setBaseUrl({commit}, data) {
         commit('SetBaseUrl', data)
+    },
+    setPath({commit}, data) {
+        commit('SetPath', data)
     },
     toggleSideBar({commit}) {
         commit('ToggleSidebar')

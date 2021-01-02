@@ -37,7 +37,7 @@ httpService.interceptors.response.use(
                 type: 'info',
                 message: "登录失效,请重新登录!"
             });
-            window.location.href = '/back/'
+            window.location.href = store.getters.path;
             return
         }
         if (response.data.code == 408) {

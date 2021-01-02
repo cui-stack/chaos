@@ -1,13 +1,9 @@
-app:
-  admin:
-    username: "order-client-dev"
-    password: "order-client-dev"
 spring:
   rabbitmq:
-    addresses: localhost
+    addresses: 127.0.0.1
     username: admin
     password: admin
   redis:
-    host: localhost
-    password: admin
+    host: 127.0.0.1
+    password:
 
