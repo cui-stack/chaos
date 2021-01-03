@@ -1,8 +1,10 @@
 package com.firepongo.chaos.app.db;
 
 import com.baomidou.mybatisplus.annotation.*;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDateTime;
 
@@ -16,6 +18,8 @@ public class MuModel extends Model {
     private Integer id;
     @TableId(value = "mu", type = IdType.ASSIGN_ID)
     private String mu;
+    @JsonFormat
+    @DateTimeFormat
     @TableField(value = "create_time", fill = FieldFill.INSERT)
     private LocalDateTime createTime;
     @TableField(value = "modify_time", fill = FieldFill.INSERT_UPDATE, select = false)
