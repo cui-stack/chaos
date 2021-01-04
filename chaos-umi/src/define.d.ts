@@ -18,6 +18,11 @@ export interface PageParamsType extends ParamsType {
 }
 
 
+export interface ProTableParams {
+    pageSize?: number;
+    current?: number;
+    keyword?: string;
+}
 
 
 

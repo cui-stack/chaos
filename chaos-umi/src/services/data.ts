@@ -1,16 +1,17 @@
 import request from '@/utils/request';
-import { ParamsType, PageParamsType } from '@/define';
+import { ParamsType, ProTableParams } from '@/define';
 
-export async function add(domain: string, data: ParamsType, cb?: Function) {
+
+export async function add(domain: string, data: ParamsType) {
     const res = await request('/manage/'.concat(domain).concat('/add'), {
         method: 'POST',
         data,
     });
-    if (cb) cb(res);
+    return res;
 
 }
 
-export async function update(domain: string, mu: string, data: ParamsType, cb?: Function) {
+export async function update(domain: string, mu: string, data: ParamsType) {
     const res = await request('/manage/'.concat(domain).concat('/update'), {
         method: 'POST',
         data: {
@@ -18,58 +19,69 @@ export async function update(domain: string, mu: string, data: ParamsType, cb?: 
             data
         },
     });
-    if (cb) cb(res);
+    return res;
 }
 
-export async function remove(domain: string, mu: string, cb?: Function) {
+export async function remove(domain: string, mu: string) {
     const res = await request('/manage/'.concat(domain).concat('/delete'), {
         method: 'POST',
         data: { mu },
     });
-    if (cb) cb(res);
+    return res;
 }
 
-export async function page(domain: string, params: PageParamsType) {
-    const { pageNum, pageSize, ...rest } = params;
-    return request('/manage/'.concat(domain).concat('/page'), {
+export async function page(domain: string, params: ProTableParams) {
+    const { current, pageSize, ...rest } = params;
+    const res = await request('/manage/'.concat(domain).concat('/page'), {
         method: 'POST',
         data: {
-            pageNum, pageSize, data: { ...rest }
+            pageNum: current, pageSize, data: { ...rest }
         },
     });
+    return res;
+
 }
 
-export async function list(domain: string, data: ParamsType, cb?: Function) {
+export async function list(domain: string, data: ParamsType) {
     const res = await request('/manage/'.concat(domain).concat('/list'), {
         method: 'POST',
         data,
     });
-    if (cb) cb(res);
+    return res;
 }
 
-export async function one(domain: string, mu: string, cb?: Function) {
+export async function one(domain: string, mu: string) {
     const res = await request('/manage/'.concat(domain).concat('/one'), {
         method: 'POST',
         data: { mu },
     });
-    if (cb) cb(res);
+    return res;
 }
 
-export async function submit(method: string, data: ParamsType, cb?: Function) {
+export async function submit(method: string, data: ParamsType) {
     const res = await request('/manage/'.concat(method), {
         method: 'POST',
         data
     });
-    if (cb) cb(res);
+    return res;
 }
 
-export async function query(method: string, data: PageParamsType, cb?: Function) {
-    const { pageNum, pageSize, ...rest } = data;
+export async function search(method: string, data: ProTableParams) {
+    const { current, pageSize, ...rest } = data;
     const res = await request('/manage/'.concat(method), {
         method: 'POST',
         data: {
-            pageNum, pageSize, data: { ...rest }
+            pageNum: current, pageSize, data: { ...rest }
         },
     });
-    if (cb) cb(res);
+    return res;
+
+}
+
+export async function query(method: string, data: ParamsType) {
+    const res = await request('/manage/'.concat(method), {
+        method: 'POST',
+        data
+    });
+    return res;
 }
