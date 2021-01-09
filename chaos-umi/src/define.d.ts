@@ -13,8 +13,8 @@ export interface ParamsType {
 }
 
 export interface PageParamsType extends ParamsType {
-    pageSize?: number = 10;
-    pageNum?: number = 1;
+    pageSize?: number ;
+    pageNum?: number ;
 }
 
 

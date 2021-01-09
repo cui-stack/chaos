@@ -30,7 +30,7 @@ public class ChaosAdmin extends MuSortModel {
     @TableField("username")
     private String username;
 
-    @TableField(value = "password")
+    @TableField(value = "password",select = false)
     private String password;
 
     @TableField("name")
