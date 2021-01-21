@@ -43,6 +43,7 @@ public abstract class BaseController<T> {
         return request.getHeader("token");
     }
 
+
     public ManageLoginUser getMnLoginUserByToken(String token) {
         if (StringUtils.isEmpty(token)) {
             throw new BusinessException();
@@ -53,6 +54,14 @@ public abstract class BaseController<T> {
             throw new BusinessException();
         }
         return user;
+    }
+
+    public String getWxLoginUserMu(HttpServletRequest request) {
+        return getWxLoginUserByToken(getToken(request)).getMu();
+    }
+
+    public String getMnLoginUserMu(HttpServletRequest request) {
+        return getMnLoginUserByToken(getToken(request)).getMu();
     }
 
     public WxMiniLoginUser getWxLoginUserByToken(String token) {

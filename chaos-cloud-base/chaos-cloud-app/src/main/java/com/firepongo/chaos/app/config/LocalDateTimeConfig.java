@@ -25,7 +25,6 @@ public class LocalDateTimeConfig {
     private static final String DATETIME_FORMAT = "yyyy-MM-dd HH:mm:ss";
     private static final String TIME_FORMAT = "HH:mm:ss";
 
-
     @Bean
     public Jackson2ObjectMapperBuilderCustomizer jackson2ObjectMapperBuilderCustomizer() {
         return builder -> builder.serializerByType(LocalDateTime.class, new LocalDateTimeSerializer(DateTimeFormatter.ofPattern(DATETIME_FORMAT)))

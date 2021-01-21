@@ -18,6 +18,7 @@
         <module>chaos-cloud-web</module>
         <module>chaos-cloud-code</module>
         <module>chaos-cloud-admin</module>
+        <module>chaos-cloud-ws</module>
 
     </modules>
 </project>

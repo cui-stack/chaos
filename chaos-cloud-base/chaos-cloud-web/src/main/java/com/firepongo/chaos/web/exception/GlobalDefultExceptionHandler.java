@@ -39,7 +39,7 @@ public class GlobalDefultExceptionHandler {
     @ResponseBody
     public Result authenticationException(AuthenticationException e) {
         Result result = e.getResult();
-        //requestLogService.logRqquest(e.getRequest(), IpUtil.getIpAddr(e.getRequest()), e.getRequest().getRequestURI(), -1, "token:" + e.getRequest().getHeader("token"), result.getMsg());
+        requestLogService.logRequest(e.getRequest(), IpUtil.getIpAddr(e.getRequest()), e.getRequest().getRequestURI(), -1, "token:" + e.getRequest().getHeader("token"), result.getMsg(), null);
         log.warn("认证错误编码[{}],错误信息[{}]", result.getCode(), result.getMsg());
         return result;
     }
