@@ -115,6 +115,13 @@ public class ChaosAdminMnController extends BaseController {
     }
 
     @ManageLoginToken
+    @PostMapping("/listAdminRole")
+    @ApiOperation(value = "", notes = "", httpMethod = "POST")
+    public DataResult<ChaosAdminData> listAdminRole(@RequestBody ChaosAdminData data) throws Exception {
+        return dataResult(iChaosAdminService.listAdminRole(data));
+    }
+
+    @ManageLoginToken
     @PostMapping("/updateAdminRole")
     @ApiOperation(value = "", notes = "", httpMethod = "POST")
     public DataResult<Boolean> updateAdminRole(@ApiParam(value = "") @RequestBody @Validated UpdateData<ChaosAdminData> data, BindingResult bindingResult) throws Exception {

@@ -37,4 +37,5 @@ public interface IChaosAdminService extends IService<ChaosAdmin> {
 
     boolean updateLoginLog(UpdateData<ChaosAdminData> data);
 
+    List<ChaosAdminData> listAdminRole(ChaosAdminData data);
 }

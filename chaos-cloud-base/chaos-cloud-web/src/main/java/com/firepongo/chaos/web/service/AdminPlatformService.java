@@ -28,6 +28,7 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.LinkedHashMap;
+import java.util.List;
 
 /**
  * @author G.G
@@ -52,6 +53,7 @@ public class AdminPlatformService {
     private String username;
     @Value("${app.admin.password:}")
     private String password;
+
     @Autowired(required = false)
     private ILogService iLogService;
 
@@ -79,6 +81,9 @@ public class AdminPlatformService {
         return result;
     }
 
+    /**
+     * 内部服务登录Admin系统
+     */
     public void platformLogin() {
         ObjectMapper mapper = new ObjectMapper();
         JsonNode rootNode = mapper.createObjectNode();
@@ -96,6 +101,15 @@ public class AdminPlatformService {
         }
     }
 
+    /**
+     * 使用用户+密码+渠道MU在Admin系统登录
+     *
+     * @param username
+     * @param password
+     * @param platformMu
+     * @return
+     * @throws AuthenticationException
+     */
     public ManageLoginUser userLogin(String username, String password, String platformMu) throws AuthenticationException {
         ObjectMapper mapper = new ObjectMapper();
         JsonNode rootNode = mapper.createObjectNode();
@@ -104,13 +118,8 @@ public class AdminPlatformService {
         ((ObjectNode) rootNode).put("platformMu", platformMu);
         String json = getJson(mapper, rootNode);
         DataResult<ManageLoginUser> result = (DataResult<ManageLoginUser>) requestAdmin("/manage/chaos_admin/selectByUp", json);
-        if (result.getCode().equals(ResultEnum.SUCCESS.getCode())) {
-            ManageLoginUser user = mapper.convertValue(result.getData(), new TypeReference<ManageLoginUser>() {
-            });
-            return user;
-        } else {
-            return null;
-        }
+        return result.getCode().equals(ResultEnum.SUCCESS.getCode()) ? mapper.convertValue(result.getData(), new TypeReference<ManageLoginUser>() {
+        }) : null;
     }
 
     public ManageLoginUser doPhoneLogin(String phone, String platformMu) throws AuthenticationException {
@@ -194,6 +203,29 @@ public class AdminPlatformService {
         ((ObjectNode) rootNode).putPOJO("data", dataNode);
         String json = getJson(mapper, rootNode);
         PageResult<ChaosAdminData> result = (PageResult<ChaosAdminData>) requestAdmin("/manage/chaos_admin/page", json, PageResult.class);
+        return result;
+    }
+
+    public DataResult<List<ChaosAdminData>> listAdmin(ChaosAdminData data) {
+        ObjectMapper mapper = new ObjectMapper();
+        JsonNode rootNode = mapper.createObjectNode();
+        ((ObjectNode) rootNode).put("platformMu", data.getPlatformMu());
+        ((ObjectNode) rootNode).put("status", data.getStatus());
+
+        String json = getJson(mapper, rootNode);
+        DataResult<List<ChaosAdminData>> result = (DataResult<List<ChaosAdminData>>) requestAdmin("/manage/chaos_admin/list", json, DataResult.class);
+        return result;
+    }
+
+    public DataResult<List<ChaosAdminData>> listAdminRole(ChaosAdminData data) {
+        ObjectMapper mapper = new ObjectMapper();
+        JsonNode rootNode = mapper.createObjectNode();
+        ((ObjectNode) rootNode).put("platformMu", data.getPlatformMu());
+        ((ObjectNode) rootNode).put("status", data.getStatus());
+        ((ObjectNode) rootNode).put("roleMu", data.getRoleMu());
+
+        String json = getJson(mapper, rootNode);
+        DataResult<List<ChaosAdminData>> result = (DataResult<List<ChaosAdminData>>) requestAdmin("/manage/chaos_admin/listAdminRole", json, DataResult.class);
         return result;
     }
 

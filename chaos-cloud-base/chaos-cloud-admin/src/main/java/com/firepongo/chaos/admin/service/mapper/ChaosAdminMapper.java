@@ -6,6 +6,8 @@ import com.firepongo.chaos.admin.api.entity.ChaosAdmin;
 import com.firepongo.chaos.app.admin.ChaosAdminData;
 import org.apache.ibatis.annotations.Param;
 
+import java.util.List;
+
 /**
  * <p>
  *  Mapper 接口
@@ -22,4 +24,5 @@ public interface ChaosAdminMapper extends BaseMapper<ChaosAdmin> {
 
     boolean updateLoginLog(@Param("mu") String mu,@Param("ip") String ip);
 
+    List<ChaosAdminData> listAdminRole(@Param("query") ChaosAdminData data);
 }

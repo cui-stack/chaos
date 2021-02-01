@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.firepongo.chaos.admin.service.mapper.ChaosAdminMapper">
+
     <update id="updateLoginLog">
         UPDATE chaos_admin
         SET login_times = login_times + 1,lastlogin_time=now(),
@@ -11,26 +12,46 @@
 
     <select id="selectIndexLink" resultType="com.firepongo.chaos.app.admin.ChaosRoleData">
         SELECT
-	        ir.index_link,ir.info
+	        cr.index_link,cr.info
         FROM
-            chaos_admin ia
-        LEFT JOIN chaos_admin_role iar ON ia.mu = iar.admin_mu
-        LEFT JOIN chaos_role ir ON iar.role_mu = ir.mu
+            chaos_admin ca
+        LEFT JOIN chaos_admin_role car ON ca.mu = car.admin_mu
+        LEFT JOIN chaos_role cr ON car.role_mu = cr.mu
         WHERE
-	        ia.mu = #{mu}
+	        ca.mu = #{mu}
     </select>
+
     <select id="selectAdminRoleByMU"
             resultType="com.firepongo.chaos.app.admin.ChaosAdminData">
         SELECT
-            ia.username,
-            ia. NAME,
-            ia.`status`,
-            ia.platform_mu,
-            iar.role_mu
+            ca.username,
+            ca. NAME,
+            ca.`status`,
+            ca.platform_mu,
+            car.role_mu
         FROM
-            chaos_admin ia
-        LEFT JOIN chaos_admin_role iar ON iar.admin_mu = ia.mu
+            chaos_admin ca
+        LEFT JOIN chaos_admin_role car ON car.admin_mu = ca.mu
         WHERE
-            ia.mu = #{mu}
+            ca.mu = #{mu}
     </select>
+
+    <select id="listAdminRole"
+            resultType="com.firepongo.chaos.app.admin.ChaosAdminData">
+        SELECT
+            ca.mu,
+            ca.username,
+            ca. NAME,
+            ca.`status`,
+            ca.platform_mu,
+            car.role_mu
+        FROM
+            chaos_admin ca
+        LEFT JOIN chaos_admin_role car ON car.admin_mu = ca.mu
+        WHERE
+            ca.platform_mu = #{query.platformMu}
+            and car.role_mu = #{query.roleMu}
+            and ca.status = #{query.status}
+    </select>
+
 </mapper>

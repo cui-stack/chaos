@@ -17,7 +17,9 @@ public enum ResultEnum {
     //5xx 请求错误(业务)
     FAILURE("500", "执行失败"),
     VALIDATE("501", "参数错误"),
-    UNKONW_ERROR("555", "未知错误");
+    UNKONW_ERROR("555", "未知错误"),
+
+    SQL_DUPLICATE_KEY("560", "数据重复");
 
     private String code;
     private String defaultMsg;

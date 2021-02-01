@@ -65,6 +65,11 @@ public class ChaosAdminServiceImpl extends ServiceImpl<ChaosAdminMapper, ChaosAd
     }
 
     @Override
+    public List<ChaosAdminData> listAdminRole(ChaosAdminData data) {
+        return baseMapper.listAdminRole(data);
+    }
+
+    @Override
     public ChaosAdminData selectByMU(MU data) {
         return (ChaosAdminData) convertService.convertToDTO(getOne(new QueryWrapper<ChaosAdmin>()
                 .eq(Table.MU, data.getMu())), ChaosAdminData.class);
