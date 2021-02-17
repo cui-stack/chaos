@@ -4,7 +4,7 @@
 ![](https://img.shields.io/badge/license-MIT-483D8B.svg)
 
 #  简介
-    Chaos是一个前后端分离的快速开发架构，chaos架构包括服务端架构、中后台架构，微信原生小程序架构等部分组成。   
+    chaos是一个前后端分离的快速开发架构，chaos架构包括服务端架构、中后台架构，微信原生小程序架构等部分组成。   
     1.服务端架构chaos-cloud（java）基于SpringCloudAlibaba、dubbo、nacos、MybatisPlus、jwt、redis、Swagger2等组成。
     2.中后台架构chaos-umi（TypeScript）基于react（hooks）、umi、AntDesignPro
     3.中后台架构chaos-vue（javascript）基于vue2、ElementUI、axios
