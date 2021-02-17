@@ -3,14 +3,14 @@
 ![](https://img.shields.io/badge/language-TypeScript-483D8B.svg)
 ![](https://img.shields.io/badge/license-MIT-483D8B.svg)
 
-#  简介
+#   简介
     chaos是一个前后端分离的快速开发架构，chaos架构包括服务端架构、中后台架构，微信原生小程序架构等部分组成。   
     1.服务端架构chaos-cloud（java）基于SpringCloudAlibaba、dubbo、nacos、MybatisPlus、jwt、redis、Swagger2等组成。
     2.中后台架构chaos-umi（TypeScript）基于react（hooks）、umi、AntDesignPro
     3.中后台架构chaos-vue（javascript）基于vue2、ElementUI、axios
     4.微信原生小程序架构chaos-weapp（javascript）基于vant
 
-#  特性
+#   特性
 ##  chaos-cloud
     1.通用登录服务（ManageLogin\wxminiLogi\AppLogin）  
     2.API鉴权和拦截
@@ -25,13 +25,13 @@
 ##  chaos-weapp
     ？ 
 
-# 快速开始
+#   快速开始
     本架构面向于全栈开发，使用前需要了解以下知识
     1.IDEA、vscode、git、lombook   
     2.maven、npm  
     3.linux、docker   
 
-## 构建
+##  构建
     1.安装开发环境（windows）
       执行chaos-ops下startup.cmd
     2.安装服务器环境(linux)
@@ -52,7 +52,7 @@
 ![wx](image/4.png)
 ![wx](image/5.png)
 
-## 开发流程
+##  开发流程
     chaos架构约定了数据库表的设计和API的设计，通常完成一个项目包含以下几个步骤
     1.完成数据库设计，/chaos/chaos-ops/init_mu_table.sql提供了默认建表语句
     2.使用代码生成器chaos-cloud-code生成服务端代码
@@ -83,13 +83,13 @@
       
     5.登录chao-vue后台
 
-## 生产部署
+##  生产部署
     脚本目录:/chaos/chaos-ops/deploy/
     docker-compose.yml 安装redis，nacos，nginx
     nginx.conf 默认nginx配置
 
-# 设计理念 
-## 后端的设计和规范：  
+#   设计理念 
+##  后端的设计和规范：  
     1.数据库使用mysql。   
     2.数据库表默认需要id、mu、create_time，modify_time，is_delete，version字段。   
     3.服务端代码结构包括：model（实体和接口定义），service（服务实现），manage（后台接口），client（前台接口）。  
@@ -99,7 +99,7 @@
     7.web层默认提供Restful服务（只使用post），manage服务提供add，delete，update，one，list，page；client提供提供one，list，page。   
     8.对于基础业务可以通过chaos-cloud-code代码快速生成（通过代码生成可以节约88%的开发时间）。  
 
-## 前端的设计和规范  
+##  前端的设计和规范  
     1.前端fetch处理协议级业务，包括http code逻辑，token逻辑，lastPost逻辑。  
     2.提供Data.js处理后端服务接口包括（add，remove，update，one，list，page）和（search，query，submit）。    
     3.提供PageData.js，定义页面数据。    
