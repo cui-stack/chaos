@@ -1,4 +1,4 @@
-package com.firepongo.chaos.web.service;
+package com.firepongo.chaos.web.service.admin;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -15,6 +15,8 @@ import com.firepongo.chaos.app.result.ResultEnum;
 import com.firepongo.chaos.app.result.data.DataResult;
 import com.firepongo.chaos.app.result.page.PageResult;
 import com.firepongo.chaos.web.exception.AuthenticationException;
+import com.firepongo.chaos.web.service.ILogService;
+import com.firepongo.chaos.web.service.RedisService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;

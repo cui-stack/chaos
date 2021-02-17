@@ -1,6 +1,6 @@
 package com.firepongo.chaos.manager;
 
-import com.firepongo.chaos.web.service.AdminPlatformService;
+import com.firepongo.chaos.web.service.admin.AdminPlatformService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

@@ -4,7 +4,7 @@ import com.firepongo.chaos.app.login.LoginDto;
 import com.firepongo.chaos.app.login.LoginUser;
 import com.firepongo.chaos.app.login.manage.ManageLoginDto;
 import com.firepongo.chaos.app.login.manage.ManageLoginUser;
-import com.firepongo.chaos.web.service.AdminPlatformService;
+import com.firepongo.chaos.web.service.admin.AdminPlatformService;
 import com.firepongo.chaos.web.service.login.manage.ManageLoginServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

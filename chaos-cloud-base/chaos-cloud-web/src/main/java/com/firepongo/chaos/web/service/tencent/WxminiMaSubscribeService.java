@@ -28,7 +28,7 @@ import java.util.Map;
  * @date 2020/2/25 19:32
  */
 @Component
-public class WxminiMaSubscribeHelper {
+public class WxminiMaSubscribeService {
     @Value("${app.wxmini.appid:}")
     private String appid;
     @Value("${app.wxmini.secret:}")

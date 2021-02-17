@@ -4,32 +4,46 @@
 ![](https://img.shields.io/badge/license-MIT-483D8B.svg)
 
 #   简介
-    chaos是一个前后端分离的快速开发架构，chaos架构包括服务端架构、中后台架构，微信原生小程序架构等部分组成。   
-    1.服务端架构chaos-cloud（java）基于SpringCloudAlibaba、dubbo、nacos、MybatisPlus、jwt、redis、Swagger2等组成。
-    2.中后台架构chaos-umi（TypeScript）基于react（hooks）、umi、AntDesignPro
-    3.中后台架构chaos-vue（javascript）基于vue2、ElementUI、axios
-    4.微信原生小程序架构chaos-weapp（javascript）基于vant
+    chaos是一个前后端分离的快速开发架构，架构包括服务端架构、中后台架构，微信原生小程序架构等部分组成。   
+    1.服务端架构chaos-cloud（java）基于SpringCloudAlibaba、dubbo、nacos、MybatisPlus、jwt、redis、Swagger2等框架组成。
+    2.中后台架构chaos-umi（TypeScript）基于react（hooks）、umi、AntDesignPro等框架组成。
+    3.中后台架构chaos-vue（javascript）基于vue2、ElementUI、axios等框架组成。
+    4.微信原生小程序架构chaos-weapp（javascript）基于vant等框架组成。
 
 #   特性
 ##  chaos-cloud
     1.通用登录服务（ManageLogin\wxminiLogi\AppLogin）  
-    2.API鉴权和拦截
-
+    2.API鉴权和拦截（@AppLoginToken\@ManageLoginToken\@WxminiLoginToken\@AccessLimit\@AccessTotalLimit）
+    3.全局日志
+    4.控制层协议定义（DATA->Result<DTO>）
+    5.通用异常定义
+    6.通用log（待完善!）
+    7.常用helper（WxminiHelper）
+    8.常用service（BaiduLbsyunService\AmapService\TencentSmsService\WxminiMaSubscribeService\AdminPlatformService）
 ##  chaos-admin
-    1.平台、管理员、角色、资源等的管理功能
-    2.日志收集和展示
-
-##  chaos-vue/chaos-umi
     1.登录
-    2.
+    2.平台、管理员、角色、资源等的管理功能
+    3.日志管理
+    4.在线管理员
+    5.主页管理
+##  chaos-vue/chaos-umi
+    1.欢迎
+    2.登录
+    3.在线管理员
+    4.在线用户
+    5.访问限制
+    6.用户管理
 ##  chaos-weapp
-    ？ 
+    1.隐式登录
+    2.webview
+    3.主页
 
 #   快速开始
     本架构面向于全栈开发，使用前需要了解以下知识
     1.IDEA、vscode、git、lombook   
     2.maven、npm  
     3.linux、docker   
+    4.mysql、redis、nacos
 
 ##  构建
     1.安装开发环境（windows）
