@@ -11,5 +11,4 @@ module.exports = {
     assetsDir: "static",
     publicPath: './',
     productionSourceMap: false
-
 }

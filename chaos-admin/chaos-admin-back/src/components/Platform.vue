@@ -31,7 +31,7 @@
             this.list()
         },
         methods: {
-            list() {
+            async list() {
                 Data.list(this.table, {}, (res) => {
                     this.platforms = res.data
                     this.mu = this.platforms[0].mu
