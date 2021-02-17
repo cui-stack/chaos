@@ -75,7 +75,7 @@
          meta: {title: "用户列表"},
          component: () => import('@/views/user/index')
       }
-    4.在chaos-admin-back添加资源和给角色授权页面，详情如下
+    4.在chaos-admin-back添加资源和给角色授权页面，详情如下图
     
 ![wx](image/chaos-vue-1.png)
 ![wx](image/chaos-vue-2.png)
@@ -89,7 +89,7 @@
     nginx.conf 默认nginx配置
 
 #   设计理念 
-##  后端的设计和规范：  
+##  后端的设计和规范  
     1.数据库使用mysql。   
     2.数据库表默认需要id、mu、create_time，modify_time，is_delete，version字段。   
     3.服务端代码结构包括：model（实体和接口定义），service（服务实现），manage（后台接口），client（前台接口）。  
