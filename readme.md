@@ -45,7 +45,7 @@
     3.linux、docker   
     4.mysql、redis、nacos
 
-##  构建
+##  环境搭建
     1.安装开发环境（windows）
       执行chaos-ops下startup.cmd
     2.安装服务器环境(linux)
