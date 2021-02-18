@@ -21,7 +21,7 @@
          ├── chaos-cloud-ws -- websocket 
          ├── chaos-cloud-search -- elasticSearch
          ├── chaos-cloud-code -- 代码生成                             
-    └── chaos-cloud -- 服务端
+    ├── chaos-cloud -- 服务端
          ├── chaos-model -- 实体定义模块
          ├── chaos-service -- 服务模块[8899]
          ├── chaos-manage -- 后台服务模块[38899]
@@ -37,15 +37,14 @@
 #   特性
 ##  chaos-cloud
     1.通用登录服务（ManageLogin\wxminiLogi\AppLogin）  
-    2.API鉴权和拦截（@AppLoginToken\@ManageLoginToken\@WxminiLoginToken
-      \@AccessLimit\@AccessTotalLimit）
+    2.API鉴权和拦截（@AppLoginToken\@ManageLoginToken\@WxminiLoginToken\@AccessLimit\@AccessTotalLimit）
     3.全局日志
     4.控制层协议定义（DATA->Result<DTO>）
     5.通用异常定义
     6.通用log（待完善!）
     7.常用helper（WxminiHelper）
-    8.常用service（BaiduLbsyunService\AmapService\TencentSmsService
-      \WxminiMaSubscribeService\AdminPlatformService）
+    8.常用service（BaiduLbsyunService\AmapService\TencentSmsService\WxminiMaSubscribeService
+      \AdminPlatformService）
 ##  chaos-admin
     1.登录
     2.平台、管理员、角色、资源等的管理功能
