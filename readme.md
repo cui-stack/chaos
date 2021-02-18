@@ -5,7 +5,8 @@
 
 #   简介
     chaos是一个前后端分离的快速开发架构，架构由服务端架构、中后台架构，微信原生小程序架构等部分组成。   
-    1.服务端架构chaos-cloud（java）基于SpringCloudAlibaba（2.2.1.RELEASE）、dubbo、nacos、MybatisPlus、jwt、redis、Swagger2等框架组成。
+    1.服务端架构chaos-cloud（java）基于SpringCloudAlibaba（2.2.1.RELEASE）、dubbo、nacos、
+      MybatisPlus、jwt、redis、Swagger2等框架组成。
     2.中后台架构chaos-umi（TypeScript）基于react（16.8.6）、umi（3.2.14）、AntDesignPro（v4）等框架组成。
     3.中后台架构chaos-vue（javascript）基于vue（2.6.12）、ElementUI（2.14.1）、axios等框架组成。
     4.微信原生小程序架构chaos-weapp（javascript）基于vant等框架组成。
@@ -36,13 +37,15 @@
 #   特性
 ##  chaos-cloud
     1.通用登录服务（ManageLogin\wxminiLogi\AppLogin）  
-    2.API鉴权和拦截（@AppLoginToken\@ManageLoginToken\@WxminiLoginToken\@AccessLimit\@AccessTotalLimit）
+    2.API鉴权和拦截（@AppLoginToken\@ManageLoginToken\@WxminiLoginToken
+      \@AccessLimit\@AccessTotalLimit）
     3.全局日志
     4.控制层协议定义（DATA->Result<DTO>）
     5.通用异常定义
     6.通用log（待完善!）
     7.常用helper（WxminiHelper）
-    8.常用service（BaiduLbsyunService\AmapService\TencentSmsService\WxminiMaSubscribeService\AdminPlatformService）
+    8.常用service（BaiduLbsyunService\AmapService\TencentSmsService
+      \WxminiMaSubscribeService\AdminPlatformService）
 ##  chaos-admin
     1.登录
     2.平台、管理员、角色、资源等的管理功能
@@ -80,7 +83,8 @@
     6.启动chaos-manage
     7.启动chaos-client
     8.启动chaos-vue/chaos-umi  
-      访问127.0.0.1:8080可访问管理后台，默认账号密码（admina/admin123）（同时启动需要注意端口！）  
+      访问127.0.0.1:8080可访问管理后台，默认账号密码（admina/admin123）
+      （同时启动需要注意端口！）  
     9.启动chaos-weapp（原生微信小程序）
     
 ## 功能截图
@@ -133,8 +137,9 @@
     4.实体定义：MuModel对应数据库表结构、Data对应协议结构、Data默认等同于排除默认字段的MuModel结构。   
     5.服务间提供dubbo、feign两种调用方式，service间使用dubbo调用，web层（manage，client）使用feign调用。    
     6.service处理事务，包括本地事务和分布式事务（通过seata，待补充支持）。  
-    7.web层默认提供Restful服务（只使用post），manage服务提供add，delete，update，one，list，page；client提供提供one，list，page。   
-    8.对于基础业务可以通过chaos-cloud-code代码快速生成（通过代码生成可以节约88%的开发时间）。  
+    7.web层默认提供Restful服务（只使用post），manage服务提供add，delete，update，one，list，page；
+      client提供提供one，list，page。   
+    8.对于基础业务可以通过chaos-cloud-code代码快速生成。  
 
 ##  前端的设计和规范  
     1.前端fetch处理协议级业务，包括http code逻辑，token逻辑，lastPost逻辑。  
@@ -142,7 +147,7 @@
     3.提供PageData.js，定义页面数据。    
     4.使用vuex处理全局数据，提供admin，app模块。??    
     5.使用mixin，提供page分页的通用mixin。??   
-    6.对于通用页面可以通过npm run tmp创建（通过代码生成可以节约88%的开发时间）。
+    6.对于通用页面可以通过npm run tmp创建。
 
 # 联系我们
 ![wx](image/wx_mine_486x629.jpg)
