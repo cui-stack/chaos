@@ -4,11 +4,34 @@
 ![](https://img.shields.io/badge/license-MIT-483D8B.svg)
 
 #   简介
-    chaos是一个前后端分离的快速开发架构，架构包括服务端架构、中后台架构，微信原生小程序架构等部分组成。   
-    1.服务端架构chaos-cloud（java）基于SpringCloudAlibaba、dubbo、nacos、MybatisPlus、jwt、redis、Swagger2等框架组成。
-    2.中后台架构chaos-umi（TypeScript）基于react（hooks）、umi、AntDesignPro等框架组成。
-    3.中后台架构chaos-vue（javascript）基于vue2、ElementUI、axios等框架组成。
+    chaos是一个前后端分离的快速开发架构，架构由服务端架构、中后台架构，微信原生小程序架构等部分组成。   
+    1.服务端架构chaos-cloud（java）基于SpringCloudAlibaba（2.2.1.RELEASE）、dubbo、nacos、MybatisPlus、jwt、redis、Swagger2等框架组成。
+    2.中后台架构chaos-umi（TypeScript）基于react（16.8.6）、umi（3.2.14）、AntDesignPro（v4）等框架组成。
+    3.中后台架构chaos-vue（javascript）基于vue（2.6.12）、ElementUI（2.14.1）、axios等框架组成。
     4.微信原生小程序架构chaos-weapp（javascript）基于vant等框架组成。
+#   模块
+    chaos
+    ├── chaos-cloud-base -- 基于SpringCloud的服务端架构实现
+         ├── chaos-cloud-dependencies -- 依赖定义
+         ├── chaos-cloud-parent -- maven parent
+         ├── chaos-cloud-app -- app业务相关定义
+         ├── chaos-cloud-web -- web业务相关定义
+         ├── chaos-cloud-admin -- 管理系统实现
+         ├── chaos-cloud-ws -- websocket 
+         ├── chaos-cloud-search -- elasticSearch
+         ├── chaos-cloud-code -- 代码生成                             
+    └── chaos-cloud -- 服务端
+         ├── chaos-model -- 实体定义模块
+         ├── chaos-service -- 服务模块[8899]
+         ├── chaos-manage -- 后台服务模块[38899]
+         ├── chaos-client -- 客户端服务模块[58899]
+    ├── chaos-admin -- 管理系统
+         ├── chaos-admin-service -- 实体定义模块[38089]
+         ├── chaos-admin-back -- 管理后台[8080]    
+    └── chaos-vue  -- 后台[8080] 
+    └── chaos-umi  -- 后台[8080] 
+    └── chaos-weapp  -- 微信小程序
+    └── chaos-ops -- 运维
 
 #   特性
 ##  chaos-cloud
