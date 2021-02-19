@@ -1,18 +1,18 @@
 <template>
-  <div>
-    <el-select v-model="mu"
-               @change="handleChange"
-               placeholder="请选择角色">
-      <el-option v-for="item in roles"
-                 :key="item.mu"
-                 :label="item.info"
-                 :value="item.mu">
-      </el-option>
-    </el-select>
-  </div>
+    <div>
+        <el-select v-model="mu"
+                   @change="handleChange"
+                   placeholder="请选择角色">
+            <el-option v-for="item in roles"
+                       :key="item.mu"
+                       :label="item.info"
+                       :value="item.mu">
+            </el-option>
+        </el-select>
+    </div>
 </template>
 <script>
-  import Data from 'chaos-data/common/Data';
+    import Data from '@/chaos/functions/common/Data';
 
     export default {
         name: 'Role',

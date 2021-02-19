@@ -6,7 +6,7 @@
                 <el-input style="width: 220px" v-model="name"
                           placeholder="请输入管理员姓名"/>
                 <Platform v-model="platformMu"
-                          @handleChange="handleChange"/>
+                          @platformChange="platformChange"/>
                 <el-button type="primary" @click="search">搜索</el-button>
             </el-container>
         </el-header>
@@ -16,48 +16,60 @@
                 <el-table-column prop="mu" label="编号" width="200"/>
                 <el-table-column prop="username" label="账号" min-width="120"/>
                 <el-table-column prop="name" label="姓名" width="120"/>
-                <el-table-column prop="lastloginTime" sortable label="最后登录" width="200"/>
+                <el-table-column prop="lastloginTime" sortable label="最后登录"
+                                 width="200"/>
                 <el-table-column prop="ip" label="登录IP" width="140"/>
-                <el-table-column prop="loginTimes" sortable label="登录次数" width="120">
+                <el-table-column prop="loginTimes" sortable label="登录次数"
+                                 width="120">
                     <template slot-scope="scope">
                         <el-tag>{{scope.row.loginTimes}}</el-tag>
                     </template>
                 </el-table-column>
                 <el-table-column label="状态" width="120">
                     <template slot-scope="scope">
-                        <div style="color: #67c23a" v-if="scope.row.status=='1'">
+                        <div style="color: #67c23a"
+                             v-if="scope.row.status=='1'">
                             停用
                         </div>
-                        <div style="color: #f56c6c" v-if="scope.row.status=='0'">
+                        <div style="color: #f56c6c"
+                             v-if="scope.row.status=='0'">
                             正常
                         </div>
                     </template>
                 </el-table-column>
-                <el-table-column prop="createTime" sortable label="创建时间" width="200"/>
+                <el-table-column prop="createTime" sortable label="创建时间"
+                                 width="200"/>
                 <el-table-column label="操作" width="195">
                     <template slot-scope="scope">
-                        <el-button plain @click="showUpdate(scope.row.mu)">编辑</el-button>
-                        <el-button style="margin: 0px" plain @click="doDelete(scope.row.mu)">删除</el-button>
+                        <el-button plain @click="showUpdate(scope.row.mu)">编辑
+                        </el-button>
+                        <el-button style="margin: 0px" plain
+                                   @click="doDelete(scope.row.mu)">删除
+                        </el-button>
                     </template>
                 </el-table-column>
             </el-table>
-            <Paging :currentPage="currentPage" :total="total" :limit="limit"
-                    @handleCurrentChange="handleCurrentChange"
-                    @handleSizeChange="handleSizeChange"/>
+            <Pagination :currentPage="currentPage" :total="total" :limit="limit"
+                        @handleCurrentChange="handleCurrentChange"
+                        @handleSizeChange="handleSizeChange"/>
         </el-main>
     </el-container>
 </template>
 
 <script>
-    import Data from 'chaos-data/common/Data';
-    import PageData from 'chaos-data/common/PageData';
+    import Pagination from '@/chaos/components/Pagination'
+    import Data from '@/chaos/functions/common/Data';
+    import PageData from '@/chaos/functions/common/PageData';
     import Platform from '@/components/Platform'
     import {eventBus} from '@/main'
+    import {page} from '@/chaos/functions/mixin/page'
 
     export default {
         components: {
-            Platform
+            Platform,
+            Pagination
         },
+        mixins: [page],
         data() {
             return PageData.tableData('chaos_admin', {
                 name: '',
@@ -65,20 +77,19 @@
             })
         },
         created() {
-            eventBus.$on('inited', (message) => {
-                this.platformMu = message
+            eventBus.$on('platformInited', (platformMu) => {
+                this.platformMu = platformMu
                 this.search()
             })
         },
         methods: {
-            search() {
-                Data.page(this.table, this.currentPage, this.limit, {
+            async search() {
+                const res = await Data.page(this.table, this.currentPage, this.limit, {
                     name: this.name,
                     platformMu: this.platformMu
-                }, (res) => {
-                    this.tableData = res.list;
-                    this.total = parseInt(res.total);
                 })
+                this.tableData = res.list;
+                this.total = parseInt(res.total);
             },
             showAdd() {
                 this.$router.push('/addAdmin')
@@ -100,19 +111,10 @@
                     this.platformMu = this.platforms[0].mu
                 })
             },
-            handleChange(val) {
+            platformChange(val) {
                 this.platformMu = val
                 this.search()
             },
-            handleCurrentChange(val) {
-                this.currentPage = val;
-                this.search();
-            },
-            handleSizeChange(val) {
-                this.limit = val;
-                this.currentPage = 1;
-                this.search();
-            }
         }
     }
 </script>

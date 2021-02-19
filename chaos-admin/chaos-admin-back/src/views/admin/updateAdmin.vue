@@ -73,12 +73,13 @@
 </template>
 
 <script>
-    import Data from 'chaos-data/common/Data';
-    import PageData from 'chaos-data/common/PageData'
-    import RuleData from 'chaos-data/common/RuleData'
+    import Data from '@/chaos/functions/common/Data';
+    import PageData from '@/chaos/functions/common/PageData'
+    import RuleData from '@/chaos/functions/common/RuleData'
+    import {Message} from 'element-ui';
 
     export default {
-        name: 'updateAdmin',
+        name: 'UpdateAdmin',
         data() {
             return PageData.dataData('chaos_admin', {
                     username: '',
@@ -107,33 +108,30 @@
                     max: 36,
                     key: 'phone',
                     msg: "请输入手机"
-                }])
-                , {
+                }]), {
                     platforms: [],
                     roles: [],
                 }
             )
         },
         created() {
-            if (!this.$route.params.mu) {
-                this.$router.push('/admin')
-                return
-            }
-            Data.query(this.table, 'adminRole', {
-                mu: this.$route.params.mu
-            }, (res) => {
-                this.form = res.data
-                Data.list('chaos_platform', {}, (res) => {
-                    this.platforms = res.data
-                    Data.list('chaos_role', {platformMu: this.form.platformMu}, (res) => {
-                        this.roles = res.data;
-                    })
-                })
-            })
+            this.init()
         },
         methods: {
+            async init() {
+                if (!this.$route.params.mu) {
+                    await this.$router.push('/admin')
+                    return
+                }
+                const form = await Data.query(this.table + '/adminRole', {
+                    mu: this.$route.params.mu
+                })
+                this.platforms = await Data.list('chaos_platform')
+                this.roles = await Data.list('chaos_role', {platformMu: form.platformMu})
+                this.form = form
+            },
             onSubmit() {
-                Data.submit(this.table, 'updateAdminRole', {
+                Data.submit(this.table + '/updateAdminRole', {
                     mu: this.$route.params.mu,
                     data: {
                         username: this.form.username,
@@ -144,7 +142,11 @@
                         platformMu: this.form.platformMu
                     }
                 }, () => {
-                    //this.$router.push('/admin')
+                    Message({
+                        type: 'success',
+                        message: '更新成功!'
+                    });
+                    this.$router.push('/admin')
                 })
             },
             changePlatform() {

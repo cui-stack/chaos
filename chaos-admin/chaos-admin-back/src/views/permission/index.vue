@@ -168,10 +168,10 @@
 </template>
 
 <script>
-    import Data from 'chaos-data/common/Data'
-    import PageData from 'chaos-data/common/PageData'
-    import RuleData from 'chaos-data/common/RuleData'
-    import {page} from 'chaos-data/mixin/page'
+    import Data from '@/chaos/functions/common/Data'
+    import PageData from '@/chaos/functions/common/PageData'
+    import RuleData from '@/chaos/functions/common/RuleData'
+    import {page} from '@/chaos/functions/mixin/page'
 
     export default {
         mixins: [page],

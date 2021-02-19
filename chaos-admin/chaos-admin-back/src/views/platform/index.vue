@@ -91,8 +91,8 @@
 </template>
 
 <script>
-    import Data from 'chaos-data/common/Data';
-    import {page} from 'chaos-data/mixin/page'
+    import Data from '@/chaos/functions/common/Data';
+    import {page} from '@/chaos/functions/mixin/page'
 
     export default {
         components: {},

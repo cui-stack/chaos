@@ -6,21 +6,20 @@
         <el-main>
             <el-alert style="margin-bottom: 20px"
                       title="Tips：标星的内容为必填项"
-                      type="success">
-            </el-alert>
+                      type="success"/>
             <el-form ref="form" :model="form" :rules="rules" label-width="100px"
                      size="small">
                 <el-form-item label="账号" prop="username">
-                    <el-input v-model="form.username" style="width:280px"
-                              placeholder="请输入账号"></el-input>
+                    <el-input v-model="form.username"
+                              placeholder="请输入账号"/>
                     <span style="margin-left: 20px">邮箱、手机号码、qq号码</span>
                 </el-form-item>
                 <el-form-item label="密码" prop="password">
-                    <el-input v-model="form.password" style="width:280px"
-                              placeholder="请输入密码"></el-input>
+                    <el-input v-model="form.password"
+                              placeholder="请输入密码"/>
                 </el-form-item>
                 <el-form-item label="姓名">
-                    <el-input v-model="form.name" style="width:280px"
+                    <el-input v-model="form.name"
                               placeholder="请输入名称"></el-input>
                 </el-form-item>
                 <el-form-item label="平台">
@@ -41,19 +40,19 @@
                     </el-select>
                 </el-form-item>
                 <el-form-item label="电话" prop="phone">
-                    <el-input v-model="form.phone" style="width:280px"
+                    <el-input v-model="form.phone"
                               placeholder="请输入电话"></el-input>
                 </el-form-item>
                 <el-form-item label="邮箱">
-                    <el-input v-model="form.email" style="width:280px"
+                    <el-input v-model="form.email"
                               placeholder="请输入电话"></el-input>
                 </el-form-item>
                 <el-form-item label="QQ">
-                    <el-input v-model="form.qq" style="width:280px"
+                    <el-input v-model="form.qq"
                               placeholder="请输入QQ"></el-input>
                 </el-form-item>
                 <el-form-item label="地址">
-                    <el-input v-model="form.addr" style="width:280px"
+                    <el-input v-model="form.addr"
                               placeholder="请输入地址"></el-input>
                 </el-form-item>
                 <el-form-item label="账号状态">
@@ -73,13 +72,12 @@
 </template>
 
 <script>
-    import Data from 'chaos-data/common/Data';
-    import PageData from 'chaos-data/common/PageData'
-    import RuleData from 'chaos-data/common/RuleData'
-    import fetch from 'chaos-data/axios/fetch'
+    import Data from '@/chaos/functions/common/Data';
+    import PageData from '@/chaos/functions/common/PageData'
+    import RuleData from '@/chaos/functions/common/RuleData'
 
     export default {
-        name: 'addAdmin',
+        name: 'AddAdmin',
         data() {
             return PageData.dataData('chaos_admin', {
                     username: '',
@@ -108,8 +106,7 @@
                     max: 36,
                     key: 'phone',
                     msg: "请输入手机"
-                }])
-                , {
+                }]), {
                     platforms: [],
                     roles: [],
                 }
@@ -120,30 +117,28 @@
         },
         methods: {
             async init() {
-                let res = await fetch.post('/manage/chaos_platform/list', {})
-                this.platforms = res.data;
+                const res = await Data.list('chaos_platform')
+                this.platforms = res;
                 this.form.platformMu = this.platforms[0].mu
-                let roleRes = await fetch.post('/manage/chaos_role/list', {platformMu: this.form.platformMu})
-                this.roles = roleRes.data;
-                this.form.roleMu = this.roles[0].mu
+                this.listRole()
             },
             onSubmit() {
-                Data.validate(this, 'form', () => {
-                    Data.add(this.table, this.form, () => {
-                        this.$router.push('/admin')
-                    })
+                Data.validate(this, 'form', async () => {
+                    await Data.add(this.table, this.form)
+                    await this.$router.push('/admin')
                 })
             },
-            listRole() {
-                Data.list('chaos_role', {platformMu: this.form.platformMu}, (res) => {
-                    this.roles = res.data;
-                    this.form.roleMu = this.roles[0].mu
-                })
+            async listRole() {
+                let roleRes = await Data.list('chaos_role', {platformMu: this.form.platformMu})
+                this.roles = roleRes;
+                this.form.roleMu = this.roles[0].mu
             }
 
         }
     }
 </script>
 <style scoped>
-
+    .el-input {
+        width: 280px
+    }
 </style>

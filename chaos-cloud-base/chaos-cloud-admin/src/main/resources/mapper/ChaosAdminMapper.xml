@@ -28,7 +28,8 @@
             ca. NAME,
             ca.`status`,
             ca.platform_mu,
-            car.role_mu
+            car.role_mu,
+            ca.phone
         FROM
             chaos_admin ca
         LEFT JOIN chaos_admin_role car ON car.admin_mu = ca.mu

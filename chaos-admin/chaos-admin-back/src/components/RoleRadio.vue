@@ -1,17 +1,17 @@
 <template>
-  <div>
-    <el-radio-group v-model="mu" @change="handleChange">
-      <el-radio v-for="item in roles"
-                :key="item.mu"
-                :label="item.mu">
-        {{item.info}}
-      </el-radio>
-    </el-radio-group>
-  </div>
+    <div>
+        <el-radio-group v-model="mu" @change="handleChange">
+            <el-radio v-for="item in roles"
+                      :key="item.mu"
+                      :label="item.mu">
+                {{item.info}}
+            </el-radio>
+        </el-radio-group>
+    </div>
 </template>
 <script>
-  import Data from 'chaos-data/common/Data';
-  import {eventBus} from '@/main'
+    import Data from '@/chaos/functions/common/Data';
+    import {eventBus} from '@/main'
 
     export default {
         name: 'RoleRadio',

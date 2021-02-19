@@ -14,7 +14,7 @@
     </div>
 </template>
 <script>
-    import Data from 'chaos-data/common/Data';
+    import Data from '@/chaos/functions/common/Data';
     import {eventBus} from '@/main'
 
     export default {
@@ -32,14 +32,13 @@
         },
         methods: {
             async list() {
-                Data.list(this.table, {}, (res) => {
-                    this.platforms = res.data
-                    this.mu = this.platforms[0].mu
-                    eventBus.$emit('inited', this.mu)
-                })
+                const res = await Data.list(this.table)
+                this.platforms = res
+                this.mu = this.platforms[0].mu
+                eventBus.$emit('platformInited', this.mu)
             },
             handleChange(val) {
-                this.$emit("handleChange", val)
+                this.$emit("platformChange", val)
             }
         }
     }

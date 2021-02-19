@@ -1,15 +1,40 @@
 {
-  "name": "chaos-admin-back",
+  "name": "chaos-vue",
   "version": "1.0.0",
+  "vue": {
+    "devServer": {
+      "proxy": {
+        "/": {
+          "target": "http://localhost:38089",
+          "changeOrigin": true,
+          "ws": false
+        }
+      }
+    },
+    "assetsDir": "static",
+    "publicPath": "./",
+    "productionSourceMap": false
+  },
   "scripts": {
     "dev": "vue-cli-service serve",
     "lint": "vue-cli-service lint",
-    "build": "vue-cli-service build "
+    "build:dev": "vue-cli-service build --VUE_APP_ENV=dev   ",
+    "build": "vue-cli-service build --VUE_APP_ENV=prod   ",
+    "tep": "node src/chaos/template"
   },
   "dependencies": {
-    "chaos-data": "^1.0.44",
-    "chaos-vue": "^1.0.56",
-    "normalize.css": "7.0.0"
+    "axios": "^0.21.1",
+    "babel-polyfill": "^6.26.0",
+    "chaos-data": "^1.0.41",
+    "core-js": "^3.8.1",
+    "cos-js-sdk-v5": "^0.5.27",
+    "element-ui": "^2.14.1",
+    "normalize.css": "7.0.0",
+    "vue": "^2.6.12",
+    "vue-router": "^3.4.9",
+    "vue-wechat-title": "^2.0.7",
+    "vuex": "^3.6.0",
+    "vuex-along": "^1.2.11"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.4.0",
@@ -19,6 +44,8 @@
     "babel-eslint": "^10.1.0",
     "eslint": "^6.7.2",
     "eslint-plugin-vue": "^6.2.2",
+    "less": "^3.12.2",
+    "less-loader": "^7.1.0",
     "vue-template-compiler": "^2.6.12"
   },
   "eslintConfig": {
@@ -47,7 +74,7 @@
     "last 2 versions",
     "not dead"
   ],
-  "main": "babel.config.js",
+  "main": "src/chaos/babel.config.js",
   "keywords": [
     "chaos"
   ],

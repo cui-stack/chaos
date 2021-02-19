@@ -138,12 +138,12 @@
 </template>
 
 <script>
-    import fetch from 'chaos-data/axios/fetch'
+    import fetch from '@/chaos/functions/axios/fetch'
 
-    import Data from 'chaos-data/common/Data'
-    import PageData from 'chaos-data/common/PageData'
-    import RuleData from 'chaos-data/common/RuleData'
-    import Array from 'chaos-data/common/Array'
+    import Data from '@/chaos/functions/common/Data'
+    import PageData from '@/chaos/functions/common/PageData'
+    import RuleData from '@/chaos/functions/common/RuleData'
+    import Array from '@/chaos/functions/common/Array'
 
     export default {
         components: {},

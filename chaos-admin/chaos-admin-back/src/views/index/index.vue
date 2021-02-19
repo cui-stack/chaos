@@ -22,7 +22,7 @@
 </template>
 
 <script>
-    import Data from 'chaos-data/common/Data';
+    import Data from '@/chaos/functions/common/Data';
     export default {
         name: 'Index',
         data() {
