@@ -1,21 +1,28 @@
 <template>
-    <div>
-        <el-select v-model="mu"
-                   @change="handleChange"
-                   placeholder="请选择角色">
-            <el-option v-for="item in roles"
-                       :key="item.mu"
-                       :label="item.info"
-                       :value="item.mu">
-            </el-option>
-        </el-select>
-    </div>
+    <el-select v-model="mu" placeholder="请选择角色" @change="roleChange">
+        <el-option v-for="item in roles" :key="item.mu" :label="item.info"
+                   :value="item.mu"/>
+    </el-select>
 </template>
 <script>
     import Data from '@/chaos/functions/common/Data';
 
     export default {
         name: 'Role',
+        props: {
+            role: {
+                type: Object,
+            },
+        },
+        watch: {
+            async role(role) {
+                const {platformMu, roleMu} = role
+                if (platformMu) {
+                    await this.list()
+                    this.mu = roleMu || this.roles[0].mu
+                }
+            },
+        },
         data() {
             return {
                 table: 'chaos_role',
@@ -23,23 +30,14 @@
                 mu: ''
             }
         },
-        props: {},
-        mounted() {
-            this.list()
-        },
         methods: {
-            list() {
-                Data.list(this.table, {}, (res) => {
-                    this.roles = res.data
-                    this.mu = this.roles[0].mu
-                })
+            async list() {
+                this.roles = await Data.list(this.table, {platformMu: this.role.platformMu})
             },
-            handleChange(val) {
-                this.$emit("handleChange", val)
+            roleChange(roleMu) {
+                this.mu = roleMu
+                this.$emit("roleChange", roleMu)
             }
         }
     }
 </script>
-<style scoped>
-
-</style>

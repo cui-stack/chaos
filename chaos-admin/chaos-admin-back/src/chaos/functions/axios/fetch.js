@@ -82,7 +82,7 @@ httpService.interceptors.response.use(
             if (response.data.page) {
                 return response.data.page;
             }
-            return
+            return false
         }
         Message({
             type: 'error',

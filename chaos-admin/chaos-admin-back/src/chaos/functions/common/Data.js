@@ -17,13 +17,14 @@ function remove(domain, mu, callback) {
         type: 'warning',
         center: true
     }).then(async () => {
-        const res = fetch.post('/manage/' + domain + '/delete', {mu})
+        const res = await fetch.post('/manage/' + domain + '/delete', {mu})
         if (res) {
             Message({
                 type: 'success',
                 message: '删除成功!'
             });
-            callback()
+            if (callback)
+                callback(res)
         } else {
             Message({
                 type: 'warning',
@@ -91,7 +92,17 @@ function submit(method, data, callback) {
     }).then(async () => {
         const res = await fetch.post('/manage/' + method, data)
         if (res) {
-            callback()
+            Message({
+                type: 'success',
+                message: '处理成功!'
+            });
+            if (callback)
+                callback(res)
+        } else {
+            Message({
+                type: 'warning',
+                message: '处理失败!'
+            });
         }
     }).catch(() => {
         Message({
@@ -101,13 +112,12 @@ function submit(method, data, callback) {
     });
 }
 
-function validate(form, formName, f) {
+function validate(form, formName, callback) {
     form.$refs[formName].validate((valid) => {
-        if (valid) {
-            f()
-        } else {
+        if (!valid) {
             return false;
         }
+        callback()
     });
 }
 

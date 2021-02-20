@@ -7,7 +7,7 @@
         "/": {
           "target": "http://localhost:38089",
           "changeOrigin": true,
-          "ws": false
+          "ws": true
         }
       }
     },

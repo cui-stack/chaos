@@ -1,24 +1,29 @@
 <template>
-    <div>
-        <el-select
-                v-model="mu"
-                @change="handleChange"
-                placeholder="请选择平台">
-            <el-option
-                    v-for="item in platforms"
-                    :key="item.mu"
-                    :label="item.name"
-                    :value="item.mu">
-            </el-option>
-        </el-select>
-    </div>
+    <el-select v-model="mu" @change="platformChange" placeholder="请选择平台">
+        <el-option v-for="item in platforms" :key="item.mu" :label="item.name"
+                   :value="item.mu"/>
+    </el-select>
 </template>
 <script>
     import Data from '@/chaos/functions/common/Data';
-    import {eventBus} from '@/main'
 
     export default {
         name: 'Platform',
+        props: {
+            platformMu: {
+                type: String,
+                default: ''
+            },
+            inited: {
+                type: Boolean,
+                default: true
+            },
+        },
+        watch: {
+            platformMu(platformMu) {
+                this.mu = platformMu
+            },
+        },
         data() {
             return {
                 table: 'chaos_platform',
@@ -26,23 +31,17 @@
                 mu: ''
             }
         },
-        props: {},
-        created() {
-            this.list()
+        async created() {
+            this.platforms = await Data.list(this.table)
+            if (this.inited) {
+                this.platformChange(this.platforms[0].mu)
+            }
         },
         methods: {
-            async list() {
-                const res = await Data.list(this.table)
-                this.platforms = res
-                this.mu = this.platforms[0].mu
-                eventBus.$emit('platformInited', this.mu)
-            },
-            handleChange(val) {
-                this.$emit("platformChange", val)
+            platformChange(platformMu) {
+                this.mu = platformMu
+                this.$emit("platformChange", this.mu)
             }
         }
     }
 </script>
-<style scoped>
-
-</style>

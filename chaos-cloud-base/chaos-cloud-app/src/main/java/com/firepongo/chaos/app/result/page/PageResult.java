@@ -17,5 +17,4 @@ import lombok.experimental.Accessors;
 public class PageResult<T> extends Result {
     private PageList<T> page;
 
-
 }

@@ -2,41 +2,20 @@
     <el-container>
         <el-header>
             <el-container>
-                <el-button type="primary" v-on:click="showAddForm=true">增加平台
+                <el-button type="primary" @click="showAddForm=true">增加平台
                 </el-button>
-                <el-input v-model="name"
-                          placeholder="请输入平台名称"></el-input>
-                <el-button type="primary" v-on:click="search">搜索</el-button>
+                <el-input v-model="name" placeholder="请输入平台名称"/>
+                <el-button type="primary" @click="search">搜索</el-button>
             </el-container>
         </el-header>
         <el-main>
-            <el-table
-                    :data="tableData"
-                    stripe>
-                <el-table-column
-                        prop="mu"
-                        label="编号"
-                        width="120">
-                </el-table-column>
-                <el-table-column
-                        prop="name"
-                        label="平台名称"
-                        min-width="120">
-                </el-table-column>
-                <el-table-column
-                        prop="createTime"
-                        sortable
-                        label="创建时间"
-                        min-width="120">
-                </el-table-column>
-                <el-table-column
-                        prop="info"
-                        label="介绍"
-                        min-width="120">
-                </el-table-column>
-                <el-table-column
-                        label="操作"
-                        width="178">
+            <el-table :data="tableData" stripe>
+                <el-table-column prop="mu" label="编号" width="120"/>
+                <el-table-column prop="name" label="平台名称" min-width="120"/>
+                <el-table-column prop="createTime" sortable label="创建时间"
+                                 min-width="120"/>
+                <el-table-column prop="info" label="介绍" min-width="120"/>
+                <el-table-column label="操作" width="178">
                     <template slot-scope="scope">
                         <el-button plain @click="showUpdate(scope.row.mu)">编辑
                         </el-button>
@@ -46,22 +25,19 @@
                     </template>
                 </el-table-column>
             </el-table>
-            <Paging :currentPage="currentPage" :total="total" :limit="limit"
-                    @handleCurrentChange="handleCurrentChange"
-                    @handleSizeChange="handleSizeChange"/>
+            <Pagination :currentPage="currentPage" :total="total" :limit="limit"
+                        @handleCurrentChange="handleCurrentChange"
+                        @handleSizeChange="handleSizeChange"/>
         </el-main>
         <el-footer>
             <el-dialog width="35%" title="添加平台" :visible.sync="showAddForm">
                 <el-form ref="form" :rules="rules" :model="form"
-                         label-width="100px"
-                         size="small">
+                         label-width="100px" size="small">
                     <el-form-item label="平台名称" prop="name">
-                        <el-input v-model="form.name"
-                                  placeholder="请输入平台名称"></el-input>
+                        <el-input v-model="form.name" placeholder="请输入平台名称"/>
                     </el-form-item>
-                    <el-form-item label="平台介绍" >
-                        <el-input v-model="form.info"
-                                  placeholder="请输入平台介绍"></el-input>
+                    <el-form-item label="平台介绍">
+                        <el-input v-model="form.info" placeholder="请输入平台介绍"/>
                     </el-form-item>
                     <el-form-item>
                         <el-button type="primary" @click="doAdd">确定</el-button>
@@ -70,15 +46,14 @@
             </el-dialog>
             <el-dialog width="35%" title="修改平台" :visible.sync="showUpdateForm">
                 <el-form ref="updateForm" :rules="rules" :model="updateForm"
-                         label-width="100px"
-                         size="small">
+                         label-width="100px" size="small">
                     <el-form-item label="平台名称" prop="name">
                         <el-input v-model="updateForm.name"
-                                  placeholder="请输入平台名称"></el-input>
+                                  placeholder="请输入平台名称"/>
                     </el-form-item>
-                    <el-form-item label="平台介绍" >
+                    <el-form-item label="平台介绍">
                         <el-input v-model="updateForm.info"
-                                  placeholder="请输入平台介绍"></el-input>
+                                  placeholder="请输入平台介绍"/>
                     </el-form-item>
                     <el-form-item>
                         <el-button type="primary" @click="doUpdate">确定
@@ -93,9 +68,10 @@
 <script>
     import Data from '@/chaos/functions/common/Data';
     import {page} from '@/chaos/functions/mixin/page'
+    import Pagination from '@/chaos/components/Pagination'
 
     export default {
-        components: {},
+        components: {Pagination},
         mixins: [page],
         data() {
             return {
@@ -133,29 +109,24 @@
             this.search()
         },
         methods: {
-            search() {
-                Data.page(this.table, this.currentPage, this.limit, {name: this.name}, (res) => {
-                    this.tableData = res.list;
-                    this.total = parseInt(res.total);
-                })
+            async search() {
+                const res = await Data.page(this.table, this.currentPage, this.limit, {name: this.name})
+                this.tableData = res.list;
+                this.total = res.total;
             },
-            doAdd() {
-                Data.add(this.table, this.form, () => {
-                    this.showAddForm = false
-                    this.search()
-                })
+            async doAdd() {
+                await Data.add(this.table, this.form)
+                this.showAddForm = false
+                this.search()
             },
-            showUpdate(mu) {
-                Data.one(this.table, mu, (res) => {
-                    this.updateForm = res.data
-                    this.showUpdateForm = true
-                })
+            async showUpdate(mu) {
+                this.updateForm = await Data.one(this.table, mu)
+                this.showUpdateForm = true
             },
-            doUpdate() {
-                Data.update(this.table, this.updateForm.mu, this.updateForm, () => {
-                    this.showUpdateForm = false
-                    this.search()
-                })
+            async doUpdate() {
+                await Data.update(this.table, this.updateForm.mu, this.updateForm)
+                this.showUpdateForm = false
+                this.search()
             },
             doDelete(mu) {
                 Data.remove(this.table, mu, () => {
