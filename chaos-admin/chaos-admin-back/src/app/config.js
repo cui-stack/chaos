@@ -13,12 +13,12 @@ export function routers() {
         path: '/addAdmin',
         name: 'addAdmin',
         meta: {title: "新增管理员"},
-        component: () => import ('@/views/admin/addAdmin')
+        component: () => import ('@/views/admin/add')
     }, {
         path: '/updateAdmin',
         name: 'updateAdmin',
         meta: {title: "修改管理员"},
-        component: () => import ('@/views/admin/updateAdmin')
+        component: () => import ('@/views/admin/update')
     }, {
         path: '/role',
         name: 'role',
@@ -49,15 +49,12 @@ export function routers() {
 
 export function baseUrl() {
     let baseUrl = ''
-    switch (process.env.VUE_APP_ENV) {
-        case 'prod':
+    switch (process.env.NODE_ENV) {
+        case 'development':
             baseUrl = ''
             break
-        case 'test':
-            baseUrl = ''
-            break
-        case 'dev':
-            baseUrl = '127.0.0.1:'
+        case 'production':
+            baseUrl = '/admin-api'
             break
     }
     return baseUrl

@@ -13,16 +13,17 @@
                     <span style="margin-left: 20px">邮箱、手机号码、qq号码</span>
                 </el-form-item>
                 <el-form-item label="密码" prop="password">
-                    <el-input v-model="form.password"
-                              placeholder="请输入密码"></el-input>
+                    <el-input v-model="form.password" placeholder="请输入密码"/>
                 </el-form-item>
                 <el-form-item label="姓名">
-                    <el-input v-model="form.name"
-                              placeholder="请输入名称"></el-input>
+                    <el-input v-model="form.name" placeholder="请输入名称"/>
                 </el-form-item>
                 <el-form-item label="平台">
-                    <Platform @platformChange="platformChange" inited="false"
-                              :platformMu="form.platformMu"/>
+                    <Platform
+                            @platformInit="platformInit"
+                            @platformChange="platformChange"
+                            inited="false"
+                            :platformMu="form.platformMu"/>
                 </el-form-item>
                 <el-form-item label="角色">
                     <Role @roleChange="roleChange" :role="role"/>
@@ -66,57 +67,47 @@
             Role
         },
         data() {
+            const rules = {
+                username: [
+                    {required: true, message: '请输入账号', trigger: 'blur'},
+                    {
+                        min: 2,
+                        max: 10,
+                        trigger: 'change',
+                        message: '长度在 2 到 10 个字符',
+                    }
+                ],
+                password: [
+                    {
+                        min: 2,
+                        max: 10,
+                        trigger: 'change',
+                        message: '长度在 2 到 10 个字符',
+                    }
+                ],
+                name: [
+                    {required: true, message: '请输入姓名', trigger: 'blur'},
+                    {
+                        min: 2,
+                        max: 10,
+                        trigger: 'change',
+                        message: '长度在 2 到 10 个字符',
+                    }
+                ],
+                phone: [
+                    {
+                        min: 11,
+                        max: 11,
+                        trigger: 'change',
+                        message: '请输入11位长度的电话号码',
+                    }
+                ],
+            }
             return {
+                rules,
+                form: {},
                 table: 'chaos_admin',
-                form: {
-                    username: '',
-                    password: '',
-                    name: '',
-                    platformMu: '',
-                    roleMu: '',
-                    phone: '',
-                    email: '',
-                    qq: '',
-                    addr: '',
-                    status: 0
-                },
                 role: {},
-                rules: {
-                    username: [
-                        {required: true, message: '请输入账号', trigger: 'blur'},
-                        {
-                            min: 2,
-                            max: 10,
-                            trigger: 'change',
-                            message: '长度在 2 到 10 个字符',
-                        }
-                    ],
-                    password: [
-                        {
-                            min: 2,
-                            max: 10,
-                            trigger: 'change',
-                            message: '长度在 2 到 10 个字符',
-                        }
-                    ],
-                    name: [
-                        {required: true, message: '请输入姓名', trigger: 'blur'},
-                        {
-                            min: 2,
-                            max: 10,
-                            trigger: 'change',
-                            message: '长度在 2 到 10 个字符',
-                        }
-                    ],
-                    phone: [
-                        {
-                            min: 11,
-                            max: 11,
-                            trigger: 'change',
-                            message: '请输入11位长度的电话号码',
-                        }
-                    ],
-                }
             }
         },
         created() {
@@ -139,17 +130,16 @@
                     })
                 })
             },
-            async platformChange(platformMu) {
-                if (this.form.platformMu) {
-                    this.form.platformMu = platformMu
-                    this.role = {platformMu, roleMu: ''}
-                } else {
-                    this.form = await Data.query(this.table + '/adminRole', {
-                        mu: this.$route.params.mu
-                    })
-                    const {platformMu, roleMu} = this.form
-                    this.role = {platformMu, roleMu}
-                }
+            async platformInit() {
+                this.form = await Data.query(this.table + '/adminRole', {
+                    mu: this.$route.params.mu
+                })
+                const {platformMu, roleMu} = this.form
+                this.role = {platformMu, roleMu}
+            },
+            platformChange(platformMu) {
+                this.form.platformMu = platformMu
+                this.role = {platformMu, roleMu: ''}
             },
             roleChange(roleMu) {
                 this.form.roleMu = roleMu

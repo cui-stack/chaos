@@ -1,18 +1,20 @@
 <template>
-    <el-container >
+    <el-container>
         <el-main>
             <el-row>
-                <el-col :span="5" v-for="(o) in links" :key="o" :offset="1">
-                    <el-card :body-style="{ padding: '0px' }">
-                        <img src="https://shadow.elemecdn.com/app/element/hamburger.9cf7b091-55e9-11e9-a976-7f4d0b07eef6.png" class="image">
-                        <div style="padding: 14px;">
-                            <span>{{o.title}}</span>
-                            <div >
-                                <el-button type="text" class="button">
-                                    <el-link :href=o.link target="_blank">访问地址</el-link>
-                                </el-button>
-                            </div>
+                <el-col :span="3" v-for="(item,index) in links" :key="item.mu"
+                        :offset="index > 0 ?1 : 0">
+                    <el-card shadow="hover">
+                        <div slot="header">
+                            <el-link :href=item.link target="_blank">
+                                {{item.title}}
+                            </el-link>
+                            <el-button type="text"
+                                       :icon="item.isStar?'el-icon-star-on':'el-icon-star-off'"
+                                       style="float: right ; padding: 3px 0"
+                                       @click="isStar(item,index)"/>
                         </div>
+                        {{item.info}}
                     </el-card>
                 </el-col>
             </el-row>
@@ -23,34 +25,32 @@
 
 <script>
     import Data from '@/chaos/functions/common/Data';
+
     export default {
         name: 'Index',
         data() {
             return {
                 links: []
-
             }
         },
         created() {
-           // this.search()
+            this.search()
         },
         methods: {
-            search() {
-                Data.list('chaos_link', {}, (res) => {
-                    this.links = res.data;
-                })
-                Data.list('chaos_env', {}, (res) => {
-                    this.envs = res.data;
-                })
+            async search() {
+                this.links = await Data.list('chaos_link')
             },
+            isStar(item,index) {
+                item.isStar = !item.isStar;
+                this.$set(this.links, index, item);
+            }
         }
     }
 </script>
 
 <style scoped>
-    .image {
-        width: 100%;
-        display: block;
+    .el-card {
+        margin-bottom: 10px;
     }
 </style>
 

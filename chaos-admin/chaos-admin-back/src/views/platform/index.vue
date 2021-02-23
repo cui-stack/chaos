@@ -2,9 +2,8 @@
     <el-container>
         <el-header>
             <el-container>
-                <el-button type="primary" @click="showAddForm=true">增加平台
-                </el-button>
-                <el-input v-model="name" placeholder="请输入平台名称"/>
+                <el-button type="primary" @click="showAddForm=true">增加平台</el-button>
+                <el-input v-model="data.name" placeholder="请输入平台名称"/>
                 <el-button type="primary" @click="search">搜索</el-button>
             </el-container>
         </el-header>
@@ -66,74 +65,28 @@
 </template>
 
 <script>
-    import Data from '@/chaos/functions/common/Data';
-    import {page} from '@/chaos/functions/mixin/page'
     import Pagination from '@/chaos/components/Pagination'
+    import {page} from '@/chaos/functions/mixin/page'
+    import {crud} from '@/chaos/functions/mixin/crud'
 
     export default {
         components: {Pagination},
-        mixins: [page],
+        mixins: [page, crud],
         data() {
+            const rules = {
+                name: [
+                    {required: true, message: '请输入平台名称', trigger: 'blur'},
+                ]
+            }
             return {
+                rules,
                 table: 'chaos_platform',
-                currentPage: 1,
-                limit: 20,
-                total: 0,
-                tableData: [],
-                showAddForm: false,
-                showUpdateForm: false,
-                form: {
-                    name: '',
-                    info: ''
-                },
-                updateForm: {
-                    mu: '',
-                    name: '',
-                    info: ''
-                },
-                rules: {
-                    name: [
-                        {required: true, message: '请输入平台名称', trigger: 'blur'},
-                        {
-                            min: 2,
-                            max: 10,
-                            message: '长度在 2 到 10 个字符',
-                            trigger: 'change'
-                        }
-                    ]
-                },
-                name: ''
             }
         },
         created() {
             this.search()
         },
         methods: {
-            async search() {
-                const res = await Data.page(this.table, this.currentPage, this.limit, {name: this.name})
-                this.tableData = res.list;
-                this.total = res.total;
-            },
-            async doAdd() {
-                await Data.add(this.table, this.form)
-                this.showAddForm = false
-                this.search()
-            },
-            async showUpdate(mu) {
-                this.updateForm = await Data.one(this.table, mu)
-                this.showUpdateForm = true
-            },
-            async doUpdate() {
-                await Data.update(this.table, this.updateForm.mu, this.updateForm)
-                this.showUpdateForm = false
-                this.search()
-            },
-            doDelete(mu) {
-                Data.remove(this.table, mu, () => {
-                    this.search();
-                })
-            },
-
         }
     }
 </script>

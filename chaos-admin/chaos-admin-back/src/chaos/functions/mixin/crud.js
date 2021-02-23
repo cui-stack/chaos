@@ -27,12 +27,11 @@ export const crud = {
             this.showUpdateForm = true
         },
         doUpdate() {
-            Data.validate(this, 'form', async () => {
+            Data.validate(this, 'updateForm', async () => {
                 await Data.update(this.table, this.updateForm.mu, this.updateForm)
                 this.showUpdateForm = false
                 this.search()
             })
-
         },
     }
 }

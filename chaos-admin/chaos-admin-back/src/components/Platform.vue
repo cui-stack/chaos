@@ -15,8 +15,8 @@
                 default: ''
             },
             inited: {
-                type: Boolean,
-                default: true
+                type: String,
+                default: 'true'
             },
         },
         watch: {
@@ -33,9 +33,10 @@
         },
         async created() {
             this.platforms = await Data.list(this.table)
-            if (this.inited) {
-                this.platformChange(this.platforms[0].mu)
+            if (this.inited === "true") {
+                this.mu = this.platforms[0].mu
             }
+            this.$emit("platformInit", this.mu)
         },
         methods: {
             platformChange(platformMu) {

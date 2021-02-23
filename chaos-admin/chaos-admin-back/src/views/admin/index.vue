@@ -4,7 +4,7 @@
             <el-container style="margin:auto 0px;padding: 10px;">
                 <el-button type="primary" @click="showAdd">增加管理员</el-button>
                 <el-input style="width: 220px" v-model="data.name" placeholder="请输入管理员姓名"/>
-                <Platform  @platformChange="platformChange" />
+                <Platform  @platformInit="platformChange" @platformChange="platformChange"/>
                 <el-button type="primary" @click="search">搜索</el-button>
             </el-container>
         </el-header>
@@ -50,13 +50,14 @@
     import Pagination from '@/chaos/components/Pagination'
     import Platform from '@/components/Platform'
     import {page} from '@/chaos/functions/mixin/page'
+    import {platform} from '@/chaos/functions/mixin/platform'
 
     export default {
         components: {
             Platform,
             Pagination
         },
-        mixins: [page],
+        mixins: [page,platform],
         data() {
             return {
                 table:'chaos_admin'
@@ -71,10 +72,6 @@
                     name: 'updateAdmin',
                     params: {mu: mu}
                 })
-            },
-            platformChange(platformMu) {
-                this.data.platformMu = platformMu
-                this.search()
             },
         }
     }

@@ -16,11 +16,10 @@
                     <el-input v-model="form.password" placeholder="请输入密码"/>
                 </el-form-item>
                 <el-form-item label="姓名" prop="name">
-                    <el-input v-model="form.name"
-                              placeholder="请输入姓名"/>
+                    <el-input v-model="form.name" placeholder="请输入姓名"/>
                 </el-form-item>
                 <el-form-item label="平台">
-                    <Platform @platformChange="platformChange"/>
+                    <Platform @platformChange="platformChange" @platformInit="platformChange"/>
                 </el-form-item>
                 <el-form-item label="角色">
                     <Role :role="role" @roleChange="roleChange"/>
@@ -66,59 +65,52 @@
             Role
         },
         data() {
+            const rules = {
+                username: [
+                    {required: true, message: '请输入账号', trigger: 'blur'},
+                    {
+                        min: 2,
+                        max: 10,
+                        trigger: 'change',
+                        message: '长度在 2 到 10 个字符',
+                    }
+                ],
+                password: [
+                    {required: true, message: '请输入密码', trigger: 'blur'},
+                    {
+                        min: 2,
+                        max: 10,
+                        trigger: 'change',
+                        message: '长度在 2 到 10 个字符',
+                    }
+                ],
+                name: [
+                    {required: true, message: '请输入姓名', trigger: 'blur'},
+                    {
+                        min: 2,
+                        max: 10,
+                        trigger: 'change',
+                        message: '长度在 2 到 10 个字符',
+                    }
+                ],
+                phone: [
+                    {required: true, message: '请输入电话', trigger: 'blur'},
+                    {
+                        min: 11,
+                        max: 11,
+                        trigger: 'change',
+                        message: '请输入11位长度的电话号码',
+                    }
+                ],
+            }
             return {
+                rules,
                 table: 'chaos_admin',
                 form: {
-                    username: '',
-                    password: '',
-                    name: '',
-                    platformMu: '',
-                    roleMu: '',
-                    phone: '',
-                    email: '',
-                    qq: '',
-                    addr: '',
                     status: 0
                 },
                 role: {},
-                rules: {
-                    username: [
-                        {required: true, message: '请输入账号', trigger: 'blur'},
-                        {
-                            min: 2,
-                            max: 10,
-                            trigger: 'change',
-                            message: '长度在 2 到 10 个字符',
-                        }
-                    ],
-                    password: [
-                        {required: true, message: '请输入密码', trigger: 'blur'},
-                        {
-                            min: 2,
-                            max: 10,
-                            trigger: 'change',
-                            message: '长度在 2 到 10 个字符',
-                        }
-                    ],
-                    name: [
-                        {required: true, message: '请输入姓名', trigger: 'blur'},
-                        {
-                            min: 2,
-                            max: 10,
-                            trigger: 'change',
-                            message: '长度在 2 到 10 个字符',
-                        }
-                    ],
-                    phone: [
-                        {required: true, message: '请输入电话', trigger: 'blur'},
-                        {
-                            min: 11,
-                            max: 11,
-                            trigger: 'change',
-                            message: '请输入11位长度的电话号码',
-                        }
-                    ],
-                }
+
             }
         },
         methods: {

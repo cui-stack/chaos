@@ -1,11 +1,12 @@
 <template>
     <el-container>
         <el-header style="height: 70px;">
-            <el-container style="margin:auto 0px ;padding: 10px ;">
+            <el-container style="margin:auto 0px;padding: 10px ;">
                 <el-button type="primary" @click="showAdd">增加角色</el-button>
                 <el-input style="width: 220px" v-model="data.info"
                           placeholder="请输入角色名称"/>
-                <Platform @platformChange="platformChange"/>
+                <Platform @platformChange="platformChange"
+                          @platformInit="platformChange"/>
                 <el-button type="primary" @click="search">搜索</el-button>
             </el-container>
         </el-header>
@@ -18,7 +19,7 @@
                 <el-table-column prop="createTime" label="创建时间" min-width="76"/>
                 <el-table-column label="操作" width="258">
                     <template slot-scope="scope">
-                        <el-button plain @click="showUpdate(scope.row.mu)">编辑
+                        <el-button plain @click="showPlatformUpdate(scope.row.mu)">编辑
                         </el-button>
                         <el-button style="margin: 0px" plain
                                    @click="showGrant(scope.row.mu)">授权
@@ -39,7 +40,7 @@
                          label-width="100px" size="small">
                     <el-form-item label="平台">
                         <Platform @platformChange="addFormPlatformChange"
-                                  @platformInited="addFormPlatformChange"/>
+                                  @platformInit="addFormPlatformChange"/>
                     </el-form-item>
                     <el-form-item label="缩写" prop="name">
                         <el-input v-model="form.name" placeholder="请输入角色缩写"/>
@@ -60,21 +61,22 @@
                 <el-form ref="updateForm" :rules="rules" :model="updateForm"
                          label-width="100px" size="small">
                     <el-form-item label="平台">
-                        <Platform @platformChange="updateFormPlatformChange"
-                                  @platformInited="updateFormPlatformChange"/>
+                        <Platform inited="false"
+                                  @platformInit="platformInit"
+                                  @platformChange="updateFormPlatformChange"
+                                  :platformMu="updateForm.platformMu"/>
                     </el-form-item>
                     <el-form-item label="缩写" prop="name">
-                        <el-input v-model="updateForm.name" style="width:280px"
-                                  placeholder="请输入角色缩写"></el-input>
+                        <el-input v-model="updateForm.name"
+                                  placeholder="请输入角色缩写"/>
                     </el-form-item>
                     <el-form-item label="名称" prop="info">
-                        <el-input v-model="updateForm.info" style="width:280px"
-                                  placeholder="请输入角色名称"></el-input>
+                        <el-input v-model="updateForm.info"
+                                  placeholder="请输入角色名称"/>
                     </el-form-item>
                     <el-form-item label="首页链接" prop="indexLink">
                         <el-input v-model="updateForm.indexLink"
-                                  style="width:280px"
-                                  placeholder="请输入首页链接"></el-input>
+                                  placeholder="请输入首页链接"/>
                     </el-form-item>
                     <el-form-item>
                         <el-button type="primary" @click="doUpdate">确定
@@ -85,7 +87,7 @@
             <el-dialog width="680px" title="授权页面" :visible.sync="showGrantForm">
                 <el-transfer v-model="own" :data="lack"
                              :titles="['未拥有', '已拥有']"
-                             :props="{key: 'mu',label: 'title'}"></el-transfer>
+                             :props="{key: 'mu',label: 'title'}"/>
                 <el-button style="margin:  20px 500px" type="primary"
                            @click="doGrant">
                     保存
@@ -100,52 +102,55 @@
     import Pagination from '@/chaos/components/Pagination'
     import {page} from '@/chaos/functions/mixin/page'
     import {crud} from '@/chaos/functions/mixin/crud'
+    import {platform} from '@/chaos/functions/mixin/platform'
 
     import Platform from '@/components/Platform'
     import Array from '@/chaos/functions/common/Array'
 
     export default {
         components: {Pagination, Platform},
-        mixins: [page,crud],
+        mixins: [page, crud, platform],
         data() {
+            const rules = {
+                name: [
+                    {required: true, message: '请输入角色缩写', trigger: 'blur'},
+                ],
+                info: [
+                    {required: true, message: '请输入角色名称', trigger: 'blur'},
+                ],
+                indexLink: [
+                    {required: true, message: '请输入首页链接', trigger: 'blur'},
+                ],
+            }
             return {
-                table:'chaos_role',
-                roleMu:'',
+                rules,
+                table: 'chaos_role',
                 lack: [],
                 own: [],
                 grant: [],
-                showGrantForm:false
+                showGrantForm: false,
             }
         },
         methods: {
             async showGrant(roleMu) {
-                this.roleMu = roleMu
+                this.pickRowMu = roleMu
                 this.lack = await Data.query('chaos_permission/list', {
                     platformMu: this.data.platformMu,
                     isroot: 0
                 })
-                const res = await Data.query('chaos_role_permission/listPermissionMus', {roleMu: this.roleMu})
+                const res = await Data.query('chaos_role_permission/listPermissionMus', {roleMu: this.pickRowMu})
                 this.own = res || [];
                 this.grant = res || [];
                 this.showGrantForm = true
             },
             doGrant() {
                 Data.submit('chaos_role_permission/grant', {
-                    roleMu: this.roleMu,
+                    roleMu: this.pickRowMu,
                     addMus: Array.difference(this.own, this.grant),
                     deleteMus: Array.difference(this.grant, this.own)
                 })
             },
-            platformChange(platformMu) {
-                this.data.platformMu = platformMu
-                this.search()
-            },
-            addFormPlatformChange(platformMu) {
-                this.form.platformMu = platformMu
-            },
-            updateFormPlatformChange(platformMu) {
-                this.updateForm.platformMu = platformMu
-            },
+
         }
     }
 </script>

@@ -8,7 +8,8 @@ export const page = {
             total: 0,
             tableData: [],
             //查询条件
-            data:{}
+            data:{},
+            pickRowMu: '',
         }
     },
     methods: {
