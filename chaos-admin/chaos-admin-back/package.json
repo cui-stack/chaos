@@ -25,7 +25,6 @@
   "dependencies": {
     "axios": "^0.21.1",
     "babel-polyfill": "^6.26.0",
-    "chaos-data": "^1.0.41",
     "core-js": "^3.8.1",
     "cos-js-sdk-v5": "^0.5.27",
     "element-ui": "^2.14.1",

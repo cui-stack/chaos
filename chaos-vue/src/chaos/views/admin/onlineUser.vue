@@ -15,7 +15,7 @@
 </template>
 
 <script>
-    import fetch from 'chaos-data/axios/fetch';
+    import Data from '@/chaos/functions/common/Data';
 
     export default {
         data() {
@@ -27,10 +27,8 @@
             this.search()
         },
         methods: {
-            search() {
-                fetch.post('/manage/loginUsers', {}).then((res) => {
-                    this.tableData = res.data;
-                })
+            async search() {
+                this.tableData = await Data.query('loginUsers')
             }
         }
     }

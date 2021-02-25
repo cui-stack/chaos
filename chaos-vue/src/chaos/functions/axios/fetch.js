@@ -2,7 +2,7 @@ import Vue from 'vue'
 import {Message} from 'element-ui';
 import axios from 'axios';
 import store from '../vuex'
-import {baseUrl} from '../../../app/config'
+import {baseUrl} from '@/app/config'
 
 Vue.prototype.$axios = axios
 axios.defaults.headers.post['Content-Type'] = 'application/json';
@@ -77,23 +77,12 @@ httpService.interceptors.response.use(
         }
         if (response.data.code == 200) {
             if (response.data.data) {
-                if (response.data.data == true) {
-                    Message({
-                        type: 'success',
-                        message: response.data.msg
-                    });
-                } else if (response.data.data == false) {
-                    Message({
-                        type: 'warning',
-                        message: response.data.msg
-                    });
-                }
                 return response.data.data;
             }
             if (response.data.page) {
                 return response.data.page;
             }
-            return
+            return false
         }
         Message({
             type: 'error',

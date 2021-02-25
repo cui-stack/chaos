@@ -1,5 +1,5 @@
 <template>
-    <div class="cv-paging">
+    <div class="pagination">
         <el-pagination
                 @size-change="handleSizeChange"
                 @current-change="handleCurrentChange"
@@ -7,8 +7,7 @@
                 :page-sizes="[10, 20, 50, 100,500]"
                 :current-page="currentPage"
                 :page-size="limit"
-                :total="total">
-        </el-pagination>
+                :total="total"/>
     </div>
 </template>
 
@@ -19,30 +18,21 @@
             return {}
         },
         props: {
-            'total': {
+            total: {
                 required: false,
                 default: 0
             },
-            'limit': {
+            limit: {
                 required: false,
                 default: 20
             },
-            'currentPage': {
+            currentPage: {
                 required: false,
                 default: 1
             },
         },
-        // watch: {
-        //     currentPage(val) {
-        //         // 改变这个值并不会触发 handleCurrentChange
-        //         if (typeof val === "number") {
-        //             this.currentPage = val;
-        //         }
-        //     },
-        // },
         methods: {
             handleCurrentChange(val) {
-                console.log(val)
                 window.scrollTo(0, 0);
                 this.$emit("handleCurrentChange", val);
             },
@@ -55,7 +45,7 @@
 </script>
 
 <style scoped>
-    .cv-paging {
+    .pagination {
         margin: auto 0px;
         text-align: right;
     }

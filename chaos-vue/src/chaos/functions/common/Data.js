@@ -3,10 +3,14 @@ import fetch from "../axios/fetch";
 
 async function add(domain, data = {}) {
     const res = await fetch.post('/manage/' + domain + '/add', data)
+    Message({
+        type: 'success',
+        message: '新增成功!'
+    });
     return res
 }
 
-function remove(domain, mu) {
+function remove(domain, mu, callback) {
     MessageBox.confirm('确认删除吗?', '提示', {
         confirmButtonText: '确定',
         cancelButtonText: '取消',
@@ -14,7 +18,19 @@ function remove(domain, mu) {
         center: true
     }).then(async () => {
         const res = await fetch.post('/manage/' + domain + '/delete', {mu})
-        return res
+        if (res) {
+            Message({
+                type: 'success',
+                message: '删除成功!'
+            });
+            if (callback)
+                callback(res)
+        } else {
+            Message({
+                type: 'warning',
+                message: '删除失败!'
+            });
+        }
     }).catch(() => {
         Message({
             type: 'info',
@@ -25,43 +41,49 @@ function remove(domain, mu) {
 
 async function update(domain, mu, data = {}) {
     const res = await fetch.post('/manage/' + domain + '/update', {mu, data})
+    if (res) {
+        Message({
+            type: 'success',
+            message: '修改成功!'
+        });
+    } else {
+        Message({
+            type: 'warning',
+            message: '修改失败!'
+        });
+    }
     return res
 }
 
-async function one(domain, mu) {
-    const res = await fetch.post('/manage/' + domain + '/one', {mu})
-    return res
+function one(domain, mu) {
+    return fetch.post('/manage/' + domain + '/one', {mu})
 }
 
-async function list(domain, data = {}) {
-    const res = await fetch.post('/manage/' + domain + '/list', data)
-    return res
+function list(domain, data = {}) {
+    return fetch.post('/manage/' + domain + '/list', data)
 }
 
-async function page(domain, pageNum = 1, pageSize = 20, data = {}) {
-    const res = await fetch.post('/manage/' + domain + '/page', {
+function page(domain, pageNum = 1, pageSize = 20, data = {}) {
+    return fetch.post('/manage/' + domain + '/page', {
         pageNum,
         pageSize,
         data
     })
-    return res
 }
 
-async function search(method, pageNum = 1, pageSize = 20, data = {}) {
-    const res = await fetch.post('/manage/' + method, {
+function search(method, pageNum = 1, pageSize = 20, data = {}) {
+    return fetch.post('/manage/' + method, {
         pageNum,
         pageSize,
         data
     })
-    return res
 }
 
-async function query(method, data = {}) {
-    const res = await fetch.post('/manage/' + method, data)
-    return res
+function query(method, data = {}) {
+    return fetch.post('/manage/' + method, data)
 }
 
-function submit(method, data) {
+function submit(method, data, callback) {
     MessageBox.confirm('确认提交吗?', '提示', {
         confirmButtonText: '确定',
         cancelButtonText: '取消',
@@ -69,7 +91,19 @@ function submit(method, data) {
         center: true
     }).then(async () => {
         const res = await fetch.post('/manage/' + method, data)
-        return res
+        if (res) {
+            Message({
+                type: 'success',
+                message: '处理成功!'
+            });
+            if (callback)
+                callback(res)
+        } else {
+            Message({
+                type: 'warning',
+                message: '处理失败!'
+            });
+        }
     }).catch(() => {
         Message({
             type: 'info',
@@ -78,13 +112,12 @@ function submit(method, data) {
     });
 }
 
-function validate(form, formName, f) {
+function validate(form, formName, callback) {
     form.$refs[formName].validate((valid) => {
-        if (valid) {
-            f()
-        } else {
+        if (!valid) {
             return false;
         }
+        callback()
     });
 }
 

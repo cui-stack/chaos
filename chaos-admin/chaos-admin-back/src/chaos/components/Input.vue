@@ -15,7 +15,7 @@
             };
         },
         props: {
-            'placeholder': {
+            placeholder: {
                 required: false,
                 default: ''
             },
