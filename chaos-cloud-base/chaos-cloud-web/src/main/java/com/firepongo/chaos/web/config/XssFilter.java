@@ -46,7 +46,7 @@ public class XssFilter implements Filter {
                     servletResponse.setCharacterEncoding("UTF-8");
                     servletResponse.setContentType("application/json;charset=UTF-8");
                     PrintWriter out = servletResponse.getWriter();
-                    out.write(JSON.toJSONString(new Result("506", "安全异常")));
+                    out.write(JSON.toJSONString(new Result(506, "安全异常")));
                     return;
                 }
             }
@@ -55,7 +55,7 @@ public class XssFilter implements Filter {
             servletResponse.setCharacterEncoding("UTF-8");
             servletResponse.setContentType("application/json;charset=UTF-8");
             PrintWriter out = servletResponse.getWriter();
-            out.write(JSON.toJSONString(new Result("506", "安全异常")));
+            out.write(JSON.toJSONString(new Result(506, "安全异常")));
             return;
         }
         filterChain.doFilter(xssRequest, servletResponse);

@@ -19,11 +19,11 @@ public class AuthenticationException extends BusinessException {
         super(resultEnum);
     }
 
-    public AuthenticationException(String code, String msg) {
+    public AuthenticationException(Integer code, String msg) {
         super(code,msg);
     }
 
-    public AuthenticationException(String code, String msg, HttpServletRequest request) {
+    public AuthenticationException(Integer code, String msg, HttpServletRequest request) {
         super(code,msg);
         this.request = request;
     }

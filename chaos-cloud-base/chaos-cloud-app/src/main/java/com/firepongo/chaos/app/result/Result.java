@@ -16,7 +16,7 @@ import lombok.experimental.Accessors;
 public class Result extends DTO {
 
     @ApiModelProperty(value = "响应编码", example = "200")
-    private String code;
+    private Integer code;
 
     @ApiModelProperty(value = "响应消息", example = "ok")
     private String msg;
@@ -36,7 +36,7 @@ public class Result extends DTO {
         this.setMsg(ResultEnum.SUCCESS.getDefaultMsg());
     }
 
-    public void msg(String code ,String msg) {
+    public void msg(Integer code ,String msg) {
         this.setCode(code);
         this.setMsg(msg);
     }

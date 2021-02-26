@@ -19,7 +19,7 @@ public class BusinessException extends RuntimeException {
         this.result = new Result(resultEnum.getCode(), resultEnum.getDefaultMsg());
     }
 
-    public BusinessException(String code, String msg) {
+    public BusinessException(Integer code, String msg) {
         super(msg);
         this.result = new Result(code, msg);
     }

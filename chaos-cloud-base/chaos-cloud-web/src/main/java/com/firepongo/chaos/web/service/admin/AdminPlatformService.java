@@ -99,7 +99,7 @@ public class AdminPlatformService {
             });
             redisService.set("app_admin_token", user.getToken(), 7 * 24 * 60 * 60);
         } else {
-            throw new BusinessException("500", "服务调用登录失败!");
+            throw new BusinessException(500, "服务调用登录失败!");
         }
     }
 
@@ -246,7 +246,7 @@ public class AdminPlatformService {
         try {
             json = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(rootNode);
         } catch (JsonProcessingException je) {
-            throw new BusinessException("500", "服务调用登录失败!");
+            throw new BusinessException(500, "服务调用登录失败!");
         }
         return json;
     }
