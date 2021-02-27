@@ -1,6 +1,6 @@
 #  单表增删改查功能
 ![](code.png)
-#  数据库
+#  数据库实现
 ```mysql
 CREATE TABLE `chaos_index` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
