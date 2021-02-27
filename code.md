@@ -199,11 +199,11 @@ public class ChaosIndexController extends BaseController {
 </template>
 <script>
     import {page} from '@/chaos/functions/mixin/page'
-    import {crud} from '@/chaos/functions/mixin/crud'
+    import {create,updte} from '@/chaos/functions/mixin/crud'
 
     export default {
         name: "ChaosIndex",
-        mixins: [page,crud],
+        mixins: [page,create,updte],
         data() {
             return {
                 domain: 'chaos_index',
