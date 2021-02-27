@@ -4,7 +4,7 @@
 ![](https://img.shields.io/badge/license-MIT-483D8B.svg)
 
 #   前言
-    248行代码完成单表增删改查！！！
+    248行搞定单表增删改查！！！
 #   [示例代码](https://gitee.com/ape-stack/chaos/blob/master/code.md)
 
 #   简介
