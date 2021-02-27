@@ -3,9 +3,8 @@
 ![](https://img.shields.io/badge/language-TypeScript-483D8B.svg)
 ![](https://img.shields.io/badge/license-MIT-483D8B.svg)
 
-#   特点
+#   特点  [示例代码](https://gitee.com/ape-stack/chaos/blob/master/code.md)
     248行搞定单表增删改查，代码自动生成，准时下班冲冲冲！！！
-#   [示例代码](https://gitee.com/ape-stack/chaos/blob/master/code.md)
 
 #   简介
     chaos是一个前后端分离的分布式微服务架构，chaos架构由服务端架构、中后台架构，微信原生小程序架构等部分组成。   
