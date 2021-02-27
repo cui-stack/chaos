@@ -9,8 +9,7 @@ const state = {
         prod: ''
     },
     isCollapse: false,
-    asideWidth: 300,
-    path:'/back/'
+    asideWidth: 300
 }
 
 const mutations = {
@@ -19,9 +18,6 @@ const mutations = {
     },
     SetBaseUrl(state, data) {
         state.baseUrl = data
-    },
-    SetPath(state, data) {
-        state.path = data
     },
     ToggleSideMenu: state => {
         state.isCollapse = !state.isCollapse
@@ -39,9 +35,6 @@ const actions = {
     },
     setBaseUrl({commit}, data) {
         commit('SetBaseUrl', data)
-    },
-    setPath({commit}, data) {
-        commit('SetPath', data)
     },
     toggleSideMenu({commit}) {
         commit('ToggleSideMenu')

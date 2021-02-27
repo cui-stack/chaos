@@ -2,7 +2,7 @@
     <el-container class="page">
         <el-container class="page_left">
             <img src="@/app/logo.png"/>
-            <span>{{headTitle}}</span>
+            <span>{{headTitle}}后台</span>
         </el-container>
         <el-container class="page_right">
             <el-dropdown>

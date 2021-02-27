@@ -1,6 +1,6 @@
 <template>
     <el-container>
-        <el-header style="height: 80px;">
+        <el-header :height="'80px'">
             <Head/>
         </el-header>
         <el-container>
@@ -44,7 +44,11 @@
 
 
 <style lang="less" scoped>
-    @import '@/chaos/styles/index';
+    * {
+        margin: 0;
+        padding: 0;
+        border: 0;
+    }
 
 </style>
 

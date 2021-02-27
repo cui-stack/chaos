@@ -6,6 +6,5 @@
     </el-col>
 </template>
 <style lang="less" scoped>
-    @import '@/chaos/styles/index';
 
 </style>

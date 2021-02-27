@@ -10,8 +10,7 @@
                 <el-table-column label="操作" width="268">
                     <template slot-scope="scope">
                         <el-button plain
-                                   @click="release(scope.row.mu,scope.row.uri)">
-                            释放
+                                   @click="release(scope.row.mu,scope.row.uri)">释放
                         </el-button>
                         <el-button plain
                                    @click="lock(scope.row.mu,scope.row.uri)">永封
@@ -37,7 +36,7 @@
         },
         methods: {
             async search() {
-                this.tableData = await Data.query('limit')
+                this.tableData = await Data.query('limit')||[]
             },
             async release(mu, uri) {
                 Data.submit('release', {mu, uri}, () => {

@@ -29,9 +29,8 @@
             this.getBreadcrumb()
         },
         methods: {
-
             getBreadcrumb() {
-                let matched = this.$route.matched.filter(item => item.meta && item.meta.title && item.name !== 'Main' && item.name !== 'index')
+                let matched = this.$route.matched.filter(item => item.meta && item.meta.title && item.name !== 'Main' && '/'.concat(item.name) !== this.$store.getters.user.indexLink)
                 matched = [{
                     path: this.$store.getters.user.indexLink,
                     meta: {title: '首页'}

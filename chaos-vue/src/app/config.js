@@ -9,15 +9,12 @@ export function routers() {
 
 export function baseUrl() {
     let baseUrl = ''
-    switch (process.env.VUE_APP_ENV) {
-        case 'prod':
+    switch (process.env.NODE_ENV) {
+        case 'development':
             baseUrl = ''
             break
-        case 'test':
-            baseUrl = ''
-            break
-        case 'dev':
-            baseUrl = '127.0.0.1:'
+        case 'production':
+            baseUrl = '/chaos-api'
             break
     }
     return baseUrl

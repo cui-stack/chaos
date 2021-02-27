@@ -1,22 +1,20 @@
 <template>
     <el-container>
         <el-main>
-            <el-menu
-                    :default-active=defaultActive
-                    :default-openeds=defaultOpeneds
-                    :collapse=isCollapse
-                    router
-                    class="side-menu"
-                    background-color="#fff"
-                    text-color="#545c64"
-                    active-text-color="#438eb9">
+            <el-menu :default-active=defaultActive
+                     :default-openeds=defaultOpeneds
+                     :collapse=isCollapse
+                     router
+                     class="side-menu"
+                     background-color="#fff"
+                     text-color="#545c64"
+                     active-text-color="#438eb9">
                 <el-submenu v-for="(menu,i) in menus" :key=i :index="i+''">
                     <template slot="title">
                         <i :class="menu.icon"/>
                         <span>{{menu.title}}</span>
                     </template>
-                    <el-menu-item v-for="(item,j) in menu.submenus"
-                                  :key="i+'-'+j" :index=item.link>
+                    <el-menu-item v-for="(item,j) in menu.submenus" :key="i+'-'+j" :index=item.link>
                         <template slot="title">
                             <span>{{item.title}}</span>
                         </template>

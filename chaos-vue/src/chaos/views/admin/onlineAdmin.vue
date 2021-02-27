@@ -23,7 +23,6 @@
     import Data from '@/chaos/functions/common/Data';
 
     export default {
-        components: {},
         data() {
             return {
                 tableData: []
@@ -34,7 +33,7 @@
         },
         methods: {
             async search() {
-                this.tableData = await Data.query('loginAdmins')
+                this.tableData = await Data.query('loginAdmins') || []
             },
             logoutAll() {
                 Data.query('logoutAll')

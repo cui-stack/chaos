@@ -1,7 +1,6 @@
 <template>
     <el-container>
-        <Hamburger :is-active="sideMenuOpened"
-                   @toggleClick="toggleSideMenu"/>
+        <Hamburger :is-active="sideMenuOpened" @toggleClick="toggleSideMenu"/>
         <Breadcrumb/>
     </el-container>
 </template>

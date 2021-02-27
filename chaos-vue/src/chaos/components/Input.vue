@@ -1,9 +1,9 @@
 <template>
-    <el-input v-model.trim="input"
+    <el-input v-model.trim="value"
               prefix-icon="el-icon-search"
               clearable
               :placeholder="placeholder"
-              @change="search">
+              @change="change">
     </el-input>
 </template>
 <script>
@@ -11,19 +11,23 @@
         name: 'Input',
         data() {
             return {
-                input: ''
+                value: ''
             };
         },
         props: {
-            'placeholder': {
+            placeholder: {
                 required: false,
                 default: ''
             },
+            change: {
+                type:Function
+            },
         },
-        methods: {
-            search(val) {
-                this.$emit("search", val)
-            }
-        }
     };
 </script>
+
+<style scoped>
+    .el-input{
+        width: 280px;
+    }
+</style>

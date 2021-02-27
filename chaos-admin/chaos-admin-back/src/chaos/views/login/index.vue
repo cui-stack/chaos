@@ -2,6 +2,7 @@
     <div class="login-container">
         <div class="login-head">
             <img src="@/app/logo.png"/>
+            <h1 style="display: inline-block">{{headTitle}}</h1>
         </div>
         <div class="login-area">
             <input placeholder="请输入用户名" v-model="username"/>
@@ -19,6 +20,13 @@
 
     export default {
         name: 'Login',
+        data() {
+            return {
+                username: '',
+                password: '',
+                headTitle:appInfo().headTitle
+            }
+        },
         methods: {
             async login() {
                 if (this.username && this.password) {
@@ -32,18 +40,12 @@
                     await this.$router.push(res.indexLink)
                 } else {
                     Message({
-                        type: 'info',
+                        type: 'warning',
                         message: '请输入用户名和密码'
                     });
                 }
             },
         },
-        data() {
-            return {
-                username: '',
-                password: '',
-            }
-        }
     }
 </script>
 
@@ -55,7 +57,7 @@
         position: absolute;
         top: 0;
         left: 0;
-        background-color: #483D8B;
+        background-color: #ff746e;
         color: white;
         text-align: center;
 

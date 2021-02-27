@@ -3,6 +3,7 @@ import {Message} from 'element-ui';
 import axios from 'axios';
 import store from '../vuex'
 import {baseUrl} from '@/app/config'
+import router from '@/chaos/router/index'
 
 Vue.prototype.$axios = axios
 axios.defaults.headers.post['Content-Type'] = 'application/json';
@@ -37,7 +38,7 @@ httpService.interceptors.response.use(
                 type: 'info',
                 message: "登录失效,请重新登录!"
             });
-            window.location.href = store.getters.path;
+            router.push('/')
             return
         }
         if (response.data.code == 408) {
@@ -84,6 +85,7 @@ httpService.interceptors.response.use(
             }
             return false
         }
+        console.log(response)
         Message({
             type: 'error',
             message: '操作异常!'
