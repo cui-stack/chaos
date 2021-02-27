@@ -1,4 +1,4 @@
-#  单表增删改查功能
+#  单表增删改查功能（总计250行）
 ![](code.png)
 #  数据库实现
 ```mysql
@@ -20,7 +20,7 @@ package com.chaos.model.entity;
 @Data
 @NoArgsConstructor@EqualsAndHashCode@Accessors(chain = true)
 @TableName("chaos_index")
-@ApiModel(value="ChaosIndex实体", description="")
+@ApiModel(value="ChaosIndex实体")
 public class ChaosIndex extends MuModel {
 
 }
@@ -32,7 +32,7 @@ package com.chaos.model.data;
 @NoArgsConstructor
 @Accessors(chain = true)
 @EqualsAndHashCode
-@ApiModel(value="ChaosIndexData", description="")
+@ApiModel(value="ChaosIndexData")
 public class ChaosIndexData extends DATA{
 
 }
@@ -119,14 +119,14 @@ package com.chaos.manager.controller;
 @Slf4j
 @Api(tags = "ChaosIndexController")
 @RestController
-@RequestMapping("/manage/chaosIndex")
+@RequestMapping("/manage/ChaosIndex")
 public class ChaosIndexController extends BaseController {
     @Autowired
     private IChaosIndexService iChaosIndexService;
 
     @PostMapping("/add")
     @ManageLoginToken
-    @ApiOperation(value = "", notes = "", httpMethod = "POST")
+    @ApiOperation(httpMethod = "POST")
     public DataResult<MU> add(@RequestBody @Validated ChaosIndexData data, BindingResult bindingResult) throws Exception {
         validate(bindingResult);
         return dataResult(iChaosIndexService.insertModel(data));
@@ -134,7 +134,7 @@ public class ChaosIndexController extends BaseController {
 
     @PostMapping("/update")
     @ManageLoginToken
-    @ApiOperation(value = "", notes = "", httpMethod = "POST")
+    @ApiOperation(httpMethod = "POST")
     public DataResult<Boolean> update(@ApiParam(value = "") @RequestBody @Validated UpdateData<ChaosIndexData> data, BindingResult bindingResult) throws Exception {
         validate(bindingResult);
         return dataResult(iChaosIndexService.updateModelByMU(data));
@@ -142,7 +142,7 @@ public class ChaosIndexController extends BaseController {
 
     @PostMapping("/one")
     @ManageLoginToken
-    @ApiOperation(value = "", notes = "", httpMethod = "POST")
+    @ApiOperation(httpMethod = "POST")
     public DataResult<ChaosIndexData> one(@RequestBody MU data) throws Exception {
         return dataResult(iChaosIndexService.selectByMU(data));
     }
@@ -156,14 +156,14 @@ public class ChaosIndexController extends BaseController {
 
     @PostMapping("/page")
     @ManageLoginToken
-    @ApiOperation(value = "", notes = "", httpMethod = "POST")
+    @ApiOperation(httpMethod = "POST")
     public PageResult<ChaosIndexData> page(@RequestBody PageQueryDto<ChaosIndexData> data) throws Exception {
         return pageResult(iChaosIndexService.selectByPage(data));
     }
 
     @PostMapping("/delete")
     @ManageLoginToken
-    @ApiOperation(value = "删除", notes = "", httpMethod = "POST")
+    @ApiOperation(httpMethod = "POST")
     public DataResult<Boolean> delete(@RequestBody MU data) throws Exception {
         return dataResult(iChaosIndexService.deleteModel(data));
     }
