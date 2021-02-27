@@ -175,9 +175,9 @@ public class ChaosIndexController extends BaseController {
 ```vue
 <template>
     <el-container>
-            <el-header>
+        <el-header>
             <el-container>
-                <AddButton :click="showAdd"/>
+                <PrimaryButton text="增加" :click="showAdd"/>
                 <Input placeholder="请输入MU"
                        :change="(value)=>this.handleChange(value,'mu')"/>
                 <SearchButton :click="search"/>
@@ -185,13 +185,14 @@ public class ChaosIndexController extends BaseController {
         </el-header>
         <el-main>
             <el-table stripe :data="tableData">
-                <el-table-column prop='mu'/>
-                <el-table-column prop="mu" label="操作" width="200">
+                <el-table-column prop="mu" label="编号"/>
+                <el-table-column prop="title" label="标题"/>
+                <el-table-column label="操作" width="200">
                     <template slot-scope="scope">
-                        <HandleButton text="编辑"
-                                      :click="()=>showUpdate(scope.row.mu)"/>
-                        <HandleButton text="删除"
-                                      :click="()=>doDelete(scope.row.mu)"/>
+                        <PlainButton text="编辑"
+                                     :click="()=>showUpdate(scope.row.mu)"/>
+                        <PlainButton text="删除"
+                                     :click="()=>doDelete(scope.row.mu)"/>
                     </template>
                 </el-table-column>
             </el-table>
@@ -199,15 +200,41 @@ public class ChaosIndexController extends BaseController {
                         @handleCurrentChange="handleCurrentChange"
                         @handleSizeChange="handleSizeChange"/>
         </el-main>
+        <el-footer>
+            <el-dialog width="35%" title="添加" :visible.sync="showAddForm">
+                <el-form ref="form" :rules="rules" :model="form"
+                         label-width="100px">
+                    <el-form-item label="标题" prop="title">
+                        <el-input v-model="form.title"
+                                  placeholder="请输入标题"/>
+                    </el-form-item>
+                    <el-form-item>
+                        <PrimaryButton text="确定" :click="doAdd"/>
+                    </el-form-item>
+                </el-form>
+            </el-dialog>
+            <el-dialog width="35%" title="修改" :visible.sync="showUpdateForm">
+                <el-form ref="updateForm" :rules="rules" :model="updateForm"
+                         label-width="100px">
+                    <el-form-item label="标题" prop="title">
+                        <el-input v-model="updateForm.title"
+                                  placeholder="请输入标题"/>
+                    </el-form-item>
+                    <el-form-item>
+                        <PrimaryButton text="确定" :click="doUpdate"/>
+                    </el-form-item>
+                </el-form>
+            </el-dialog>
+        </el-footer>
     </el-container>
 </template>
 <script>
     import {page} from '@/chaos/functions/mixin/page'
-    import {create,updte} from '@/chaos/functions/mixin/crud'
+    import {create, updte} from '@/chaos/functions/mixin/crud'
 
     export default {
         name: "ChaosIndex",
-        mixins: [page,create,updte],
+        mixins: [page, create, updte],
         data() {
             return {
                 domain: 'chaos_index',
