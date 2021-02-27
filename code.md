@@ -1,3 +1,4 @@
+![](code.png)
 ```mysql
 CREATE TABLE `chaos_index` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
@@ -172,6 +173,7 @@ public class ChaosIndexController extends BaseController {
     <el-container>
             <el-header>
             <el-container>
+                <el-button type="primary" @click="showAdd">增加</el-button>
                 <Input placeholder="请输入MU"
                        :change="(value)=>this.handleChange(value,'mu')"/>
                 <SearchButton :click="search"/>
@@ -180,6 +182,14 @@ public class ChaosIndexController extends BaseController {
         <el-main>
             <el-table stripe :data="tableData">
                 <el-table-column prop='mu'/>
+                <el-table-column prop="mu" label="操作" width="200">
+                    <template slot-scope="scope">
+                        <el-button plain @click="showUpdate(scope.row.mu)">编辑
+                        </el-button>
+                        <el-button plain @click="doDelete(scope.row.mu)">删除
+                        </el-button>
+                    </template>
+                </el-table-column>
             </el-table>
             <Pagination :currentPage="currentPage" :total="total" :limit="limit"
                         @handleCurrentChange="handleCurrentChange"
@@ -189,10 +199,11 @@ public class ChaosIndexController extends BaseController {
 </template>
 <script>
     import {page} from '@/chaos/functions/mixin/page'
+    import {crud} from '@/chaos/functions/mixin/crud'
 
     export default {
         name: "ChaosIndex",
-        mixins: [page],
+        mixins: [page,crud],
         data() {
             return {
                 domain: 'chaos_index',
