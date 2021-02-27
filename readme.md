@@ -11,7 +11,8 @@
     3.中后台架构chaos-vue（javascript）基于vue（2.6.12）、ElementUI（2.14.1）、axios等框架组成。
     4.微信原生小程序架构chaos-weapp（javascript）基于vant等框架组成。
     
-#   [示例代码](https://firepongo.gitee.io/code.md)
+#   [示例代码](https://gitee.com/ape-stack/chaos/blob/master/code.md)
+
 #   模块
     chaos
     ├── chaos-cloud-base -- 基于SpringCloud的服务端架构实现
