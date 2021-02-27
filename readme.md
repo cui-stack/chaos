@@ -3,7 +3,8 @@
 ![](https://img.shields.io/badge/language-TypeScript-483D8B.svg)
 ![](https://img.shields.io/badge/license-MIT-483D8B.svg)
 
-#   CHAOS[点击查看代码](https://gitee.com/ape-stack/chaos/blob/master/code.md)
+#   CHAOS
+##  [点击查看代码](https://gitee.com/ape-stack/chaos/blob/master/code.md)
     一个248行代码完成单表增删改查功能的快速开发架构！！！
 
 #   简介
