@@ -1,5 +1,6 @@
+#  单表增删改查功能
 ![](code.png)
-#  图上是对于单表标准的增删改查，使用Chaos架构详细代码如下
+#  数据库
 ```mysql
 CREATE TABLE `chaos_index` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
@@ -12,6 +13,7 @@ CREATE TABLE `chaos_index` (
   UNIQUE KEY `inx_mu` (`mu`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
 ```
+#  服务端实现
 ```java
 package com.chaos.model.entity;
 
@@ -169,6 +171,7 @@ public class ChaosIndexController extends BaseController {
 }
 
 ```
+#  前端定义
 ```vue
 <template>
     <el-container>
