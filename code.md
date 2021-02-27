@@ -119,7 +119,7 @@ package com.chaos.manager.controller;
 @Slf4j
 @Api(tags = "ChaosIndexController")
 @RestController
-@RequestMapping("/manage/ChaosIndex")
+@RequestMapping("/manage/chaosIndex")
 public class ChaosIndexController extends BaseController {
     @Autowired
     private IChaosIndexService iChaosIndexService;
@@ -237,7 +237,7 @@ public class ChaosIndexController extends BaseController {
         mixins: [page, create, updte],
         data() {
             return {
-                domain: 'chaos_index',
+                domain: 'chaosIndex',
             }
         },
         created() {
