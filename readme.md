@@ -3,12 +3,12 @@
 ![](https://img.shields.io/badge/language-TypeScript-483D8B.svg)
 ![](https://img.shields.io/badge/license-MIT-483D8B.svg)
 
-#   前言
+#   简介
     248行搞定单表增删改查！！！
 #   [示例代码](https://gitee.com/ape-stack/chaos/blob/master/code.md)
 
-#   简介
-    chaos是一个前后端分离的微服务架构，chaos架构由服务端架构、中后台架构，微信原生小程序架构等部分组成。   
+#   构成
+    chaos是一个前后端分离的分布式微服务架构，chaos架构由服务端架构、中后台架构，微信原生小程序架构等部分组成。   
     1.服务端架构chaos-cloud（java）基于SpringCloudAlibaba（2.2.1.RELEASE）、dubbo、nacos、
       MybatisPlus、jwt、redis、Swagger2等框架组成。
     2.中后台架构chaos-umi（TypeScript）基于react（16.8.6）、umi（3.2.14）、AntDesignPro（v4）等框架组成。
