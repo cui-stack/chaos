@@ -171,13 +171,13 @@ public class ChaosIndexController extends BaseController {
 }
 
 ```
-#  前端定义
+#  前端实现
 ```vue
 <template>
     <el-container>
             <el-header>
             <el-container>
-                <el-button type="primary" @click="showAdd">增加</el-button>
+                <AddButton :click="showAdd"/>
                 <Input placeholder="请输入MU"
                        :change="(value)=>this.handleChange(value,'mu')"/>
                 <SearchButton :click="search"/>
@@ -188,10 +188,10 @@ public class ChaosIndexController extends BaseController {
                 <el-table-column prop='mu'/>
                 <el-table-column prop="mu" label="操作" width="200">
                     <template slot-scope="scope">
-                        <el-button plain @click="showUpdate(scope.row.mu)">编辑
-                        </el-button>
-                        <el-button plain @click="doDelete(scope.row.mu)">删除
-                        </el-button>
+                        <HandleButton text="编辑"
+                                      :click="()=>showUpdate(scope.row.mu)"/>
+                        <HandleButton text="删除"
+                                      :click="()=>doDelete(scope.row.mu)"/>
                     </template>
                 </el-table-column>
             </el-table>
