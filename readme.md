@@ -3,8 +3,8 @@
 ![](https://img.shields.io/badge/language-TypeScript-483D8B.svg)
 ![](https://img.shields.io/badge/license-MIT-483D8B.svg)
 
-#   特点[点击查看代码](https://gitee.com/ape-stack/chaos/blob/master/code.md)
-    248行代码完成单表增删改查，代码自动生成，准时下班冲冲冲！！！
+#   CHAOS[点击查看代码](https://gitee.com/ape-stack/chaos/blob/master/code.md)
+    一个248行代码完成单表增删改查功能的快速开发架构！！！
 
 #   简介
     chaos是一个前后端分离的分布式微服务架构，chaos架构由服务端架构、中后台架构，微信原生小程序架构等部分组成。   
@@ -14,7 +14,6 @@
     3.中后台架构chaos-vue（javascript）基于vue（2.6.12）、ElementUI（2.14.1）、axios等框架组成。
     4.微信原生小程序架构chaos-weapp（javascript）基于vant等框架组成。
     
-
 #   模块
     chaos
     ├── chaos-cloud-base -- 基于SpringCloud的服务端架构实现
