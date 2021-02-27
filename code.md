@@ -191,7 +191,7 @@ public class ChaosIndexController extends BaseController {
     import {page} from '@/chaos/functions/mixin/page'
 
     export default {
-        name: "Index",
+        name: "ChaosIndex",
         mixins: [page],
         data() {
             return {
