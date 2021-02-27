@@ -1,5 +1,5 @@
 ![](code.png)
-#  如图所示，单表标准增删改查，代码如下
+#  图上是对于单表标准的增删改查，使用Chaos架构详细代码如下
 ```mysql
 CREATE TABLE `chaos_index` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
