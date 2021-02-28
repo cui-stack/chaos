@@ -8,12 +8,13 @@
     一个248行代码完成单表增删改查功能的快速开发架构！！！ 
 
 #   简介
-    chaos是一个前后端分离的分布式微服务架构，chaos架构由服务端架构、中后台架构，微信原生小程序架构等部分组成。   
-    1.服务端架构chaos-cloud（java）基于SpringCloudAlibaba（2.2.1.RELEASE）、dubbo、nacos、
-      MybatisPlus、jwt、redis、Swagger2等框架组成。
-    2.中后台架构chaos-umi（TypeScript）基于react（16.8.6）、umi（3.2.14）、AntDesignPro（v4）等框架组成。
-    3.中后台架构chaos-vue（javascript）基于vue（2.6.12）、ElementUI（2.14.1）、axios等框架组成。
-    4.微信原生小程序架构chaos-weapp（javascript）基于vant等框架组成。
+    chaos是一个前后端分离的分布式微服务架构；
+    chaos架构由服务端架构、中后台架构，微信原生小程序架构等部分组成。   
+    1.服务端架构chaos-cloud基于SpringCloudAlibaba（2.2.1.RELEASE）、dubbo、nacos、
+      MybatisPlus、jwt、redis、Swagger2。
+    2.中后台架构chaos-vue基于vue（2.6.12）、vuex（3.6.2）、ElementUI（2.15.1）、axios。
+    3.中后台架构chaos-umi基于react（16.8.6）、umi（3.2.14）、AntDesignPro（v4）。
+    4.微信原生小程序架构chaos-weapp基于vant。
     
 #   模块
     chaos
