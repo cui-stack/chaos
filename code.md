@@ -236,8 +236,13 @@ public class ChaosIndexController extends BaseController {
         name: "ChaosIndex",
         mixins: [page, create, updte],
         data() {
+            const rules = {
+                title: [
+                    {required: true, message: '请输入标题', trigger: 'blur'},
+                ]}
             return {
                 domain: 'chaosIndex',
+                rules
             }
         },
         created() {
