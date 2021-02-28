@@ -4,7 +4,7 @@
 ![](https://img.shields.io/badge/license-MIT-483D8B.svg)
 
 #   CHAOS
-##  [点击查看示例代码](https://gitee.com/ape-stack/chaos/blob/master/code.md)
+##  [点击](https://gitee.com/ape-stack/chaos/blob/master/code.md)查看代码生成示例
     0代码快速开发架构！！！ 
 
 #   简介
