@@ -4,11 +4,11 @@
 ![](https://img.shields.io/badge/license-MIT-483D8B.svg)
 
 #   CHAOS
-##  [点击](https://gitee.com/ape-stack/chaos/blob/master/code.md)查看代码生成示例
+##  [点击](https://gitee.com/ape-stack/chaos/blob/master/code.md)查看生成代码示例
     0代码快速开发架构！！！ 
 
 #   简介
-    chaos是一个前后端分离的分布式微服务架构；
+    chaos是一个前后端分离的分布式微服务架构。
     chaos架构由服务端架构、中后台架构，微信原生小程序架构等部分组成。   
     1.服务端架构chaos-cloud基于SpringCloudAlibaba（2.2.1.RELEASE）、dubbo、nacos、
       MybatisPlus、jwt、redis、Swagger2。
