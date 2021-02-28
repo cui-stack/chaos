@@ -14,7 +14,7 @@
 ##  技术栈
 | 架构        | 框架                              | 版本          |
 | ---------- | --------------------------------- | ------------- |
-| chaos-cloud | 基于springcloud的服务端架构 | 3.0.0         |
+| chaos-cloud | 基于springcloud的服务端架构        | 3.0.0         |
 |             | SpringCloudAlibaba                | 2.2.1.RELEASE |
 |             | dubbo                             |               |
 |             | nacos                             |               |
