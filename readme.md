@@ -5,7 +5,7 @@
 
 #   CHAOS
 ##  [点击查看示例代码](https://gitee.com/ape-stack/chaos/blob/master/code.md)
-    一个248行代码完成单表增删改查功能的快速开发架构！！！ 
+    0代码快速开发架构！！！ 
 
 #   简介
     chaos是一个前后端分离的分布式微服务架构；
