@@ -5,7 +5,7 @@
 
 #   CHAOS
     0代码快速开发架构！！！ 
-##  [点击](https://gitee.com/ape-stack/chaos/blob/master/code.md)查看代码生成示例
+##  [点击查看](https://gitee.com/ape-stack/chaos/blob/master/code.md)代码生成示例
 
 #   架构介绍
     chaos是一个前后端分离的分布式微服务架构。
