@@ -4,7 +4,7 @@
 ![](https://img.shields.io/badge/license-MIT-483D8B.svg)
 
 #   CHAOS
-    0代码快速开发架构！！！ 
+    0代码快速开发架构，一键生成，快速开发！！！ 
 ##  [点击查看](https://gitee.com/ape-stack/chaos/blob/master/code.md)代码生成示例
 
 #   架构介绍
