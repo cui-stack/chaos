@@ -14,17 +14,17 @@
 ##  技术栈
 | 架构        | 框架                              | 版本          |
 | ---------- | --------------------------------- | ------------- |
-| chaos-cloud | 基于springcloud的<br />服务端架构 | 3.0.0         |
+| chaos-cloud | 基于springcloud的服务端架构 | 3.0.0         |
 |             | SpringCloudAlibaba                | 2.2.1.RELEASE |
 |             | dubbo                             |               |
 |             | nacos                             |               |
 |             | MybatisPlus                       |               |
-| chaos-vue   | 基于vue<br />的中后台架构         | 1.0.0         |
+| chaos-vue   | 基于vue的中后台架构         | 1.0.0         |
 |             | vue                               | 2.6.12        |
 |             | vuex                              | 3.6.2         |
 |             | ElementUI                         | 2.15.1        |
 |             | axios                             |               |
-| chaos-umi   | 基于react<br />的中后台架构       | 1.0.0         |
+| chaos-umi   | 基于react的中后台架构       | 1.0.0         |
 |             | react                             | 16.8.6        |
 |             | umi                               | 3.2.14        |
 |             | AntDesignPro                      | v4            |
