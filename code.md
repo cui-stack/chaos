@@ -15,7 +15,7 @@ CREATE TABLE `chaos_index` (
 ```
 #  服务端实现
 ```java
-package com.chaos.model.entity;
+package com.firepongo.chaos.model.entity;
 
 @Data
 @NoArgsConstructor@EqualsAndHashCode@Accessors(chain = true)
@@ -26,7 +26,7 @@ public class ChaosIndex extends MuModel {
 }
 ```
 ```java
-package com.chaos.model.data;
+package com.firepongo.chaos.model.data;
 
 @Data
 @NoArgsConstructor
@@ -38,7 +38,7 @@ public class ChaosIndexData extends DATA{
 }
 ```
 ```java
-package com.chaos.service.mapper;
+package com.firepongo.chaos.service.mapper;
 
 public interface ChaosIndexMapper extends BaseMapper<ChaosIndex> {
 
@@ -51,7 +51,7 @@ public interface ChaosIndexMapper extends BaseMapper<ChaosIndex> {
 </mapper>
 ```
 ```java
-package com.chaos.model.service;
+package com.firepongo.chaos.model.service;
 
 public interface IChaosIndexService extends IService<ChaosIndex> {
     MU insertModel(ChaosIndexData data);
@@ -63,7 +63,7 @@ public interface IChaosIndexService extends IService<ChaosIndex> {
 }
 ```
 ```java
-package com.chaos.service.impl;
+package com.firepongo.chaos.service.impl;
 
 @Slf4j
 @Service(interfaceClass = IChaosIndexService.class)
@@ -114,7 +114,7 @@ public class ChaosIndexServiceImpl extends ServiceImpl<ChaosIndexMapper, ChaosIn
 } 
 ```
 ```java
-package com.chaos.manager.controller;
+package com.firepongo.chaos.manager.controller;
 
 @Slf4j
 @Api(tags = "ChaosIndexController")
