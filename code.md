@@ -149,7 +149,7 @@ public class ChaosIndexController extends BaseController {
 
     @PostMapping("/list")
     @ManageLoginToken
-    @ApiOperation(value = "列表", notes = "", httpMethod = "POST")
+    @ApiOperation(httpMethod = "POST")
     public DataResult<List<ChaosIndexData>> list(@RequestBody ChaosIndexData data) throws Exception {
         return dataResult(iChaosIndexService.selectByData(data));
     }
