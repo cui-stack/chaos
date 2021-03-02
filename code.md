@@ -18,7 +18,8 @@ CREATE TABLE `chaos_index` (
 package com.firepongo.chaos.model.entity;
 
 @Data
-@NoArgsConstructor@EqualsAndHashCode@Accessors(chain = true)
+@NoArgsConstructor
+@EqualsAndHashCode@Accessors(chain = true)
 @TableName("chaos_index")
 @ApiModel(value="ChaosIndex实体")
 public class ChaosIndex extends MuModel {
@@ -135,7 +136,7 @@ public class ChaosIndexController extends BaseController {
     @PostMapping("/update")
     @ManageLoginToken
     @ApiOperation(httpMethod = "POST")
-    public DataResult<Boolean> update(@ApiParam(value = "") @RequestBody @Validated UpdateData<ChaosIndexData> data, BindingResult bindingResult) throws Exception {
+    public DataResult<Boolean> update(@RequestBody @Validated UpdateData<ChaosIndexData> data, BindingResult bindingResult) throws Exception {
         validate(bindingResult);
         return dataResult(iChaosIndexService.updateModelByMU(data));
     }

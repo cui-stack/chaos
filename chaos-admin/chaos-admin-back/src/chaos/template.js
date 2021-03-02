@@ -15,20 +15,19 @@ if (!dirName) {
 
 // 页面模版
 const indexTep =
-`
-<template>
+    `<template>
     <el-container>
         <el-header>
             <el-container>
                 <PrimaryButton text="增加" :click="showAdd"/>
                 <Input placeholder="请输入MU"
-                       :change="(value)=>this.handleChange(value,'mu')"/>
+                       :change="(value)=>handleChange(value,'mu')"/>
                 <SearchButton :click="search"/>
             </el-container>
         </el-header>
         <el-main>
             <el-table stripe :data="tableData">
-                <el-table-column prop="mu" label="编号"/>
+                <el-table-column prop="mu" label="编号" width="80"/>
                 <el-table-column prop="title" label="标题"/>
                 <el-table-column label="操作" width="200">
                     <template slot-scope="scope">
@@ -103,7 +102,7 @@ const indexTep =
 fs.mkdirSync(`./src/views/${dirName}`); // mkdir $1
 process.chdir(`./src/views/${dirName}`); // cd $1
 
-fs.writeFileSync('BreadCrumb.vue', indexTep);
+fs.writeFileSync('index.vue', indexTep);
 
 console.log(`模版${dirName}已创建,请手动增加route`);
 
