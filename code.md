@@ -126,45 +126,45 @@ public class ChaosIndexController extends BaseController {
     private IChaosIndexService iChaosIndexService;
 
     @PostMapping("/add")
-    @ManageLoginToken
-    @ApiOperation(httpMethod = "POST")
+    @ManageLoginToken(roles = {RoleConstant.ADMIN, RoleConstant.DEV})
+    @ApiOperation(value = "", httpMethod = "POST")
     public DataResult<MU> add(@RequestBody @Validated ChaosIndexData data, BindingResult bindingResult) throws Exception {
         validate(bindingResult);
         return dataResult(iChaosIndexService.insertModel(data));
     }
 
     @PostMapping("/update")
-    @ManageLoginToken
-    @ApiOperation(httpMethod = "POST")
+    @ManageLoginToken(roles = {RoleConstant.ADMIN, RoleConstant.DEV})
+    @ApiOperation(value = "", httpMethod = "POST")
     public DataResult<Boolean> update(@RequestBody @Validated UpdateData<ChaosIndexData> data, BindingResult bindingResult) throws Exception {
         validate(bindingResult);
         return dataResult(iChaosIndexService.updateModelByMU(data));
     }
 
     @PostMapping("/one")
-    @ManageLoginToken
-    @ApiOperation(httpMethod = "POST")
+    @ManageLoginToken(roles = {RoleConstant.ADMIN, RoleConstant.DEV})
+    @ApiOperation(value = "", httpMethod = "POST")
     public DataResult<ChaosIndexData> one(@RequestBody MU data) throws Exception {
         return dataResult(iChaosIndexService.selectByMU(data));
     }
 
     @PostMapping("/list")
-    @ManageLoginToken
-    @ApiOperation(httpMethod = "POST")
+    @ManageLoginToken(roles = {RoleConstant.ADMIN, RoleConstant.DEV})
+    @ApiOperation(value = "", httpMethod = "POST")
     public DataResult<List<ChaosIndexData>> list(@RequestBody ChaosIndexData data) throws Exception {
         return dataResult(iChaosIndexService.selectByData(data));
     }
 
     @PostMapping("/page")
-    @ManageLoginToken
-    @ApiOperation(httpMethod = "POST")
+    @ManageLoginToken(roles = {RoleConstant.ADMIN, RoleConstant.DEV})
+    @ApiOperation(value = "", httpMethod = "POST")
     public PageResult<ChaosIndexData> page(@RequestBody PageQueryDto<ChaosIndexData> data) throws Exception {
         return pageResult(iChaosIndexService.selectByPage(data));
     }
 
     @PostMapping("/delete")
-    @ManageLoginToken
-    @ApiOperation(httpMethod = "POST")
+    @ManageLoginToken(roles = {RoleConstant.ADMIN, RoleConstant.DEV})
+    @ApiOperation(value = "", httpMethod = "POST")
     public DataResult<Boolean> delete(@RequestBody MU data) throws Exception {
         return dataResult(iChaosIndexService.deleteModel(data));
     }
@@ -179,7 +179,7 @@ public class ChaosIndexController extends BaseController {
         <el-header>
             <el-container>
                 <PrimaryButton text="增加" :click="showAdd"/>
-                <Input placeholder="请输入MU"
+                <SearchInput placeholder="请输入MU"
                        :change="(value)=>this.handleChange(value,'mu')"/>
                 <SearchButton :click="search"/>
             </el-container>
@@ -230,8 +230,7 @@ public class ChaosIndexController extends BaseController {
     </el-container>
 </template>
 <script>
-    import {page, remove} from '@/chaos/functions/mixin/page'
-    import {create, updte} from '@/chaos/functions/mixin/crud'
+    import {page, remove, create, updte} from '@/chaos/functions/mixin/crud'
 
     export default {
         name: "ChaosIndex",
