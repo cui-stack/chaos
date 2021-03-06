@@ -13,32 +13,32 @@ let children = [{
     meta: {
         title: "欢迎"
     },
-    component: () => import('../views/welcome/index')
+    component: () => import('@/chaos/views/welcome/index')
 }, {
     path: '/onlineUser',
     name: 'onlineUser',
     meta: {title: "在线用户", keepAlive: true},
-    component: () => import ('../views/admin/onlineUser')
+    component: () => import ('@/chaos/views/admin/onlineUser')
 }, {
     path: '/onlineAdmin',
     name: 'onlineAdmin',
     meta: {title: "在线管理员", keepAlive: true},
-    component: () => import ('../views/admin/onlineAdmin')
+    component: () => import ('@/chaos/views/admin/onlineAdmin')
 }, {
     path: '/limit',
     name: 'limit',
     meta: {title: "访问限制"},
-    component: () => import ('../views/admin/limit')
+    component: () => import ('@/chaos/views/admin/limit')
 }]
 let routes = [{
     path: '/',
-    component: () => import('../views/login/index'),
+    component: () => import('@/views/login/index'),
     meta: {
         title: "登录"
     }
 }, {
     path: '/main',
-    component: () => import('../layout/main/index'),
+    component: () => import('@/chaos/layout/main/index'),
     redirect: '/welcome',
     children: children.concat(routers())
 }]

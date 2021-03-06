@@ -1,5 +1,18 @@
 import Data from '@/chaos/functions/common/Data';
 
+export const pushcreate = {
+    data() {
+        return {
+            addPath: '',
+        }
+    },
+    methods: {
+        showAdd() {
+            this.$router.push('/' + this.addPath)
+        },
+    }
+}
+
 export const create = {
     data() {
         return {
@@ -19,6 +32,22 @@ export const create = {
     }
 }
 
+export const pushupdate = {
+    data() {
+        return {
+            updatePath: ''
+        }
+    },
+    methods: {
+        showUpdate(mu) {
+            this.$router.push({
+                name: this.updatePath,
+                params: {mu}
+            })
+        },
+    }
+}
+
 export const update = {
     data() {
         return {
@@ -29,7 +58,7 @@ export const update = {
         }
     },
     methods: {
-        async initUpdate(){
+        async initUpdate() {
             if (!this.$route.params.mu) {
                 await this.$router.push(this.indexPath)
                 return

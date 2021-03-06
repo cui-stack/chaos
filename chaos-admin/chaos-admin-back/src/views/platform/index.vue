@@ -2,9 +2,10 @@
     <el-container>
         <el-header>
             <el-container>
-                <el-button type="primary" @click="showAddForm=true">增加平台</el-button>
-                <el-input v-model="data.name" placeholder="请输入平台名称"/>
-                <el-button type="primary" @click="search">搜索</el-button>
+                <PrimaryButton text="增加" :click="showAdd"/>
+                <SearchInput placeholder="请输入平台名称"
+                             :change="(value)=>this.handleChange(value,'name')"/>
+                <SearchButton :click="search"/>
             </el-container>
         </el-header>
         <el-main>
@@ -86,17 +87,8 @@
         created() {
             this.search()
         },
-        methods: {
-        }
+        methods: {}
     }
 </script>
 <style scoped>
-    .el-header .el-container {
-        margin: auto 0px;
-        padding: 10px;
-    }
-
-    .el-input {
-        width: 280px;
-    }
 </style>

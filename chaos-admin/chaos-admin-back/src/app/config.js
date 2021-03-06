@@ -6,54 +6,54 @@ export function routers() {
             meta: {title: "平台"},
             component: () => import ('@/views/platform/index')
         },
-        {
-            path: '/admin',
-            name: 'admin',
-            meta: {title: "管理员"},
-            component: () => import ('@/views/admin/index')
-        },
-        {
-            path: '/addAdmin',
-            name: 'addAdmin',
-            meta: {title: "新增管理员"},
-            component: () => import ('@/views/admin/add')
-        },
-        {
-            path: '/updateAdmin',
-            name: 'updateAdmin',
-            meta: {title: "修改管理员"},
-            component: () => import ('@/views/admin/update')
-        },
-        {
-            path: '/role',
-            name: 'role',
-            meta: {title: "角色"},
-            component: () => import ('@/views/role/index')
-        },
-        {
-            path: '/permission',
-            name: 'permission',
-            meta: {title: "资源"},
-            component: () => import ('@/views/permission/index')
-        },
-        {
-            path: '/log',
-            name: 'log',
-            meta: {title: "日志"},
-            component: () => import ('@/views/log/index')
-        },
-        {
-            path: '/link',
-            name: 'link',
-            meta: {title: "链接"},
-            component: () => import ('@/views/link/index')
-        },
-        {
-            path: '/index',
-            name: 'index',
-            meta: {title: "面板"},
-            component: () => import ('@/views/index/index')
-        }
+        // {
+        //     path: '/admin',
+        //     name: 'admin',
+        //     meta: {title: "管理员"},
+        //     component: () => import ('@/views/admin/index')
+        // },
+        // {
+        //     path: '/addAdmin',
+        //     name: 'addAdmin',
+        //     meta: {title: "新增管理员"},
+        //     component: () => import ('@/views/admin/add')
+        // },
+        // {
+        //     path: '/updateAdmin',
+        //     name: 'updateAdmin',
+        //     meta: {title: "修改管理员"},
+        //     component: () => import ('@/views/admin/update')
+        // },
+        // {
+        //     path: '/role',
+        //     name: 'role',
+        //     meta: {title: "角色"},
+        //     component: () => import ('@/views/role/index')
+        // },
+        // {
+        //     path: '/permission',
+        //     name: 'permission',
+        //     meta: {title: "资源"},
+        //     component: () => import ('@/views/permission/index')
+        // },
+        // {
+        //     path: '/log',
+        //     name: 'log',
+        //     meta: {title: "日志"},
+        //     component: () => import ('@/views/log/index')
+        // },
+        // {
+        //     path: '/link',
+        //     name: 'link',
+        //     meta: {title: "链接"},
+        //     component: () => import ('@/views/link/index')
+        // },
+        // {
+        //     path: '/index',
+        //     name: 'index',
+        //     meta: {title: "面板"},
+        //     component: () => import ('@/views/index/index')
+        // }
     ]
 }
 
@@ -76,3 +76,10 @@ export function appInfo() {
         platformMu: '1'
     }
 }
+
+
+export function SideMenuData() {
+    let m = new Map();
+    return m
+}
+

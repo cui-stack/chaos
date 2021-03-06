@@ -31,7 +31,7 @@
                 tableData: []
             }
         },
-        mounted() {
+        created() {
             this.search()
         },
         methods: {

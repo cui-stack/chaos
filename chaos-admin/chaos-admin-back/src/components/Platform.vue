@@ -1,8 +1,8 @@
 <template>
-    <el-select v-model="mu" @change="platformChange" placeholder="请选择平台">
-        <el-option v-for="item in platforms" :key="item.mu" :label="item.name"
-                   :value="item.mu"/>
-    </el-select>
+    <SearchSelect placeholder="请选择平台"
+                  :datas="datas"
+                  :value="value"
+                  :change="change"/>
 </template>
 <script>
     import Data from '@/chaos/functions/common/Data';
@@ -10,39 +10,27 @@
     export default {
         name: 'Platform',
         props: {
-            platformMu: {
+            value: {
                 type: String,
                 default: ''
-            },
-            inited: {
-                type: String,
-                default: 'true'
-            },
-        },
-        watch: {
-            platformMu(platformMu) {
-                this.mu = platformMu
             },
         },
         data() {
             return {
-                table: 'chaos_platform',
-                platforms: [],
-                mu: ''
+                domain: 'chaos_platform',
+                datas: [],
             }
         },
         async created() {
-            this.platforms = await Data.list(this.table)
-            if (this.inited === "true") {
-                this.mu = this.platforms[0].mu
-            }
-            this.$emit("platformInit", this.mu)
+            this.datas = await Data.list(this.domain)
+            this.value = this.datas[0].mu
+            //this.$emit("platformInit", this.mu)
         },
         methods: {
-            platformChange(platformMu) {
-                this.mu = platformMu
-                this.$emit("platformChange", this.mu)
-            }
+            // platformChange(platformMu) {
+            //     this.mu = platformMu
+            //     this.$emit("platformChange", this.mu)
+            // }
         }
     }
 </script>

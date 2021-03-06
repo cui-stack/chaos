@@ -13,7 +13,7 @@
 <script>
 
     export default {
-        name: 'DatePicker',
+        name: 'SearchDatePicker',
         data() {
             return {
                 value: '',

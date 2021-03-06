@@ -26,3 +26,9 @@ export function appInfo() {
         platformMu: '2'
     }
 }
+
+export function SideMenuData() {
+    let m = new Map();
+    return m
+}
+

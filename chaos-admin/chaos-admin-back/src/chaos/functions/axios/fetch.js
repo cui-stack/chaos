@@ -31,7 +31,11 @@ httpService.interceptors.response.use(
         }
         if (response.data.code == 201) {
             store.dispatch('admin/refreshToken', response.data.msg)
-            return post(store.getters.lastPost.url, store.getters.lastPost.params)
+            const {url, params} = store.getters.lastPost
+            if (response.config.url === url) {
+                return post(url, params)
+            }
+            return false
         }
         if (response.data.code == 401 || response.data.code == 403) {
             Message({

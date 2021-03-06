@@ -13,7 +13,7 @@
 
 <script>
     export default {
-        name: "pagination",
+        name: "SearchPagination",
         data() {
             return {}
         },

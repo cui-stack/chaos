@@ -3,7 +3,7 @@
 </template>
 <script>
     export default {
-        name: 'HandleButton',
+        name: 'PlainButton',
         data() {
             return {};
         },

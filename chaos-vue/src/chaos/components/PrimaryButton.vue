@@ -3,7 +3,7 @@
 </template>
 <script>
     export default {
-        name: 'AddButton',
+        name: 'PrimaryButton',
         data() {
             return {
             };

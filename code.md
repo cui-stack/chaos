@@ -185,7 +185,11 @@ public class ChaosIndexController extends BaseController {
             </el-container>
         </el-header>
         <el-main>
-            <el-table stripe :data="tableData">
+            <el-table stripe :data="tableData"
+                      element-loading-text="拼命加载中"
+                      element-loading-spinner="el-icon-loading"
+                      element-loading-background="rgba(0, 0, 0, 0.8)"
+                      v-loading.fullscreen.lock="loading">
                 <el-table-column prop="mu" label="编号"/>
                 <el-table-column prop="title" label="标题"/>
                 <el-table-column label="操作" width="200">

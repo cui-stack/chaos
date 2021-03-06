@@ -18,7 +18,7 @@
   "scripts": {
     "dev": "vue-cli-service serve",
     "lint": "vue-cli-service lint",
-    "build": "vue-cli-service build  ",
+    "build": "vue-cli-service build",
     "tep": "node src/chaos/template"
   },
   "dependencies": {
@@ -30,7 +30,6 @@
     "normalize.css": "7.0.0",
     "vue": "^2.6.12",
     "vue-router": "^3.5.1",
-    "vue-socket.io": "^3.0.10",
     "vue-wechat-title": "^2.0.7",
     "vuex": "^3.6.2",
     "vuex-along": "^1.2.13"

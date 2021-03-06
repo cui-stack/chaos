@@ -7,7 +7,7 @@
 </template>
 <script>
     export default {
-        name: 'RadioGroup',
+        name: 'SearchRadioGroup',
         data() {
             return {
                 value: 1

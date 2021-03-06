@@ -20,9 +20,9 @@
 </template>
 
 <script>
-    import Head from '@/chaos/components/Head'
-    import SideMenu from '@/chaos/components/SideMenu'
-    import CenterHead from '@/chaos/components/CenterHead'
+    import Head from '@/chaos/components/layout/Head'
+    import SideMenu from '@/chaos/components/layout/SideMenu'
+    import CenterHead from '@/chaos/components/layout/CenterHead'
 
     export default {
         name: 'Main',
@@ -49,7 +49,6 @@
         padding: 0;
         border: 0;
     }
-
 </style>
 
 

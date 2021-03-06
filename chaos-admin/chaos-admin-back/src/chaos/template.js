@@ -93,7 +93,9 @@ const indexTep =
     }
 </script>
 <style lang="less" scoped>
-     
+    .el-form {
+        width: 500px;
+    }     
 </style>
 `
 ;
@@ -102,7 +104,7 @@ const indexTep =
 fs.mkdirSync(`./src/views/${dirName}`); // mkdir $1
 process.chdir(`./src/views/${dirName}`); // cd $1
 
-fs.writeFileSync('index.vue', indexTep);
+fs.writeFileSync('UsersPage.vue', indexTep);
 
 console.log(`模版${dirName}已创建,请手动增加route`);
 

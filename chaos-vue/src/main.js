@@ -10,15 +10,29 @@ import 'normalize.css/normalize.css'
 Vue.config.productionTip = false
 Vue.use(ElementUI);
 Vue.use(VueWechatTitle);
-export const eventBus = new Vue()
 
-Vue.component("Avatar", () => import ('@/chaos/components/Avatar'));
-Vue.component("SearchButton", () => import ('@/chaos/components/SearchButton'));
-Vue.component("Pagination", () => import ('@/chaos/components/Pagination'));
-Vue.component("Input", () => import ('@/chaos/components/Input'));
-Vue.component("RadioGroup", () => import ('@/chaos/components/RadioGroup'));
-Vue.component("PlainButton", () => import ('@/chaos/components/PlainButton'));
-Vue.component("PrimaryButton", () => import ('@/chaos/components/PrimaryButton'));
+import Avatar from '@/chaos/components/Avatar'
+import PlainButton from '@/chaos/components/PlainButton'
+import PrimaryButton from '@/chaos/components/PrimaryButton'
+
+import SearchButton from '@/chaos/components/search/Button'
+import SearchDatePicker from '@/chaos/components/search/DatePicker'
+import SearchInput from '@/chaos/components/search/Input'
+import SearchPagination from '@/chaos/components/search/Pagination'
+import SearchRadioGroup from '@/chaos/components/search/RadioGroup'
+import SearchSelect from '@/chaos/components/search/Select'
+
+
+Vue.component("Avatar", Avatar);
+Vue.component("PlainButton", PlainButton);
+Vue.component("PrimaryButton", PrimaryButton);
+
+Vue.component("SearchButton", SearchButton);
+Vue.component("SearchDatePicker", SearchDatePicker);
+Vue.component("SearchInput", SearchInput);
+Vue.component("SearchPagination", SearchPagination);
+Vue.component("SearchRadioGroup", SearchRadioGroup);
+Vue.component("SearchSelect", SearchSelect);
 
 new Vue({
     el: '#app',
@@ -26,3 +40,4 @@ new Vue({
     store,
     render: h => h(App)
 }).$mount('#app')
+

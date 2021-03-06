@@ -3,12 +3,13 @@
               prefix-icon="el-icon-search"
               clearable
               :placeholder="placeholder"
+              @keyenter="change"
               @change="change">
     </el-input>
 </template>
 <script>
     export default {
-        name: 'Input',
+        name: 'SearchInput',
         data() {
             return {
                 value: ''

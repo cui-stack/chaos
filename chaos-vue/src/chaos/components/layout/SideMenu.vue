@@ -2,7 +2,6 @@
     <el-container>
         <el-main>
             <el-menu :default-active=defaultActive
-                     :default-openeds=defaultOpeneds
                      :collapse=isCollapse
                      router
                      class="side-menu"
@@ -14,9 +13,11 @@
                         <i :class="menu.icon"/>
                         <span>{{menu.title}}</span>
                     </template>
-                    <el-menu-item v-for="(item,j) in menu.submenus" :key="i+'-'+j" :index=item.link>
+                    <el-menu-item v-for="(item,j) in menu.submenus"
+                                  :key="i+'-'+j" :index=item.link>
                         <template slot="title">
                             <span>{{item.title}}</span>
+                            <DataBadge :link="item.link"/>
                         </template>
                     </el-menu-item>
                 </el-submenu>
@@ -25,15 +26,16 @@
     </el-container>
 </template>
 <script>
+    import DataBadge from '@/chaos/components/DataBadge'
 
     export default {
         name: 'SideMenu',
+        components: {DataBadge},
         data() {
             return {
                 asideWidth: 300,
                 menus: [],
-                defaultActive: '/index',
-                defaultOpeneds: ["0"]
+                defaultActive: '/',
             }
         },
         computed: {
@@ -43,7 +45,12 @@
         },
         created() {
             this.menus = this.$store.getters.menus
-            this.defaultActive = this.$store.getters.user.indexLink
+            this.defaultActive = this.$route.path
+        },
+        watch: {
+            $route() {
+                this.defaultActive = this.$route.path
+            }
         },
     }
 </script>
