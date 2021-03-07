@@ -1,28 +1,24 @@
 <template>
     <el-container>
-        <el-header style="height: 30px;margin-bottom: 20px">
-            <h2>添加管理员</h2>
-        </el-header>
         <el-main>
-            <el-alert style="margin-bottom: 20px" title="Tips：标星的内容为必填项"
-                      type="success"/>
-            <el-form ref="form" :model="form" :rules="rules" label-width="100px"
-                     size="small">
+            <el-form ref="form" :model="form" :rules="rules"
+                     label-width="100px">
                 <el-form-item label="账号" prop="username">
                     <el-input v-model="form.username" placeholder="请输入账号"/>
-                    <span style="margin-left: 20px">邮箱、手机号码、qq号码</span>
                 </el-form-item>
                 <el-form-item label="密码" prop="password">
-                    <el-input v-model="form.password" placeholder="请输入密码"/>
+                    <el-input v-model="form.password" type="password"
+                              placeholder="请输入密码"/>
                 </el-form-item>
                 <el-form-item label="姓名" prop="name">
                     <el-input v-model="form.name" placeholder="请输入姓名"/>
                 </el-form-item>
                 <el-form-item label="平台">
-                    <Platform @platformChange="platformChange" @platformInit="platformChange"/>
+                    <Platform :init="platformChange" :change="platformChange"/>
                 </el-form-item>
                 <el-form-item label="角色">
-                    <Role :role="role" @roleChange="roleChange"/>
+                    <Role :platformMu="form.platformMu"
+                          :change="(roleMu)=>form.roleMu = roleMu"/>
                 </el-form-item>
                 <el-form-item label="电话" prop="phone">
                     <el-input v-model="form.phone"
@@ -46,7 +42,7 @@
                     </el-radio-group>
                 </el-form-item>
                 <el-form-item>
-                    <el-button type="primary" @click="onSubmit">保存</el-button>
+                    <PrimaryButton text="确定" :click="doAdd"/>
                 </el-form-item>
             </el-form>
         </el-main>
@@ -54,12 +50,13 @@
 </template>
 
 <script>
-    import Data from '@/chaos/functions/common/Data';
-    import Platform from '@/components/Platform'
-    import Role from '@/components/Role'
+    import {create} from '@/chaos/functions/mixin/pushcrud'
+    import Platform from '@/app/components/Platform'
+    import Role from '@/app/components/Role'
 
     export default {
         name: 'AddAdmin',
+        mixins: [create],
         components: {
             Platform,
             Role
@@ -70,28 +67,22 @@
                     {required: true, message: '请输入账号', trigger: 'blur'},
                     {
                         min: 2,
-                        max: 10,
+                        max: 30,
                         trigger: 'change',
-                        message: '长度在 2 到 10 个字符',
+                        message: '长度在 2 到 30 个字符',
                     }
                 ],
                 password: [
                     {required: true, message: '请输入密码', trigger: 'blur'},
                     {
                         min: 2,
-                        max: 10,
+                        max: 30,
                         trigger: 'change',
-                        message: '长度在 2 到 10 个字符',
+                        message: '长度在 2 到 30 个字符',
                     }
                 ],
                 name: [
                     {required: true, message: '请输入姓名', trigger: 'blur'},
-                    {
-                        min: 2,
-                        max: 10,
-                        trigger: 'change',
-                        message: '长度在 2 到 10 个字符',
-                    }
                 ],
                 phone: [
                     {required: true, message: '请输入电话', trigger: 'blur'},
@@ -105,33 +96,24 @@
             }
             return {
                 rules,
-                table: 'chaos_admin',
+                domain: 'chaos_admin',
+                indexPath: 'admin',
                 form: {
-                    status: 0
+                    status: 0,
+                    platformMu: ''
                 },
-                role: {},
 
             }
         },
         methods: {
-            onSubmit() {
-                Data.validate(this, 'form', async () => {
-                    await Data.add(this.table, this.form)
-                    await this.$router.push('/admin')
-                })
-            },
             platformChange(platformMu) {
                 this.form.platformMu = platformMu
-                this.role = {platformMu}
             },
-            roleChange(roleMu) {
-                this.form.roleMu = roleMu
-            }
         }
     }
 </script>
 <style scoped>
-    .el-input {
-        width: 280px
+    .el-form {
+        width: 500px;
     }
 </style>

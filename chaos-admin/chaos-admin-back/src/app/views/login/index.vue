@@ -57,7 +57,7 @@
         position: absolute;
         top: 0;
         left: 0;
-        background-color: #ff746e;
+        background-color: #483D8B;
         color: white;
         text-align: center;
 
@@ -90,7 +90,7 @@
     button {
         display: block;
         width: 250px;
-        height: 40px;
+        height: 45px;
         line-height: 40px;
         margin: 0 auto;
         border: none;

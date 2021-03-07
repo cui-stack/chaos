@@ -201,7 +201,7 @@ public class ChaosIndexController extends BaseController {
                     </template>
                 </el-table-column>
             </el-table>
-            <Pagination :currentPage="currentPage" :total="total" :limit="limit"
+            <SearchPagination :currentPage="currentPage" :total="total" :limit="limit"
                         @handleCurrentChange="handleCurrentChange"
                         @handleSizeChange="handleSizeChange"/>
         </el-main>

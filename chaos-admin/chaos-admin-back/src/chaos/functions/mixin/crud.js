@@ -29,12 +29,17 @@ export const update = {
             domain: '',
             showUpdateForm: false,
             updateForm: {},
-            rules: {}
+            rules: {},
+            initUpdateMethod: ''
         }
     },
     methods: {
         async showUpdate(mu) {
-            this.updateForm = await Data.one(this.domain, mu)
+            if (this.initUpdateMethod) {
+                this.updateForm = await Data.query(this.domain + '/' + this.initUpdateMethod, {mu})
+            } else {
+                this.updateForm = await Data.one(this.domain, mu)
+            }
             this.showUpdateForm = true
         },
         doUpdate() {
@@ -50,7 +55,7 @@ export const update = {
 export const remove = {
     data() {
         return {
-            domain:'',
+            domain: '',
             pickRowMu: '',
         }
     },

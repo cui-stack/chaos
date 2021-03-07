@@ -1,7 +1,7 @@
 import Vue from 'vue'
-import App from './chaos/App'
-import router from './chaos/router/index'
-import store from './chaos/functions/vuex/index'
+import App from '@/chaos/App'
+import router from '@/chaos/router/index'
+import store from '@/chaos/functions/vuex/index'
 import VueWechatTitle from 'vue-wechat-title';
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';

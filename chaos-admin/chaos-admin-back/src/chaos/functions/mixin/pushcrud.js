@@ -54,7 +54,8 @@ export const update = {
             domain: '',
             updateForm: {},
             rules: {},
-            indexPath: ''
+            indexPath: '',
+            initUpdateMethod: ''
         }
     },
     methods: {
@@ -63,7 +64,11 @@ export const update = {
                 await this.$router.push(this.indexPath)
                 return
             }
-            this.updateForm = await Data.one(this.domain, this.$route.params.mu)
+            if (this.initUpdateMethod) {
+                this.updateForm = await Data.query(this.domain + '/' + this.initUpdateMethod, {mu: this.$route.params.mu})
+            } else {
+                this.updateForm = await Data.one(this.domain, this.$route.params.mu)
+            }
         },
         doUpdate() {
             Data.validate(this, 'updateForm', async () => {

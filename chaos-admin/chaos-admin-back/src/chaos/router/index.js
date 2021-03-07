@@ -32,7 +32,7 @@ let children = [{
 }]
 let routes = [{
     path: '/',
-    component: () => import('@/views/login/index'),
+    component: () => import('@/app/views/login/index'),
     meta: {
         title: "登录"
     }
