@@ -30,7 +30,8 @@ export const update = {
             showUpdateForm: false,
             updateForm: {},
             rules: {},
-            initUpdateMethod: ''
+            initUpdateMethod: '',
+            updateMethod: ''
         }
     },
     methods: {
@@ -44,7 +45,14 @@ export const update = {
         },
         doUpdate() {
             Data.validate(this, 'updateForm', async () => {
-                await Data.update(this.domain, this.updateForm.mu, this.updateForm)
+                if (this.updateMethod) {
+                    await Data.submit(this.domain + '/' + this.updateMethod, {
+                        mu: this.updateForm.mu,
+                        data: this.updateForm
+                    })
+                } else {
+                    await Data.update(this.domain, this.updateForm.mu, this.updateForm)
+                }
                 this.showUpdateForm = false
                 this.search()
             })

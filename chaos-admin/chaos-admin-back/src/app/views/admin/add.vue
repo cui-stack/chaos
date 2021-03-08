@@ -18,7 +18,8 @@
                 </el-form-item>
                 <el-form-item label="角色">
                     <Role :platformMu="form.platformMu"
-                          :change="(roleMu)=>form.roleMu = roleMu"/>
+                          :change="(roleMu)=>form.roleMu = roleMu"
+                          @change="(roleMu)=>form.roleMu = roleMu"/>
                 </el-form-item>
                 <el-form-item label="电话" prop="phone">
                     <el-input v-model="form.phone"

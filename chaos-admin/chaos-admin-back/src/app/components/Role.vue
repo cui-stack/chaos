@@ -38,6 +38,7 @@
                 } else {
                     this.innerValue = this.datas[0].mu
                 }
+                this.$emit('change',this.innerValue)
             },
         },
         methods: {

@@ -16,13 +16,14 @@
                 </el-form-item>
                 <el-form-item label="平台">
                     <Platform :isInit="false"
-                              :change="platformChange"
+                              :change="(platformMu)=>updateForm.platformMu = platformMu"
                               :value="updateForm.platformMu"/>
                 </el-form-item>
                 <el-form-item label="角色">
                     <Role :platformMu="updateForm.platformMu"
                           :value="updateForm.roleMu"
-                          :change="(roleMu)=>updateForm.roleMu = roleMu"/>
+                          :change="(roleMu)=>updateForm.roleMu = roleMu"
+                          @change="(roleMu)=>updateForm.roleMu = roleMu"/>
                 </el-form-item>
                 <el-form-item label="电话" prop="phone">
                     <el-input v-model="updateForm.phone" placeholder="请输入电话"/>
@@ -74,7 +75,6 @@
                     }
                 ],
                 password: [
-                    {required: true, message: '请输入密码', trigger: 'blur'},
                     {
                         min: 2,
                         max: 30,
@@ -106,12 +106,10 @@
         },
         created() {
             this.initUpdateMethod = 'adminRole'
+            this.updateMethod = 'updateAdminRole'
             this.initUpdate()
         },
         methods: {
-            platformChange(platformMu) {
-                this.updateForm.platformMu = platformMu
-            },
         }
     }
 </script>

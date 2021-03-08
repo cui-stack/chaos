@@ -1,17 +1,21 @@
 <template>
     <el-container>
-        <el-header style="height: 70px;">
-            <el-container style="margin:auto 0px;padding: 10px ;">
-                <el-button type="primary" @click="showAdd">增加角色</el-button>
-                <el-input style="width: 220px" v-model="data.info"
-                          placeholder="请输入角色名称"/>
-                <Platform @platformChange="platformChange"
-                          @platformInit="platformChange"/>
-                <el-button type="primary" @click="search">搜索</el-button>
+        <el-header>
+            <el-container>
+                <PrimaryButton text="增加" :click="showAdd"/>
+                <SearchInput placeholder="请输入角色名称"
+                             :change="(value)=>this.handleChange(value,'info')"/>
+                <Platform :init="(value)=>handleChange(value,'platformMu')"
+                          :change="(value)=>handleChange(value,'platformMu')"/>
+                <SearchButton :click="search"/>
             </el-container>
         </el-header>
         <el-main>
-            <el-table stripe :data="tableData">
+            <el-table stripe :data="tableData"
+                      element-loading-text="拼命加载中"
+                      element-loading-spinner="el-icon-loading"
+                      element-loading-background="rgba(0, 0, 0, 0.8)"
+                      v-loading.fullscreen.lock="loading">
                 <el-table-column prop="mu" label="编号" width="188"/>
                 <el-table-column prop="name" label="缩写" min-width="45"/>
                 <el-table-column prop="info" label="名称" min-width="55"/>
@@ -19,14 +23,12 @@
                 <el-table-column prop="createTime" label="创建时间" min-width="76"/>
                 <el-table-column label="操作" width="258">
                     <template slot-scope="scope">
-                        <el-button plain @click="showPlatformUpdate(scope.row.mu)">编辑
-                        </el-button>
-                        <el-button style="margin: 0px" plain
-                                   @click="showGrant(scope.row.mu)">授权
-                        </el-button>
-                        <el-button style="margin: 0px" plain
-                                   @click="doDelete(scope.row.mu)">删除
-                        </el-button>
+                        <PlainButton text="编辑"
+                                     :click="()=>showUpdate(scope.row.mu)"/>
+                        <PlainButton text="授权"
+                                     :click="()=>showGrant(scope.row.mu)"/>
+                        <PlainButton text="删除"
+                                     :click="()=>doDelete(scope.row.mu)"/>
                     </template>
                 </el-table-column>
             </el-table>

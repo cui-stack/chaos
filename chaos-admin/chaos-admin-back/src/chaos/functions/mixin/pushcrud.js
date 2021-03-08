@@ -72,8 +72,15 @@ export const update = {
         },
         doUpdate() {
             Data.validate(this, 'updateForm', async () => {
-                await Data.update(this.domain, this.updateForm.mu, this.updateForm)
-                await this.$router.push(this.indexPath)
+                if (this.updateMethod) {
+                    await Data.submit(this.domain + '/' + this.updateMethod, {
+                        mu: this.updateForm.mu,
+                        data: this.updateForm
+                    }, () => this.$router.push(this.indexPath))
+                } else {
+                    await Data.update(this.domain, this.updateForm.mu, this.updateForm)
+                    await this.$router.push(this.indexPath)
+                }
             })
         },
     }
