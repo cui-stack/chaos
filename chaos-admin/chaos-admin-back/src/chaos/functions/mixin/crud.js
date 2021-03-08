@@ -30,18 +30,18 @@ export const update = {
             showUpdateForm: false,
             updateForm: {},
             rules: {},
-            initUpdateMethod: '',
+            showUpdateMethod: '',
             updateMethod: ''
         }
     },
     methods: {
         async showUpdate(mu) {
-            if (this.initUpdateMethod) {
-                this.updateForm = await Data.query(this.domain + '/' + this.initUpdateMethod, {mu})
+            this.showUpdateForm = true
+            if (this.showUpdateMethod) {
+                this.updateForm = await Data.query(this.domain + '/' + this.showUpdateMethod, {mu})
             } else {
                 this.updateForm = await Data.one(this.domain, mu)
             }
-            this.showUpdateForm = true
         },
         doUpdate() {
             Data.validate(this, 'updateForm', async () => {

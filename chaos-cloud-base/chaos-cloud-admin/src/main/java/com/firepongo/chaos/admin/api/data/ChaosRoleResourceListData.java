@@ -12,8 +12,8 @@ import java.util.List;
 
 @Data
 @Accessors(chain = true)
-@ApiModel(value = "ChaosRolePermissionListData", description = "")
-public class ChaosRolePermissionListData extends DTO {
+@ApiModel(value = "ChaosRoleResourceListData", description = "")
+public class ChaosRoleResourceListData extends DTO {
 
     private String roleMu;
 

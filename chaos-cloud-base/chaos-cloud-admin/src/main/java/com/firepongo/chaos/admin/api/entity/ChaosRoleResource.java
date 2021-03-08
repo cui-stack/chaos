@@ -17,12 +17,12 @@ import lombok.experimental.Accessors;
  */
 @Data
 @Accessors(chain = true)
-@TableName("chaos_role_permission")
-@ApiModel(value = "ChaosRolePermission实体", description = "")
-public class ChaosRolePermission extends MuModel {
+@TableName("chaos_role_resource")
+@ApiModel(value = "ChaosRoleResource实体", description = "")
+public class ChaosRoleResource extends MuModel {
     @TableField("role_mu")
     private String roleMu;
-    @TableField("permission_mu")
-    private String permissionMu;
+    @TableField("resource_mu")
+    private String resourceMu;
 
 }

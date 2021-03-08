@@ -32,17 +32,19 @@
                     </template>
                 </el-table-column>
             </el-table>
-            <Pagination :currentPage="currentPage" :total="total" :limit="limit"
-                        @handleCurrentChange="handleCurrentChange"
-                        @handleSizeChange="handleSizeChange"/>
+            <SearchPagination :currentPage="currentPage" :total="total"
+                              :limit="limit"
+                              @handleCurrentChange="handleCurrentChange"
+                              @handleSizeChange="handleSizeChange"/>
         </el-main>
         <el-footer>
             <el-dialog width="35%" title="添加角色" :visible.sync="showAddForm">
                 <el-form ref="form" :rules="rules" :model="form"
                          label-width="100px" size="small">
                     <el-form-item label="平台">
-                        <Platform @platformChange="addFormPlatformChange"
-                                  @platformInit="addFormPlatformChange"/>
+                        <Platform
+                                :init="(platformMu)=>form.platformMu = platformMu"
+                                :change="(platformMu)=>form.platformMu = platformMu"/>
                     </el-form-item>
                     <el-form-item label="缩写" prop="name">
                         <el-input v-model="form.name" placeholder="请输入角色缩写"/>
@@ -55,7 +57,7 @@
                                   placeholder="请输入首页链接"/>
                     </el-form-item>
                     <el-form-item>
-                        <el-button type="primary" @click="doAdd">确定</el-button>
+                        <PrimaryButton text="确定" :click="doAdd"/>
                     </el-form-item>
                 </el-form>
             </el-dialog>
@@ -63,10 +65,8 @@
                 <el-form ref="updateForm" :rules="rules" :model="updateForm"
                          label-width="100px" size="small">
                     <el-form-item label="平台">
-                        <Platform inited="false"
-                                  @platformInit="platformInit"
-                                  @platformChange="updateFormPlatformChange"
-                                  :platformMu="updateForm.platformMu"/>
+                        <Platform :isInit="false" :value="updateForm.platformMu"
+                                  :change="(platformMu)=>updateForm.platformMu = platformMu"/>
                     </el-form-item>
                     <el-form-item label="缩写" prop="name">
                         <el-input v-model="updateForm.name"
@@ -81,19 +81,15 @@
                                   placeholder="请输入首页链接"/>
                     </el-form-item>
                     <el-form-item>
-                        <el-button type="primary" @click="doUpdate">确定
-                        </el-button>
+                        <PrimaryButton text="确定" :click="doUpdate"/>
                     </el-form-item>
                 </el-form>
             </el-dialog>
-            <el-dialog width="680px" title="授权页面" :visible.sync="showGrantForm">
+            <el-dialog width="35%" title="授权页面" :visible.sync="showGrantForm">
                 <el-transfer v-model="own" :data="lack"
                              :titles="['未拥有', '已拥有']"
                              :props="{key: 'mu',label: 'title'}"/>
-                <el-button style="margin:  20px 500px" type="primary"
-                           @click="doGrant">
-                    保存
-                </el-button>
+                <PrimaryButton text="保存" :click="doGrant"/>
             </el-dialog>
         </el-footer>
     </el-container>
@@ -101,17 +97,13 @@
 
 <script>
     import Data from '@/chaos/functions/common/Data';
-    import Pagination from '@/chaos/components/Pagination'
-    import {page} from '@/chaos/functions/mixin/page'
-    import {crud} from '@/chaos/functions/mixin/crud'
-    import {platform} from '@/chaos/functions/mixin/platform'
-
-    import Platform from '@/components/Platform'
     import Array from '@/chaos/functions/common/Array'
+    import Platform from '@/app/components/Platform'
+    import {page, remove, create, update} from '@/chaos/functions/mixin/crud'
 
     export default {
-        components: {Pagination, Platform},
-        mixins: [page, crud, platform],
+        components: {Platform},
+        mixins: [page, remove, create, update],
         data() {
             const rules = {
                 name: [
@@ -125,28 +117,34 @@
                 ],
             }
             return {
+                domain: 'chaos_role',
                 rules,
-                table: 'chaos_role',
                 lack: [],
                 own: [],
                 grant: [],
                 showGrantForm: false,
+                form: {
+                    indexLink: '/welcome'
+                },
+                updateForm: {
+                    platformMu: ''
+                }
             }
         },
         methods: {
             async showGrant(roleMu) {
                 this.pickRowMu = roleMu
-                this.lack = await Data.query('chaos_permission/list', {
+                this.lack = await Data.query('chaos_resource/list', {
                     platformMu: this.data.platformMu,
-                    isroot: 0
+                    isRoot: 0
                 })
-                const res = await Data.query('chaos_role_permission/listPermissionMus', {roleMu: this.pickRowMu})
+                const res = await Data.query('chaos_role_rsource/listResourceMus', {roleMu: this.pickRowMu})
                 this.own = res || [];
                 this.grant = res || [];
                 this.showGrantForm = true
             },
             doGrant() {
-                Data.submit('chaos_role_permission/grant', {
+                Data.submit('chaos_role_resource/grant', {
                     roleMu: this.pickRowMu,
                     addMus: Array.difference(this.own, this.grant),
                     deleteMus: Array.difference(this.grant, this.own)
@@ -157,7 +155,10 @@
     }
 </script>
 <style scoped>
-    .el-input {
-        width: 280px
+    .el-form {
+        width: 500px
+    }
+    .el-transfer{
+        width: 600px
     }
 </style>

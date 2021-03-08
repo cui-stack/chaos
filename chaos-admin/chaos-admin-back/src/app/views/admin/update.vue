@@ -15,9 +15,8 @@
                     <el-input v-model="updateForm.name" placeholder="请输入名称"/>
                 </el-form-item>
                 <el-form-item label="平台">
-                    <Platform :isInit="false"
-                              :change="(platformMu)=>updateForm.platformMu = platformMu"
-                              :value="updateForm.platformMu"/>
+                    <Platform :isInit="false" :value="updateForm.platformMu"
+                              :change="(platformMu)=>updateForm.platformMu = platformMu"/>
                 </el-form-item>
                 <el-form-item label="角色">
                     <Role :platformMu="updateForm.platformMu"
@@ -105,12 +104,10 @@
             }
         },
         created() {
-            this.initUpdateMethod = 'adminRole'
+            this.showUpdateMethod = 'adminRole'
             this.updateMethod = 'updateAdminRole'
-            this.initUpdate()
+            this.showUpdate()
         },
-        methods: {
-        }
     }
 </script>
 <style scoped>

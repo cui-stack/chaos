@@ -40,7 +40,6 @@ public class ChaosLinkServiceImpl extends ServiceImpl<ChaosLinkMapper, ChaosLink
 	@Override
 	public MU insertModel(ChaosLinkData data) {
 		ChaosLink entity = (ChaosLink) convertService.convertToMuModel(data, ChaosLink.class);
-		entity.setVersion(1);
 		return save(entity) ? MU.of(entity.getMu()) : null;
 	}
 

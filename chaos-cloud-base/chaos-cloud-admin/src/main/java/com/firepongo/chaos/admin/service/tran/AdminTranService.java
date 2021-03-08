@@ -4,9 +4,9 @@ import cn.hutool.core.util.RandomUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.firepongo.chaos.admin.api.data.ChaosAdminRoleData;
 import com.firepongo.chaos.app.admin.ChaosRoleData;
-import com.firepongo.chaos.admin.api.data.ChaosRolePermissionData;
-import com.firepongo.chaos.admin.api.data.ChaosRolePermissionListData;
-import com.firepongo.chaos.admin.api.entity.ChaosRolePermission;
+import com.firepongo.chaos.admin.api.data.ChaosRoleResourceData;
+import com.firepongo.chaos.admin.api.data.ChaosRoleResourceListData;
+import com.firepongo.chaos.admin.api.entity.ChaosRoleResource;
 import com.firepongo.chaos.admin.api.service.*;
 import com.firepongo.chaos.app.admin.ChaosAdminData;
 import com.firepongo.chaos.app.db.MU;
@@ -50,10 +50,10 @@ public class AdminTranService {
     private IChaosAdminRoleService iChaosAdminRoleService;
 
     @Autowired
-    private IChaosPermissionService iChaosPermissionService;
+    private IChaosResourceService iChaosResourceService;
 
     @Autowired
-    private IChaosRolePermissionService iChaosRolePermissionService;
+    private IChaosRoleResourceService iChaosRoleResourceService;
 
     @Transactional(rollbackFor = {Exception.class})
     public MU addAdmin(ChaosAdminData data) {
@@ -112,21 +112,21 @@ public class AdminTranService {
     }
 
     @Transactional(rollbackFor = {Exception.class})
-    public boolean grant(ChaosRolePermissionListData data) {
+    public boolean grant(ChaosRoleResourceListData data) {
         try {
-            ArrayList<ChaosRolePermission> addList = (ArrayList) data.getAddMus().stream().map(permissionMu -> {
-                ChaosRolePermission entity = new ChaosRolePermission();
-                return entity.setRoleMu(data.getRoleMu()).setPermissionMu(permissionMu);
+            ArrayList<ChaosRoleResource> addList = (ArrayList) data.getAddMus().stream().map(resourceMu -> {
+                ChaosRoleResource entity = new ChaosRoleResource();
+                return entity.setRoleMu(data.getRoleMu()).setResourceMu(resourceMu);
             }).collect(Collectors.toList());
             boolean result = true;
             if (!CollectionUtils.isEmpty(addList)) {
-                result = iChaosRolePermissionService.saveBatch(addList);
+                result = iChaosRoleResourceService.saveBatch(addList);
                 if (!result) {
                     return false;
                 }
             }
             if (!CollectionUtils.isEmpty(data.getDeleteMus())) {
-                result = iChaosRolePermissionService.remove(new QueryWrapper<ChaosRolePermission>().in("permission_mu", data.getDeleteMus()));
+                result = iChaosRoleResourceService.remove(new QueryWrapper<ChaosRoleResource>().lambda().in(ChaosRoleResource::getResourceMu, data.getDeleteMus()));
             }
             return result;
         } catch (Exception e) {
@@ -148,12 +148,14 @@ public class AdminTranService {
 
     public void getManageLoginRole(ManageLoginUser user) {
         ChaosAdminRoleData chaosAdminRole = iChaosAdminRoleService.selectByAdmin(user.getMu());
-        if (chaosAdminRole == null) return;
+        if (chaosAdminRole == null) {
+            return;
+        }
         ChaosRoleData role = iChaosRoleService.selectByMU(MU.of(chaosAdminRole.getRoleMu()));
         user.setRoleName(role.getName());
         user.setRoleInfo(role.getInfo());
         user.setIndexLink(role.getIndexLink());
-        List<ManageMenu> menus = iChaosPermissionService.selectPermissionByAdmin(user.getMu());
+        List<ManageMenu> menus = iChaosResourceService.selectResourceByAdmin(user.getMu());
         user.setMenus(menus);
     }
 
@@ -210,11 +212,11 @@ public class AdminTranService {
             List cardIds = cardList.stream().map(d -> d.getMu()).collect(Collectors.toList());
             iChaosAdminRoleService.removeByIds(cardIds);
 
-            ChaosRolePermissionData crpd=new ChaosRolePermissionData();
+            ChaosRoleResourceData crpd = new ChaosRoleResourceData();
             crpd.setRoleMu(role.getMu());
-            List<ChaosRolePermissionData> crpdList = iChaosRolePermissionService.selectByData(crpd);
+            List<ChaosRoleResourceData> crpdList = iChaosRoleResourceService.selectByData(crpd);
             List crpdIds = crpdList.stream().map(d -> d.getMu()).collect(Collectors.toList());
-            iChaosRolePermissionService.removeByIds(crpdIds);
+            iChaosRoleResourceService.removeByIds(crpdIds);
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -226,16 +228,14 @@ public class AdminTranService {
     }
 
     @Transactional(rollbackFor = {Exception.class})
-    public boolean deletePermission(MU permission) {
+    public boolean deleteResource(MU resourceMu) {
         try {
-            iChaosPermissionService.removeById(permission.getMu());
-
-            ChaosRolePermissionData crpd=new ChaosRolePermissionData();
-            crpd.setPermissionMu(permission.getMu());
-            List<ChaosRolePermissionData> crpdList = iChaosRolePermissionService.selectByData(crpd);
-            List crpdIds = crpdList.stream().map(d -> d.getMu()).collect(Collectors.toList());
-            iChaosRolePermissionService.removeByIds(crpdIds);
-
+            iChaosResourceService.removeById(resourceMu.getMu());
+            ChaosRoleResourceData crrd = new ChaosRoleResourceData();
+            crrd.setResourceMu(resourceMu.getMu());
+            List<ChaosRoleResourceData> crrdList = iChaosRoleResourceService.selectByData(crrd);
+            List crrdIds = crrdList.stream().map(d -> d.getMu()).collect(Collectors.toList());
+            iChaosRoleResourceService.removeByIds(crrdIds);
         } catch (Exception e) {
             e.printStackTrace();
             log.error("业务回滚", e);

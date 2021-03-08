@@ -1,15 +1,11 @@
 package com.firepongo.chaos.admin.controller;
 
-import com.firepongo.chaos.admin.api.data.ChaosRolePermissionListData;
-import com.firepongo.chaos.admin.api.entity.ChaosRolePermission;
-import com.firepongo.chaos.admin.api.data.ChaosRolePermissionData;
-import com.firepongo.chaos.admin.api.service.IChaosRolePermissionService;
+import com.firepongo.chaos.admin.api.data.ChaosRoleResourceListData;
+import com.firepongo.chaos.admin.api.entity.ChaosRoleResource;
+import com.firepongo.chaos.admin.api.data.ChaosRoleResourceData;
+import com.firepongo.chaos.admin.api.service.IChaosRoleResourceService;
 import com.firepongo.chaos.admin.service.tran.AdminTranService;
-import com.firepongo.chaos.app.db.MU;
-import com.firepongo.chaos.app.db.UpdateData;
-import com.firepongo.chaos.app.page.PageQueryDto;
 import com.firepongo.chaos.app.result.data.DataResult;
-import com.firepongo.chaos.app.result.page.PageResult;
 import com.firepongo.chaos.web.annotation.ManageLoginToken;
 import com.firepongo.chaos.web.base.BaseController;
 import io.swagger.annotations.Api;
@@ -29,34 +25,34 @@ import java.util.List;
  * @author G.G
  * @since 2020-04-14
  */
-@Api(tags = "ChaosRolePermissionMnController")
+@Api(tags = "ChaosRoleResourceMnController")
 @RestController
-@RequestMapping("/manage/chaos_role_permission")
-public class ChaosRolePermissionMnController extends BaseController {
+@RequestMapping("/manage/chaos_role_resource")
+public class ChaosRoleResourceMnController extends BaseController {
 
     @Autowired
-    private IChaosRolePermissionService iChaosRolePermissionService;
+    private IChaosRoleResourceService iChaosRoleResourceService;
     @Autowired
     private AdminTranService adminTranService;
 
     @ManageLoginToken
     @PostMapping("/listTitle")
     @ApiOperation(value = "列表", notes = "", httpMethod = "POST")
-    public DataResult<List<ChaosRolePermission>> listTitle(@RequestBody ChaosRolePermissionData data) throws Exception {
-        return dataResult(iChaosRolePermissionService.selectRolePermissionByData(data));
+    public DataResult<List<ChaosRoleResource>> listTitle(@RequestBody ChaosRoleResourceData data) throws Exception {
+        return dataResult(iChaosRoleResourceService.selectRoleResourceByData(data));
     }
 
     @ManageLoginToken
-    @PostMapping("/listPermissionMus")
+    @PostMapping("/listResourceMus")
     @ApiOperation(value = "列表", notes = "", httpMethod = "POST")
-    public DataResult<List<String>> listPermissionMus(@RequestBody ChaosRolePermissionData data) throws Exception {
-        return dataResult(iChaosRolePermissionService.selectPermissionMusByRoleMu(data));
+    public DataResult<List<String>> listResourceMus(@RequestBody ChaosRoleResourceData data) throws Exception {
+        return dataResult(iChaosRoleResourceService.selectResourceMusByRoleMu(data));
     }
 
     @ManageLoginToken
     @PostMapping("/grant")
     @ApiOperation(value = "", notes = "", httpMethod = "POST")
-    public DataResult<Boolean> grant(@ApiParam(value = "") @RequestBody @Validated ChaosRolePermissionListData data, BindingResult bindingResult) throws Exception {
+    public DataResult<Boolean> grant(@ApiParam(value = "") @RequestBody @Validated ChaosRoleResourceListData data, BindingResult bindingResult) throws Exception {
         validate(bindingResult);
         return dataResult(adminTranService.grant(data));
     }

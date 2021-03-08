@@ -44,7 +44,6 @@ public class ChaosAdminServiceImpl extends ServiceImpl<ChaosAdminMapper, ChaosAd
     @Override
     public MU insertModel(ChaosAdminData data) {
         ChaosAdmin entity = (ChaosAdmin) convertService.convertToMuModel(data, ChaosAdmin.class);
-        entity.setVersion(1);
         return save(entity) ? MU.of(entity.getMu()) : null;
     }
 

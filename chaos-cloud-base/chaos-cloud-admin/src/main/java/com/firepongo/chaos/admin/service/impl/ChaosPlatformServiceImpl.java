@@ -5,10 +5,7 @@ import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.firepongo.chaos.admin.api.data.ChaosPlatformData;
-import com.firepongo.chaos.admin.api.data.ChaosPlatformData;
 import com.firepongo.chaos.admin.api.entity.ChaosPlatform;
-import com.firepongo.chaos.admin.api.entity.ChaosPlatform;
-import com.firepongo.chaos.admin.api.service.IChaosPermissionService;
 import com.firepongo.chaos.admin.service.mapper.ChaosPlatformMapper;
 import com.firepongo.chaos.admin.api.service.IChaosPlatformService;
 import com.firepongo.chaos.app.db.MU;
@@ -18,7 +15,6 @@ import com.firepongo.chaos.app.page.PageList;
 import com.firepongo.chaos.app.page.PageQueryDto;
 import com.firepongo.chaos.app.service.ConvertService;
 import org.apache.dubbo.config.annotation.Service;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
@@ -43,7 +39,6 @@ public class ChaosPlatformServiceImpl extends ServiceImpl<ChaosPlatformMapper, C
     @Override
     public MU insertModel(ChaosPlatformData data) {
         ChaosPlatform entity = (ChaosPlatform) convertService.convertToMuModel(data, ChaosPlatform.class);
-        entity.setVersion(1);
         return save(entity) ? MU.of(entity.getMu()) : null;
     }
 

@@ -18,7 +18,7 @@ import java.util.List;
  */
 public interface ChaosAdminMapper extends BaseMapper<ChaosAdmin> {
 
-    ChaosRoleData selectIndexLink(@Param("mu") String adminmu);
+    ChaosRoleData selectIndexLink(@Param("mu") String adminMu);
 
     ChaosAdminData selectAdminRoleByMU(@Param("mu") String mu);
 

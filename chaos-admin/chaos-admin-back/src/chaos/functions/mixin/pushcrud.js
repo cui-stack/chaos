@@ -55,17 +55,17 @@ export const update = {
             updateForm: {},
             rules: {},
             indexPath: '',
-            initUpdateMethod: ''
+            showUpdateMethod: ''
         }
     },
     methods: {
-        async initUpdate() {
+        async showUpdate() {
             if (!this.$route.params.mu) {
                 await this.$router.push(this.indexPath)
                 return
             }
-            if (this.initUpdateMethod) {
-                this.updateForm = await Data.query(this.domain + '/' + this.initUpdateMethod, {mu: this.$route.params.mu})
+            if (this.showUpdateMethod) {
+                this.updateForm = await Data.query(this.domain + '/' + this.showUpdateMethod, {mu: this.$route.params.mu})
             } else {
                 this.updateForm = await Data.one(this.domain, this.$route.params.mu)
             }

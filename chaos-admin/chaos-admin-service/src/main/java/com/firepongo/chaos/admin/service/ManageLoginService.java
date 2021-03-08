@@ -3,7 +3,7 @@ package com.firepongo.chaos.admin.service;
 import com.firepongo.chaos.admin.api.data.ChaosAdminRoleData;
 import com.firepongo.chaos.admin.api.service.IChaosAdminRoleService;
 import com.firepongo.chaos.admin.api.service.IChaosAdminService;
-import com.firepongo.chaos.admin.api.service.IChaosPermissionService;
+import com.firepongo.chaos.admin.api.service.IChaosResourceService;
 import com.firepongo.chaos.admin.api.service.IChaosRoleService;
 import com.firepongo.chaos.app.admin.ChaosAdminData;
 import com.firepongo.chaos.app.admin.ChaosRoleData;
@@ -37,7 +37,7 @@ public class ManageLoginService extends ManageLoginServiceImpl {
     @Autowired
     private IChaosRoleService iChaosRoleService;
     @Autowired
-    private IChaosPermissionService iChaosPermissionService;
+    private IChaosResourceService iChaosPermissionService;
 
     @Override
     protected LoginUser befoLogin(LoginDto loginDto) {
@@ -51,7 +51,7 @@ public class ManageLoginService extends ManageLoginServiceImpl {
         user.setRoleName(role.getName());
         user.setRoleInfo(role.getInfo());
         user.setIndexLink(role.getIndexLink());
-        List<ManageMenu> menus = iChaosPermissionService.selectPermissionByAdmin(user.getMu());
+        List<ManageMenu> menus = iChaosPermissionService.selectResourceByAdmin(user.getMu());
         user.setMenus(menus);
         return user;
     }

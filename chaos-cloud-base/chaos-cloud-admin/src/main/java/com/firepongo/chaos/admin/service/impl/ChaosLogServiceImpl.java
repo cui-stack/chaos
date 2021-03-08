@@ -40,7 +40,6 @@ public class ChaosLogServiceImpl extends ServiceImpl<ChaosLogMapper, ChaosLog> i
     @Override
     public MU insertModel(ChaosLogData data) {
         ChaosLog entity = (ChaosLog) convertService.convertToMuModel(data, ChaosLog.class);
-        entity.setVersion(1);
         return save(entity) ? MU.of(entity.getMu()) : null;
     }
 

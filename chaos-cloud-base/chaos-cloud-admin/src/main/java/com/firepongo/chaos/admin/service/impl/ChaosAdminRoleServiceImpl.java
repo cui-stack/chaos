@@ -47,7 +47,6 @@ public class ChaosAdminRoleServiceImpl extends ServiceImpl<ChaosAdminRoleMapper,
     @Override
     public MU insertModel(ChaosAdminRoleData data) {
         ChaosAdminRole entity = (ChaosAdminRole) convertService.convertToMuModel(data, ChaosAdminRole.class);
-        entity.setVersion(1);
         return save(entity) ? MU.of(entity.getMu()) : null;
     }
 

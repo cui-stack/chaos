@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.firepongo.chaos.admin.service.mapper.ChaosRoleResourceMapper">
+    <select id="selectRoleResourceByData"
+            resultType="com.firepongo.chaos.admin.api.data.ChaosRoleResourceData">
+    SELECT
+	crr.role_mu,
+	crr.resource_mu,
+	cp.title resourceTitle
+    FROM
+        chaos_role_resource crr
+    LEFT JOIN chaos_resource cp ON crr.resource_mu = cp.mu
+    WHERE
+    crr.is_delete=0 AND cp.is_delete=0 AND
+    crr.role_mu = #{roleMu}
+    </select>
+    <select id="selectResourceMusByRoleMu"
+            resultType="java.lang.String">
+    SELECT
+	crr.resource_mu
+    FROM
+        chaos_role_resource crr
+    WHERE
+    crr.is_delete=0
+    AND crr.role_mu = #{roleMu}
+    </select>
+</mapper>

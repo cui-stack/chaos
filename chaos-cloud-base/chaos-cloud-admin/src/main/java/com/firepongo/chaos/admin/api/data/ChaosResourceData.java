@@ -10,13 +10,22 @@ import lombok.experimental.Accessors;
 
 @Data
 @Accessors(chain = true)
-@ApiModel(value = "ChaosRolePermissionData", description = "")
-public class ChaosRolePermissionData extends DATA {
+@ApiModel(value = "ChaosResourceData", description = "")
+public class ChaosResourceData extends DATA {
 
-    private String roleMu;
+    private Integer isRoot;
 
-    private String permissionMu;
+    private String supmu;
 
-    private String permissionTitle;
+    private String link;
+
+    private String title;
+
+    private String suptitle;
+
+    private String platformMu;
+
+    private String icon;
+
 
 }

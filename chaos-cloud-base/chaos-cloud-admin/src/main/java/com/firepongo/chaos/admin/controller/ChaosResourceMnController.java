@@ -1,8 +1,8 @@
 package com.firepongo.chaos.admin.controller;
 
-import com.firepongo.chaos.admin.api.data.ChaosPermissionData;
-import com.firepongo.chaos.admin.api.entity.ChaosPermission;
-import com.firepongo.chaos.admin.api.service.IChaosPermissionService;
+import com.firepongo.chaos.admin.api.data.ChaosResourceData;
+import com.firepongo.chaos.admin.api.entity.ChaosResource;
+import com.firepongo.chaos.admin.api.service.IChaosResourceService;
 import com.firepongo.chaos.admin.service.tran.AdminTranService;
 import com.firepongo.chaos.app.db.MU;
 import com.firepongo.chaos.app.db.UpdateData;
@@ -28,13 +28,13 @@ import java.util.List;
  * @author G.G
  * @since 2020-04-14
  */
-@Api(tags = "ChaosPermissionMnController")
+@Api(tags = "ChaosResourceMnController")
 @RestController
-@RequestMapping("/manage/chaos_permission")
-public class ChaosPermissionMnController extends BaseController {
+@RequestMapping("/manage/chaos_resource")
+public class ChaosResourceMnController extends BaseController {
 
     @Autowired
-    private IChaosPermissionService iChaosPermissionService;
+    private IChaosResourceService iChaosResourceService;
 
     @Autowired
     private AdminTranService adminTranService;
@@ -42,52 +42,52 @@ public class ChaosPermissionMnController extends BaseController {
     @ManageLoginToken
     @PostMapping("/add")
     @ApiOperation(value = "", notes = "", httpMethod = "POST")
-    public DataResult<MU> add(@RequestBody @Validated ChaosPermissionData data, BindingResult bindingResult) throws Exception {
+    public DataResult<MU> add(@RequestBody @Validated ChaosResourceData data, BindingResult bindingResult) throws Exception {
         validate(bindingResult);
-        return dataResult(iChaosPermissionService.insertModel(data));
+        return dataResult(iChaosResourceService.insertModel(data));
     }
 
     @ManageLoginToken
     @PostMapping("/one")
     @ApiOperation(value = "", notes = "", httpMethod = "POST")
-    public DataResult<ChaosPermission> one(@RequestBody MU data) throws Exception {
-        return dataResult(iChaosPermissionService.selectByMU(data));
+    public DataResult<ChaosResource> one(@RequestBody MU data) throws Exception {
+        return dataResult(iChaosResourceService.selectByMU(data));
     }
 
     @ManageLoginToken
     @PostMapping("/update")
     @ApiOperation(value = "", notes = "", httpMethod = "POST")
-    public DataResult<Boolean> update(@ApiParam(value = "") @RequestBody @Validated UpdateData<ChaosPermissionData> data, BindingResult bindingResult) throws Exception {
+    public DataResult<Boolean> update(@ApiParam(value = "") @RequestBody @Validated UpdateData<ChaosResourceData> data, BindingResult bindingResult) throws Exception {
         validate(bindingResult);
-        return dataResult(iChaosPermissionService.updateModelByMU(data));
+        return dataResult(iChaosResourceService.updateModelByMU(data));
     }
 
     @ManageLoginToken
     @PostMapping("/list")
     @ApiOperation(value = "列表", notes = "", httpMethod = "POST")
-    public DataResult<List<ChaosPermission>> list(@RequestBody ChaosPermissionData data) throws Exception {
-        return dataResult(iChaosPermissionService.selectByData(data));
+    public DataResult<List<ChaosResource>> list(@RequestBody ChaosResourceData data) throws Exception {
+        return dataResult(iChaosResourceService.selectByData(data));
     }
 
     @ManageLoginToken
     @PostMapping("/page")
     @ApiOperation(value = "", notes = "", httpMethod = "POST")
-    public PageResult<ChaosPermission> page(@RequestBody PageQueryDto<ChaosPermissionData> data) throws Exception {
-        return pageResult(iChaosPermissionService.selectByPage(data));
+    public PageResult<ChaosResource> page(@RequestBody PageQueryDto<ChaosResourceData> data) throws Exception {
+        return pageResult(iChaosResourceService.selectByPage(data));
     }
 
     @ManageLoginToken
     @PostMapping("/delete")
     @ApiOperation(value = "删除", notes = "", httpMethod = "POST")
     public DataResult<Boolean> delete(@RequestBody MU data) throws Exception {
-        return dataResult(adminTranService.deletePermission(data));
+        return dataResult(adminTranService.deleteResource(data));
     }
 
     @ManageLoginToken
     @PostMapping("/sortpage")
     @ApiOperation(value = "", notes = "", httpMethod = "POST")
-    public PageResult<ChaosPermission> sortpage(@RequestBody PageQueryDto<ChaosPermissionData> data) throws Exception {
-        return pageResult(iChaosPermissionService.selectBySortPage(data));
+    public PageResult<ChaosResource> sortpage(@RequestBody PageQueryDto<ChaosResourceData> data) throws Exception {
+        return pageResult(iChaosResourceService.selectBySortPage(data));
     }
 
 

@@ -20,15 +20,15 @@ import lombok.experimental.Accessors;
  */
 @Data
 @Accessors(chain = true)
-@TableName("chaos_permission")
-@ApiModel(value="ChaosPermission实体", description="")
-public class ChaosPermission extends MuModel {
+@TableName("chaos_resource")
+@ApiModel(value="ChaosResource实体", description="")
+public class ChaosResource extends MuModel {
 
-    @TableField("isroot")
-    private Integer isroot;
+    @TableField("is_root")
+    private Integer isRoot;
 
-    @TableField("supmu")
-    private String supmu;
+    @TableField("sup_mu")
+    private String supMu;
 
     @TableField("link")
     private String link;

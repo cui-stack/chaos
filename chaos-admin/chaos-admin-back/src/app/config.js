@@ -24,18 +24,18 @@ export function routers() {
             meta: {title: "修改管理员"},
             component: () => import ('@/app/views/admin/update')
         },
-        // {
-        //     path: '/role',
-        //     name: 'role',
-        //     meta: {title: "角色"},
-        //     component: () => import ('@/app/views/role/index')
-        // },
-        // {
-        //     path: '/permission',
-        //     name: 'permission',
-        //     meta: {title: "资源"},
-        //     component: () => import ('@/app/views/permission/index')
-        // },
+        {
+            path: '/role',
+            name: 'role',
+            meta: {title: "角色"},
+            component: () => import ('@/app/views/role/index')
+        },
+        {
+            path: '/resource',
+            name: 'resource',
+            meta: {title: "资源"},
+            component: () => import ('@/app/views/resource/index')
+        },
         // {
         //     path: '/log',
         //     name: 'log',

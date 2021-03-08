@@ -14,7 +14,8 @@
                     <el-input v-model="form.name" placeholder="请输入姓名"/>
                 </el-form-item>
                 <el-form-item label="平台">
-                    <Platform :init="platformChange" :change="platformChange"/>
+                    <Platform :init="(platformMu)=>form.platformMu = platformMu"
+                              :change="(platformMu)=>form.platformMu = platformMu"/>
                 </el-form-item>
                 <el-form-item label="角色">
                     <Role :platformMu="form.platformMu"
@@ -106,11 +107,6 @@
 
             }
         },
-        methods: {
-            platformChange(platformMu) {
-                this.form.platformMu = platformMu
-            },
-        }
     }
 </script>
 <style scoped>

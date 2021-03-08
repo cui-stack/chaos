@@ -38,8 +38,10 @@ public class ChaosLog extends MuModel {
 
     @TableField("response")
     private String response;
+
     @TableField("platform")
     private String platform;
+
     @TableField("env")
     private String env;
 
