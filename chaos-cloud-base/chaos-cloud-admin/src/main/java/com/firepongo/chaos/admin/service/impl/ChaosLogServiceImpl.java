@@ -14,6 +14,7 @@ import com.firepongo.chaos.app.db.UpdateData;
 import com.firepongo.chaos.app.page.PageList;
 import com.firepongo.chaos.app.page.PageQueryDto;
 import com.firepongo.chaos.app.service.ConvertService;
+import com.firepongo.chaos.app.utils.PageHelper;
 import com.firepongo.chaos.web.service.ILogService;
 import org.apache.dubbo.config.annotation.Service;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -74,7 +75,7 @@ public class ChaosLogServiceImpl extends ServiceImpl<ChaosLogMapper, ChaosLog> i
                 .eq(!StringUtils.isEmpty(pageData.getData().getUri()), ChaosLog::getUri, pageData.getData().getUri())
                 .eq(!StringUtils.isEmpty(pageData.getData().getUserMu()), ChaosLog::getUserMu, pageData.getData().getUserMu());
         query.orderByDesc(Table.ID);
-        return new PageList(page(new Page(pageData.getPageNum(), pageData.getPageSize()), query));
+        return new PageList(page(PageHelper.page(pageData), query), ChaosLogData.class);
     }
 
     @Override

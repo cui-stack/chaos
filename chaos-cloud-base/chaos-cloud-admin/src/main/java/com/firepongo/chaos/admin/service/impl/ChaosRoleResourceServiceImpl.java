@@ -8,12 +8,14 @@ import com.firepongo.chaos.admin.api.data.ChaosRoleResourceData;
 import com.firepongo.chaos.admin.api.entity.ChaosRoleResource;
 import com.firepongo.chaos.admin.service.mapper.ChaosRoleResourceMapper;
 import com.firepongo.chaos.admin.api.service.IChaosRoleResourceService;
+import com.firepongo.chaos.app.admin.ChaosAdminData;
 import com.firepongo.chaos.app.db.MU;
 import com.firepongo.chaos.app.db.Table;
 import com.firepongo.chaos.app.db.UpdateData;
 import com.firepongo.chaos.app.page.PageList;
 import com.firepongo.chaos.app.page.PageQueryDto;
 import com.firepongo.chaos.app.service.ConvertService;
+import com.firepongo.chaos.app.utils.PageHelper;
 import org.apache.dubbo.config.annotation.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -72,7 +74,8 @@ public class ChaosRoleResourceServiceImpl extends ServiceImpl<ChaosRoleResourceM
     public PageList<ChaosRoleResourceData> selectByPage(PageQueryDto<ChaosRoleResourceData> pageData) {
         QueryWrapper query = new QueryWrapper();
         query.orderByDesc(Table.ID);
-        return new PageList(page(new Page(pageData.getPageNum(), pageData.getPageSize()), query));
+        return new PageList(page(PageHelper.page(pageData), query), ChaosRoleResourceData.class);
+
     }
 
     @Override

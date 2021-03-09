@@ -9,6 +9,8 @@ import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.Accessors;
 
+import java.time.LocalDateTime;
+
 @Data
 @Accessors(chain = true)
 @ApiModel(value="ChaosPlatformData", description="")
@@ -21,5 +23,8 @@ public class ChaosPlatformData extends DATA{
     private String name;
 
     private String info;
+
+    private LocalDateTime createTime;
+
 
 }

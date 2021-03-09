@@ -4,7 +4,7 @@
     <select id="selectResourceByAdmin"
             resultType="com.firepongo.chaos.admin.api.data.ChaosResourceData">
         SELECT
-            suptitle,
+            supTitle,
             ip.title,
             ip.link,
             t.icon
@@ -16,28 +16,29 @@
         LEFT JOIN (
             SELECT
                 mu,
-                supmu,
+                sup_mu,
                 title,
                 link
             FROM
                 chaos_resource
             WHERE
                 is_delete=0 AND
-                isroot = 0
+                is_root = 0
         ) ip ON ip.mu = irr.resource_mu
         LEFT JOIN (
             SELECT
                 mu,
-                title suptitle,
+                title supTitle,
                 icon
             FROM
                 chaos_resource
             WHERE
                 is_delete=0 AND
-                isroot = 1
-        ) t ON ip.supmu = t.mu
+                is_root = 1
+        ) t ON ip.sup_mu = t.mu
         WHERE
             ia.is_delete=0 AND iar.is_delete=0 AND ir.is_delete=0 AND irr.is_delete=0 AND
             ia.mu = #{mu}
+        ORDER by ip.mu DESC
     </select>
 </mapper>

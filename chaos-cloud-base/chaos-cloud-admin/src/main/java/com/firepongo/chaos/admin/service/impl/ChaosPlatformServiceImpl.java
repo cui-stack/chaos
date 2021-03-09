@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.firepongo.chaos.admin.api.data.ChaosPlatformData;
+import com.firepongo.chaos.admin.api.data.ChaosRoleResourceData;
 import com.firepongo.chaos.admin.api.entity.ChaosPlatform;
 import com.firepongo.chaos.admin.service.mapper.ChaosPlatformMapper;
 import com.firepongo.chaos.admin.api.service.IChaosPlatformService;
@@ -14,6 +15,7 @@ import com.firepongo.chaos.app.db.UpdateData;
 import com.firepongo.chaos.app.page.PageList;
 import com.firepongo.chaos.app.page.PageQueryDto;
 import com.firepongo.chaos.app.service.ConvertService;
+import com.firepongo.chaos.app.utils.PageHelper;
 import org.apache.dubbo.config.annotation.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -72,7 +74,7 @@ public class ChaosPlatformServiceImpl extends ServiceImpl<ChaosPlatformMapper, C
         query.lambda()
                 .eq(!StringUtils.isEmpty(pageData.getData().getName()), ChaosPlatform::getName, pageData.getData().getName());
         query.orderByDesc(Table.ID);
-        return new PageList(page(new Page(pageData.getPageNum(), pageData.getPageSize()), query));
+        return new PageList(page(PageHelper.page(pageData), query), ChaosPlatformData.class);
     }
 
 }

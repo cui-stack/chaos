@@ -79,9 +79,11 @@ public class ChaosResourceServiceImpl extends ServiceImpl<ChaosResourceMapper, C
         QueryWrapper<ChaosResource> query = new QueryWrapper();
         query.lambda()
                 .eq(!StringUtils.isEmpty(pageData.getData().getPlatformMu()), ChaosResource::getPlatformMu, pageData.getData().getPlatformMu())
-                .eq(!StringUtils.isEmpty(pageData.getData().getTitle()), ChaosResource::getTitle, pageData.getData().getTitle());
+                .eq(!StringUtils.isEmpty(pageData.getData().getTitle()), ChaosResource::getTitle, pageData.getData().getTitle())
+                .eq(!StringUtils.isEmpty(pageData.getData().getIsRoot()), ChaosResource::getIsRoot, pageData.getData().getIsRoot());
         query.orderByDesc(Table.ID);
-        return new PageList(page(new Page(pageData.getPageNum(), pageData.getPageSize()), query));
+        return new PageList(page(PageHelper.page(pageData), query), ChaosResourceData.class);
+
     }
 
     @Override
@@ -91,7 +93,7 @@ public class ChaosResourceServiceImpl extends ServiceImpl<ChaosResourceMapper, C
         if (ps == null || ps.isEmpty()) {
             return menus;
         }
-        Map<String, List<ChaosResourceData>> map = ps.stream().collect(Collectors.groupingBy(ChaosResourceData::getSuptitle));
+        Map<String, List<ChaosResourceData>> map = ps.stream().collect(Collectors.groupingBy(ChaosResourceData::getSupTitle));
         for (String title : map.keySet()) {
             String icon = "";
             List<ManageMenu> submenus = new ArrayList<>();
@@ -106,13 +108,6 @@ public class ChaosResourceServiceImpl extends ServiceImpl<ChaosResourceMapper, C
             menus.add(m.setIcon(icon).setSubmenus(submenus));
         }
         return menus;
-    }
-
-    @Override
-    public PageList<ChaosResourceData> selectBySortPage(PageQueryDto<ChaosResourceData> pageData) {
-        QueryWrapper query = new QueryWrapper();
-        query.orderByDesc(Table.ID);
-        return new PageList(page(PageHelper.page(pageData), query));
     }
 
 }

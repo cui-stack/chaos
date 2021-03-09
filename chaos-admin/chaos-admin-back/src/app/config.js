@@ -36,24 +36,24 @@ export function routers() {
             meta: {title: "资源"},
             component: () => import ('@/app/views/resource/index')
         },
-        // {
-        //     path: '/log',
-        //     name: 'log',
-        //     meta: {title: "日志"},
-        //     component: () => import ('@/app/views/log/index')
-        // },
-        // {
-        //     path: '/link',
-        //     name: 'link',
-        //     meta: {title: "链接"},
-        //     component: () => import ('@/app/views/link/index')
-        // },
-        // {
-        //     path: '/index',
-        //     name: 'index',
-        //     meta: {title: "面板"},
-        //     component: () => import ('@/app/views/index/index')
-        // }
+        {
+            path: '/log',
+            name: 'log',
+            meta: {title: "日志"},
+            component: () => import ('@/app/views/log/index')
+        },
+        {
+            path: '/link',
+            name: 'link',
+            meta: {title: "链接"},
+            component: () => import ('@/app/views/link/index')
+        },
+        {
+            path: '/dashboard',
+            name: 'dashboard',
+            meta: {title: "Dashboard"},
+            component: () => import ('@/app/views/dashboard/index')
+        }
     ]
 }
 

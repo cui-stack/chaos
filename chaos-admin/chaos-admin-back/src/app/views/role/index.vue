@@ -138,7 +138,7 @@
                     platformMu: this.data.platformMu,
                     isRoot: 0
                 })
-                const res = await Data.query('chaos_role_rsource/listResourceMus', {roleMu: this.pickRowMu})
+                const res = await Data.query('chaos_role_resource/listResourceMus', {roleMu: this.pickRowMu})
                 this.own = res || [];
                 this.grant = res || [];
                 this.showGrantForm = true

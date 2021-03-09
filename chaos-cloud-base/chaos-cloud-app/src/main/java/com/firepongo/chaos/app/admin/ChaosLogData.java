@@ -8,6 +8,8 @@ import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.Accessors;
 
+import java.time.LocalDateTime;
+
 @Data
 @NoArgsConstructor
 @RequiredArgsConstructor(staticName = "of")
@@ -30,5 +32,6 @@ public class ChaosLogData extends DATA {
     private String platform;
     @NonNull
     private String env;
+    private LocalDateTime createTime;
 
 }

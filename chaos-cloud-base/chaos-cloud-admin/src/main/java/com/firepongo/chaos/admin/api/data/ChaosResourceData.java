@@ -2,11 +2,10 @@ package com.firepongo.chaos.admin.api.data;
 
 import com.firepongo.chaos.app.db.DATA;
 import io.swagger.annotations.ApiModel;
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
 import lombok.experimental.Accessors;
+
+import java.time.LocalDateTime;
 
 @Data
 @Accessors(chain = true)
@@ -15,17 +14,17 @@ public class ChaosResourceData extends DATA {
 
     private Integer isRoot;
 
-    private String supmu;
+    private String supMu;
 
     private String link;
 
     private String title;
 
-    private String suptitle;
+    private String supTitle;
 
     private String platformMu;
 
     private String icon;
 
-
+    private LocalDateTime createTime;
 }

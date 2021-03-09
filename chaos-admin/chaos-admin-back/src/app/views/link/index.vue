@@ -1,31 +1,33 @@
 <template>
     <el-container>
         <el-header>
-            <el-container>
-                <el-button type="primary" @click="showAddForm=true">增加链接
-                </el-button>
-            </el-container>
+            <PrimaryButton text="增加" :click="showAdd"/>
         </el-header>
         <el-main>
-            <el-table :data="tableData" stripe>
+            <el-table stripe :data="tableData"
+                      element-loading-text="拼命加载中"
+                      element-loading-spinner="el-icon-loading"
+                      element-loading-background="rgba(0, 0, 0, 0.8)"
+                      v-loading.fullscreen.lock="loading">
                 <el-table-column prop="mu" label="编号" width="188"/>
                 <el-table-column prop="title" label="标题" width="108"/>
                 <el-table-column prop="link" label="地址" min-width="60"/>
                 <el-table-column prop="info" label="介绍" width="160"/>
-                <el-table-column prop="createTime" sortable label="创建时间" width="200"/>
+                <el-table-column prop="createTime" sortable label="创建时间"
+                                 width="200"/>
                 <el-table-column label="操作" width="168">
                     <template slot-scope="scope">
-                        <el-button plain @click="showUpdate(scope.row.mu)">编辑
-                        </el-button>
-                        <el-button style="margin: 0px" plain
-                                   @click="doDelete(scope.row.mu)">删除
-                        </el-button>
+                        <PlainButton text="编辑"
+                                     :click="()=>showUpdate(scope.row.mu)"/>
+                        <PlainButton text="删除"
+                                     :click="()=>doDelete(scope.row.mu)"/>
                     </template>
                 </el-table-column>
             </el-table>
-            <Pagination :currentPage="currentPage" :total="total" :limit="limit"
-                        @handleCurrentChange="handleCurrentChange"
-                        @handleSizeChange="handleSizeChange"/>
+            <SearchPagination :currentPage="currentPage" :total="total"
+                              :limit="limit"
+                              @handleCurrentChange="handleCurrentChange"
+                              @handleSizeChange="handleSizeChange"/>
         </el-main>
         <el-footer>
             <el-dialog width="35%" title="添加链接" :visible.sync="showAddForm">
@@ -41,7 +43,7 @@
                         <el-input v-model="form.info" placeholder="请输入介绍"/>
                     </el-form-item>
                     <el-form-item>
-                        <el-button type="primary" @click="doAdd">确定</el-button>
+                        <PrimaryButton text="确定" :click="doAdd"/>
                     </el-form-item>
                 </el-form>
             </el-dialog>
@@ -61,7 +63,7 @@
                                   placeholder="请输入链接"/>
                     </el-form-item>
                     <el-form-item>
-                        <el-button type="primary" @click="doUpdate">确定</el-button>
+                        <PrimaryButton text="确定" :click="doUpdate"/>
                     </el-form-item>
                 </el-form>
             </el-dialog>
@@ -70,13 +72,10 @@
 </template>
 
 <script>
-    import Pagination from '@/chaos/components/Pagination'
-    import {page} from '@/chaos/functions/mixin/page'
-    import {crud} from '@/chaos/functions/mixin/crud'
+    import {page, remove, create, update} from '@/chaos/functions/mixin/crud'
 
     export default {
-        components: {Pagination},
-        mixins: [page, crud],
+        mixins: [page, remove, create, update],
         data() {
             const rules = {
                 title: [
@@ -88,23 +87,18 @@
             }
             return {
                 rules,
-                table: 'chaos_link',
+                domain: 'chaos_link',
             }
         },
         created() {
             this.search()
         },
-        methods: {
-        }
+        methods: {}
     }
 </script>
 <style scoped>
-    .el-header .el-container {
-        margin: auto 0px;
-        padding: 10px;
-    }
 
-    .el-input {
-        width: 280px;
+    .el-form {
+        width: 500px;
     }
 </style>

@@ -6,6 +6,7 @@ import com.firepongo.chaos.admin.api.service.IChaosResourceService;
 import com.firepongo.chaos.admin.service.tran.AdminTranService;
 import com.firepongo.chaos.app.db.MU;
 import com.firepongo.chaos.app.db.UpdateData;
+import com.firepongo.chaos.app.page.PageList;
 import com.firepongo.chaos.app.page.PageQueryDto;
 import com.firepongo.chaos.app.result.data.DataResult;
 import com.firepongo.chaos.app.result.page.PageResult;
@@ -22,7 +23,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author G.G
@@ -50,7 +53,7 @@ public class ChaosResourceMnController extends BaseController {
     @ManageLoginToken
     @PostMapping("/one")
     @ApiOperation(value = "", notes = "", httpMethod = "POST")
-    public DataResult<ChaosResource> one(@RequestBody MU data) throws Exception {
+    public DataResult<ChaosResourceData> one(@RequestBody MU data) throws Exception {
         return dataResult(iChaosResourceService.selectByMU(data));
     }
 
@@ -65,15 +68,25 @@ public class ChaosResourceMnController extends BaseController {
     @ManageLoginToken
     @PostMapping("/list")
     @ApiOperation(value = "列表", notes = "", httpMethod = "POST")
-    public DataResult<List<ChaosResource>> list(@RequestBody ChaosResourceData data) throws Exception {
+    public DataResult<List<ChaosResourceData>> list(@RequestBody ChaosResourceData data) throws Exception {
         return dataResult(iChaosResourceService.selectByData(data));
     }
 
     @ManageLoginToken
     @PostMapping("/page")
     @ApiOperation(value = "", notes = "", httpMethod = "POST")
-    public PageResult<ChaosResource> page(@RequestBody PageQueryDto<ChaosResourceData> data) throws Exception {
-        return pageResult(iChaosResourceService.selectByPage(data));
+    public PageResult<ChaosResourceData> page(@RequestBody PageQueryDto<ChaosResourceData> data) throws Exception {
+        PageList<ChaosResourceData> pageList = iChaosResourceService.selectByPage(data);
+        Map<String, String> supTitleMap = new HashMap();
+        pageList.getList().stream().forEach(d -> {
+            if (d.getIsRoot().equals(0)) {
+                if (!supTitleMap.containsKey(d.getSupMu())) {
+                    supTitleMap.put(d.getSupMu(), iChaosResourceService.selectByMU(MU.of(d.getSupMu())).getTitle());
+                }
+                d.setSupTitle(supTitleMap.get(d.getSupMu()));
+            }
+        });
+        return pageResult(pageList);
     }
 
     @ManageLoginToken
@@ -81,13 +94,6 @@ public class ChaosResourceMnController extends BaseController {
     @ApiOperation(value = "删除", notes = "", httpMethod = "POST")
     public DataResult<Boolean> delete(@RequestBody MU data) throws Exception {
         return dataResult(adminTranService.deleteResource(data));
-    }
-
-    @ManageLoginToken
-    @PostMapping("/sortpage")
-    @ApiOperation(value = "", notes = "", httpMethod = "POST")
-    public PageResult<ChaosResource> sortpage(@RequestBody PageQueryDto<ChaosResourceData> data) throws Exception {
-        return pageResult(iChaosResourceService.selectBySortPage(data));
     }
 
 

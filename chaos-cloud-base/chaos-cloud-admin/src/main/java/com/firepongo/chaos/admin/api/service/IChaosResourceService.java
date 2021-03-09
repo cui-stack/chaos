@@ -32,7 +32,5 @@ public interface IChaosResourceService extends IService<ChaosResource> {
 
     List<ManageMenu> selectResourceByAdmin(String adminMu);
 
-    PageList<ChaosResourceData> selectBySortPage(PageQueryDto<ChaosResourceData> pageData);
-
 
 }

@@ -18,6 +18,7 @@ import com.firepongo.chaos.app.login.manage.ManageLoginUser;
 import com.firepongo.chaos.app.page.PageList;
 import com.firepongo.chaos.app.page.PageQueryDto;
 import com.firepongo.chaos.app.service.ConvertService;
+import com.firepongo.chaos.app.utils.PageHelper;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.dubbo.config.annotation.Service;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -91,7 +92,8 @@ public class ChaosAdminServiceImpl extends ServiceImpl<ChaosAdminMapper, ChaosAd
                 .eq(!StringUtils.isEmpty(pageData.getData().getUsername()), ChaosAdmin::getUsername, pageData.getData().getUsername())
                 .eq(!StringUtils.isEmpty(pageData.getData().getPhone()), ChaosAdmin::getPhone, pageData.getData().getPhone());
         query.orderByDesc(Table.ID);
-        return new PageList(page(new Page(pageData.getPageNum(), pageData.getPageSize()), query));
+        return new PageList(page(PageHelper.page(pageData), query), ChaosAdminData.class);
+
     }
 
 

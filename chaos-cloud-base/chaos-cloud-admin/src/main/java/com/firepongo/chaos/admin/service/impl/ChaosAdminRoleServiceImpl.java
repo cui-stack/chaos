@@ -3,7 +3,7 @@ package com.firepongo.chaos.admin.service.impl;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.firepongo.chaos.admin.api.data.ChaosAdminRoleData;
+import com.firepongo.chaos.admin.api.data.*;
 import com.firepongo.chaos.admin.api.data.ChaosAdminRoleData;
 import com.firepongo.chaos.admin.api.data.ChaosAdminRoleData;
 import com.firepongo.chaos.admin.api.entity.ChaosAdminRole;
@@ -91,7 +91,8 @@ public class ChaosAdminRoleServiceImpl extends ServiceImpl<ChaosAdminRoleMapper,
     public PageList<ChaosAdminRoleData> selectByPage(PageQueryDto<ChaosAdminRoleData> pageData) {
         QueryWrapper query = new QueryWrapper();
         query.orderByDesc(Table.ID);
-        return new PageList(page(PageHelper.page(pageData), query));
+        return new PageList(page(PageHelper.page(pageData), query), ChaosAdminRoleData.class);
+
     }
 
 
