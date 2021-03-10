@@ -44,4 +44,11 @@ public class PageList<T> extends DTO {
         this.setList(list);
     }
 
+    public PageList(IPage<T> page) {
+        this.setCurrent(page.getCurrent());
+        this.setTotal(page.getTotal());
+        this.setList(page.getRecords());
+    }
+
+
 }
