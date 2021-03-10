@@ -2,7 +2,7 @@
     <div class="login-container">
         <div class="login-head">
             <img src="@/app/logo.png"/>
-            <h1 style="display: inline-block">{{headTitle}}</h1>
+            <h1 class="title" style="display: inline-block">{{headTitle}}</h1>
         </div>
         <div class="login-area">
             <input placeholder="请输入用户名" v-model="username"/>
@@ -34,9 +34,9 @@
                         username: this.username,
                         password: this.password,
                         platformMu: appInfo().platformMu
-                    })
-                    await this.$store.dispatch('admin/setUserinfo', res)
-                    await this.$store.dispatch('admin/setMenus', res.menus)
+                    });
+                    await this.$store.dispatch('admin/setUserinfo', res);
+                    await this.$store.dispatch('admin/setMenus', res.menus);
                     await this.$router.push(res.indexLink)
                 } else {
                     Message({
@@ -63,12 +63,17 @@
 
         .login-head {
             margin-top: 180px;
+
+            .title {
+                margin-left: 5px;
+                font-size: 28px;
+            }
         }
 
         .login-area {
             background-color: white;
             width: 400px;
-            height: 240px;
+            height: 230px;
             margin: 10px auto;
             border-radius: 30px;
             padding-top: 40px;

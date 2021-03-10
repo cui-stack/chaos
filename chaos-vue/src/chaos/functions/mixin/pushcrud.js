@@ -11,7 +11,7 @@ export const pushcreate = {
             this.$router.push('/' + this.addPath)
         },
     }
-}
+};
 
 export const create = {
     data() {
@@ -25,12 +25,12 @@ export const create = {
     methods: {
         doAdd() {
             Data.validate(this, 'form', async () => {
-                await Data.add(this.domain, this.form)
+                await Data.add(this.domain, this.form);
                 await this.$router.push(this.indexPath)
             })
         }
     }
-}
+};
 
 export const pushupdate = {
     data() {
@@ -46,7 +46,7 @@ export const pushupdate = {
             })
         },
     }
-}
+};
 
 export const update = {
     data() {
@@ -54,25 +54,37 @@ export const update = {
             domain: '',
             updateForm: {},
             rules: {},
-            indexPath: ''
+            indexPath: '',
+            showUpdateMethod: ''
         }
     },
     methods: {
-        async initUpdate() {
+        async showUpdate() {
             if (!this.$route.params.mu) {
-                await this.$router.push(this.indexPath)
+                await this.$router.push(this.indexPath);
                 return
             }
-            this.updateForm = await Data.one(this.domain, this.$route.params.mu)
+            if (this.showUpdateMethod) {
+                this.updateForm = await Data.query(this.domain + '/' + this.showUpdateMethod, {mu: this.$route.params.mu})
+            } else {
+                this.updateForm = await Data.one(this.domain, this.$route.params.mu)
+            }
         },
         doUpdate() {
             Data.validate(this, 'updateForm', async () => {
-                await Data.update(this.domain, this.updateForm.mu, this.updateForm)
-                await this.$router.push(this.indexPath)
+                if (this.updateMethod) {
+                    await Data.submit(this.domain + '/' + this.updateMethod, {
+                        mu: this.updateForm.mu,
+                        data: this.updateForm
+                    }, () => this.$router.push(this.indexPath))
+                } else {
+                    await Data.update(this.domain, this.updateForm.mu, this.updateForm);
+                    await this.$router.push(this.indexPath)
+                }
             })
         },
     }
-}
+};
 
 export const goBack = {
     data() {
@@ -85,7 +97,7 @@ export const goBack = {
             this.$router.push(this.indexPath)
         }
     }
-}
+};
 
 
 

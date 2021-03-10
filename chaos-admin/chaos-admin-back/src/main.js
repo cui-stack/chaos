@@ -4,10 +4,12 @@ import router from '@/chaos/router/index'
 import store from '@/chaos/functions/vuex/index'
 import VueWechatTitle from 'vue-wechat-title';
 import ElementUI from 'element-ui';
-import 'element-ui/lib/theme-chalk/index.css';
-import 'normalize.css/normalize.css'
 
-Vue.config.productionTip = false
+import '@/chaos/styles/reset.less';
+import 'element-ui/lib/theme-chalk/index.css';
+import '@/chaos/styles/theme.less';
+
+Vue.config.productionTip = false;
 Vue.use(ElementUI);
 Vue.use(VueWechatTitle);
 
@@ -38,5 +40,5 @@ new Vue({
     router,
     store,
     render: h => h(App)
-}).$mount('#app')
+}).$mount('#app');
 

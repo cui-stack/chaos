@@ -95,7 +95,7 @@
                         message: '请输入11位长度的电话号码',
                     }
                 ],
-            }
+            };
             return {
                 rules,
                 domain: 'chaos_admin',
@@ -110,7 +110,5 @@
     }
 </script>
 <style scoped>
-    .el-form {
-        width: 500px;
-    }
+
 </style>

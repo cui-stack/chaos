@@ -34,14 +34,13 @@
         },
         created() {
             if (!this.$store.getters.user.username) {
-                this.$router.push('/')
+                this.$router.push('/');
                 return
             }
             this.asideWidth = this.$store.getters.asideWidth
         },
     }
 </script>
-
 
 <style lang="less" scoped>
     * {

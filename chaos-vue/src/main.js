@@ -1,13 +1,15 @@
 import Vue from 'vue'
-import App from './chaos/App'
-import router from './chaos/router/index'
-import store from './chaos/functions/vuex/index'
+import App from '@/chaos/App'
+import router from '@/chaos/router/index'
+import store from '@/chaos/functions/vuex/index'
 import VueWechatTitle from 'vue-wechat-title';
 import ElementUI from 'element-ui';
-import 'element-ui/lib/theme-chalk/index.css';
-import 'normalize.css/normalize.css'
 
-Vue.config.productionTip = false
+import '@/chaos/styles/reset.less';
+import 'element-ui/lib/theme-chalk/index.css';
+import '@/chaos/styles/theme.less';
+
+Vue.config.productionTip = false;
 Vue.use(ElementUI);
 Vue.use(VueWechatTitle);
 
@@ -21,7 +23,6 @@ import SearchInput from '@/chaos/components/search/Input'
 import SearchPagination from '@/chaos/components/search/Pagination'
 import SearchRadioGroup from '@/chaos/components/search/RadioGroup'
 import SearchSelect from '@/chaos/components/search/Select'
-
 
 Vue.component("Avatar", Avatar);
 Vue.component("PlainButton", PlainButton);
@@ -39,5 +40,5 @@ new Vue({
     router,
     store,
     render: h => h(App)
-}).$mount('#app')
+}).$mount('#app');
 

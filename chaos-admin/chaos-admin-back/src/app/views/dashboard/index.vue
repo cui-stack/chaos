@@ -3,7 +3,7 @@
         <el-main>
             <el-row>
                 <el-col :span="3" v-for="(item,index) in links" :key="item.mu"
-                        :offset="index > 0 ?1 : 0">
+                        :offset="1">
                     <el-card shadow="hover">
                         <div slot="header">
                             <el-link :href=item.link target="_blank">
@@ -40,7 +40,7 @@
             async search() {
                 this.links = await Data.list('chaos_link')
             },
-            isStar(item,index) {
+            isStar(item, index) {
                 item.isStar = !item.isStar;
                 this.$set(this.links, index, item);
             }

@@ -15,13 +15,13 @@ export const create = {
         },
         doAdd() {
             Data.validate(this, 'form', async () => {
-                await Data.add(this.domain, this.form)
-                this.showAddForm = false
+                await Data.add(this.domain, this.form);
+                this.showAddForm = false;
                 this.search()
             })
         }
     }
-}
+};
 
 export const update = {
     data() {
@@ -29,28 +29,41 @@ export const update = {
             domain: '',
             showUpdateForm: false,
             updateForm: {},
-            rules: {}
+            rules: {},
+            showUpdateMethod: '',
+            updateMethod: ''
         }
     },
     methods: {
         async showUpdate(mu) {
-            this.updateForm = await Data.one(this.domain, mu)
-            this.showUpdateForm = true
+            this.showUpdateForm = true;
+            if (this.showUpdateMethod) {
+                this.updateForm = await Data.query(this.domain + '/' + this.showUpdateMethod, {mu})
+            } else {
+                this.updateForm = await Data.one(this.domain, mu)
+            }
         },
         doUpdate() {
             Data.validate(this, 'updateForm', async () => {
-                await Data.update(this.domain, this.updateForm.mu, this.updateForm)
-                this.showUpdateForm = false
+                if (this.updateMethod) {
+                    await Data.submit(this.domain + '/' + this.updateMethod, {
+                        mu: this.updateForm.mu,
+                        data: this.updateForm
+                    })
+                } else {
+                    await Data.update(this.domain, this.updateForm.mu, this.updateForm)
+                }
+                this.showUpdateForm = false;
                 this.search()
             })
         },
     }
-}
+};
 
 export const remove = {
     data() {
         return {
-            domain:'',
+            domain: '',
             pickRowMu: '',
         }
     },
@@ -61,7 +74,7 @@ export const remove = {
             })
         }
     }
-}
+};
 
 export const page = {
     data() {
@@ -79,8 +92,8 @@ export const page = {
     },
     methods: {
         async search() {
-            this.loading = true
-            let res
+            this.loading = true;
+            let res;
             if (this.searchMethod) {
                 res = await Data.search(this.domain + '/' + this.searchMethod, this.currentPage, this.limit, this.data);
             } else {
@@ -105,7 +118,7 @@ export const page = {
             this.search();
         },
     }
-}
+};
 
 
 
