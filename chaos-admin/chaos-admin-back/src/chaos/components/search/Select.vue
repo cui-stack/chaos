@@ -1,5 +1,5 @@
 <template>
-    <el-select v-model.trim="innerValue" :placeholder="placeholder"
+    <el-select v-model.trim="value" :placeholder="placeholder"
                @change="change">
         <el-option v-for="item in datas" :key="item" :label="item"
                    :value="item"/>
@@ -10,7 +10,7 @@
         name: 'SearchSelect',
         data() {
             return {
-                innerValue: ''
+                value: ''
             };
         },
         props: {
@@ -25,13 +25,6 @@
             change: {
                 type: Function
             },
-            value: {
-                type: String,
-                default: ''
-            },
         },
-        created() {
-            this.innerValue=this.value
-        }
     };
 </script>

@@ -1,5 +1,5 @@
 <template>
-    <el-radio-group v-model.trim="innverValue" @change="change">
+    <el-radio-group v-model.trim="value" @change="change">
         <el-radio :key="item.label" v-for="item in datas" :label="item.label">
             {{item.text}}
         </el-radio>
@@ -10,7 +10,7 @@
         name: 'SearchRadioGroup',
         data() {
             return {
-                innverValue: 1
+                value: 1
             };
         },
         props: {
@@ -18,14 +18,10 @@
                 required: true,
                 default: []
             },
-            value: {},
             change: {
                 type: Function
             }
         },
-        created() {
-            this.innverValue = this.value
-        }
     };
 </script>
 
