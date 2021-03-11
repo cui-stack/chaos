@@ -28,11 +28,10 @@
         },
         methods: {
             async queryValue() {
-                const method = SideMenuData().get(this.link)
+                const method = SideMenuData().get(this.link);
                 if (!method)
-                    return
+                    return;
                 this.value = await Data.query(method)
-                console.log(this.value)
             }
         }
 
