@@ -47,7 +47,7 @@
          ├── chaos-service -- 服务模块[8899]
          ├── chaos-manage -- 后台服务模块[38899]
          ├── chaos-client -- 客户端服务模块[58899]
-    ├── chaos-admin -- 管理系统
+    ├── chaos-admin -- 管理系统，基于ARR模型（admin-role-resource）实现
          ├── chaos-admin-service -- 实体定义模块[38089]
          ├── chaos-admin-back -- 管理后台[8080]    
     └── chaos-vue  -- 后台[8080] 
