@@ -13,16 +13,12 @@ export interface ParamsType {
 }
 
 export interface PageParamsType extends ParamsType {
-    pageSize?: number ;
-    pageNum?: number ;
+    pageSize?: number = 10;
+    current?: number = 1;
+    data?: any = {};
 }
 
 
-export interface ProTableParams {
-    pageSize?: number;
-    current?: number;
-    keyword?: string;
-}
 
 
 

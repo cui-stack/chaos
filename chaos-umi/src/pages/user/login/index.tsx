@@ -4,10 +4,10 @@ import { Alert } from 'antd';
 import { MobileTwoTone } from '@ant-design/icons';
 import ProForm, { ProFormText } from '@ant-design/pro-form';
 
-import { ParamsType } from '@/define'
+import { ParamsType } from '@/chaos/dataType'
 
 import { ConnectState } from '@/models/connect';
-import { UserModelState } from './model'
+import { UserModelState } from '@/models/model'
 import styles from './index.less';
 
 const LoginMessage: React.FC<{

@@ -14,11 +14,7 @@ export default defineConfig({
   history: {
     type: 'browser',
   },
-  locale: {
-    default: 'zh-CN',
-    antd: true,
-    baseNavigator: true,
-  },
+  locale: false,
   dynamicImport: {
     loading: '@/components/PageLoading/index',
   },
@@ -37,8 +33,8 @@ export default defineConfig({
   },
   exportStatic: {},
   esbuild: {},
-  base: '/',
-  publicPath: '/',
-
+  base: '/umi/',
+  publicPath: '/umi/',
+  outputPath: 'dist/umi'
 });
 

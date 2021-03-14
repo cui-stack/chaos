@@ -2,14 +2,14 @@ import { history, Reducer, Effect } from 'umi';
 import { message } from 'antd';
 
 import { setAuthority } from '@/utils/authority';
-import { ModelType } from '@/define'
-import { submit } from '@/services/data';
+import { ModelType } from '@/chaos/dataType'
+import { submit } from '@/chaos/data';
 
 export interface CurrentUser {
   mu?: string;
   avatar?: string;
   phone?: string;
-  roleName?: string;
+  roleName?: string;                    
   roleInfo?: string;
   status?: number;
   username?: string;
@@ -43,7 +43,7 @@ const UserModel: UserModelType = {
 
   effects: {
     * login({ payload }, { call, put }) {
-      const response = yield call(submit, { method: "login", ...payload });
+      const response = yield call(submit, "login", payload);
       if (!response) return
       localStorage.setItem('token', response.token)
       localStorage.setItem('user', JSON.stringify(response))

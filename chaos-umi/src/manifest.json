@@ -1,6 +1,6 @@
 {
-  "name": "中台系统",
-  "short_name": "中台",
+  "name": "okya渠道数据",
+  "short_name": "okya",
   "display": "standalone",
   "start_url": "./?utm_source=homescreen",
   "theme_color": "#002140",

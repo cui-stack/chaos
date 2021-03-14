@@ -3,7 +3,7 @@ import { Redirect, connect, ConnectProps } from 'umi';
 import { PageLoading } from '@ant-design/pro-layout';
 
 import { ConnectState } from '@/models/connect';
-import { CurrentUser } from '@/pages/user/login/model';
+import { CurrentUser } from '@/models/user';
 
 interface SecurityLayoutProps extends ConnectProps {
   loading?: boolean;

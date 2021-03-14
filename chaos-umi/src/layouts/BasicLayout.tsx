@@ -14,7 +14,7 @@ import RightContent from '@/components/GlobalHeader/RightContent';
 import { ConnectState } from '@/models/connect';
 
 import { GithubOutlined } from '@ant-design/icons';
-import logo from '../assets/logo.png';
+import logo from '@/assets/logo.png';
 
 const noMatch = (
   <Result
@@ -59,7 +59,7 @@ const menuDataRender = (menuList: MenuDataItem[]): MenuDataItem[] =>
 
 const defaultFooterDom = (
   <DefaultFooter
-    copyright={`${new Date().getFullYear()} Poweredby 火猩科技`}
+    copyright={`${new Date().getFullYear()} Poweredby Okya`}
     links={[
       {
         key: 'github',
@@ -136,8 +136,8 @@ const BasicLayout: React.FC<BasicLayoutProps> = (props) => {
         return first ? (
           <Link to={paths.join('/')}>{route.breadcrumbName}</Link>
         ) : (
-            <span>{route.breadcrumbName}</span>
-          );
+          <span>{route.breadcrumbName}</span>
+        );
       }}
       footerRender={() => defaultFooterDom}
       menuDataRender={menuDataRender}

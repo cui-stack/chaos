@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "outDir": "build/dist",
+    "outDir": "dist",
     "module": "esnext",
     "target": "esnext",
     "lib": ["esnext", "dom"],
@@ -31,9 +31,9 @@
     "__test__/**/*",
     "typings/**/*",
     "config/**/*",
-    ".eslintrc.js",
-    ".stylelintrc.js",
-    ".prettierrc.js",
+    "src/chaos/.eslintrc.js",
+    "src/chaos/.stylelintrc.js",
+    "src/chaos/.prettierrc.js",
     "jest.config.js",
     "mock/*"
   ],

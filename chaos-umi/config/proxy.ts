@@ -5,11 +5,4 @@ export default {
       changeOrigin: true,
     },
   },
-  test: {
-    '/manage/': {
-      target: 'https://dev.firepongo.com/api',
-      changeOrigin: true,
-    },
-  },
-
 };

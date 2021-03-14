@@ -1,5 +1,6 @@
 import { extend } from 'umi-request';
 import { notification } from 'antd';
+import config from './config';
 
 const codeMessage = {
   200: '服务器成功返回请求的数据。',
@@ -45,8 +46,7 @@ const request = extend({
 
 // @ts-ignore
 request.interceptors.request.use((url, options) => {
-  const apiUrl = process.env.apiUrl ? process.env.apiUrl + url : url
-  localStorage.setItem('lastUrl', apiUrl)
+  localStorage.setItem('lastUrl', url)
   localStorage.setItem('lastParams', JSON.stringify(options.data))
   const { pageSize, current, ...rest } = options.data
   let { data } = options.data
@@ -64,14 +64,14 @@ request.interceptors.request.use((url, options) => {
     token: localStorage.getItem("token")
   };
   return {
-    url: apiUrl,
+    url: (process.env.apiUrl || '') + url,
     options: { ...options, headers },
   };
 });
 
 request.interceptors.response.use(async response => {
   const data = await response.clone().json()
-  if (data.code === '200') {
+  if (data.code === 200) {
     if (data.page) {
       return {
         data: data.page.list,
@@ -82,18 +82,17 @@ request.interceptors.response.use(async response => {
       return data.data
     return ''
   }
-  if (data.code === '201') {
+  if (data.code === 201) {
     localStorage.setItem('token', data.msg)
     const url = localStorage.getItem('lastUrl') || ''
     const params = JSON.parse(localStorage.getItem('lastParams') || '')
-    request(url, {
+    return request(url, {
       method: 'POST',
       data: params,
     })
-    return ''
   }
-  if (data.code === '401') {
-    window.location.href = '/crm/'
+  if (data.code === 401) {
+    window.location.href = config.loginUrl
     return ''
   }
   notification.error({

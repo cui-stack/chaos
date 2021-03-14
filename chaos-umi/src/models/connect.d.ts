@@ -1,6 +1,6 @@
 import { MenuDataItem, Settings as ProSettings } from '@ant-design/pro-layout';
 import { GlobalModelState } from './global';
-import { UserModelState } from '../pages/user/login/model';
+import { UserModelState } from './user';
 
 export interface Loading {
   global: boolean;

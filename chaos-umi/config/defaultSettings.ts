@@ -11,6 +11,9 @@ const proSettings: DefaultSettings = {
   contentWidth: 'Fluid',
   fixedHeader: false,
   fixSiderbar: true,
+  menu: {
+    locale: false,
+  },
   colorWeak: false,
   title: '中台系统',
   pwa: false,

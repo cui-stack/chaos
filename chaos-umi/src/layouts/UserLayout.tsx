@@ -3,7 +3,7 @@ import { Helmet, HelmetProvider } from 'react-helmet-async';
 import { Link, ConnectProps, connect } from 'umi';
 import React from 'react';
 import { ConnectState } from '@/models/connect';
-import logo from '../assets/logo.png';
+import logo from '@/assets/logo.png';
 import styles from './UserLayout.less';
 
 export interface UserLayoutProps extends Partial<ConnectProps> {
@@ -44,7 +44,8 @@ const UserLayout: React.FC<UserLayoutProps> = (props) => {
             <div className={styles.header}>
               <Link to="/">
                 <img alt="logo" className={styles.logo} src={logo} />
-                <span className={styles.title}>中台系统</span>
+                <br />
+                <span className={styles.title}>OKYA渠道数据</span>
               </Link>
             </div>
           </div>
