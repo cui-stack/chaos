@@ -1,21 +1,22 @@
 <template>
-    <el-container>
-        <el-header :height="'80px'">
-            <Head/>
-        </el-header>
-        <el-container>
-            <el-aside :width="{asideWidth} + 'px'">
-                <SideMenu/>
-            </el-aside>
-            <el-main>
-                <CenterHead/>
-                <keep-alive>
-                    <router-view v-if="$route.meta.keepAlive"/>
-                </keep-alive>
-                <router-view v-if="!$route.meta.keepAlive"/>
-            </el-main>
-        </el-container>
-        <el-backtop/>
+    <el-container style='height:100%'>
+        <el-scrollbar style="width:100vw; height: 100vh;">
+            <el-header height="80px">
+                <Head/>
+            </el-header>
+            <el-container>
+                <el-aside :width="{asideWidth} + 'px'">
+                    <SideMenu/>
+                </el-aside>
+                <el-main>
+                    <CenterHead/>
+                    <keep-alive>
+                        <router-view v-if="$route.meta.keepAlive"/>
+                    </keep-alive>
+                    <router-view v-if="!$route.meta.keepAlive"/>
+                </el-main>
+            </el-container>
+        </el-scrollbar>
     </el-container>
 </template>
 
@@ -48,6 +49,7 @@
         padding: 0;
         border: 0;
     }
+
 </style>
 
 

@@ -5,6 +5,7 @@
             <span>{{headTitle}}后台</span>
         </el-container>
         <el-container class="page_right">
+            <el-avatar icon="el-icon-user-solid"/>
             <el-dropdown>
                 <span class="el-dropdown-link">
                     {{rolename}}<br>{{username}}
@@ -79,6 +80,9 @@
         cursor: pointer;
         color: white;
         font-size: 16px;
+    }
+    .el-avatar{
+        margin-right: 10px;
     }
 
 </style>

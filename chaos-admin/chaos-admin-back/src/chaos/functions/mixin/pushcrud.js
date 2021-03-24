@@ -11,7 +11,7 @@ export const pushcreate = {
             this.$router.push('/' + this.addPath)
         },
     }
-}
+};
 
 export const create = {
     data() {
@@ -25,12 +25,12 @@ export const create = {
     methods: {
         doAdd() {
             Data.validate(this, 'form', async () => {
-                await Data.add(this.domain, this.form)
+                await Data.add(this.domain, this.form);
                 await this.$router.push(this.indexPath)
             })
         }
     }
-}
+};
 
 export const pushupdate = {
     data() {
@@ -46,7 +46,7 @@ export const pushupdate = {
             })
         },
     }
-}
+};
 
 export const update = {
     data() {
@@ -61,7 +61,7 @@ export const update = {
     methods: {
         async showUpdate() {
             if (!this.$route.params.mu) {
-                await this.$router.push(this.indexPath)
+                await this.$router.push(this.indexPath);
                 return
             }
             if (this.showUpdateMethod) {
@@ -78,13 +78,13 @@ export const update = {
                         data: this.updateForm
                     }, () => this.$router.push(this.indexPath))
                 } else {
-                    await Data.update(this.domain, this.updateForm.mu, this.updateForm)
+                    await Data.update(this.domain, this.updateForm.mu, this.updateForm);
                     await this.$router.push(this.indexPath)
                 }
             })
         },
     }
-}
+};
 
 export const goBack = {
     data() {
@@ -97,7 +97,7 @@ export const goBack = {
             this.$router.push(this.indexPath)
         }
     }
-}
+};
 
 
 

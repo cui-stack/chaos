@@ -1,25 +1,25 @@
 package com.firepongo.chaos.service.impl;
 
-import org.apache.dubbo.config.annotation.Service;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.firepongo.chaos.app.service.ConvertService;
-import com.firepongo.chaos.app.utils.PageHelper;
-import com.firepongo.chaos.api.entity.ChaosInfo;
 import com.firepongo.chaos.api.data.ChaosInfoData;
+import com.firepongo.chaos.api.entity.ChaosInfo;
 import com.firepongo.chaos.api.service.IChaosInfoService;
-import com.firepongo.chaos.service.mapper.ChaosInfoMapper;
 import com.firepongo.chaos.app.db.MU;
 import com.firepongo.chaos.app.db.Table;
 import com.firepongo.chaos.app.db.UpdateData;
 import com.firepongo.chaos.app.page.PageList;
 import com.firepongo.chaos.app.page.PageQueryDto;
+import com.firepongo.chaos.app.service.ConvertService;
+import com.firepongo.chaos.app.utils.PageHelper;
+import com.firepongo.chaos.service.mapper.ChaosInfoMapper;
+import lombok.extern.slf4j.Slf4j;
+import org.apache.dubbo.config.annotation.Service;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 
-import lombok.extern.slf4j.Slf4j;
 import java.util.List;
 
 /**
@@ -40,7 +40,6 @@ public class ChaosInfoServiceImpl extends ServiceImpl<ChaosInfoMapper, ChaosInfo
 	@Override
 	public MU insertModel(ChaosInfoData data) {
 		ChaosInfo entity = (ChaosInfo) convertService.convertToMuModel(data, ChaosInfo.class);
-		entity.setVersion(1);
 		return save(entity) ? MU.of(entity.getMu()) : null;
 	}
 

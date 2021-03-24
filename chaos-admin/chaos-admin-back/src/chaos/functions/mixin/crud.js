@@ -15,13 +15,13 @@ export const create = {
         },
         doAdd() {
             Data.validate(this, 'form', async () => {
-                await Data.add(this.domain, this.form)
-                this.showAddForm = false
+                await Data.add(this.domain, this.form);
+                this.showAddForm = false;
                 this.search()
             })
         }
     }
-}
+};
 
 export const update = {
     data() {
@@ -36,7 +36,7 @@ export const update = {
     },
     methods: {
         async showUpdate(mu) {
-            this.showUpdateForm = true
+            this.showUpdateForm = true;
             if (this.showUpdateMethod) {
                 this.updateForm = await Data.query(this.domain + '/' + this.showUpdateMethod, {mu})
             } else {
@@ -53,12 +53,12 @@ export const update = {
                 } else {
                     await Data.update(this.domain, this.updateForm.mu, this.updateForm)
                 }
-                this.showUpdateForm = false
+                this.showUpdateForm = false;
                 this.search()
             })
         },
     }
-}
+};
 
 export const remove = {
     data() {
@@ -74,7 +74,7 @@ export const remove = {
             })
         }
     }
-}
+};
 
 export const page = {
     data() {
@@ -92,8 +92,8 @@ export const page = {
     },
     methods: {
         async search() {
-            this.loading = true
-            let res
+            this.loading = true;
+            let res;
             if (this.searchMethod) {
                 res = await Data.search(this.domain + '/' + this.searchMethod, this.currentPage, this.limit, this.data);
             } else {
@@ -118,7 +118,7 @@ export const page = {
             this.search();
         },
     }
-}
+};
 
 
 
