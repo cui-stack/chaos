@@ -234,11 +234,11 @@ public class ChaosIndexController extends BaseController {
     </el-container>
 </template>
 <script>
-    import {page, remove, create, updte} from '@/chaos/functions/mixin/crud'
+    import {page, remove, create, update} from '@/chaos/functions/mixin/crud'
 
     export default {
         name: "ChaosIndex",
-        mixins: [page, remove, create, updte],
+        mixins: [page, remove, create, update],
         data() {
             const rules = {
                 title: [
@@ -255,7 +255,9 @@ public class ChaosIndexController extends BaseController {
     }
 </script>
 <style lang="less" scoped>
-     
+    .el-form {
+        width: 500px;
+     }    
 </style>
 ```
 

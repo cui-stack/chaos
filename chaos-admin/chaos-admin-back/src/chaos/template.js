@@ -5,7 +5,6 @@
 const fs = require('fs');
 
 const dirName = process.argv[2];
-const upperDirName = dirName.charAt(0).toUpperCase() + dirName.slice(1)
 
 if (!dirName) {
     console.log('文件夹名称不能为空！');
@@ -20,13 +19,17 @@ const indexTep =
         <el-header>
             <el-container>
                 <PrimaryButton text="增加" :click="showAdd"/>
-                <Input placeholder="请输入MU"
+                <SearchInput placeholder="请输入MU"
                        :change="(value)=>handleChange(value,'mu')"/>
                 <SearchButton :click="search"/>
             </el-container>
         </el-header>
         <el-main>
-            <el-table stripe :data="tableData">
+            <el-table stripe :data="tableData"
+                      element-loading-text="拼命加载中"
+                      element-loading-spinner="el-icon-loading"
+                      element-loading-background="rgba(0, 0, 0, 0.8)"
+                      v-loading.fullscreen.lock="loading">
                 <el-table-column prop="mu" label="编号" width="80"/>
                 <el-table-column prop="title" label="标题"/>
                 <el-table-column label="操作" width="200">
@@ -38,7 +41,7 @@ const indexTep =
                     </template>
                 </el-table-column>
             </el-table>
-            <Pagination :currentPage="currentPage" :total="total" :limit="limit"
+            <SearchPagination :currentPage="currentPage" :total="total" :limit="limit"
                         @handleCurrentChange="handleCurrentChange"
                         @handleSizeChange="handleSizeChange"/>
         </el-main>
@@ -71,8 +74,7 @@ const indexTep =
     </el-container>
 </template>
 <script>
-    import {page, remove} from '@/chaos/functions/mixin/page'
-    import {create, update} from '@/chaos/functions/mixin/crud'
+    import {page, remove, create, update} from '@/chaos/functions/mixin/crud'
 
     export default {
         name: "${dirName}",
