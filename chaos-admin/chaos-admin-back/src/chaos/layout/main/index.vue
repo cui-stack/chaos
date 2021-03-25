@@ -1,5 +1,5 @@
 <template>
-    <el-container style='height:100%'>
+    <el-container style='height:100%;'>
         <el-scrollbar style="width:100vw; height: 100vh;">
             <el-header height="80px">
                 <Head/>
@@ -49,7 +49,9 @@
         padding: 0;
         border: 0;
     }
-
+    /deep/ .el-scrollbar__wrap{
+        overflow-x: hidden;
+    }
 </style>
 
 

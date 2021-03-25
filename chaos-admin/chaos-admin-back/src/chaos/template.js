@@ -101,10 +101,10 @@ const indexTep =
 ;
 
 
-fs.mkdirSync(`./src/views/${dirName}`); // mkdir $1
-process.chdir(`./src/views/${dirName}`); // cd $1
+fs.mkdirSync(`./src/app/views/${dirName}`); // mkdir $1
+process.chdir(`./src/app/views/${dirName}`); // cd $1
 
-fs.writeFileSync('UsersPage.vue', indexTep);
+fs.writeFileSync('index.vue', indexTep);
 
 console.log(`模版${dirName}已创建,请手动增加route`);
 
