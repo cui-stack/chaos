@@ -30,8 +30,8 @@ import org.apache.dubbo.config.annotation.Reference;
 * @since ${date}
 */
 @Slf4j
-@Api(tags = "${entity}MnController")
 @RestController
+@Api(tags = "${entity}MnController")
 @RequestMapping("/manage/${table.entityPath}")
 public class ${entity}MnController extends ${superControllerClass} {
     @Reference

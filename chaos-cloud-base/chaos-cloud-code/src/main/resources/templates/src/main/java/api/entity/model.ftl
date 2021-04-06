@@ -5,8 +5,7 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import com.firepongo.chaos.app.db.MuModel;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
+import lombok.*;
 import lombok.experimental.Accessors;
 import lombok.NoArgsConstructor;
 
@@ -23,8 +22,8 @@ import java.time.LocalDateTime;
  * @since ${date}
  */
 @Data
+@Builder
 @NoArgsConstructor
-@EqualsAndHashCode
 @Accessors(chain = true)
 @TableName("${table.name}")
 @ApiModel(value="${entity}实体", description="${table.comment!}")

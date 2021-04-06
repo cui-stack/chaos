@@ -31,8 +31,8 @@ import java.util.List;
 * @since ${date}
 */
 @Slf4j
-@Service(interfaceClass = ${table.serviceName}.class)
 @Component
+@Service(interfaceClass = ${table.serviceName}.class)
 public class ${table.serviceImplName} extends ServiceImpl<${table.mapperName}, ${entity}> implements ${table.serviceName} {
 	@Autowired
 	private ConvertService convertService;
@@ -40,7 +40,6 @@ public class ${table.serviceImplName} extends ServiceImpl<${table.mapperName}, $
 	@Override
 	public MU insertModel(${entity}Data data) {
 		${entity} entity = (${entity}) convertService.convertToMuModel(data, ${entity}.class);
-		entity.setVersion(1);
 		return save(entity) ? MU.of(entity.getMu()) : null;
 	}
 

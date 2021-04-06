@@ -15,11 +15,12 @@ CREATE TABLE `chaos_index` (
 ```
 #  服务端实现
 ```java
-package com.firepongo.chaos.model.entity;
+package com.firepongo.chaos.api.entity;
 
 @Data
+@Builder
 @NoArgsConstructor
-@EqualsAndHashCode@Accessors(chain = true)
+@Accessors(chain = true)
 @TableName("chaos_index")
 @ApiModel(value="ChaosIndex实体")
 public class ChaosIndex extends MuModel {
@@ -27,12 +28,12 @@ public class ChaosIndex extends MuModel {
 }
 ```
 ```java
-package com.firepongo.chaos.model.data;
+package com.firepongo.chaos.api.data;
 
 @Data
+@Builder
 @NoArgsConstructor
 @Accessors(chain = true)
-@EqualsAndHashCode
 @ApiModel(value="ChaosIndexData")
 public class ChaosIndexData extends DATA{
 
@@ -52,7 +53,7 @@ public interface ChaosIndexMapper extends BaseMapper<ChaosIndex> {
 </mapper>
 ```
 ```java
-package com.firepongo.chaos.model.service;
+package com.firepongo.chaos.api.service;
 
 public interface IChaosIndexService extends IService<ChaosIndex> {
     MU insertModel(ChaosIndexData data);

@@ -13,6 +13,7 @@ import com.firepongo.chaos.web.service.login.wxmini.WxminiLoginKeyService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
@@ -59,6 +60,7 @@ public class WxminiLoginController extends BaseController {
         String url = "https://api.weixin.qq.com/sns/jscode2session?appid=" + appid
                 + "&secret=" + secret + "&js_code=" + user.getCode() + "&grant_type=authorization_code";
         String resp = restTemplate.getForObject(url, String.class);
+        log.info("微信用户登录code【{}】,返回结果:{}", user.getCode(),resp);
         JSONObject json = JSONObject.parseObject(resp);
 
         user.setOpenid((String) json.get("openid"));

@@ -12,9 +12,9 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Data
+@Builder
 @NoArgsConstructor
 @Accessors(chain = true)
-@EqualsAndHashCode
 @ApiModel(value="${entity}Data", description="${table.comment!}")
 public class ${entity}Data extends DATA{
 
