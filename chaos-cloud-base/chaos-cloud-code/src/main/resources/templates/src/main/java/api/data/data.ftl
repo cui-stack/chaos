@@ -14,6 +14,8 @@ import java.time.LocalDateTime;
 @Data
 @Builder
 @NoArgsConstructor
+@AllArgsConstructor
+@EqualsAndHashCode(callSuper =false)
 @Accessors(chain = true)
 @ApiModel(value="${entity}Data", description="${table.comment!}")
 public class ${entity}Data extends DATA{

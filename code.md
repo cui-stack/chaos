@@ -20,6 +20,8 @@ package com.firepongo.chaos.api.entity;
 @Data
 @Builder
 @NoArgsConstructor
+@AllArgsConstructor
+@EqualsAndHashCode(callSuper =false)
 @Accessors(chain = true)
 @TableName("chaos_index")
 @ApiModel(value="ChaosIndex实体")
@@ -33,6 +35,8 @@ package com.firepongo.chaos.api.data;
 @Data
 @Builder
 @NoArgsConstructor
+@AllArgsConstructor
+@EqualsAndHashCode(callSuper =false)
 @Accessors(chain = true)
 @ApiModel(value="ChaosIndexData")
 public class ChaosIndexData extends DATA{
