@@ -102,13 +102,13 @@ public abstract class BaseController<T> {
 
     public DataResult dataResult(T data, ResultMsg msg) {
         DataResult dataResult = new DataResult();
-        if (data == null) {
+        if (data == null || (data instanceof Boolean && (Boolean) data == false)) {
             if (msg == null || StringUtils.isEmpty(msg.getFailure())) {
                 dataResult.failure();
             } else {
                 dataResult.msg(ResultEnum.FAILURE.getCode(), msg.getFailure());
             }
-            dataResult.setData(null);
+            dataResult.setData(data);
         } else {
             if (msg == null || StringUtils.isEmpty(msg.getSuccess())) {
                 dataResult.success();

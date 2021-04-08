@@ -62,9 +62,8 @@ public class WxminiLoginController extends BaseController {
         String resp = restTemplate.getForObject(url, String.class);
         log.info("微信用户登录code【{}】,返回结果:{}", user.getCode(),resp);
         JSONObject json = JSONObject.parseObject(resp);
-
-        user.setOpenid((String) json.get("openid"));
         user.setIp(IpUtil.getIpAddr(request));
+        user.setOpenid((String) json.get("openid"));
         user.setToken((String) json.get("session_key"));
         user.setUnionid((String) json.get("unionid"));
         WxMiniLoginUser su = (WxMiniLoginUser) wxLoginService.doLogin(user);
