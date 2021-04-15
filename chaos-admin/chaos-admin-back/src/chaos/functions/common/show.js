@@ -1,28 +1,28 @@
-import {Message} from 'element-ui';
+import { Message } from "element-ui";
 
 export function success(text) {
-    Message({
-        type: 'success',
-        message: text
-    });
+  Message({
+    type: "success",
+    message: text,
+  });
 }
 
 export function info(text) {
-    Message({
-        type: 'info',
-        message: text
-    });
+  Message({
+    type: "info",
+    message: text,
+  });
 }
 
 export function warning(text) {
-    Message({
-        type: 'warning',
-        message: text
-    });
+  Message({
+    type: "warning",
+    message: text,
+  });
 }
 
 export default {
-    info,
-    success,
-    warning
-}
+  info,
+  success,
+  warning,
+};
