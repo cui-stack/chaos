@@ -18,4 +18,8 @@ public class UpdateData<T> extends MU {
         this.setMu(mu);
         this.data = data;
     }
+
+    public static UpdateData of(String mu, Object data) {
+        return new UpdateData(mu, data);
+    }
 }

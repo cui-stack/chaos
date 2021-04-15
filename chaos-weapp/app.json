@@ -1,36 +1,36 @@
 {
   "pages": [
-    "pages/index/index",
-    "pages/web/web"
+    "pages/index/index" 
   ],
   "window": {
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#f8f8f8",
-    "navigationBarTitleText": "去火星",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "火猩",
     "navigationBarTextStyle": "black"
   },
   "debug": false,
   "functionalPages": false,
   "requiredBackgroundModes": [
-    "audio",
     "location"
   ],
   "plugins": {},
   "resizable": false,
   "usingComponents": {
+    "van-icon": "@vant/weapp/icon/index"
   },
   "permission": {
     "scope.userLocation": {
-      "desc": "获取您的位置用于服务"
+      "desc": "去火猩"
     }
   },
   "sitemapLocation": "sitemap.json",
   "useExtendedLib": {
-    "weui": true
   },
   "darkmode": false,
   "networkTimeout": {
     "request": 10000,
     "downloadFile": 10000
-  }
+  },
+  "lazyCodeLoading": "requiredComponents"
+
 }

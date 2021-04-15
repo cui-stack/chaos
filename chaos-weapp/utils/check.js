@@ -1,14 +1,11 @@
-let page = require('./page')
+const { get, navigateTo } = getApp().require("/chaos/functions/Wx");
 
-function isLogin() {
-    let phone = wx.getStorageSync('phone')
-    if (!phone.match(/^1\d{10}/)) {
-        page.to('authorize')
-        return false
+export function phone() {
+  return new Promise((reslove, reject) => {
+    if (get("phone").match(/^1\d{10}/)) {
+      reslove(true);
+    } else {
+      navigateTo("authorize");
     }
-    return true
-}
-
-module.exports = {
-    isLogin
+  });
 }

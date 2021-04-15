@@ -1,32 +1,18 @@
-let location = require('./location')
-let Data = require('./data')
+const { get, location, login } = getApp().require("/chaos/functions/Wx");
+const { submit, update } = getApp().require("/chaos/functions/Data");
 
-function login(cb) {
-    if (!wx.getStorageSync('token')) {
-        doLogin(cb)
-    } else {
-        if (cb) cb()
-    }
-}
+export async function doLogin({ referrer = "", source = "" }, force = false) {
+  if (!force && get("token")) {
+    return;
+  }
+  const { mu, token } = await submit("wxmini/login", {
+    code: await login(),
+    referrer,
+    source,
+  });
+  wx.setStorageSync("mu", mu);
+  wx.setStorageSync("token", token);
 
-function doLogin(cb) {
-    wx.login({
-        success: res => {
-            Data.submit('wxmini/login', {
-                code: res.code,
-                referrer: wx.getStorageSync('referrer'),
-                source: wx.getStorageSync('source')
-            }, (res) => {
-                wx.setStorageSync('token', res.token)
-                wx.setStorageSync('mu', res.mu)
-                location.loc()
-                if (cb) cb()
-            })
-        }
-    })
-}
-
-module.exports = {
-    login,
-    doLogin
+  const { longitude: lng, latitude: lat } = await location();
+  wx.setStorageSync("location", lng + ";" + lat);
 }

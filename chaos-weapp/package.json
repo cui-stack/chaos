@@ -3,14 +3,14 @@
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
-  "dependencies": {
-    "@vant/weapp": "^1.6.3",
-    "miniprogram-sm-crypto": "^0.2.1"
-  },
-  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
-  "license": "ISC"
+  "author": "G.G",
+  "license": "ISC",
+  "dependencies": {
+    "miniprogram-computed": "^2.1.1",
+    "miniprogram-recycle-view": "^0.1.5",
+    "@vant/weapp": "^1.6.8"
+  }
 }

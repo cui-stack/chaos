@@ -5,6 +5,7 @@
 
 ## JDK
     yum search java | grep -i --color JDK
+    安装jdk8
     yum -y install java-1.8.0-openjdk java-1.8.0-openjdk-devel
     java -version
     vim /etc/profile
@@ -14,6 +15,10 @@
     export PATH=$PATH:$JAVA_HOME/bin
     
     source /etc/profile
+    安装jdk11
+    yum install java-11-openjdk -y
+    export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-11.0.10.0.9-1.el7_9.x86_64
+    
 
 ## docker  
     yum -y install yum-utils  device-mapper-persistent-data  lvm2

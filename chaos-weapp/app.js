@@ -1,18 +1,10 @@
-let page = require('/utils/page')
+import { reLaunch } from "/chaos/functions/Wx";
+const localHost = "http://127.0.0.1:8089";
+
 App({
-    onLaunch(options) {
-    },
-    onShow(options) {
-    },
-    onHide() {
-    },
-    onError(msg) {
-    },
-    onPageNotFound() {
-        page.to('index')
-    },
-    onUnhandledRejection() {
-    },
-    onThemeChange() {
-    },
-})
+  onPageNotFound() {
+    reLaunch("index");
+  },
+  require: ($uri) => require($uri),
+  host: () => localHost,
+});
