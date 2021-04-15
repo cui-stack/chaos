@@ -17,7 +17,7 @@
                                   :key="i+'-'+j" :index=item.link>
                         <template slot="title">
                             <span>{{item.title}}</span>
-                            <DataBadge :link="item.link"/>
+                            <DataBadge v-if="item.link" :link="item.link"/>
                         </template>
                     </el-menu-item>
                 </el-submenu>

@@ -3,10 +3,17 @@ import fetch from "../axios/fetch";
 
 async function add(domain, data = {}) {
     const res = await fetch.post('/manage/' + domain + '/add', data)
-    Message({
-        type: 'success',
-        message: '新增成功!'
-    });
+    if (res) {
+        Message({
+            type: 'success',
+            message: '新增成功!'
+        });
+    } else {
+        Message({
+            type: 'warning',
+            message: '新增失败!'
+        });
+    }
     return res
 }
 

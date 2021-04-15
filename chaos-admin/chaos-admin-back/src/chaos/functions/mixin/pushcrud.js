@@ -25,8 +25,10 @@ export const create = {
     methods: {
         doAdd() {
             Data.validate(this, 'form', async () => {
-                await Data.add(this.domain, this.form);
-                await this.$router.push(this.indexPath)
+                const res = await Data.add(this.domain, this.form);
+                if (res) {
+                    await this.$router.push(this.indexPath)
+                }
             })
         }
     }
@@ -73,13 +75,19 @@ export const update = {
         doUpdate() {
             Data.validate(this, 'updateForm', async () => {
                 if (this.updateMethod) {
-                    await Data.submit(this.domain + '/' + this.updateMethod, {
+                    const res = await Data.submit(this.domain + '/' + this.updateMethod, {
                         mu: this.updateForm.mu,
                         data: this.updateForm
-                    }, () => this.$router.push(this.indexPath))
+                    }, () => {
+                        if (res) {
+                            this.$router.push(this.indexPath)
+                        }
+                    })
                 } else {
-                    await Data.update(this.domain, this.updateForm.mu, this.updateForm);
-                    await this.$router.push(this.indexPath)
+                    const res = await Data.update(this.domain, this.updateForm.mu, this.updateForm);
+                    if (res) {
+                        await this.$router.push(this.indexPath)
+                    }
                 }
             })
         },

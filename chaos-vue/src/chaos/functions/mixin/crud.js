@@ -15,9 +15,11 @@ export const create = {
         },
         doAdd() {
             Data.validate(this, 'form', async () => {
-                await Data.add(this.domain, this.form);
-                this.showAddForm = false;
-                this.search()
+                const res = await Data.add(this.domain, this.form);
+                if (res) {
+                    this.showAddForm = false;
+                    this.search()
+                }
             })
         }
     }
@@ -45,16 +47,19 @@ export const update = {
         },
         doUpdate() {
             Data.validate(this, 'updateForm', async () => {
+                let res;
                 if (this.updateMethod) {
-                    await Data.submit(this.domain + '/' + this.updateMethod, {
+                    res = await Data.submit(this.domain + '/' + this.updateMethod, {
                         mu: this.updateForm.mu,
                         data: this.updateForm
                     })
                 } else {
-                    await Data.update(this.domain, this.updateForm.mu, this.updateForm)
+                    res = await Data.update(this.domain, this.updateForm.mu, this.updateForm)
                 }
-                this.showUpdateForm = false;
-                this.search()
+                if (res) {
+                    this.showUpdateForm = false;
+                    this.search()
+                }
             })
         },
     }
