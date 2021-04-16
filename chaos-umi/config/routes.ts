@@ -1,23 +1,23 @@
 ﻿export default [
   {
     path: '/user',
-    component: '../layouts/UserLayout',
+    component: '@/chaos/layouts/UserLayout',
     routes: [
       {
         name: '登录',
         path: '/user/login',
-        component: './user/login',
+        component: '@/pages/user/login',
       },
     ],
   },
   {
     path: '/',
-    component: '../layouts/SecurityLayout',
+    component: '@/chaos/layouts/SecurityLayout',
     routes: [
       {
         path: '/',
-        component: '../layouts/BasicLayout',
-        authority: ['ADMIN'],
+        component: '@/chaos/layouts/BasicLayout',
+        authority: ['ADMIN', 'CHAN'],
         routes: [
           {
             path: '/',
@@ -27,26 +27,26 @@
             path: '/welcome',
             name: '欢迎',
             icon: 'smile',
-            component: './welcome',
+            component: '@/chaos/pages/welcome',
           },
           {
-            name: '订单列表',
+            name: '字典管理',
             icon: 'usergroupAdd',
-            path: '/orders',
-            component: './orders',
+            path: '/dicts',
+            component: '@/pages/dicts',
             authority: ['ADMIN'],
           },
           {
-            component: './404',
+            component: '@/chaos/pages/404',
           },
         ],
       },
       {
-        component: './404',
+        component: '@/chaos/pages/404',
       },
     ],
   },
   {
-    component: './404',
+    component: '@/chaos/pages/404',
   },
 ];

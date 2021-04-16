@@ -3,8 +3,6 @@ import defaultSettings from './defaultSettings';
 import proxy from './proxy';
 import routes from './routes';
 
-const { REACT_APP_ENV } = process.env;
-
 export default defineConfig({
   hash: true,
   antd: {},
@@ -16,7 +14,7 @@ export default defineConfig({
   },
   locale: false,
   dynamicImport: {
-    loading: '@/components/PageLoading/index',
+    loading: '@/chaos/components/PageLoading/index',
   },
   targets: {
     ie: 11,
@@ -27,7 +25,7 @@ export default defineConfig({
   },
   title: false,
   ignoreMomentLocale: true,
-  proxy: proxy[REACT_APP_ENV || 'dev'],
+  proxy: proxy['dev'],
   manifest: {
     basePath: '/',
   },

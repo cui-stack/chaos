@@ -1,15 +1,15 @@
 import { history, Reducer, Effect } from 'umi';
 import { message } from 'antd';
 
-import { setAuthority } from '@/utils/authority';
-import { ModelType } from '@/chaos/dataType'
-import { submit } from '@/chaos/data';
+import { setAuthority } from '@/chaos/utils/authority';
+import { ModelType } from '@/chaos/functions/dataType'
+import { submit } from '@/chaos/functions/data';
 
 export interface CurrentUser {
   mu?: string;
   avatar?: string;
   phone?: string;
-  roleName?: string;                    
+  roleName?: string;
   roleInfo?: string;
   status?: number;
   username?: string;

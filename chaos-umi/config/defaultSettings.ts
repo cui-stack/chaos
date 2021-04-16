@@ -15,7 +15,7 @@ const proSettings: DefaultSettings = {
     locale: false,
   },
   colorWeak: false,
-  title: '中台系统',
+  title: 'CHAOS',
   pwa: false,
   iconfontUrl: '',
 };
