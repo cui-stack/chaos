@@ -76,7 +76,7 @@ public class SwaggerConfiguration implements WebMvcConfigurer {
      * 设置授权信息
      */
     private List<SecurityScheme> securitySchemes() {
-        ApiKey apiKey = new ApiKey("BASE_TOKEN", "token", In.HEADER.toValue());
+        ApiKey apiKey = new ApiKey("token", "token", In.HEADER.toValue());
         return Collections.singletonList(apiKey);
     }
 
@@ -86,7 +86,7 @@ public class SwaggerConfiguration implements WebMvcConfigurer {
     private List<SecurityContext> securityContexts() {
         return Collections.singletonList(
                 SecurityContext.builder()
-                        .securityReferences(Collections.singletonList(new SecurityReference("BASE_TOKEN", new AuthorizationScope[]{new AuthorizationScope("global", "")})))
+                        .securityReferences(Collections.singletonList(new SecurityReference("token", new AuthorizationScope[]{new AuthorizationScope("global", "")})))
                         .build()
         );
     }
