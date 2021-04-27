@@ -6,6 +6,7 @@ import com.firepongo.chaos.app.login.LoginUser;
 import com.firepongo.chaos.app.login.manage.ManageLoginDto;
 import com.firepongo.chaos.app.login.manage.ManageLoginUser;
 import com.firepongo.chaos.app.result.data.DataResult;
+import com.firepongo.chaos.web.annotation.ManageLoginToken;
 import com.firepongo.chaos.web.base.BaseController;
 import com.firepongo.chaos.web.helper.IpUtil;
 import com.firepongo.chaos.web.service.AccessLimitService;
@@ -47,6 +48,7 @@ public class RedisDataController extends BaseController {
 
     @PostMapping("/loginAdmins")
     @ApiOperation(value = "", notes = "", httpMethod = "POST")
+    @ManageLoginToken
     public DataResult<List<LoginUser>> loginAdmins() {
         Set set = redisService.keys(manageLoginKeyService.key("*"));
         List<ManageLoginUser> list = (List<ManageLoginUser>) set.stream().map((key) ->
@@ -57,6 +59,7 @@ public class RedisDataController extends BaseController {
 
     @PostMapping("/loginUsers")
     @ApiOperation(value = "", notes = "", httpMethod = "POST")
+    @ManageLoginToken
     public DataResult<List<LoginUser>> loginUsers() {
         Set set = redisService.keys(wxminiLoginKeyService.key("*"));
         List<ManageLoginUser> list = (List<ManageLoginUser>) set.stream().map((key) ->
@@ -67,6 +70,7 @@ public class RedisDataController extends BaseController {
 
     @PostMapping("/logoutAll")
     @ApiOperation(value = "登出", notes = "", httpMethod = "POST")
+    @ManageLoginToken
     public DataResult<Boolean> logoutAll() {
         redisService.del(manageLoginKeyService.key("*"));
         return dataResult(true);
@@ -74,18 +78,21 @@ public class RedisDataController extends BaseController {
 
     @PostMapping("/limit")
     @ApiOperation(value = "", notes = "", httpMethod = "POST")
+    @ManageLoginToken
     public DataResult<ArrayList> limit() {
         return dataResult(accessLimitService.limit());
     }
 
     @PostMapping("/release")
     @ApiOperation(value = "", notes = "", httpMethod = "POST")
+    @ManageLoginToken
     public DataResult<Boolean> release(@RequestBody LimitDto limit) {
         return dataResult(accessLimitService.release(limit));
     }
 
     @PostMapping("/lock")
     @ApiOperation(value = "", notes = "", httpMethod = "POST")
+    @ManageLoginToken
     public DataResult<Boolean> lock(@RequestBody LimitDto limit) {
         return dataResult(accessLimitService.lock(limit));
     }

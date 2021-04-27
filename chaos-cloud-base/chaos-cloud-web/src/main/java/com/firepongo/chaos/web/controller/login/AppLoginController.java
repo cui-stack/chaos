@@ -3,6 +3,7 @@ package com.firepongo.chaos.web.controller.login;
 import com.firepongo.chaos.app.login.app.AppLoginUser;
 import com.firepongo.chaos.app.login.app.AppPhoneLoginDto;
 import com.firepongo.chaos.app.result.data.DataResult;
+import com.firepongo.chaos.web.annotation.AppLoginToken;
 import com.firepongo.chaos.web.service.login.ILoginService;
 import com.firepongo.chaos.web.base.BaseController;
 import com.firepongo.chaos.web.service.login.app.AppLoginKeyService;
@@ -46,6 +47,7 @@ public class AppLoginController extends BaseController {
 
     @PostMapping("/logout")
     @ApiOperation(value = "登出", notes = "", httpMethod = "POST")
+    @AppLoginToken
     public DataResult<Boolean> logout(HttpServletRequest request) {
         if (appLoginService == null) {
             return dataResult(false);

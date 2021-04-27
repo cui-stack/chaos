@@ -9,7 +9,7 @@ const Index: React.FC = () => {
   const [listData, setListData] = useState<[]>();
   useEffect(() => { load(); }, []);
   const load = async () => {
-    setListData(await list('info'));
+    setListData(await list('index'));
     const params = getParams();
     doLogin(params, true);
   };
