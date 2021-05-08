@@ -96,7 +96,7 @@ export function barTitle(title) {
 export function message() {
   return new Promise((reslove, reject) => {
     wx.requestSubscribeMessage({
-      tmplIds: ["SNNWGO_mXRxQvLik3-zvViC2rv1qdQPDRaU4qykVAVo"],
+      tmplIds: [""],
       success: (res) => reslove(res),
     });
   });

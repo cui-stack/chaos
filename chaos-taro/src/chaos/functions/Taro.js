@@ -81,12 +81,12 @@ export function barTitle(title) {
 }
 
 export function message() {
-  // return new Promise((reslove, reject) => {
-  //   wx.requestSubscribeMessage({
-  //     tmplIds: ["SNNWGO_mXRxQvLik3-zvViC2rv1qdQPDRaU4qykVAVo"],
-  //     success: res => reslove(res)
-  //   });
-  // });
+  return new Promise((reslove, reject) => {
+    wx.requestSubscribeMessage({
+      tmplIds: [""],
+      success: res => reslove(res)
+    });
+  });
 }
 
 export function getParams() {
