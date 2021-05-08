@@ -19,17 +19,19 @@
 |             | dubbo                             |               |
 |             | nacos                             |               |
 |             | MybatisPlus                       |               |
-| chaos-vue   | 基于vue的中后台架构         | 1.0.0         |
+| chaos-vue   | 基于vue的中后台架构                | 1.0.0         |
 |             | vue                               | 2.6.12        |
 |             | vuex                              | 3.6.2         |
 |             | ElementUI                         | 2.15.1        |
 |             | axios                             |               |
-| chaos-umi   | 基于react的中后台架构       | 1.0.0         |
+| chaos-umi   | 基于react的中后台架构              | 1.0.0         |
 |             | react                             | 16.8.6        |
 |             | umi                               | 3.2.14        |
 |             | AntDesignPro                      | v4            |
-| chaos-weapp | 微信原生小程序架构                |               |
+| chaos-weapp | 基于wx-native的小程序架构          |               |
 |             | vant                              |               |
+| chaos-taro  | 基于taro的跨端架构                 |               |
+|             | taro-ui                           |               |
 
 ##  模块
     chaos
@@ -57,10 +59,12 @@
 
 #   快速开始
     本架构面向于全栈开发，使用前需要了解以下知识
-    1.IDEA、vscode、git、lombook   
+    1.IDEA、vscode、git、lombook、less、sass  
     2.maven、npm  
     3.linux、docker   
     4.mysql、redis、nacos
+    5.java、js、ts、html、css
+    6.springcloud、vue、react
 
 ##  环境搭建
     1.搭建开发环境（windows）
