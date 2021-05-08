@@ -26,7 +26,6 @@
       "disablePlugins": [],
       "outputPath": ""
     },
-    "enableEngineNative": false,
     "bundle": false,
     "useIsolateContext": true,
     "useCompilerModule": true,
@@ -39,8 +38,7 @@
         "miniprogramNpmDistDir": "./"
       }
     ],
-    "minifyWXSS": true,
-    "skeletonGenerateFilesWithoutConfirm": true
+    "minifyWXSS": true
   },
   "compileType": "miniprogram",
   "libVersion": "2.13.2",

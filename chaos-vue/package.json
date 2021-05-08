@@ -5,7 +5,7 @@
     "devServer": {
       "proxy": {
         "/": {
-          "target": "http://localhost:38899",
+          "target": "http://localhost:8089",
           "changeOrigin": true,
           "ws": false
         }
@@ -24,7 +24,7 @@
   "dependencies": {
     "axios": "^0.21.1",
     "babel-polyfill": "^6.26.0",
-    "core-js": "^3.9.0",
+    "core-js": "^3.9.1",
     "cos-js-sdk-v5": "^0.5.27",
     "element-ui": "^2.15.1",
     "vue": "^2.6.12",
@@ -43,7 +43,8 @@
     "eslint-plugin-vue": "^6.2.2",
     "less": "^3.13.1",
     "less-loader": "^7.3.0",
-    "vue-template-compiler": "^2.6.12"
+    "vue-template-compiler": "^2.6.12",
+    "xlsx": "^0.16.9"
   },
   "eslintConfig": {
     "root": true,

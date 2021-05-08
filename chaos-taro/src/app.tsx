@@ -1,6 +1,5 @@
-import 'taro-ui/dist/style/index.scss'
-import '@/styles/theme.scss'
 import React from 'react'
+import 'taro-ui/dist/style/index.scss'
 
 const App: React.FC = ({ children }) => {
   return (

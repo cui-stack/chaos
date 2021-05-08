@@ -1,9 +1,9 @@
 import Taro from "@tarojs/taro";
 import { navigateTo } from "@/chaos/functions/Taro";
 import { doLogin } from "@/utils/login";
-import { host, isConsole } from "@/utils/config";
+import { host, noLog } from "@/utils/config";
 
-const noConsole = isConsole();
+const noConsole = noLog();
 export async function post(url, params) {
   if (!noConsole) {
     console.log(

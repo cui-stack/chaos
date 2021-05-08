@@ -7,6 +7,6 @@ export function host() {
   return devHost;
 }
 
-export function isConsole() {
-  return false;
+export function noLog() {
+  return true;
 }

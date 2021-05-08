@@ -6,12 +6,12 @@ export async function login() {
 }
 
 export function userProfile() {
-  // return new Promise((reslove, reject) => {
-  //   wx.getUserProfile({
-  //     desc: "用于完善会员资料",
-  //     success: res => reslove(res.userInfo)
-  //   });
-  // });
+  return new Promise(reslove => {
+    Taro.getUserProfile({
+      desc: "用于完善会员资料",
+      success: res => reslove(res.userInfo)
+    });
+  });
 }
 
 export function location() {
@@ -83,7 +83,7 @@ export function barTitle(title) {
 export function message() {
   // return new Promise((reslove, reject) => {
   //   wx.requestSubscribeMessage({
-  //     tmplIds: [''],
+  //     tmplIds: ["SNNWGO_mXRxQvLik3-zvViC2rv1qdQPDRaU4qykVAVo"],
   //     success: res => reslove(res)
   //   });
   // });
