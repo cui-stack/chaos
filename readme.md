@@ -31,6 +31,7 @@
 | chaos-weapp | 基于wx-native的小程序架构          |               |
 |             | vant                              |               |
 | chaos-taro  | 基于taro的跨端架构                 |               |
+|             | taro                              | 3.2.6         |
 |             | taro-ui                           |               |
 
 ##  模块
