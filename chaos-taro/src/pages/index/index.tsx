@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { View } from '@tarojs/components';
 import { list } from '@/chaos/functions/Data';
-import { navigateTo, getParams } from '@/chaos/functions/Taro';
+import { getParams } from '@/chaos/functions/Taro';
 import { doLogin } from '@/utils/login';
-import './index.scss';
+import styles from './index.module.scss';
 
 const Index: React.FC = () => {
   const [listData, setListData] = useState<[]>();
@@ -15,7 +15,7 @@ const Index: React.FC = () => {
   };
 
   return (
-    <View className='index'>
+    <View className={styles.page}>
     </View>
   );
 };

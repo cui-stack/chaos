@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { View, WebView } from '@tarojs/components';
-import './index.scss';
+import styles from './index.module.scss';
 
 const Webview: React.FC = () => {
     const [infoSrc] = useState<string>('');
     return (
-        <View className='webview'>
+        <View className={styles.page}>
             <WebView src={infoSrc} />
         </View>
     );

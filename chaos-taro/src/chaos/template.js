@@ -97,7 +97,7 @@ import Data from './../../utils/data'
  process.chdir(`./src/pages/${dirName}`); // cd $1
 
  fs.writeFileSync('index.tsx', indexTep);
- fs.writeFileSync('index.scss', scssTep);
+ fs.writeFileSync('index.module.scss', scssTep);
  fs.writeFileSync('user.ts', modelTep);
  fs.writeFileSync('service.ts', serviceTep);
 
