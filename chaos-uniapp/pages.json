@@ -1,0 +1,15 @@
+{
+	"pages": [{
+		"path": "app/pages/index/index",
+		"style": {
+			"enablePullDownRefresh": false,
+			"navigationBarTitleText": "首页"
+		}
+	}],
+	"globalStyle": {
+		"navigationBarTextStyle": "light",
+		"navigationBarTitleText": "火猩",
+		"navigationBarBackgroundColor": "#FFF",
+		"backgroundColor": "#FFF"
+	}
+}
